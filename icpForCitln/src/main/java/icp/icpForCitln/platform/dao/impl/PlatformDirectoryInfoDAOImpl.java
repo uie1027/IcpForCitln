@@ -7,14 +7,14 @@
  */
 package icp.icpForCitln.platform.dao.impl;
 
-import icp.icpForCitln.platform.dao.PlatformDirectoryDAO;
-import icp.icpForCitln.platform.eneity.PlatformDirectory;
+import icp.icpForCitln.platform.dao.PlatformDirectoryInfoDAO;
+import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class PlatformDirectoryDAOImpl implements PlatformDirectoryDAO {
+public class PlatformDirectoryInfoDAOImpl implements PlatformDirectoryInfoDAO {
     @Autowired
     private MongoTemplate mongoTemplate;
 
@@ -28,7 +28,7 @@ public class PlatformDirectoryDAOImpl implements PlatformDirectoryDAO {
      * @return: void
      */
     @Override
-    public void saveTest(PlatformDirectory platformDirectory) {
-        mongoTemplate.save(platformDirectory);
+    public void saveTest(PlatformDirectoryInfo platformDirectoryInfo) {
+        mongoTemplate.save(platformDirectoryInfo);
     }
 }

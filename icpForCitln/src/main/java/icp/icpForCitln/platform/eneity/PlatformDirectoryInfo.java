@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: PlatformDirectory
+ * File Name: PlatformDirectoryInfo
  * Package Name: icp.icpForCitln.platform.eneity
  * Date: 2019-04-12 下午 1:51
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
@@ -13,8 +13,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
-@Document(collection = "PLATFORM_DIRECTORY")
-public class PlatformDirectory extends CommonField {
+@Document(collection = "PLATFORM_DIRECTORY_INFO")
+public class PlatformDirectoryInfo extends CommonField {
 
     @Field("PLATFORM_DIRECTORY_CODE")
     private String platformDirectoryCode;   //平台目录编码

@@ -7,7 +7,8 @@
  */
 package icp.icpForCitln.platform.controller;
 
-import icp.icpForCitln.platform.eneity.PlatformDirectory;
+import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
+import icp.icpForCitln.platform.eneity.PlatformDirectoryAttribute;
 import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,21 +32,39 @@ public class PlatformController {
      * @param: []
      * @return: void
      */
-    @GetMapping("/platformDirectorySaveTest")
+    @GetMapping("/platformDirectoryInfoSaveTest")
     public void platformDirectorySaveTest(){
-        PlatformDirectory platformDirectory = new PlatformDirectory();
+        PlatformDirectoryInfo platformDirectoryInfo = new PlatformDirectoryInfo();
 
-        platformDirectory.setId("testId");
-        platformDirectory.setPlatformDirectoryCode("testCode");
-        platformDirectory.setPlatformDirectoryName("testName");
-        platformDirectory.setPlatformDirectoryLevel(1);
-        platformDirectory.setParenetPlatformDirectoryCode(1);
-        platformDirectory.setPlatformDirectoryDescription("备注测试");
-        platformDirectory.setCreater("testcreater");
-        platformDirectory.setCreateTime(new Date());
-        platformDirectory.setLastMondifier("lastman");
-        platformDirectory.setLastModificationTime(new Date());
+        platformDirectoryInfo.setId("testId");
+        platformDirectoryInfo.setPlatformDirectoryCode("testCode");
+        platformDirectoryInfo.setPlatformDirectoryName("testName");
+        platformDirectoryInfo.setPlatformDirectoryLevel(1);
+        platformDirectoryInfo.setParenetPlatformDirectoryCode(1);
+        platformDirectoryInfo.setPlatformDirectoryDescription("备注测试");
+        platformDirectoryInfo.setCreater("testcreater");
+        platformDirectoryInfo.setCreateTime(new Date());
+        platformDirectoryInfo.setLastMondifier("lastman");
+        platformDirectoryInfo.setLastModificationTime(new Date());
+        platformDirectoryInfo.setIsDelete(2);
 
-        platformService.platformDirectorySaveTest(platformDirectory);
+        platformService.platformDirectorySaveTest(platformDirectoryInfo);
+    }
+
+    @GetMapping("/platformDirectoryAttributeSaveTest")
+    public void platformDirectoryAttributeSaveTest(){
+        PlatformDirectoryAttribute platformDirectoryAttribute = new PlatformDirectoryAttribute();
+
+        platformDirectoryAttribute.setId("testId");
+        platformDirectoryAttribute.setPlatformDirectoryCode("testdcode");
+        platformDirectoryAttribute.setPlatformAttributeCode("testacode");
+        platformDirectoryAttribute.setPlatformAttributeName("testname");
+        platformDirectoryAttribute.setCreater("testcreater");
+        platformDirectoryAttribute.setCreateTime(new Date());
+        platformDirectoryAttribute.setLastMondifier("lastman");
+        platformDirectoryAttribute.setLastModificationTime(new Date());
+        platformDirectoryAttribute.setIsDelete(2);
+
+        platformService.platformDirectoryAttributeSaveTest(platformDirectoryAttribute);
     }
 }
