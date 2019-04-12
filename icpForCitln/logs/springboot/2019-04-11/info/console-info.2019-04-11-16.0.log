@@ -1,0 +1,67 @@
+2019-04-11 16:56:21.566 [main] INFO  icp.icpForCitln.IcpForCitlnApplication.logStarting:50 - Starting IcpForCitlnApplication on 韭菜馅糖包 with PID 4720 (D:\DevelopmentWorkSpace\JavaWorkSpaces\icpForCitln\target\classes started by 方瑞冬 in D:\DevelopmentWorkSpace\JavaWorkSpaces\icpForCitln)
+2019-04-11 16:56:21.570 [main] INFO  icp.icpForCitln.IcpForCitlnApplication.logStartupProfileInfo:675 - No active profile set, falling back to default profiles: default
+2019-04-11 16:56:22.760 [main] INFO  o.s.d.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-04-11 16:56:22.792 [main] INFO  o.s.d.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:182 - Finished Spring Data repository scanning in 20ms. Found 0 repository interfaces.
+2019-04-11 16:56:23.447 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:90 - Tomcat initialized with port(s): 8080 (http)
+2019-04-11 16:56:23.465 [main] INFO  org.apache.coyote.http11.Http11NioProtocol.log:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-04-11 16:56:23.478 [main] INFO  org.apache.catalina.core.StandardService.log:173 - Starting service [Tomcat]
+2019-04-11 16:56:23.478 [main] INFO  org.apache.catalina.core.StandardEngine.log:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-11 16:56:23.488 [main] INFO  org.apache.catalina.core.AprLifecycleListener.log:173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Java\jdk\jdk1.8.0_191\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\Java\jdk\jdk1.8.0_191\bin;D:\Java\jdk\jdk1.8.0_191\jre\bin;;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\mysql-5.6.42-winx64\bin;D:\TortoiseSVN\bin;D:\Redis\;D:\Python\Python35\Scripts\;D:\Python\Python35\;D:\Python\Python37\Scripts\;D:\Python\Python37\;C:\Users\方瑞冬\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\MongoDB\Server\4.0\bin;;.]
+2019-04-11 16:56:23.642 [main] INFO  o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:173 - Initializing Spring embedded WebApplicationContext
+2019-04-11 16:56:23.643 [main] INFO  org.springframework.web.context.ContextLoader.prepareWebApplicationContext:296 - Root WebApplicationContext: initialization completed in 2018 ms
+2019-04-11 16:56:25.657 [main] INFO  org.mongodb.driver.cluster.info:71 - Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-04-11 16:56:26.322 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor.initialize:171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-11 16:56:26.464 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping.<init>:61 - Adding welcome page template: index
+2019-04-11 16:56:26.673 [main] INFO  o.s.boot.actuate.endpoint.web.EndpointLinksResolver.<init>:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-04-11 16:56:26.700 [cluster-ClusterId{value='5caf013921517412705451b9', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster.info:76 - Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:67)
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:126)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:117)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.internal.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:64)
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:62)
+	... 3 common frames omitted
+2019-04-11 16:56:26.739 [main] INFO  org.apache.coyote.http11.Http11NioProtocol.log:173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-04-11 16:56:26.767 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer.start:204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-11 16:56:26.770 [main] INFO  icp.icpForCitln.IcpForCitlnApplication.logStarted:59 - Started IcpForCitlnApplication in 5.791 seconds (JVM running for 7.67)
+2019-04-11 16:56:26.992 [RMI TCP Connection(4)-127.0.0.1] INFO  o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-11 16:56:26.995 [RMI TCP Connection(4)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet.initServletBean:524 - Initializing Servlet 'dispatcherServlet'
+2019-04-11 16:56:27.008 [RMI TCP Connection(4)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet.initServletBean:546 - Completed initialization in 11 ms
+2019-04-11 16:56:27.036 [RMI TCP Connection(6)-127.0.0.1] INFO  org.mongodb.driver.cluster.info:71 - Cluster description not yet available. Waiting for 30000 ms before timing out
+2019-04-11 16:56:51.296 [cluster-ClusterId{value='5caf013921517412705451b9', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection.info:71 - Opened connection [connectionId{localValue:18, serverValue:1}] to localhost:27017
+2019-04-11 16:56:51.300 [cluster-ClusterId{value='5caf013921517412705451b9', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster.info:71 - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3212700}
+2019-04-11 16:56:51.317 [RMI TCP Connection(6)-127.0.0.1] INFO  org.mongodb.driver.connection.info:71 - Opened connection [connectionId{localValue:19, serverValue:2}] to localhost:27017
+2019-04-11 16:57:01.628 [main] INFO  icp.icpForCitln.IcpForCitlnApplication.logStarting:50 - Starting IcpForCitlnApplication on 韭菜馅糖包 with PID 7884 (D:\DevelopmentWorkSpace\JavaWorkSpaces\icpForCitln\target\classes started by 方瑞冬 in D:\DevelopmentWorkSpace\JavaWorkSpaces\icpForCitln)
+2019-04-11 16:57:01.631 [main] INFO  icp.icpForCitln.IcpForCitlnApplication.logStartupProfileInfo:675 - No active profile set, falling back to default profiles: default
+2019-04-11 16:57:02.966 [main] INFO  o.s.d.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-04-11 16:57:02.996 [main] INFO  o.s.d.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:182 - Finished Spring Data repository scanning in 22ms. Found 0 repository interfaces.
+2019-04-11 16:57:03.672 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:90 - Tomcat initialized with port(s): 8080 (http)
+2019-04-11 16:57:03.689 [main] INFO  org.apache.coyote.http11.Http11NioProtocol.log:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-04-11 16:57:03.700 [main] INFO  org.apache.catalina.core.StandardService.log:173 - Starting service [Tomcat]
+2019-04-11 16:57:03.702 [main] INFO  org.apache.catalina.core.StandardEngine.log:173 - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-11 16:57:03.710 [main] INFO  org.apache.catalina.core.AprLifecycleListener.log:173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Java\jdk\jdk1.8.0_191\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\Java\jdk\jdk1.8.0_191\bin;D:\Java\jdk\jdk1.8.0_191\jre\bin;;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\mysql-5.6.42-winx64\bin;D:\TortoiseSVN\bin;D:\Redis\;D:\Python\Python35\Scripts\;D:\Python\Python35\;D:\Python\Python37\Scripts\;D:\Python\Python37\;C:\Users\方瑞冬\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\MongoDB\Server\4.0\bin;;.]
+2019-04-11 16:57:03.846 [main] INFO  o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:173 - Initializing Spring embedded WebApplicationContext
+2019-04-11 16:57:03.846 [main] INFO  org.springframework.web.context.ContextLoader.prepareWebApplicationContext:296 - Root WebApplicationContext: initialization completed in 2164 ms
+2019-04-11 16:57:05.812 [main] INFO  org.mongodb.driver.cluster.info:71 - Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-04-11 16:57:05.875 [cluster-ClusterId{value='5caf01612151741eccf9bc18', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection.info:71 - Opened connection [connectionId{localValue:1, serverValue:3}] to localhost:27017
+2019-04-11 16:57:05.880 [cluster-ClusterId{value='5caf01612151741eccf9bc18', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster.info:71 - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=2804300}
+2019-04-11 16:57:06.470 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor.initialize:171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-11 16:57:06.610 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping.<init>:61 - Adding welcome page template: index
+2019-04-11 16:57:06.810 [main] INFO  o.s.boot.actuate.endpoint.web.EndpointLinksResolver.<init>:59 - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-04-11 16:57:06.869 [main] INFO  org.apache.coyote.http11.Http11NioProtocol.log:173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-04-11 16:57:06.893 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer.start:204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-11 16:57:06.898 [main] INFO  icp.icpForCitln.IcpForCitlnApplication.logStarted:59 - Started IcpForCitlnApplication in 5.772 seconds (JVM running for 7.451)
+2019-04-11 16:57:07.169 [RMI TCP Connection(4)-127.0.0.1] INFO  o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-11 16:57:07.170 [RMI TCP Connection(4)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet.initServletBean:524 - Initializing Servlet 'dispatcherServlet'
+2019-04-11 16:57:07.177 [RMI TCP Connection(4)-127.0.0.1] INFO  org.springframework.web.servlet.DispatcherServlet.initServletBean:546 - Completed initialization in 7 ms
+2019-04-11 16:57:07.195 [RMI TCP Connection(2)-127.0.0.1] INFO  org.mongodb.driver.connection.info:71 - Opened connection [connectionId{localValue:2, serverValue:4}] to localhost:27017
