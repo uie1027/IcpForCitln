@@ -9,12 +9,12 @@
     <!--加载外部配置文件，如果配置文件出现同名变量则会自动选择最后一个，如果找不到加载的文件则会报错，
     resource默认指向classpath:，classpath:可以省略不写，如下第一种加载方法；第二种加载方法可以通过相
     对路径找到其它目录下的配置文件；第三种加载方法可以直接加载工程外部的配置文件，但是需要写绝对路径。-->
-    <property resource="application.properties"/>
+    <property resource="config.properties"/>
     <!--<property resource="./static/message.properties"/>-->
     <!--<property file="E:/message.properties"/>-->
 
     <!--日志根目录名称-->
-    <property name="LOG_CONTEXT_NAME" value="springboot"/>
+    <property name="LOG_CONTEXT_NAME" value="icpForCitln"/>
 
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
     <property name="LOG_HOME" value="logs/${LOG_CONTEXT_NAME}" />
@@ -39,10 +39,10 @@
             <!--日志文件输出的文件名 每小时生成日志文件-->
             <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/console.%d{yyyy-MM-dd-HH}.%i.log</FileNamePattern>
             <!--日志文件保留天数-->
-            <MaxHistory>30</MaxHistory>
+            <MaxHistory>${MaxHistory}</MaxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- 除按日志记录之外，还配置了日志文件不能超过10M(默认)，若超过10M，日志文件会以索引0开始， -->
-                <maxFileSize>10MB</maxFileSize>
+                <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -59,10 +59,10 @@
             <!--日志文件输出的文件名 每小时生成日志文件 -->
             <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/info/console-info.%d{yyyy-MM-dd-HH}.%i.log</FileNamePattern>
             <!--日志文件保留天数-->
-            <MaxHistory>30</MaxHistory>
+            <MaxHistory>${MaxHistory}</MaxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- 除按日志记录之外，还配置了日志文件不能超过10M(默认)，若超过10M，日志文件会以索引0开始， -->
-                <maxFileSize>10MB</maxFileSize>
+                <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -85,10 +85,10 @@
             <!--日志文件输出的文件名-->
             <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/error/console-error.%d{yyyy-MM-dd-HH}.%i.log</FileNamePattern>
             <!--日志文件保留天数-->
-            <MaxHistory>30</MaxHistory>
+            <MaxHistory>${MaxHistory}</MaxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- 除按日志记录之外，还配置了日志文件不能超过10M(默认)，若超过10M，日志文件会以索引0开始， -->
-                <maxFileSize>10MB</maxFileSize>
+                <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -111,10 +111,10 @@
             <!--日志文件输出的文件名 按小时生成日志-->
             <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/warn/console-warn.%d{yyyy-MM-dd-HH}.%i.log</FileNamePattern>
             <!--日志文件保留天数-->
-            <MaxHistory>30</MaxHistory>
+            <MaxHistory>${MaxHistory}</MaxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- 除按日志记录之外，还配置了日志文件不能超过10M(默认)，若超过10M，日志文件会以索引0开始， -->
-                <maxFileSize>10MB</maxFileSize>
+                <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -137,10 +137,10 @@
             <!--日志文件输出的文件名 按小时生成日志-->
             <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/debug/console-debug.%d{yyyy-MM-dd-HH}.%i.log</FileNamePattern>
             <!--日志文件保留天数-->
-            <MaxHistory>30</MaxHistory>
+            <MaxHistory>${MaxHistory}</MaxHistory>
             <!-- 除按日志记录之外，还配置了日志文件不能超过5M，若超过5M，日志文件会以索引0开始，命名日志文件，例如console-debug.2018-08-24-09.1.log -->
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
+                <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -158,8 +158,8 @@
 
     <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
     <appender name="file.async" class="ch.qos.logback.classic.AsyncAppender">
-        <discardingThreshold>0</discardingThreshold>
-        <queueSize>256</queueSize>
+        <discardingThreshold>${discardingThreshold}</discardingThreshold>
+        <queueSize>${queueSize}</queueSize>
         <includeCallerData>true</includeCallerData>
         <appender-ref ref="file.all" />
     </appender>
