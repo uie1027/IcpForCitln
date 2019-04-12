@@ -7,10 +7,12 @@
  */
 package icp.icpForCitln.platform.service;
 
+import icp.icpForCitln.platform.eneity.PlatformDirectoryAttributeValue;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryAttribute;
 
 public interface PlatformService {
     void platformDirectorySaveTest(PlatformDirectoryInfo platformDirectoryInfo);     //存储测试
     void platformDirectoryAttributeSaveTest(PlatformDirectoryAttribute platformDirectoryAttribute);     //存储测试
+    void platformDirectoryAttributeValueSaveTest(PlatformDirectoryAttributeValue platformDirectoryAttributeValue);     //存储测试
 }

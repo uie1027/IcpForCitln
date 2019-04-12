@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
-@Document(collection = "PLATFORM_DIRECTORY_INFO")
+@Document(collection = "PLATFORM_DIRECTORY_INFO")   //平台目录表
 public class PlatformDirectoryInfo extends CommonField {
 
     @Field("PLATFORM_DIRECTORY_CODE")

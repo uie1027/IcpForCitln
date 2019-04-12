@@ -7,6 +7,7 @@
  */
 package icp.icpForCitln.platform.controller;
 
+import icp.icpForCitln.platform.eneity.PlatformDirectoryAttributeValue;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryAttribute;
 import icp.icpForCitln.platform.service.PlatformService;
@@ -66,5 +67,21 @@ public class PlatformController {
         platformDirectoryAttribute.setIsDelete(2);
 
         platformService.platformDirectoryAttributeSaveTest(platformDirectoryAttribute);
+    }
+
+    @GetMapping("/platformDirectoryAttributeValueSaveTest")
+    public void platformDirectoryAttributeValueSaveTest(){
+        PlatformDirectoryAttributeValue platformDirectoryAttributeValue = new PlatformDirectoryAttributeValue();
+
+        platformDirectoryAttributeValue.setId("testId");
+        platformDirectoryAttributeValue.setPlatformAttributeCode("testacode");
+        platformDirectoryAttributeValue.setPlatformAttributeContent("testacontent");
+        platformDirectoryAttributeValue.setCreater("testcreater");
+        platformDirectoryAttributeValue.setCreateTime(new Date());
+        platformDirectoryAttributeValue.setLastMondifier("lastman");
+        platformDirectoryAttributeValue.setLastModificationTime(new Date());
+        platformDirectoryAttributeValue.setIsDelete(2);
+
+        platformService.platformDirectoryAttributeValueSaveTest(platformDirectoryAttributeValue);
     }
 }

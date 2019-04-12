@@ -8,7 +8,9 @@
 package icp.icpForCitln.platform.service.impl;
 
 import icp.icpForCitln.platform.dao.PlatformDirectoryAttributeDAO;
+import icp.icpForCitln.platform.dao.PlatformDirectoryAttributeValueDAO;
 import icp.icpForCitln.platform.dao.PlatformDirectoryInfoDAO;
+import icp.icpForCitln.platform.eneity.PlatformDirectoryAttributeValue;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryAttribute;
 import icp.icpForCitln.platform.service.PlatformService;
@@ -21,6 +23,8 @@ public class PlatformServiceImpl implements PlatformService {
     private PlatformDirectoryInfoDAO platformDirectoryDAO;
     @Autowired
     private PlatformDirectoryAttributeDAO platformDirectoryAttributeDAO;
+    @Autowired
+    private PlatformDirectoryAttributeValueDAO platformDirectoryAttributeValueDAO;
 
     /**
      * @author: 方瑞冬
@@ -36,8 +40,31 @@ public class PlatformServiceImpl implements PlatformService {
         platformDirectoryDAO.saveTest(platformDirectoryInfo);
     }
 
+    /**
+     * @author: 方瑞冬
+     * date: 2019-04-12 下午 4:32
+     * @since: JDK 1.8
+     *
+     * @description: 这里用一句话描述这个方法的作用
+     * @param: [platformDirectoryAttribute]
+     * @return: void
+     */
     @Override
     public void platformDirectoryAttributeSaveTest(PlatformDirectoryAttribute platformDirectoryAttribute) {
         platformDirectoryAttributeDAO.saveTest(platformDirectoryAttribute);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * date: 2019-04-12 下午 4:32
+     * @since: JDK 1.8
+     *
+     * @description: 这里用一句话描述这个方法的作用
+     * @param: [platformDirectoryAttributeValue]
+     * @return: void
+     */
+    @Override
+    public void platformDirectoryAttributeValueSaveTest(PlatformDirectoryAttributeValue platformDirectoryAttributeValue) {
+        platformDirectoryAttributeValueDAO.saveTest(platformDirectoryAttributeValue);
     }
 }
