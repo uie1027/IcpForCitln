@@ -8,8 +8,8 @@
 package icp.icpForCitln.mongoTest.service.impl;
 
 import icp.icpForCitln.mongoTest.dao.BasicsOperationDAO;
-import icp.icpForCitln.mongoTest.po.Grade;
-import icp.icpForCitln.mongoTest.po.Student;
+import icp.icpForCitln.mongoTest.eneity.Grade;
+import icp.icpForCitln.mongoTest.eneity.Student;
 import icp.icpForCitln.mongoTest.vo.StudentInfo;
 import icp.icpForCitln.mongoTest.service.MongoOperationService;
 import org.springframework.stereotype.Service;

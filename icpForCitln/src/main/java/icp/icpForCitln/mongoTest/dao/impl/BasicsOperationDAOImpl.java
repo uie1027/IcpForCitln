@@ -8,8 +8,8 @@
 package icp.icpForCitln.mongoTest.dao.impl;
 
 import icp.icpForCitln.mongoTest.dao.BasicsOperationDAO;
-import icp.icpForCitln.mongoTest.po.Grade;
-import icp.icpForCitln.mongoTest.po.Student;
+import icp.icpForCitln.mongoTest.eneity.Grade;
+import icp.icpForCitln.mongoTest.eneity.Student;
 import icp.icpForCitln.mongoTest.vo.StudentInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;

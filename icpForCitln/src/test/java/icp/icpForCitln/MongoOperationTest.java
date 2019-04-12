@@ -7,8 +7,8 @@
  */
 package icp.icpForCitln;
 
-import icp.icpForCitln.mongoTest.po.Grade;
-import icp.icpForCitln.mongoTest.po.Student;
+import icp.icpForCitln.mongoTest.eneity.Grade;
+import icp.icpForCitln.mongoTest.eneity.Student;
 import icp.icpForCitln.mongoTest.service.MongoOperationService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
