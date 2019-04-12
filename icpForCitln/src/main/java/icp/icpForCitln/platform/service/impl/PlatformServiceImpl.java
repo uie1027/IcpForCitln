@@ -10,9 +10,11 @@ package icp.icpForCitln.platform.service.impl;
 import icp.icpForCitln.platform.dao.PlatformDirectoryAttributeDAO;
 import icp.icpForCitln.platform.dao.PlatformDirectoryAttributeValueDAO;
 import icp.icpForCitln.platform.dao.PlatformDirectoryInfoDAO;
+import icp.icpForCitln.platform.dao.PlatformUnitInfoDAO;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryAttributeValue;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryAttribute;
+import icp.icpForCitln.platform.eneity.PlatformUnitInfo;
 import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,8 @@ public class PlatformServiceImpl implements PlatformService {
     private PlatformDirectoryAttributeDAO platformDirectoryAttributeDAO;
     @Autowired
     private PlatformDirectoryAttributeValueDAO platformDirectoryAttributeValueDAO;
+    @Autowired
+    private PlatformUnitInfoDAO platformUnitInfoDAO;
 
     /**
      * @author: 方瑞冬
@@ -66,5 +70,19 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public void platformDirectoryAttributeValueSaveTest(PlatformDirectoryAttributeValue platformDirectoryAttributeValue) {
         platformDirectoryAttributeValueDAO.saveTest(platformDirectoryAttributeValue);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * date: 2019-04-12 下午 4:57
+     * @since: JDK 1.8
+     *
+     * @description: 这里用一句话描述这个方法的作用
+     * @param: [platformUnitInfo]
+     * @return: void
+     */
+    @Override
+    public void platformUnitInfoSaveTest(PlatformUnitInfo platformUnitInfo) {
+        platformUnitInfoDAO.saveTest(platformUnitInfo);
     }
 }
