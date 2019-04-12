@@ -8,7 +8,7 @@
 
 package icp.icpForCitln.priceSale.eneity;
 
-import icp.icpForCitln.base.eneity.CommonField;
+import icp.icpForCitln.common.enetity.CommonField;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;

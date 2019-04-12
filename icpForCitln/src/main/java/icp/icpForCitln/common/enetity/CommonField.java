@@ -5,7 +5,7 @@
  * Date: 2019-04-12 下午 3:29
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
  */
-package icp.icpForCitln.base.eneity;
+package icp.icpForCitln.common.enetity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
