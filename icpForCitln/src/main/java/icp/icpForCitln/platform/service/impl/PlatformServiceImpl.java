@@ -1,20 +1,20 @@
 /**
  * Project Name: icpForCitln
  * File Name: PlatformDirectoryServiceImpl
- * Package Name: icp.icpForCitln.platformDirectory.service.impl
+ * Package Name: icp.icpForCitln.platform.service.impl
  * Date: 2019-04-12 下午 2:04
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
  */
-package icp.icpForCitln.platformDirectory.service.impl;
+package icp.icpForCitln.platform.service.impl;
 
-import icp.icpForCitln.platformDirectory.dao.PlatformDirectoryDAO;
-import icp.icpForCitln.platformDirectory.eneity.PlatformDirectory;
-import icp.icpForCitln.platformDirectory.service.PlatformDirectoryService;
+import icp.icpForCitln.platform.dao.PlatformDirectoryDAO;
+import icp.icpForCitln.platform.eneity.PlatformDirectory;
+import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PlatformDirectoryServiceImpl implements PlatformDirectoryService {
+public class PlatformServiceImpl implements PlatformService {
     @Autowired
     private PlatformDirectoryDAO platformDirectoryDAO;
 
@@ -23,8 +23,8 @@ public class PlatformDirectoryServiceImpl implements PlatformDirectoryService {
      * date: 2019-04-12 下午 2:14
      * @since: JDK 1.8
      *
-     * @description: 测试 platformDirectory 保存
-     * @param: [platformDirectory]
+     * @description: 测试 platform 保存
+     * @param: [platform]
      * @return: void
      */
     @Override
