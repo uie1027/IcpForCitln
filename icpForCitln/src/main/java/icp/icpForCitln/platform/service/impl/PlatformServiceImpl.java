@@ -7,8 +7,10 @@
  */
 package icp.icpForCitln.platform.service.impl;
 
+import icp.icpForCitln.platform.dao.PlatformDirectoryAttributeDAO;
 import icp.icpForCitln.platform.dao.PlatformDirectoryDAO;
 import icp.icpForCitln.platform.eneity.PlatformDirectory;
+import icp.icpForCitln.platform.eneity.PlatformDirectoryAttribute;
 import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ import org.springframework.stereotype.Service;
 public class PlatformServiceImpl implements PlatformService {
     @Autowired
     private PlatformDirectoryDAO platformDirectoryDAO;
+    @Autowired
+    private PlatformDirectoryAttributeDAO platformDirectoryAttributeDAO;
 
     /**
      * @author: 方瑞冬
@@ -28,7 +32,12 @@ public class PlatformServiceImpl implements PlatformService {
      * @return: void
      */
     @Override
-    public void saveTest(PlatformDirectory platformDirectory) {
+    public void platformDirectorySaveTest(PlatformDirectory platformDirectory) {
         platformDirectoryDAO.saveTest(platformDirectory);
+    }
+
+    @Override
+    public void platformDirectoryAttributeSaveTest(PlatformDirectoryAttribute platformDirectoryAttribute) {
+        platformDirectoryAttributeDAO.saveTest(platformDirectoryAttribute);
     }
 }

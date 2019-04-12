@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/platformDirectory")
+@RequestMapping("/platform")
 public class PlatformController {
     @Autowired
     private PlatformService platformService;
@@ -31,8 +31,8 @@ public class PlatformController {
      * @param: []
      * @return: void
      */
-    @GetMapping("/saveTest")
-    public void saveTest(){
+    @GetMapping("/platformDirectorySaveTest")
+    public void platformDirectorySaveTest(){
         PlatformDirectory platformDirectory = new PlatformDirectory();
 
         platformDirectory.setId("testId");
@@ -46,6 +46,6 @@ public class PlatformController {
         platformDirectory.setLastMondifier("lastman");
         platformDirectory.setLastModificationTime(new Date());
 
-        platformService.saveTest(platformDirectory);
+        platformService.platformDirectorySaveTest(platformDirectory);
     }
 }
