@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.math.BigDecimal;
 
 @Data
-@Document(collection = "PRICE_SALE_CUSTOMER_PRODUCT_GROUP")
+@Document(collection = "PRICE_SALE_CUSTOMER_PRODUCT_GROUP") //销售客户产品价格
 public class PriceSaleCustomerProductGroup extends CommonField {
     @Field("PRODUCT_GROUP_PRICE_CODE_SALE")
     private Integer productGroupPriceCodeSale; //销售产品组价格编码
