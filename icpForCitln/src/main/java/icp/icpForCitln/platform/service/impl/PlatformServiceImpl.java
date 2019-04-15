@@ -32,24 +32,24 @@ public class PlatformServiceImpl implements PlatformService {
 
     /**
      * @author: 方瑞冬
-     * date: 2019-04-12 下午 2:14
+     * @date: 2019-04-12 下午 2:14
      * @since: JDK 1.8
      *
-     * @description: 测试 platform 保存
-     * @param: [platform]
+     * @description: 测试 platformDirectoryInfo 保存
+     * @param: [platformDirectoryInfo]
      * @return: void
      */
     @Override
-    public void platformDirectorySaveTest(PlatformDirectoryInfo platformDirectoryInfo) {
+    public void platformDirectoryInfoSaveTest(PlatformDirectoryInfo platformDirectoryInfo) {
         platformDirectoryDAO.saveTest(platformDirectoryInfo);
     }
 
     /**
      * @author: 方瑞冬
-     * date: 2019-04-12 下午 4:32
+     * @date: 2019-04-12 下午 4:32
      * @since: JDK 1.8
      *
-     * @description: 这里用一句话描述这个方法的作用
+     * @description: 测试 platformDirectoryAttribute 保存
      * @param: [platformDirectoryAttribute]
      * @return: void
      */
@@ -60,10 +60,10 @@ public class PlatformServiceImpl implements PlatformService {
 
     /**
      * @author: 方瑞冬
-     * date: 2019-04-12 下午 4:32
+     * @date: 2019-04-12 下午 4:32
      * @since: JDK 1.8
      *
-     * @description: 这里用一句话描述这个方法的作用
+     * @description: 测试 platformDirectoryAttributeValue 保存
      * @param: [platformDirectoryAttributeValue]
      * @return: void
      */
@@ -74,10 +74,10 @@ public class PlatformServiceImpl implements PlatformService {
 
     /**
      * @author: 方瑞冬
-     * date: 2019-04-12 下午 4:57
+     * @date: 2019-04-12 下午 4:57
      * @since: JDK 1.8
      *
-     * @description: 这里用一句话描述这个方法的作用
+     * @description: 测试 platformUnitInfo 保存
      * @param: [platformUnitInfo]
      * @return: void
      */

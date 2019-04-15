@@ -13,7 +13,7 @@ import icp.icpForCitln.platform.eneity.PlatformDirectoryAttribute;
 import icp.icpForCitln.platform.eneity.PlatformUnitInfo;
 
 public interface PlatformService {
-    void platformDirectorySaveTest(PlatformDirectoryInfo platformDirectoryInfo);     //存储测试
+    void platformDirectoryInfoSaveTest(PlatformDirectoryInfo platformDirectoryInfo);     //存储测试
     void platformDirectoryAttributeSaveTest(PlatformDirectoryAttribute platformDirectoryAttribute);     //存储测试
     void platformDirectoryAttributeValueSaveTest(PlatformDirectoryAttributeValue platformDirectoryAttributeValue);     //存储测试
     void platformUnitInfoSaveTest(PlatformUnitInfo platformUnitInfo);     //存储测试

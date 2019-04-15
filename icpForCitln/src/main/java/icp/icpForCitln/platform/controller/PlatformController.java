@@ -27,15 +27,15 @@ public class PlatformController {
 
     /**
      * @author: 方瑞冬
-     * date: 2019-04-12 下午 2:12
+     * @date: 2019-04-12 下午 2:12
      * @since: JDK 1.8
      *
-     * @description: 测试 platform 保存
+     * @description: 测试 platformDirectory 保存
      * @param: []
      * @return: void
      */
     @GetMapping("/platformDirectoryInfoSaveTest")
-    public void platformDirectorySaveTest(){
+    public void platformDirectoryInfoSaveTest(){
         PlatformDirectoryInfo platformDirectoryInfo = new PlatformDirectoryInfo();
 
         platformDirectoryInfo.setId("testId");
@@ -50,15 +50,15 @@ public class PlatformController {
         platformDirectoryInfo.setLastModificationTime(new Date());
         platformDirectoryInfo.setIsDelete(2);
 
-        platformService.platformDirectorySaveTest(platformDirectoryInfo);
+        platformService.platformDirectoryInfoSaveTest(platformDirectoryInfo);
     }
 
     /**
      * @author: 方瑞冬
-     * date: 2019-04-12 下午 4:42
+     * @date: 2019-04-12 下午 4:42
      * @since: JDK 1.8
      *
-     * @description: 这里用一句话描述这个方法的作用
+     * @description: 测试 platformDirectoryAttribute 保存
      * @param: []
      * @return: void
      */
@@ -81,10 +81,10 @@ public class PlatformController {
 
     /**
      * @author: 方瑞冬
-     * date: 2019-04-12 下午 4:43
+     * @date: 2019-04-12 下午 4:43
      * @since: JDK 1.8
      *
-     * @description: 这里用一句话描述这个方法的作用
+     * @description: 测试 platformDirectoryAttributeValue 保存
      * @param: []
      * @return: void
      */
@@ -104,6 +104,15 @@ public class PlatformController {
         platformService.platformDirectoryAttributeValueSaveTest(platformDirectoryAttributeValue);
     }
 
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-12 下午 4:43
+     * @since: JDK 1.8
+     *
+     * @description: 测试 platformUnitInfo 保存
+     * @param: []
+     * @return: void
+     */
     @GetMapping("/platformUnitInfoSaveTest")
     public void platformUnitInfoSaveTest(){
         PlatformUnitInfo platformUnitInfo = new PlatformUnitInfo();

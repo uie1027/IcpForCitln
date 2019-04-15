@@ -20,10 +20,10 @@ public class PlatformDirectoryAttributeValueDAOImpl implements PlatformDirectory
 
     /**
      * @author: 方瑞冬
-     * date: 2019-04-12 下午 4:31
+     * @date: 2019-04-12 下午 4:31
      * @since: JDK 1.8
      *
-     * @description: 这里用一句话描述这个方法的作用
+     * @description: 测试 platformDirectoryAttributeValue 保存
      * @param: [platformDirectoryAttributeValue]
      * @return: void
      */

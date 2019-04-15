@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.Date;
 
 @Data
-public class CommonField {
+public class CommonField {      //公共字段类，供其它实体类继承
     @Id
     private String id;  //主键
 

@@ -20,10 +20,10 @@ public class PlatformUnitInfoDAOImpl implements PlatformUnitInfoDAO {
 
     /**
      * @author: 方瑞冬
-     * date: 2019-04-12 下午 4:56
+     * @date: 2019-04-12 下午 4:56
      * @since: JDK 1.8
      *
-     * @description: 这里用一句话描述这个方法的作用
+     * @description: 测试 platformUnitInfo 保存
      * @param: [platformUnitInfo]
      * @return: void
      */

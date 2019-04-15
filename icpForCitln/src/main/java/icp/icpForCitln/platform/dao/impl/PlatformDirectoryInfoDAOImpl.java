@@ -20,11 +20,11 @@ public class PlatformDirectoryInfoDAOImpl implements PlatformDirectoryInfoDAO {
 
     /**
      * @author: 方瑞冬
-     * date: 2019-04-12 下午 2:13
+     * @date: 2019-04-12 下午 2:13
      * @since: JDK 1.8
      *
-     * @description: 测试 platform 保存
-     * @param: [platform]
+     * @description: 测试 platformDirectoryInfo 保存
+     * @param: [platformDirectoryInfo]
      * @return: void
      */
     @Override
