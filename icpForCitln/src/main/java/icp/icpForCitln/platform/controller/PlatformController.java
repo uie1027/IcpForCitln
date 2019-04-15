@@ -7,10 +7,7 @@
  */
 package icp.icpForCitln.platform.controller;
 
-import icp.icpForCitln.platform.eneity.PlatformDirectoryAttributeValue;
-import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
-import icp.icpForCitln.platform.eneity.PlatformDirectoryAttribute;
-import icp.icpForCitln.platform.eneity.PlatformUnitInfo;
+import icp.icpForCitln.platform.eneity.*;
 import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -128,5 +125,30 @@ public class PlatformController {
         platformUnitInfo.setIsDelete(2);
 
         platformService.platformUnitInfoSaveTest(platformUnitInfo);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-15 上午 11:44
+     * @since: JDK 1.8
+     *
+     * @description: 测试 plantformMailDisplay 保存
+     * @param: []
+     * @return: void
+     */
+    @GetMapping("/plantformMailDisplaySaveTest")
+    public void plantformMailDisplaySaveTest(){
+        PlantformMailDisplay plantformMailDisplay = new PlantformMailDisplay();
+
+        plantformMailDisplay.setId("testId");
+        plantformMailDisplay.setMailDisplayCode("testcode");
+        plantformMailDisplay.setMailName("name");
+        plantformMailDisplay.setCreater("testcreater");
+        plantformMailDisplay.setCreateTime(new Date());
+        plantformMailDisplay.setLastMondifier("lastman");
+        plantformMailDisplay.setLastModificationTime(new Date());
+        plantformMailDisplay.setIsDelete(2);
+
+        platformService.plantformMailDisplaySaveTest(plantformMailDisplay);
     }
 }

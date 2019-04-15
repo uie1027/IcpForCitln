@@ -7,14 +7,8 @@
  */
 package icp.icpForCitln.platform.service.impl;
 
-import icp.icpForCitln.platform.dao.PlatformDirectoryAttributeDAO;
-import icp.icpForCitln.platform.dao.PlatformDirectoryAttributeValueDAO;
-import icp.icpForCitln.platform.dao.PlatformDirectoryInfoDAO;
-import icp.icpForCitln.platform.dao.PlatformUnitInfoDAO;
-import icp.icpForCitln.platform.eneity.PlatformDirectoryAttributeValue;
-import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
-import icp.icpForCitln.platform.eneity.PlatformDirectoryAttribute;
-import icp.icpForCitln.platform.eneity.PlatformUnitInfo;
+import icp.icpForCitln.platform.dao.*;
+import icp.icpForCitln.platform.eneity.*;
 import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +23,8 @@ public class PlatformServiceImpl implements PlatformService {
     private PlatformDirectoryAttributeValueDAO platformDirectoryAttributeValueDAO;
     @Autowired
     private PlatformUnitInfoDAO platformUnitInfoDAO;
+    @Autowired
+    private PlantformMailDisplayDAO plantformMailDisplayDAO;
 
     /**
      * @author: 方瑞冬
@@ -84,5 +80,19 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public void platformUnitInfoSaveTest(PlatformUnitInfo platformUnitInfo) {
         platformUnitInfoDAO.saveTest(platformUnitInfo);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-15 上午 11:40
+     * @since: JDK 1.8
+     *
+     * @description: 测试 plantformMailDisplay 保存
+     * @param: [plantformMailDisplay]
+     * @return: void
+     */
+    @Override
+    public void plantformMailDisplaySaveTest(PlantformMailDisplay plantformMailDisplay) {
+        plantformMailDisplayDAO.saveTest(plantformMailDisplay);
     }
 }
