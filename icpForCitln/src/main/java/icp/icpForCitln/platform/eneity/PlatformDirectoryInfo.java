@@ -26,7 +26,7 @@ public class PlatformDirectoryInfo extends CommonField {
     private Integer platformDirectoryLevel; //平台目录等级  1 1级 2 2级...
 
     @Field("PARENT_PLATFORM_DIRECTORY_CODE")
-    private Integer parenetPlatformDirectoryCode;   //父级平台目录编码  1级目录存0
+    private String parenetPlatformDirectoryCode;   //父级平台目录编码  1级目录存0
 
     @Field("PLATFORM_DIRECTORY_DESCRIPTION")
     private String platformDirectoryDescription;       //平台目录备注

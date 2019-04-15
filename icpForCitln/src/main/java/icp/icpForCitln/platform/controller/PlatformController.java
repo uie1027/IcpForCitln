@@ -39,7 +39,7 @@ public class PlatformController {
         platformDirectoryInfo.setPlatformDirectoryCode("testCode");
         platformDirectoryInfo.setPlatformDirectoryName("testName");
         platformDirectoryInfo.setPlatformDirectoryLevel(1);
-        platformDirectoryInfo.setParenetPlatformDirectoryCode(1);
+        platformDirectoryInfo.setParenetPlatformDirectoryCode("1");
         platformDirectoryInfo.setPlatformDirectoryDescription("备注测试");
         platformDirectoryInfo.setCreater("testcreater");
         platformDirectoryInfo.setCreateTime(new Date());
