@@ -23,6 +23,15 @@ public class PricePorchase {
     @Autowired
     PricePurchaseService pricePurchaseService;
 
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-15 下午 3:59
+     * @since: JDK 1.8
+     *
+     * @description: 保存 pricePurchaseProductSupplier 测试
+     * @param: []
+     * @return: void
+     */
     @GetMapping("/pricePurchaseProductSupplierSaveTest")
     public void pricePurchaseProductSupplierSaveTest(){
         PricePurchaseProductSupplier pricePurchaseProductSupplier = new PricePurchaseProductSupplier();

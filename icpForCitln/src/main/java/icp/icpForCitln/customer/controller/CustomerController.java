@@ -22,6 +22,15 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-15 下午 3:58
+     * @since: JDK 1.8
+     *
+     * @description: 测试 customerInfo 保存
+     * @param: []
+     * @return: void
+     */
     @GetMapping("/customerInfoSaveTest")
     public void customerInfoSaveTest(){
         CustomerInfo customerInfo = new CustomerInfo();
