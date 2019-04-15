@@ -19,6 +19,15 @@ public class SupplierInfoDaoImpl implements SupplierInfoDao {
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    /**
+     * @author: Hujh
+     * @date: 2019/4/15 11:27
+     * @since: JDK 1.8
+     *
+     * @description: 保存SupplierInfo对象
+     * @param: [supplierInfo]
+     * @return: void
+     */
     @Override
     public void saveTest(SupplierInfo supplierInfo) {
         mongoTemplate.save(supplierInfo);

@@ -19,6 +19,15 @@ public class ProductGroupInfoDaoImpl implements ProductGroupInfoDao {
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    /**
+     * @author: Hujh
+     * @date: 2019/4/15 11:28
+     * @since: JDK 1.8
+     *
+     * @description: 保存productGroupInfo对象
+     * @param: [productGroupInfo]
+     * @return: void
+     */
     @Override
     public void saveTest(ProductGroupInfo productGroupInfo) {
         mongoTemplate.save(productGroupInfo);

@@ -19,6 +19,15 @@ public class ProductGroupPlatformAttributeDaoImpl implements ProductGroupPlatfor
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    /**
+     * @author: Hujh
+     * @date: 2019/4/15 11:28
+     * @since: JDK 1.8
+     *
+     * @description: 保存productGroupPlatformAttribute对象
+     * @param: [productGroupPlatformAttribute]
+     * @return: void
+     */
     @Override
     public void saveTest(ProductGroupPlatformAttribute productGroupPlatformAttribute) {
         mongoTemplate.save(productGroupPlatformAttribute);

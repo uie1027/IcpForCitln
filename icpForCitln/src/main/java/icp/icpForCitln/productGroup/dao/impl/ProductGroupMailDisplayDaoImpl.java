@@ -19,6 +19,15 @@ public class ProductGroupMailDisplayDaoImpl implements ProductGroupMailDisplayDa
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    /**
+     * @author: Hujh
+     * @date: 2019/4/15 11:28
+     * @since: JDK 1.8
+     *
+     * @description: 保存productGroupMailDisplay对象
+     * @param: [productGroupMailDisplay]
+     * @return: void
+     */
     @Override
     public void saveTest(ProductGroupMailDisplay productGroupMailDisplay) {
         mongoTemplate.save(productGroupMailDisplay);

@@ -19,8 +19,18 @@ public class ProductGroupEnterpeiseAttributeDaoImpl implements ProductGroupEnter
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    /**
+     * @author: Hujh
+     * @date: 2019/4/15 11:28
+     * @since: JDK 1.8
+     *
+     * @description: 保存ProductGroupEnterpeiseAttribute对象
+     * @param: [productGroupEnterpeiseAttribute]
+     * @return: void
+     */
     @Override
     public void saveTest(ProductGroupEnterpeiseAttribute productGroupEnterpeiseAttribute) {
+
         mongoTemplate.save(productGroupEnterpeiseAttribute);
     }
 }
