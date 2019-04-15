@@ -17,8 +17,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class PlantformMailDisplay extends CommonField {
 
     @Field("MAIL_DISPLAY_CODE")
-    private String mailDisplayCode;
+    private String mailDisplayCode;     //商城展示编码
 
     @Field("MAIL_NAME")
-    private String mailName;
+    private String mailName;        //商城名称
 }
