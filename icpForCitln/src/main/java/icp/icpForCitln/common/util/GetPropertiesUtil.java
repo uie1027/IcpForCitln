@@ -32,13 +32,13 @@ public class GetPropertiesUtil {
         try{
             resourceBundle = ResourceBundle.getBundle(fileName);
         } catch (Exception e){
-            logger.info("找不到 " + fileName + ".properties 文件");
+            logger.error("找不到 " + fileName + ".properties 文件");
             return null;
         }
         try{
             propertiesVal = resourceBundle.getString(key);
         } catch (Exception e){
-            logger.info(fileName + ".properties 文件中没有找到 " + key + " 对应的值");
+            logger.error(fileName + ".properties 文件中没有找到 " + key + " 对应的值");
             return null;
         }
         return propertiesVal;
