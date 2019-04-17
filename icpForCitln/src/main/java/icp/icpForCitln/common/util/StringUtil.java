@@ -8,4 +8,17 @@
 package icp.icpForCitln.common.util;
 
 public class StringUtil {
+
+    public static boolean isEmpty(CharSequence cs) {
+        return cs == null || cs.length() == 0;
+    }
+
+    public static boolean isEmpty(Object  object) {
+        return object == null || "".equals(object);
+    }
+
+    public static String trim(String str) {
+        return str == null ? null : str.trim();
+    }
+
 }
