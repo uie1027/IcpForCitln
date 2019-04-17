@@ -17,9 +17,9 @@ public class PriceSaleProductDto {
 
     private String id; //主键
 
-    private Integer productPriceCpdeSale; //销售产品价格编码
+    private String productPriceCpdeSale; //销售产品价格编码
 
-    private Integer productCode; //产品编码
+    private String productCode; //产品编码
 
     private String taxRate; //税率
 

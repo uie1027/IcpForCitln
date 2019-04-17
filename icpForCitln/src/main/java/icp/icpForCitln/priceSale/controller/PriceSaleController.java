@@ -57,8 +57,8 @@ public class PriceSaleController {
         priceSaleProduct.setEach(1);
         priceSaleProduct.setBasicUnit("个");
         priceSaleProduct.setCurrency("CNY");
-        priceSaleProduct.setProductCode(12);
-        priceSaleProduct.setProductPriceCpdeSale(11);
+        priceSaleProduct.setProductCode("12");
+        priceSaleProduct.setProductPriceCpdeSale("11");
         priceSaleProduct.setTaxIncludedPrice(new BigDecimal(1));
         priceSaleProduct.setTaxRate("22");
         priceSaleProduct.setCreater("1");
@@ -143,8 +143,8 @@ public class PriceSaleController {
         priceSaleProductGroup.setBasicUnit("s");
         priceSaleProductGroup.setCurrency("S");
         priceSaleProductGroup.setEach(1);
-        priceSaleProductGroup.setProductGroupCode(1);
-        priceSaleProductGroup.setProductGroupPriceCodeSale(1);
+        priceSaleProductGroup.setProductGroupCode("111111");
+        priceSaleProductGroup.setProductGroupPriceCodeSale("111111");
         priceSaleProductGroup.setTaxIncludedPrice(new BigDecimal(1));
         priceSaleProductGroup.setTaxRate("1");
         priceSaleProductGroup.setCreater("1");
@@ -228,11 +228,11 @@ public class PriceSaleController {
         PriceSaleCustomerProduct priceSaleCustomerProduct = new PriceSaleCustomerProduct();
 
         priceSaleCustomerProduct.setBasicUnit("2");
-        priceSaleCustomerProduct.setCompanyCode(1);
+        priceSaleCustomerProduct.setCompanyCode("111111");
         priceSaleCustomerProduct.setCurrency("1");
         priceSaleCustomerProduct.setEach(1);
-        priceSaleCustomerProduct.setProductCode(1);
-        priceSaleCustomerProduct.setProductPriceCpdeSale(1);
+        priceSaleCustomerProduct.setProductCode("111111");
+        priceSaleCustomerProduct.setProductPriceCpdeSale("111111");
         priceSaleCustomerProduct.setTaxIncludedPrice(new BigDecimal(1));
         priceSaleCustomerProduct.setTaxRate("!");
         priceSaleCustomerProduct.setCreater("1");
@@ -317,11 +317,11 @@ public class PriceSaleController {
         PriceSaleCustomerProductGroup priceSaleCustomerProductGroup = new PriceSaleCustomerProductGroup();
 
         priceSaleCustomerProductGroup.setBasicUnit("2");
-        priceSaleCustomerProductGroup.setCompanyCode(1);
+        priceSaleCustomerProductGroup.setCompanyCode("111111");
         priceSaleCustomerProductGroup.setCurrency("!");
         priceSaleCustomerProductGroup.setEach(1);
-        priceSaleCustomerProductGroup.setProductGroupCode(1);
-        priceSaleCustomerProductGroup.setProductGroupPriceCodeSale(2);
+        priceSaleCustomerProductGroup.setProductGroupCode("111111");
+        priceSaleCustomerProductGroup.setProductGroupPriceCodeSale("111111");
         priceSaleCustomerProductGroup.setTaxIncludedPrice(new BigDecimal(1));
         priceSaleCustomerProductGroup.setTaxRate("!");
         priceSaleCustomerProductGroup.setCreater("1");

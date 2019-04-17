@@ -18,7 +18,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class SupplierInfo extends CommonField {
 
     @Field("COMPANY_CODE")
-    private  Integer companyCode;    //供应商编码
+    private String companyCode;    //供应商编码
     @Field("UNIFIED_SOCIAL_CREDIT_CODE")
     private String unifiedSocialCreditCode;    //统一社会信用代码
     @Field("COMPANY_NAME")

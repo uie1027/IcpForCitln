@@ -11,11 +11,11 @@ package icp.icpForCitln.priceSale.dto;
 import java.math.BigDecimal;
 
 public class PriceSaleCustomerProductDto {
-    private Integer productPriceCpdeSale; //销售产品价格编码
+    private String productPriceCpdeSale; //销售产品价格编码
 
-    private Integer productCode; //产品编码
+    private String productCode; //产品编码
 
-    private Integer companyCode; //客户编码
+    private String companyCode; //客户编码
 
     private String taxRate; //税率
 

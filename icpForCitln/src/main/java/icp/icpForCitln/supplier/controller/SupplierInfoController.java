@@ -26,7 +26,7 @@ public class SupplierInfoController {
     public void supplierInfoSaveTest(){
         SupplierInfo supplierInfo = new SupplierInfo();
         supplierInfo.setId("TEST");
-        supplierInfo.setCompanyCode(12345);
+        supplierInfo.setCompanyCode("123456");
         supplierInfo.setUnifiedSocialCreditCode("1234567980");
         supplierInfo.setCompanyName("华峰创享");
         supplierInfo.setCompanyShortName("创享");
