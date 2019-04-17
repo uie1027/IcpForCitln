@@ -20,13 +20,13 @@ import java.math.BigDecimal;
 @Document(collection = "PRICE_SALE_CUSTOMER_PRODUCT_GROUP") //销售客户产品价格
 public class PriceSaleCustomerProductGroup extends CommonField {
     @Field("PRODUCT_GROUP_PRICE_CODE_SALE")
-    private Integer productGroupPriceCodeSale; //销售产品组价格编码
+    private String productGroupPriceCodeSale; //销售产品组价格编码
 
     @Field("PRODUCT_GROUP_CODE")
-    private Integer productGroupCode;  //产品组编码
+    private String productGroupCode;  //产品组编码
 
     @Field("COMPANY_CODE")
-    private Integer companyCode; //客户编码
+    private String companyCode; //客户编码
 
     @Field("TAX_RATE")
     private String taxRate; //税率

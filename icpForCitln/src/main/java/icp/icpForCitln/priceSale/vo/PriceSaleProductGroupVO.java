@@ -17,9 +17,9 @@ public class PriceSaleProductGroupVO {
 
     private String id; //主键
 
-    private Integer productGroupPriceCodeSale; //销售产品组价格编码
+    private String productGroupPriceCodeSale; //销售产品组价格编码
 
-    private Integer productGroupCode;  //产品组编码
+    private String productGroupCode;  //产品组编码
 
     private String taxRate; //税率
 

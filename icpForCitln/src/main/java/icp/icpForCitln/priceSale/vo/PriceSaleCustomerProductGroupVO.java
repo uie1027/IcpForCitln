@@ -11,11 +11,11 @@ package icp.icpForCitln.priceSale.vo;
 import java.math.BigDecimal;
 
 public class PriceSaleCustomerProductGroupVO {
-    private Integer productGroupPriceCodeSale; //销售产品组价格编码
+    private String productGroupPriceCodeSale; //销售产品组价格编码
 
-    private Integer productGroupCode;  //产品组编码
+    private String productGroupCode;  //产品组编码
 
-    private Integer companyCode; //客户编码
+    private String companyCode; //客户编码
 
     private String taxRate; //税率
 
