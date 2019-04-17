@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PricePurchaseServiceImpl implements PricePurchaseService {
     @Autowired
-    PricePurchaseProductSupplierDAO pricePurchaseProductSupplierDAO;
+    private PricePurchaseProductSupplierDAO pricePurchaseProductSupplierDAO;
 
     /**
      * @author: 方瑞冬

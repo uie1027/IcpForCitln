@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductAttribuitValueDAOImpl implements ProductAttribuitValueDAO {
     @Autowired
-    MongoTemplate mongoTemplate;
+    private MongoTemplate mongoTemplate;
 
     /**
      * @author: guoxs

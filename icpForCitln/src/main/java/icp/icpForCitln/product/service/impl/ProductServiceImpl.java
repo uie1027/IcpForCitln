@@ -23,16 +23,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
-    ProductAttribuitDAO productAttribuitDAO;
+    private ProductAttribuitDAO productAttribuitDAO;
 
     @Autowired
-    ProductAttribuitDefinitionDAO productAttribuitDefinitionDAO;
+    private ProductAttribuitDefinitionDAO productAttribuitDefinitionDAO;
 
     @Autowired
-    ProductAttribuitValueDAO productAttribuitValueDAO;
+    private ProductAttribuitValueDAO productAttribuitValueDAO;
 
     @Autowired
-    ProductInfoDAO productInfoDAO;
+    private ProductInfoDAO productInfoDAO;
 
     /**
      * @author: guoxs

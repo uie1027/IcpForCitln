@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PricePurchaseProductSupplierDAOImpl implements PricePurchaseProductSupplierDAO {
     @Autowired
-    MongoTemplate mongoTemplate;
+    private MongoTemplate mongoTemplate;
 
     /**
      * @author: 方瑞冬

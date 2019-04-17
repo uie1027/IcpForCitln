@@ -20,7 +20,7 @@ import java.util.Date;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     /**
      * @author: 方瑞冬

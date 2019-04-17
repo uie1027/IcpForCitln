@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CustomerInfoDAOImpl implements CustomerInfoDAO {
     @Autowired
-    MongoTemplate mongoTemplate;
+    private MongoTemplate mongoTemplate;
 
     /**
      * @author: 方瑞冬

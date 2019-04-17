@@ -24,7 +24,7 @@ import java.util.List;
 @Repository
 public class PriceSaleProductDAOImpl implements PriceSaleProductDAO {
     @Autowired
-    MongoTemplate mongoTemplate;
+    private MongoTemplate mongoTemplate;
 
     /**
      * @author: guoxs

@@ -21,7 +21,7 @@ import java.util.Date;
 @RequestMapping("/pricePorchase")
 public class PricePorchase {
     @Autowired
-    PricePurchaseService pricePurchaseService;
+    private PricePurchaseService pricePurchaseService;
 
     /**
      * @author: 方瑞冬

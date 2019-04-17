@@ -18,14 +18,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.GuardedObject;
 import java.util.Date;
 
 @RestController
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 
     /**
      * @author: guoxs

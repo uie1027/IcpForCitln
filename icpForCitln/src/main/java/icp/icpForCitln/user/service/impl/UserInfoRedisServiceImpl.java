@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 @Service
 public class UserInfoRedisServiceImpl implements UserInfoRedisService {
     @Resource
-    RedisTemplate<String, UserInfo> redisTemplate;
+    private RedisTemplate<String, UserInfo> redisTemplate;
 
     @Override
     public void put(UserInfo userInfo) {

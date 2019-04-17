@@ -20,7 +20,7 @@ import java.util.Date;
 @RequestMapping("/customer")
 public class CustomerController {
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     /**
      * @author: 方瑞冬
