@@ -116,6 +116,7 @@ public class PlatformController {
 
         platformUnitInfo.setId("testId");
         platformUnitInfo.setUnitCode("testucode");
+        platformUnitInfo.setUnitVariety(1);
         platformUnitInfo.setUnitValue("testvalue");
         platformUnitInfo.setUnitDescription("testdescription");
         platformUnitInfo.setCreater("testcreater");

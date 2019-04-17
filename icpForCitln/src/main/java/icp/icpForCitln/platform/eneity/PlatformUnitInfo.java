@@ -19,6 +19,9 @@ public class PlatformUnitInfo extends CommonField {
     @Field("UNIT_CODE")
     private String unitCode;    //单位编码
 
+    @Field("UNIT_VARIETY")
+    private Integer unitVariety;    //单位种类 1，2，3，4
+
     @Field("UNIT_VALUE")
     private String unitValue;   //单位属性值  例：m
 
