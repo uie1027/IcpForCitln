@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: UserInfoTest
+ * File Name: UserInfoRedisTest
  * Package Name: icp.icpForCitln
  * Date: 2019-04-17 上午 11:31
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
@@ -19,7 +19,7 @@ import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserInfoTest {
+public class UserInfoRedisTest {
     @Autowired
     private UserInfoRedisService userInfoRedisService;
 
