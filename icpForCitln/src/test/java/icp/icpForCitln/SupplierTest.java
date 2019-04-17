@@ -1,33 +1,36 @@
 /**
  * Project Name: icpForCitln
- * File Name: SupplierInfoController
- * Package Name: icp.icpForCitln.supplier.controller
- * Date: 2019/4/12 16:38
+ * File Name: SupplierTest
+ * Package Name: icp.icpForCitln
+ * Date: 19/04/17 11:19
  * Copyright (c) 2019,All Rights Reserved.
  */
 
-package icp.icpForCitln.supplier.controller;
+package icp.icpForCitln;
 
-
+import icp.icpForCitln.supplier.dto.SupplierInfoDto;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import icp.icpForCitln.supplier.service.SupplierInfoService;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
-@RestController
-@RequestMapping("/supplierInfo")
-public class SupplierInfoController {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SupplierTest {
     @Autowired
-    private SupplierInfoService supplierInfoService;
-    @RequestMapping("/supplierInfoSaveTest")
+    SupplierInfoService supplierInfoService;
+
+    @Test
     public void supplierInfoSaveTest(){
         SupplierInfo supplierInfo = new SupplierInfo();
-        supplierInfo.setId("TEST");
-        supplierInfo.setCompanyCode("123456");
+        supplierInfo.setId("TEST1");
+        supplierInfo.setCompanyCode("gust");
         supplierInfo.setUnifiedSocialCreditCode("1234567980");
         supplierInfo.setCompanyName("华峰创享");
         supplierInfo.setCompanyShortName("创享");
@@ -54,13 +57,39 @@ public class SupplierInfoController {
         supplierInfo.setLastModificationTime(new Date());
         supplierInfo.setIsDelete(1);
         supplierInfoService.saveTest(supplierInfo);
+        System.out.println("success");
     }
 
-    @RequestMapping("/supplierListByPage")
-    public void supplierListByPage(
-            @RequestParam(value = "pageIndex" , defaultValue = "0" ) Integer pageIndex,
-            @RequestParam(value = "pageSize" , defaultValue = "10") Integer pageSize,
-            @RequestParam(value = "codeOrName" , defaultValue = "") String CodeOrName){
-        System.out.println(supplierInfoService.supplierListByPage(pageIndex,pageSize,CodeOrName));
+    @Test
+    public void supplierListByPage(){
+        System.out.println(supplierInfoService.supplierListByPage(0,20,""));
+    }
+
+    @Test
+    public void supplierInfoById(){
+        SupplierInfoDto supplierInfoDto = new SupplierInfoDto();
+        supplierInfoDto.setId("TEST1");
+        System.out.println(supplierInfoService.supplierInfoById(supplierInfoDto));
+    }
+
+    @Test
+    public void updataSupplierInfo(){
+        SupplierInfoDto supplierInfoDto = new SupplierInfoDto();
+        supplierInfoDto.setId("TEST1");
+        supplierInfoDto.setUnifiedSocialCreditCode("asddf");
+        supplierInfoDto.setCompanyName("huafengcahoxian");
+
+        supplierInfoService.updataSupplierInfo(supplierInfoDto);
+    }
+
+    @Test
+    public void deleteSupplierInfo(){
+        SupplierInfoDto supplierInfoDto = new SupplierInfoDto();
+
+        supplierInfoDto.setId("1");
+
+        supplierInfoService.deleteSupplierInfo(supplierInfoDto);
+
+        System.out.println("success");
     }
 }
