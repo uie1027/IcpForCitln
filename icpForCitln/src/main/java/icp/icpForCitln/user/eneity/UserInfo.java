@@ -20,7 +20,7 @@ public class UserInfo extends CommonField implements Serializable {
 
     private static final long serialVersionUID = -7898194272883238670L;
 
-    private static final String OBJECT_KEY = "USERINFO";    //Redis 存储块名
+    private static final String OBJECT_KEY = "USERINFO";
 
 
     @Field("USER_NUM")
@@ -37,7 +37,7 @@ public class UserInfo extends CommonField implements Serializable {
         return this.userNum;
     }
 
-    public String getObjectKey() {
+    public String getObjectKey() {      //Redis 存储块名
         return OBJECT_KEY;
     }
 }

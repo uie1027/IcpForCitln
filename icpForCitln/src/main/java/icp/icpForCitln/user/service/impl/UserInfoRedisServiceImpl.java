@@ -19,16 +19,43 @@ public class UserInfoRedisServiceImpl implements UserInfoRedisService {
     @Resource
     private RedisTemplate<String, UserInfo> redisTemplate;
 
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-18 上午 10:44
+     * @since: JDK 1.8
+     *
+     * @description: Redis 存储用户信息
+     * @param: [userInfo]
+     * @return: void
+     */
     @Override
     public void put(UserInfo userInfo) {
         redisTemplate.opsForHash().put(userInfo.getObjectKey(), userInfo.getKey(), userInfo);
     }
 
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-18 上午 10:44
+     * @since: JDK 1.8
+     *
+     * @description: Redis 获取用户信息
+     * @param: [userInfo]
+     * @return: icp.icpForCitln.user.eneity.UserInfo
+     */
     @Override
     public UserInfo get(UserInfo userInfo) {
         return (UserInfo) redisTemplate.opsForHash().get(userInfo.getObjectKey(), userInfo.getKey());
     }
 
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-18 上午 10:44
+     * @since: JDK 1.8
+     *
+     * @description: Redis 删除用户信息
+     * @param: [userInfo]
+     * @return: void
+     */
     @Override
     public void delete(UserInfo userInfo) {
         redisTemplate.opsForHash().delete(userInfo.getObjectKey(), userInfo.getKey());

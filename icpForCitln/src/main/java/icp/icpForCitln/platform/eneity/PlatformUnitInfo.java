@@ -12,9 +12,15 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.io.Serializable;
+
 @Data
 @Document(collection = "PLATFORM_UNIT_INFO")   //平台基本单位
-public class PlatformUnitInfo extends CommonField {
+public class PlatformUnitInfo extends CommonField implements Serializable {
+
+    private static final long serialVersionUID = -7898194272883238670L;
+
+    private static final String OBJECT_KEY = "PLATFORMUNITINFO";
 
     @Field("UNIT_CODE")
     private String unitCode;    //单位编码
@@ -27,4 +33,12 @@ public class PlatformUnitInfo extends CommonField {
 
     @Field("UNIT_DESCRIPTION")
     private String unitDescription; //单位描述  例：米
+
+    public String getKey() {        //获取 Redis 存储键名
+        return this.unitCode;
+    }
+
+    public String getObjectKey() {      //Redis 存储块名
+        return OBJECT_KEY + this.unitVariety;
+    }
 }
