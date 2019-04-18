@@ -16,7 +16,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 
@@ -89,6 +88,17 @@ public class SupplierTest {
         supplierInfoDto.setId("1");
 
         supplierInfoService.deleteSupplierInfo(supplierInfoDto);
+
+        System.out.println("success");
+    }
+
+    @Test
+    public void thawSupplierInfo(){
+        SupplierInfoDto supplierInfoDto = new SupplierInfoDto();
+
+        supplierInfoDto.setId("1");
+
+        supplierInfoService.thawSupplierInfo(supplierInfoDto);
 
         System.out.println("success");
     }

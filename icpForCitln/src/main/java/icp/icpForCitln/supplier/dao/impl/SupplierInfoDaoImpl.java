@@ -41,6 +41,29 @@ public class SupplierInfoDaoImpl implements SupplierInfoDao {
         mongoTemplate.save(supplierInfo);
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/18 09:52
+     * @since: JDK 1.8
+     *
+     * @description: 保存供应商数据
+     * @param: [supplierInfo]
+     * @return: void
+     */
+    @Override
+    public void saveSupplierInfo(SupplierInfo supplierInfo){
+        mongoTemplate.save(supplierInfo);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/18 09:47
+     * @since: JDK 1.8
+     *
+     * @description: 查询供应商列表
+     * @param: [pageIndex, pageSize]
+     * @return: java.util.List<icp.icpForCitln.supplier.entity.SupplierInfo>
+     */
     @Override
     public List<SupplierInfo> supplierListByPage(Integer pageIndex, Integer pageSize){
         Pageable pageable = PageRequest.of(pageIndex,pageSize);
@@ -50,6 +73,15 @@ public class SupplierInfoDaoImpl implements SupplierInfoDao {
         return mongoTemplate.find(query,SupplierInfo.class);
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/18 09:48
+     * @since: JDK 1.8
+     *
+     * @description: 根据供应商编码或供应商名称查询供应商列表
+     * @param: [pageIndex, pageSize, CodeOrName]
+     * @return: java.util.List<icp.icpForCitln.supplier.entity.SupplierInfo>
+     */
     @Override
     public List<SupplierInfo> supplierListByCodeOrName(Integer pageIndex,Integer pageSize,String CodeOrName){
         Pageable pageable = PageRequest.of(pageIndex,pageSize);
@@ -60,6 +92,15 @@ public class SupplierInfoDaoImpl implements SupplierInfoDao {
         return mongoTemplate.find(query,SupplierInfo.class);
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/18 09:49
+     * @since: JDK 1.8
+     *
+     * @description: 修改供应商信息
+     * @param: [supplierInfo]
+     * @return: void
+     */
     @Override
     public void updataSupplierInfo(SupplierInfo supplierInfo){
         Query query = new Query(Criteria.where("_id").is(supplierInfo.getId()));
@@ -70,6 +111,15 @@ public class SupplierInfoDaoImpl implements SupplierInfoDao {
         mongoTemplate.upsert(query,update,SupplierInfo.class);
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/18 09:49
+     * @since: JDK 1.8
+     *
+     * @description: 通过id查询供应商详情
+     * @param: [supplierInfo]
+     * @return: icp.icpForCitln.supplier.entity.SupplierInfo
+     */
     @Override
     public SupplierInfo supplierInfoById(SupplierInfo supplierInfo){
         Query query = new Query(Criteria.where("_id").is(supplierInfo.getId()).and("IS_DELETE").is(2));
@@ -77,12 +127,59 @@ public class SupplierInfoDaoImpl implements SupplierInfoDao {
         return mongoTemplate.findOne(query,SupplierInfo.class);
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/18 09:49
+     * @since: JDK 1.8
+     *
+     * @description: 删除供应商
+     * @param: [supplierInfo]
+     * @return: void
+     */
     @Override
     public void deleteSupplierInfo(SupplierInfo supplierInfo){
         Query query = new Query(Criteria.where("_id").is(supplierInfo.getId()));
 
         Update update = new Update();
         update.set("IS_DELETE",1);
+
+        mongoTemplate.upsert(query,update,SupplierInfo.class);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/18 09:50
+     * @since: JDK 1.8
+     *
+     * @description: 冻结供应商
+     * @param: [supplierInfo]
+     * @return: void
+     */
+    @Override
+    public void frozenSupplierInfo(SupplierInfo supplierInfo){
+        Query query = new Query(Criteria.where("_id").is(supplierInfo.getId()));
+
+        Update update = new Update();
+        update.set("FROZEN",1);
+
+        mongoTemplate.upsert(query,update,SupplierInfo.class);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/18 09:50
+     * @since: JDK 1.8
+     *
+     * @description: 解冻供应商
+     * @param: [supplierInfo]
+     * @return: void
+     */
+    @Override
+    public void thawSupplierInfo(SupplierInfo supplierInfo){
+        Query query = new Query(Criteria.where("_id").is(supplierInfo.getId()));
+
+        Update update = new Update();
+        update.set("FROZEN",2);
 
         mongoTemplate.upsert(query,update,SupplierInfo.class);
     }
