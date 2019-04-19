@@ -20,7 +20,7 @@ public class PlatformUnitInfo extends CommonField implements Serializable {
 
     private static final long serialVersionUID = -7898194272883238670L;
 
-    private static final String OBJECT_KEY = "PLATFORMUNITINFO";
+    private static final String OBJECT_KEY = "PLATFORM_UNIT_INFO";
 
     @Field("UNIT_CODE")
     private String unitCode;    //单位编码
@@ -39,6 +39,6 @@ public class PlatformUnitInfo extends CommonField implements Serializable {
     }
 
     public String redisObjectKey() {      //Redis 存储块名
-        return OBJECT_KEY + this.unitVariety;
+        return OBJECT_KEY  + "_" + this.unitVariety;
     }
 }

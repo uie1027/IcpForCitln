@@ -20,7 +20,7 @@ public class UserInfo extends CommonField implements Serializable {
 
     private static final long serialVersionUID = -7898194272883238670L;
 
-    private static final String OBJECT_KEY = "USERINFO";
+    private static final String OBJECT_KEY = "USER_INFO";
 
 
     @Field("USER_NUM")
