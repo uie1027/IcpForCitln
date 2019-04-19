@@ -34,11 +34,11 @@ public class PlatformUnitInfo extends CommonField implements Serializable {
     @Field("UNIT_DESCRIPTION")
     private String unitDescription; //单位描述  例：米
 
-    public String getKey() {        //获取 Redis 存储键名
+    public String redisKey() {        //获取 Redis 存储键名
         return this.unitCode;
     }
 
-    public String getObjectKey() {      //Redis 存储块名
+    public String redisObjectKey() {      //Redis 存储块名
         return OBJECT_KEY + this.unitVariety;
     }
 }

@@ -30,7 +30,7 @@ public class UserInfoRedisServiceImpl implements UserInfoRedisService {
      */
     @Override
     public void put(UserInfo userInfo) {
-        redisTemplate.opsForHash().put(userInfo.getObjectKey(), userInfo.getKey(), userInfo);
+        redisTemplate.opsForHash().put(userInfo.redisObjectKey(), userInfo.redisKey(), userInfo);
     }
 
     /**
@@ -44,7 +44,7 @@ public class UserInfoRedisServiceImpl implements UserInfoRedisService {
      */
     @Override
     public UserInfo get(UserInfo userInfo) {
-        return (UserInfo) redisTemplate.opsForHash().get(userInfo.getObjectKey(), userInfo.getKey());
+        return (UserInfo) redisTemplate.opsForHash().get(userInfo.redisObjectKey(), userInfo.redisKey());
     }
 
     /**
@@ -58,6 +58,6 @@ public class UserInfoRedisServiceImpl implements UserInfoRedisService {
      */
     @Override
     public void delete(UserInfo userInfo) {
-        redisTemplate.opsForHash().delete(userInfo.getObjectKey(), userInfo.getKey());
+        redisTemplate.opsForHash().delete(userInfo.redisObjectKey(), userInfo.redisKey());
     }
 }
