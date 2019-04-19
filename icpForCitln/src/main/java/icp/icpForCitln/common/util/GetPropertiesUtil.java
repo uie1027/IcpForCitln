@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 public class GetPropertiesUtil {
     private final static Logger logger = LoggerFactory.getLogger(IcpForCitlnApplication.class);
 
+    private static ResourceBundle resourceBundle;
+
     /**
      * @author: 方瑞冬
      * @date: 2019-04-15 下午 4:32
@@ -26,7 +28,6 @@ public class GetPropertiesUtil {
      * @return: java.lang.String
      */
     public static String getPropertiesVal(String fileName, String key){
-        ResourceBundle resourceBundle;
         String propertiesVal;
 
         try{
@@ -41,6 +42,7 @@ public class GetPropertiesUtil {
             logger.error(fileName + ".properties 文件中没有找到 " + key + " 对应的值");
             return null;
         }
+
         return propertiesVal;
     }
 }
