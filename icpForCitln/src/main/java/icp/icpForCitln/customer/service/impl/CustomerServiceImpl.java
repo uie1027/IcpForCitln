@@ -7,6 +7,7 @@
  */
 package icp.icpForCitln.customer.service.impl;
 
+import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.customer.dao.CustomerInfoDAO;
 import icp.icpForCitln.customer.dto.CustomerInfoDto;
 import icp.icpForCitln.customer.eneity.CustomerInfo;
@@ -76,13 +77,7 @@ public class CustomerServiceImpl implements CustomerService {
             customerInfos = customerInfoDAO.customerInfoListByPage(pageIndex, pageSize);
         }
         if (!CollectionUtils.isEmpty(customerInfos)){
-            for (CustomerInfo customerInfo:customerInfos){
-                CustomerInfoVO customerInfoVO = new CustomerInfoVO();
-
-                BeanUtils.copyProperties(customerInfo,customerInfoVO);
-
-                customerInfoVOS.add(customerInfoVO);
-            }
+            customerInfoVOS = BeanCopyUtil.copy(customerInfos,CustomerInfoVO.class);
         }
         return customerInfoVOS;
     }
@@ -97,12 +92,12 @@ public class CustomerServiceImpl implements CustomerService {
      * @return: void
      */
     @Override
-    public void updataCustomerInfo(CustomerInfoDto customerInfoDto){
+    public void updateCustomerInfo(CustomerInfoDto customerInfoDto){
         CustomerInfo customerInfo = new CustomerInfo();
 
         BeanUtils.copyProperties(customerInfoDto,customerInfo);
 
-        customerInfoDAO.updataCustomerInfo(customerInfo);
+        customerInfoDAO.updateCustomerInfo(customerInfo);
     }
 
     /**

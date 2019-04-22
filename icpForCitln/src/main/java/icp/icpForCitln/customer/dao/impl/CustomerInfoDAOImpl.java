@@ -7,8 +7,7 @@
  */
 package icp.icpForCitln.customer.dao.impl;
 
-import icp.icpForCitln.common.cache.UserInfoCache;
-import icp.icpForCitln.common.util.SessionUtil;
+import icp.icpForCitln.common.util.MongoUpsertUtil;
 import icp.icpForCitln.customer.dao.CustomerInfoDAO;
 import icp.icpForCitln.customer.eneity.CustomerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,32 +104,8 @@ public class CustomerInfoDAOImpl implements CustomerInfoDAO {
      * @return: void
      */
     @Override
-    public void updataCustomerInfo(CustomerInfo customerInfo) {
-        Query query = new Query(Criteria.where("_id").is(customerInfo.getId()));
-
-        Update update = new Update();
-        update.set("BANK_NAME",customerInfo.getBankName());
-        update.set("BANK_ACCOUNT",customerInfo.getBankAccount());
-        update.set("CITY",customerInfo.getCity());
-        update.set("COMPANY_ADDRESS",customerInfo.getCompanyAddress());
-        update.set("COMPANY_CODE",customerInfo.getCompanyCode());
-        update.set("COMPANY_CONTACT",customerInfo.getCompanyContact());
-        update.set("COMPANY_CONTACT_PHONE",customerInfo.getCompanyContactPhone());
-        update.set("COMPANY_EMAIL",customerInfo.getCompanyEmail());
-        update.set("COMPANY_INTRODUCTION",customerInfo.getCompanyIntroduction());
-        update.set("COMPANY_NAME",customerInfo.getCompanyName());
-        update.set("COMPANY_PICTURE",customerInfo.getCompanyPicture());
-        update.set("COMPANY_SHORT_NAME",customerInfo.getCompanyShortName());
-        update.set("COMPANY_TELEPHONE",customerInfo.getCompanyTelephone());
-        update.set("COMPANY_FAX",customerInfo.getCompanytFax());
-        update.set("COUNTRY",customerInfo.getCountry());
-        update.set("CURRENCY",customerInfo.getCurrency());
-        update.set("PROVINCE",customerInfo.getProvince());
-        update.set("UNIFIED_SOCIAL_CREDIT_CODE",customerInfo.getUnifiedSocialCreditCode());
-        update.set("LAST_MODIFIER", UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
-        update.currentDate("LAST_MODIFICATION_TIME");
-
-        mongoTemplate.upsert(query,update,CustomerInfo.class);
+    public void updateCustomerInfo(CustomerInfo customerInfo) {
+            MongoUpsertUtil.upsert(customerInfo);
     }
 
     /**
