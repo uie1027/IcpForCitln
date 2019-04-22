@@ -10,10 +10,12 @@ package icp.icpForCitln.supplier.entity;
 
 import icp.icpForCitln.common.enetity.CommonField;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
+@ToString(callSuper = true)
 @Document(value = "SUPPLIER_INFO")  //供应商信息
 public class SupplierInfo extends CommonField {
 

@@ -8,6 +8,7 @@
 
 package icp.icpForCitln;
 
+import icp.icpForCitln.common.util.MongoUpsertUtil;
 import icp.icpForCitln.supplier.dto.SupplierInfoDto;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import icp.icpForCitln.supplier.service.SupplierInfoService;
@@ -15,6 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
@@ -24,6 +26,9 @@ import java.util.Date;
 public class SupplierTest {
     @Autowired
     SupplierInfoService supplierInfoService;
+
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     @Test
     public void supplierInfoSaveTest(){
@@ -94,12 +99,13 @@ public class SupplierTest {
 
     @Test
     public void thawSupplierInfo(){
-        SupplierInfoDto supplierInfoDto = new SupplierInfoDto();
+        SupplierInfo supplierInfo = new SupplierInfo();
 
-        supplierInfoDto.setId("1");
+        supplierInfo.setId("TEST1");
+        supplierInfo.setCompanyCode("guotestssasd");
+        supplierInfo.setFrozen(2);
 
-        supplierInfoService.thawSupplierInfo(supplierInfoDto);
+        System.out.println(MongoUpsertUtil.upsert(supplierInfo));
 
-        System.out.println("success");
     }
 }
