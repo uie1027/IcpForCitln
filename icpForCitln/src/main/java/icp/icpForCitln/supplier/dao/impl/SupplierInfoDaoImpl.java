@@ -8,6 +8,8 @@
 
 package icp.icpForCitln.supplier.dao.impl;
 
+import icp.icpForCitln.common.cache.UserInfoCache;
+import icp.icpForCitln.common.util.SessionUtil;
 import icp.icpForCitln.supplier.dao.SupplierInfoDao;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,6 +109,23 @@ public class SupplierInfoDaoImpl implements SupplierInfoDao {
         Update update = new Update();
         update.set("UNIFIED_SOCIAL_CREDIT_CODE",supplierInfo.getUnifiedSocialCreditCode());
         update.set("COMPANY_NAME",supplierInfo.getCompanyName());
+        update.set("COMPANY_SHORT_NAME",supplierInfo.getCompanyShortName());
+        update.set("COMPANY_FAX",supplierInfo.getCompanyFax());
+        update.set("COMPANY_EMAIL",supplierInfo.getCompanyEmail());
+        update.set("COMPANY_CONTACT",supplierInfo.getCompanyContact());
+        update.set("COMPANY_CONTACT_PHONE",supplierInfo.getCompanyContactPhone());
+        update.set("COMPANY_TELEPHONE",supplierInfo.getCompanyTelephone());
+        update.set("COUNTRY",supplierInfo.getCountry());
+        update.set("PROVINCE",supplierInfo.getProvince());
+        update.set("CITY",supplierInfo.getCity());
+        update.set("COMPANY_ADDRESS",supplierInfo.getCompanyAddress());
+        update.set("COMPANY_INTRODUCTION",supplierInfo.getCompanyIntroduction());
+        update.set("COMPANY_PICTURE",supplierInfo.getCompanyPicture());
+        update.set("BANK_ACCOUNT",supplierInfo.getBankAccount());
+        update.set("BANK_NAME",supplierInfo.getBankName());
+        update.set("CURRENCY",supplierInfo.getCurrency());
+        update.set("LAST_MODIFIER", UserInfoCache.get(SessionUtil.getByKey("userName")).getId());
+        update.currentDate("LAST_MODIFICATION_TIME");
 
         mongoTemplate.upsert(query,update,SupplierInfo.class);
     }
