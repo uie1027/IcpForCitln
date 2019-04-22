@@ -21,4 +21,26 @@ public class StringUtil {
         return str == null ? null : str.trim();
     }
 
+    public static String toMongoDBField(String str) {
+        if(isEmpty(str)) return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i= 0 ;i < str.length(); i++){
+            char c = str.charAt(i);
+            if(Character.isUpperCase(c)){
+                stringBuilder.append("_"+c);
+            }else if(Character.isLowerCase(c)){
+                stringBuilder.append(String.valueOf(c).toUpperCase());
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    public static String toInitialUpperCase(String str) {
+        if(isEmpty(str)) return null;
+        if(str.length() ==1 ){
+            return str.toUpperCase();
+        }
+        return String.valueOf(str.charAt(0)).toUpperCase() + str.substring(1,str.length());
+    }
+
 }
