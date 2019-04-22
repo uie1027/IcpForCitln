@@ -154,7 +154,15 @@ public class PlatformController {
         platformService.platformMailDisplaySaveTest(platformMailDisplay);
     }
 
-
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-22 下午 1:57
+     * @since: JDK 1.8
+     *
+     * @description: 平台目录返显
+     * @param: []
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
     @GetMapping("/getPlatformDirectoryInfoList")
     public CommonResult getPlatformDirectoryInfoList(){
         return CommonResult.returnResult(CommonResult.SUCCESS_CODE, platformService.getPlatformDirectoryInfoList());

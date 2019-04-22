@@ -98,6 +98,15 @@ public class PlatformServiceImpl implements PlatformService {
         platformMailDisplayDAO.saveTest(platformMailDisplay);
     }
 
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-22 下午 1:57
+     * @since: JDK 1.8
+     *
+     * @description: 获取平台目录所有信息列表
+     * @param: []
+     * @return: java.util.List<icp.icpForCitln.platform.eneity.PlatformDirectoryInfo>
+     */
     @Override
     public List<PlatformDirectoryInfo> getPlatformDirectoryInfoList() {
         return platformDirectoryInfoDAO.getPlatformDirectoryInfoList();
