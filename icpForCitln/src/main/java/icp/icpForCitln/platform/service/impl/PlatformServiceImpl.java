@@ -13,10 +13,12 @@ import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PlatformServiceImpl implements PlatformService {
     @Autowired
-    private PlatformDirectoryInfoDAO platformDirectoryDAO;
+    private PlatformDirectoryInfoDAO platformDirectoryInfoDAO;
     @Autowired
     private PlatformDirectoryAttributeDAO platformDirectoryAttributeDAO;
     @Autowired
@@ -37,7 +39,7 @@ public class PlatformServiceImpl implements PlatformService {
      */
     @Override
     public void platformDirectoryInfoSaveTest(PlatformDirectoryInfo platformDirectoryInfo) {
-        platformDirectoryDAO.saveTest(platformDirectoryInfo);
+        platformDirectoryInfoDAO.saveTest(platformDirectoryInfo);
     }
 
     /**
@@ -94,5 +96,10 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public void platformMailDisplaySaveTest(PlatformMailDisplay platformMailDisplay) {
         platformMailDisplayDAO.saveTest(platformMailDisplay);
+    }
+
+    @Override
+    public List<PlatformDirectoryInfo> getPlatformDirectoryInfoList() {
+        return platformDirectoryInfoDAO.getPlatformDirectoryInfoList();
     }
 }

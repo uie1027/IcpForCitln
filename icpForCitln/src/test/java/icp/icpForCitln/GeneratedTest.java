@@ -1,13 +1,13 @@
 /**
  * Project Name: icpForCitln
- * File Name: GeneratedCodeTest
+ * File Name: GeneratedTest
  * Package Name: icp.icpForCitln
  * Date: 2019-04-22 上午 10:24
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
  */
 package icp.icpForCitln;
 
-import icp.icpForCitln.common.util.GeneratedCodeUtil;
+import icp.icpForCitln.common.util.GeneratedUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class GeneratedCodeTest {
+public class GeneratedTest {
     /**
      * @author: 方瑞冬
      * @date: 2019-04-22 上午 10:27
@@ -27,6 +27,6 @@ public class GeneratedCodeTest {
      */
     @Test
     public void generatedCodeTest(){
-        System.out.println(GeneratedCodeUtil.generatedCode());
+        System.out.println(GeneratedUtil.generatedCode());
     }
 }

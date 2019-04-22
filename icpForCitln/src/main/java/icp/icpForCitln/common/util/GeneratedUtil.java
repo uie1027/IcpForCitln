@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: GeneratedCodeUtil
+ * File Name: GeneratedUtil
  * Package Name: icp.icpForCitln.common.util
  * Date: 2019-04-22 上午 10:17
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
@@ -15,10 +15,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
-public class GeneratedCodeUtil {
+public class GeneratedUtil {
     private final static Logger logger = LoggerFactory.getLogger(IcpForCitlnApplication.class);
-    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-    private static final Random random = new Random();
+    private final static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+    private final static Random random = new Random();
 
     /**
      * @author: 方瑞冬
@@ -29,9 +29,9 @@ public class GeneratedCodeUtil {
      * @param: []
      * @return: java.lang.String
      */
-    public static String generatedCode(){
-        int randomStr;
+    public static synchronized String generatedCode(){
         String nowTime;
+        int randomStr;
 
         try {
             randomStr = random.nextInt(89999) + 10000;

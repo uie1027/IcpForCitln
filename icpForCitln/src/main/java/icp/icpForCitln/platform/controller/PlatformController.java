@@ -7,6 +7,7 @@
  */
 package icp.icpForCitln.platform.controller;
 
+import icp.icpForCitln.common.result.CommonResult;
 import icp.icpForCitln.platform.eneity.*;
 import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,5 +152,11 @@ public class PlatformController {
         platformMailDisplay.setIsDelete(2);
 
         platformService.platformMailDisplaySaveTest(platformMailDisplay);
+    }
+
+
+    @GetMapping("/getPlatformDirectoryInfoList")
+    public CommonResult getPlatformDirectoryInfoList(){
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, platformService.getPlatformDirectoryInfoList());
     }
 }
