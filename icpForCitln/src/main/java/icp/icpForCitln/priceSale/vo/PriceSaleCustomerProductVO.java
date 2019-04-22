@@ -11,7 +11,7 @@ package icp.icpForCitln.priceSale.vo;
 import java.math.BigDecimal;
 
 public class PriceSaleCustomerProductVO {
-    private String productPriceCpdeSale; //销售产品价格编码
+    private String productPriceCodeSale; //销售产品价格编码
 
     private String productCode; //产品编码
 

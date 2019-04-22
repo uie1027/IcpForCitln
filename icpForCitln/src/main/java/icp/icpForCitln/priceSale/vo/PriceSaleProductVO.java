@@ -19,7 +19,7 @@ public class PriceSaleProductVO {
 
     private String id; //主键
 
-    private String productPriceCpdeSale; //销售产品价格编码
+    private String productPriceCodeSale; //销售产品价格编码
 
     private String productCode; //产品编码
 

@@ -8,10 +8,15 @@
 
 package icp.icpForCitln.priceSale.dto;
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 
+@Data
 public class PriceSaleCustomerProductDto {
-    private String productPriceCpdeSale; //销售产品价格编码
+    private String id;
+
+    private String productPriceCodeSale; //销售产品价格编码
 
     private String productCode; //产品编码
 

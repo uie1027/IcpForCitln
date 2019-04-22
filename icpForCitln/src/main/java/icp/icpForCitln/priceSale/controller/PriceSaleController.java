@@ -58,7 +58,7 @@ public class PriceSaleController {
         priceSaleProduct.setBasicUnit("个");
         priceSaleProduct.setCurrency("CNY");
         priceSaleProduct.setProductCode("12");
-        priceSaleProduct.setProductPriceCpdeSale("11");
+        priceSaleProduct.setProductPriceCodeSale("11");
         priceSaleProduct.setTaxIncludedPrice(new BigDecimal(1));
         priceSaleProduct.setTaxRate("22");
         priceSaleProduct.setCreater("1");
@@ -232,7 +232,7 @@ public class PriceSaleController {
         priceSaleCustomerProduct.setCurrency("1");
         priceSaleCustomerProduct.setEach(1);
         priceSaleCustomerProduct.setProductCode("111111");
-        priceSaleCustomerProduct.setProductPriceCpdeSale("111111");
+        priceSaleCustomerProduct.setProductPriceCodeSale("111111");
         priceSaleCustomerProduct.setTaxIncludedPrice(new BigDecimal(1));
         priceSaleCustomerProduct.setTaxRate("!");
         priceSaleCustomerProduct.setCreater("1");

@@ -56,7 +56,7 @@ public class PriceSaleProductGroupDAOImpl implements PriceSaleProductGroupDAO {
         Query query = Query.query(criteria);
         //TODO 操作人和最后修改时间
         Update update = new Update();
-        update.set("IS_DELETE",2);
+        update.set("IS_DELETE",1);
         update.currentDate("LAST_MODIFICATION_TIME");
         mongoTemplate.updateMulti(query, update, PriceSaleProductGroup.class);
     }

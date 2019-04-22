@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 @Document(collection = "PRICE_SALE_CUSTOMER_PRODUCT")   //销售客户产品组价格
 public class PriceSaleCustomerProduct extends CommonField {
     @Field("PRODUCT_PRICE_CODE_SALE")
-    private String productPriceCpdeSale; //销售产品价格编码
+    private String productPriceCodeSale; //销售产品价格编码
 
     @Field("PRODUCT_CODE")
     private String productCode; //产品编码
