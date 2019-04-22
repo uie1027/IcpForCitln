@@ -124,7 +124,7 @@ public class SupplierInfoDaoImpl implements SupplierInfoDao {
         update.set("BANK_ACCOUNT",supplierInfo.getBankAccount());
         update.set("BANK_NAME",supplierInfo.getBankName());
         update.set("CURRENCY",supplierInfo.getCurrency());
-        update.set("LAST_MODIFIER", UserInfoCache.get(SessionUtil.getByKey("userName")).getId());
+        update.set("LAST_MODIFIER", UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
         update.currentDate("LAST_MODIFICATION_TIME");
 
         mongoTemplate.upsert(query,update,SupplierInfo.class);
