@@ -77,13 +77,13 @@ public class SupplierTest {
     }
 
     @Test
-    public void updataSupplierInfo(){
+    public void updateSupplierInfo(){
         SupplierInfoDto supplierInfoDto = new SupplierInfoDto();
         supplierInfoDto.setId("TEST1");
-        supplierInfoDto.setUnifiedSocialCreditCode("asddf");
-        supplierInfoDto.setCompanyName("huafengcahoxian");
+        supplierInfoDto.setUnifiedSocialCreditCode("asddfsdcxv");
+        supplierInfoDto.setCompanyName("huafe");
 
-        supplierInfoService.updataSupplierInfo(supplierInfoDto);
+        supplierInfoService.updateSupplierInfo(supplierInfoDto);
     }
 
     @Test

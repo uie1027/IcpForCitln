@@ -10,7 +10,7 @@ import java.util.List;
 public interface SupplierInfoService {
     void saveTest(SupplierInfo supplierInfo); //保存类测试
     List<SupplierListVO> supplierListByPage(Integer pageIndex, Integer pageSize,String CodeOrName); //取供应商列表
-    void updataSupplierInfo(SupplierInfoDto supplierInfoDto); //修改供应商信息
+    void updateSupplierInfo(SupplierInfoDto supplierInfoDto); //修改供应商信息
     void saveSupplierInfo(SupplierInfoDto supplierInfoDto); //保存供应商信息
     SupplierInfoVO supplierInfoById(SupplierInfoDto supplierInfoDto); //查询供应商详情
     void deleteSupplierInfo(SupplierInfoDto supplierInfoDto);  //删除供应商

@@ -8,6 +8,7 @@
 
 package icp.icpForCitln.supplier.service.impl;
 
+import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.supplier.dao.SupplierInfoDao;
 import icp.icpForCitln.supplier.dto.SupplierInfoDto;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
@@ -18,7 +19,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -50,19 +50,15 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
         }
 
         if(supplierInfos!=null && supplierInfos.size()>0) {
-            List<SupplierListVO> supplierListVOS = new ArrayList<>();
-        for (SupplierInfo supplierInfo:supplierInfos){
-            SupplierListVO supplierListVO = new SupplierListVO();
-            BeanUtils.copyProperties(supplierInfo,supplierListVO);
-            supplierListVOS.add(supplierListVO);
-        }
+            List<SupplierListVO> supplierListVOS;
+            supplierListVOS = BeanCopyUtil.copy(supplierInfos,SupplierListVO.class);
             return supplierListVOS;
         }
         return null;
     }
 
     @Override
-    public void updataSupplierInfo(SupplierInfoDto supplierInfoDto){
+    public void updateSupplierInfo(SupplierInfoDto supplierInfoDto){
         /**
          * @author: guoxs  
          * @date: 19/04/18 10:04
@@ -75,7 +71,7 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
         SupplierInfo supplierInfo = new SupplierInfo();
         BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
 
-        supplierInfoDao.updataSupplierInfo(supplierInfo);
+        supplierInfoDao.updateSupplierInfo(supplierInfo);
     }
 
     /**
