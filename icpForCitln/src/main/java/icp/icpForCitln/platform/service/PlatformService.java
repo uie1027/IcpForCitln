@@ -14,5 +14,5 @@ public interface PlatformService {
     void platformDirectoryAttributeSaveTest(PlatformDirectoryAttribute platformDirectoryAttribute);     //存储测试
     void platformDirectoryAttributeValueSaveTest(PlatformDirectoryAttributeValue platformDirectoryAttributeValue);     //存储测试
     void platformUnitInfoSaveTest(PlatformUnitInfo platformUnitInfo);     //存储测试
-    void plantformMailDisplaySaveTest(PlantformMailDisplay plantformMailDisplay);     //存储测试
+    void platformMailDisplaySaveTest(PlatformMailDisplay platformMailDisplay);     //存储测试
 }

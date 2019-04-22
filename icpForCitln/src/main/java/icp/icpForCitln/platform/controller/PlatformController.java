@@ -133,23 +133,23 @@ public class PlatformController {
      * @date: 2019-04-15 上午 11:44
      * @since: JDK 1.8
      *
-     * @description: 测试 plantformMailDisplay 保存
+     * @description: 测试 platformMailDisplay 保存
      * @param: []
      * @return: void
      */
-    @GetMapping("/plantformMailDisplaySaveTest")
-    public void plantformMailDisplaySaveTest(){
-        PlantformMailDisplay plantformMailDisplay = new PlantformMailDisplay();
+    @GetMapping("/platformMailDisplaySaveTest")
+    public void platformMailDisplaySaveTest(){
+        PlatformMailDisplay platformMailDisplay = new PlatformMailDisplay();
 
-        plantformMailDisplay.setId("testId");
-        plantformMailDisplay.setMailDisplayCode("testcode");
-        plantformMailDisplay.setMailName("name");
-        plantformMailDisplay.setCreater("testcreater");
-        plantformMailDisplay.setCreateTime(new Date());
-        plantformMailDisplay.setLastMondifier("lastman");
-        plantformMailDisplay.setLastModificationTime(new Date());
-        plantformMailDisplay.setIsDelete(2);
+        platformMailDisplay.setId("testId");
+        platformMailDisplay.setMailDisplayCode("testcode");
+        platformMailDisplay.setMailName("name");
+        platformMailDisplay.setCreater("testcreater");
+        platformMailDisplay.setCreateTime(new Date());
+        platformMailDisplay.setLastMondifier("lastman");
+        platformMailDisplay.setLastModificationTime(new Date());
+        platformMailDisplay.setIsDelete(2);
 
-        platformService.plantformMailDisplaySaveTest(plantformMailDisplay);
+        platformService.platformMailDisplaySaveTest(platformMailDisplay);
     }
 }

@@ -24,7 +24,7 @@ public class PlatformServiceImpl implements PlatformService {
     @Autowired
     private PlatformUnitInfoDAO platformUnitInfoDAO;
     @Autowired
-    private PlantformMailDisplayDAO plantformMailDisplayDAO;
+    private PlatformMailDisplayDAO platformMailDisplayDAO;
 
     /**
      * @author: 方瑞冬
@@ -87,12 +87,12 @@ public class PlatformServiceImpl implements PlatformService {
      * @date: 2019-04-15 上午 11:40
      * @since: JDK 1.8
      *
-     * @description: 测试 plantformMailDisplay 保存
-     * @param: [plantformMailDisplay]
+     * @description: 测试 platformMailDisplay 保存
+     * @param: [platformMailDisplay]
      * @return: void
      */
     @Override
-    public void plantformMailDisplaySaveTest(PlantformMailDisplay plantformMailDisplay) {
-        plantformMailDisplayDAO.saveTest(plantformMailDisplay);
+    public void platformMailDisplaySaveTest(PlatformMailDisplay platformMailDisplay) {
+        platformMailDisplayDAO.saveTest(platformMailDisplay);
     }
 }
