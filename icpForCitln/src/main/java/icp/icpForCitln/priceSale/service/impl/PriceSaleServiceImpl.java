@@ -8,6 +8,7 @@
 
 package icp.icpForCitln.priceSale.service.impl;
 
+import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.priceSale.dao.PriceSaleCustomerProductDAO;
 import icp.icpForCitln.priceSale.dao.PriceSaleCustomerProductGroupDAO;
 import icp.icpForCitln.priceSale.dao.PriceSaleProductDAO;
@@ -25,7 +26,6 @@ import icp.icpForCitln.priceSale.vo.PriceSaleCustomerProductGroupVO;
 import icp.icpForCitln.priceSale.vo.PriceSaleCustomerProductVO;
 import icp.icpForCitln.priceSale.vo.PriceSaleProductGroupVO;
 import icp.icpForCitln.priceSale.vo.PriceSaleProductVO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -86,14 +86,11 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      */
     @Override
     public void priceSaleProductUpdate(List<PriceSaleProductDto> list) {
-
-        List<PriceSaleProduct> priceSaleProducts = new ArrayList<>();
-        for(PriceSaleProductDto priceSaleProductDto :list){
-            PriceSaleProduct priceSaleProduct = new PriceSaleProduct();
-            BeanUtils.copyProperties(priceSaleProductDto,priceSaleProduct);
-            priceSaleProducts.add(priceSaleProduct);
+        List<PriceSaleProduct>  priceSaleProducts
+                = BeanCopyUtil.copy(list,PriceSaleProduct.class);
+        if( priceSaleProducts != null && priceSaleProducts.size() >0 ){
+            priceSaleProductDAO.priceSaleProductUpdate(priceSaleProducts);
         }
-        priceSaleProductDAO.priceSaleProductUpdate(priceSaleProducts);
     }
 
     /**
@@ -110,11 +107,7 @@ public class PriceSaleServiceImpl implements PriceSaleService {
         List<PriceSaleProductVO> priceSaleProductVOS = new ArrayList<>();
         List<PriceSaleProduct> list = priceSaleProductDAO.priceSaleProductListByPage(pageIndex,pageSize);
         if(list != null && list.size() >0){
-            PriceSaleProductVO priceSaleProductVO = new PriceSaleProductVO();
-            for (PriceSaleProduct priceSaleProduct :list){
-                BeanUtils.copyProperties(priceSaleProduct,priceSaleProductVO);
-                priceSaleProductVOS.add(priceSaleProductVO);
-            }
+            priceSaleProductVOS = BeanCopyUtil.copy(list,PriceSaleProductVO.class);
         }
         return priceSaleProductVOS;
     }
@@ -161,13 +154,11 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      */
     @Override
     public void priceSaleProductGroupUpdate(List<PriceSaleProductGroupDto> list) {
-        List<PriceSaleProductGroup> priceSaleProductGroups = new ArrayList<>();
-        for (PriceSaleProductGroupDto priceSaleProductGroupDto :list){
-            PriceSaleProductGroup priceSaleProductGroup = new PriceSaleProductGroup();
-            BeanUtils.copyProperties(priceSaleProductGroupDto,priceSaleProductGroup);
-            priceSaleProductGroups.add(priceSaleProductGroup);
+        List<PriceSaleProductGroup>  priceSaleProductGroups
+                = BeanCopyUtil.copy(list,PriceSaleProductGroup.class);
+        if( priceSaleProductGroups != null && priceSaleProductGroups.size() >0 ){
+            priceSaleProductGroupDAO.priceSaleProductGroupUpdate(priceSaleProductGroups);
         }
-        priceSaleProductGroupDAO.priceSaleProductGroupUpdate(priceSaleProductGroups);
     }
 
     /**
@@ -184,11 +175,7 @@ public class PriceSaleServiceImpl implements PriceSaleService {
         List<PriceSaleProductGroupVO> priceSaleProductGroupVOS= new ArrayList<>();
         List<PriceSaleProductGroup> resList = priceSaleProductGroupDAO.priceSaleProductGroupListByPage(pageIndex,pageSize);
         if(resList != null && resList.size()>0){
-            for (PriceSaleProductGroup priceSaleProductGroup :resList){
-                PriceSaleProductGroupVO priceSaleProductGroupVO = new PriceSaleProductGroupVO();
-                BeanUtils.copyProperties(priceSaleProductGroup,priceSaleProductGroupVO);
-                priceSaleProductGroupVOS.add(priceSaleProductGroupVO);
-            }
+            priceSaleProductGroupVOS = BeanCopyUtil.copy(resList,PriceSaleProductGroupVO.class);
         }
         return priceSaleProductGroupVOS;
     }
@@ -236,13 +223,11 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      */
     @Override
     public void priceSaleCustomerProductUpdate(List<PriceSaleCustomerProductDto> list) {
-        List<PriceSaleCustomerProduct> priceSaleCustomerProducts = new ArrayList<>();
-        for (PriceSaleCustomerProductDto priceSaleCustomerProductDto : list){
-            PriceSaleCustomerProduct priceSaleCustomerProduct = new PriceSaleCustomerProduct();
-            BeanUtils.copyProperties(priceSaleCustomerProductDto,priceSaleCustomerProduct);
-            priceSaleCustomerProducts.add(priceSaleCustomerProduct);
+        List<PriceSaleCustomerProduct> priceSaleCustomerProducts
+                = BeanCopyUtil.copy(list ,PriceSaleCustomerProduct.class);
+        if(priceSaleCustomerProducts != null && priceSaleCustomerProducts.size() >0){
+            priceSaleCustomerProductDAO.priceSaleCustomerProductUpdate(priceSaleCustomerProducts);
         }
-        priceSaleCustomerProductDAO.priceSaleCustomerProductUpdate(priceSaleCustomerProducts);
     }
 
     /**
@@ -261,11 +246,7 @@ public class PriceSaleServiceImpl implements PriceSaleService {
         List<PriceSaleCustomerProduct> list
                 = priceSaleCustomerProductDAO.priceSaleCustomerProductListByPage(pageIndex, pageSize);
         if(list != null && list.size() >0){
-            PriceSaleCustomerProductVO priceSaleCustomerProductVO = new PriceSaleCustomerProductVO();
-            for (PriceSaleCustomerProduct priceSaleCustomerProduct :list){
-                BeanUtils.copyProperties(priceSaleCustomerProduct,priceSaleCustomerProductVO);
-                priceSaleCustomerProductVOS.add(priceSaleCustomerProductVO);
-            }
+            priceSaleCustomerProductVOS = BeanCopyUtil.copy(list,PriceSaleCustomerProductVO.class);
         }
         return priceSaleCustomerProductVOS;
     }
@@ -297,13 +278,11 @@ public class PriceSaleServiceImpl implements PriceSaleService {
 
     @Override
     public void priceSaleCustomerProductGroupUpdate(List<PriceSaleCustomerProductGroupDto> list) {
-        List<PriceSaleCustomerProductGroup> priceSaleCustomerProductGroups = new ArrayList<>();
-        for (PriceSaleCustomerProductGroupDto priceSaleCustomerProductGroupDto :list){
-            PriceSaleCustomerProductGroup priceSaleCustomerProductGroup = new PriceSaleCustomerProductGroup();
-            BeanUtils.copyProperties(priceSaleCustomerProductGroupDto,priceSaleCustomerProductGroup);
-            priceSaleCustomerProductGroups.add(priceSaleCustomerProductGroup);
+        List<PriceSaleCustomerProductGroup> priceSaleCustomerProductGroups
+                = BeanCopyUtil.copy(list, PriceSaleCustomerProductGroup.class);
+        if(priceSaleCustomerProductGroups != null && priceSaleCustomerProductGroups.size() >0){
+            priceSaleCustomerProductGroupDAO.priceSaleCustomerProductGroupUpdate(priceSaleCustomerProductGroups);
         }
-        priceSaleCustomerProductGroupDAO.priceSaleCustomerProductGroupUpdate(priceSaleCustomerProductGroups);
     }
 
     @Override
@@ -312,14 +291,9 @@ public class PriceSaleServiceImpl implements PriceSaleService {
         List<PriceSaleCustomerProductGroup> resList
                 = priceSaleCustomerProductGroupDAO.priceSaleCustomerProductGroupListByPage(pageIndex,pageSize);
         if(resList != null && resList.size() >0){
-            PriceSaleCustomerProductGroupVO priceSaleCustomerProductGroupVO = new PriceSaleCustomerProductGroupVO();
-            for (PriceSaleCustomerProductGroup priceSaleCustomerProductGroup : resList){
-                BeanUtils.copyProperties(priceSaleCustomerProductGroup,priceSaleCustomerProductGroupVO);
-                priceSaleCustomerProductGroupVOS.add(priceSaleCustomerProductGroupVO);
-            }
+            priceSaleCustomerProductGroupVOS = BeanCopyUtil.copy(resList,PriceSaleCustomerProductGroupVO.class);
         }
         return priceSaleCustomerProductGroupVOS;
     }
-
 
 }
