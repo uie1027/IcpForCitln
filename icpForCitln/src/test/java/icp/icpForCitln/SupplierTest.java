@@ -102,7 +102,7 @@ public class SupplierTest {
     public void thawSupplierInfo(){
         SupplierInfo supplierInfo = new SupplierInfo();
 
-        List<SupplierInfo> supplierInfoList = MongoUtil.select(0,10,supplierInfo);
+        List<SupplierInfo> supplierInfoList = MongoUtil.select(0,1,supplierInfo);
 
         System.out.println(supplierInfoList);
     }

@@ -221,7 +221,76 @@ public class MongoUtil {
             return null;
         }
 
-        Pageable pageable = PageRequest.of(pageIndex,pageSize);
+        Query query;
+        Criteria criteria = mongoUtil.getCriteria(model);
+
+        Pageable  pageable = PageRequest.of(pageIndex, pageSize);
+
+             query = new Query(criteria.and("IS_DELETE").is(2)).with(pageable).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
+
+        return mongoUtil.mongoTemplate.find(query,model.getClass());
+
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 14:37
+     * @since: JDK 1.8
+     *
+     * @description: 单表查询方法,不带分页
+     * @param: [model]
+     * @return: java.util.List
+     */
+    public static List select(Object model){
+        if (model == null){
+            logger.info(model+"为空对象！");
+            return null;
+        }
+
+        Query query;
+        Criteria criteria = mongoUtil.getCriteria(model);
+
+        query = new Query(criteria.and("IS_DELETE").is(2)).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
+
+        return mongoUtil.mongoTemplate.find(query,model.getClass());
+
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 10:53
+     * @since: JDK 1.8
+     *
+     * @description: 获取数据库信息方法
+     * @param: [model]
+     * @return: org.springframework.data.mongodb.core.query.Query
+     */
+    public  Query getQuery(Object model){
+        Query query;
+        try {
+            query = new Query(Criteria.where("_id").is(model.getClass().getMethod("getId").invoke(model, new Object[]{})));
+        }catch (Exception e){
+            logger.info("无法获取"+model+"对象");
+            return null;
+        }
+
+        return query;
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 14:37
+     * @since: JDK 1.8
+     *
+     * @description: 生成查询条件
+     * @param: [model]
+     * @return: org.springframework.data.mongodb.core.query.Criteria
+     */
+    public Criteria getCriteria(Object model){
+        if (model == null){
+            logger.info(model+"为空对象！");
+            return null;
+        }
 
         Criteria criteria = new Criteria();
         List<Criteria> criteriaList = new ArrayList<>();
@@ -259,31 +328,7 @@ public class MongoUtil {
             criteria.orOperator(criteriaNum);
         }
 
-        Query query = new Query(criteria.and("IS_DELETE").is(2)).with(pageable).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
-
-        return mongoUtil.mongoTemplate.find(query,model.getClass());
-
-    }
-
-    /**
-     * @author: guoxs
-     * @date: 19/04/23 10:53
-     * @since: JDK 1.8
-     *
-     * @description: 获取数据库信息方法
-     * @param: [model]
-     * @return: org.springframework.data.mongodb.core.query.Query
-     */
-    public  Query getQuery(Object model){
-        Query query;
-        try {
-            query = new Query(Criteria.where("_id").is(model.getClass().getMethod("getId").invoke(model, new Object[]{})));
-        }catch (Exception e){
-            logger.info("无法获取"+model+"对象");
-            return null;
-        }
-
-        return query;
+        return criteria;
     }
 
 }
