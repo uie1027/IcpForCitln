@@ -22,6 +22,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.PostConstruct;
 import java.lang.reflect.Field;
@@ -330,5 +331,94 @@ public class MongoUtil {
 
         return criteria;
     }
+
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 17:04
+     * @since: JDK 1.8
+     *
+     * @description: 数据库删除 List方法
+     * @param: [modelList]
+     * @return: boolean
+     */
+    public static boolean delete(List modelList){
+        boolean flag = true;
+
+        if (CollectionUtils.isEmpty(modelList)){
+            logger.info("传入参数"+modelList+"为空！");
+            return false;
+        }
+
+        for (Object model:modelList){
+            flag=MongoUtil.delete(model);
+
+            if (flag==false){
+                logger.info(modelList+"删除失败!");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 17:04
+     * @since: JDK 1.8
+     *
+     * @description: 数据库更新 List方法
+     * @param: [modelList]
+     * @return: boolean
+     */
+    public static boolean upsert(List modelList){
+        boolean flag = true;
+
+        if (CollectionUtils.isEmpty(modelList)){
+            logger.info("传入参数"+modelList+"为空！");
+            return false;
+        }
+
+        for (Object model:modelList){
+            flag=MongoUtil.upsert(model);
+
+            if (flag==false){
+                logger.info(modelList+"更新失败!");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 17:03
+     * @since: JDK 1.8
+     *
+     * @description: 数据库新增 List方法
+     * @param: [modelList]
+     * @return: boolean
+     */
+    public static boolean insert(List modelList){
+        boolean flag = true;
+
+        if (CollectionUtils.isEmpty(modelList)){
+            logger.info("传入参数"+modelList+"为空！");
+            return false;
+        }
+
+        for (Object model:modelList){
+            flag=MongoUtil.insert(model);
+
+            if (flag==false){
+                logger.info(modelList+"插入失败!");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
 }

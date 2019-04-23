@@ -19,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -102,8 +103,15 @@ public class SupplierTest {
     public void thawSupplierInfo(){
         SupplierInfo supplierInfo = new SupplierInfo();
 
-        List<SupplierInfo> supplierInfoList = MongoUtil.select(0,1,supplierInfo);
+        List<SupplierInfo> supplierInfos = new ArrayList<>();
 
-        System.out.println(supplierInfoList);
+        supplierInfo.setId("1");
+        supplierInfos.add(supplierInfo);
+
+        SupplierInfo supplierInfo2 = new SupplierInfo();
+        supplierInfo2.setId("2");
+        supplierInfos.add(supplierInfo2);
+
+        System.out.println(MongoUtil.delete(null));
     }
 }
