@@ -33,12 +33,30 @@ public class MongoUtil {
 
     private static MongoUtil mongoUtil;
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 10:51
+     * @since: JDK 1.8
+     *
+     * @description: 初始化 mongoTemplate
+     * @param: []
+     * @return: void
+     */
     @PostConstruct
     public void init() {
         mongoUtil = this;
         mongoUtil.mongoTemplate = this.mongoTemplate;
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 10:51
+     * @since: JDK 1.8
+     *
+     * @description: 数据库更新方法
+     * @param: [model]
+     * @return: boolean
+     */
     public static boolean upsert(Object model) {
         if (model == null){
             logger.info(model+"为空对象！");
@@ -100,6 +118,15 @@ public class MongoUtil {
     }
 
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 10:52
+     * @since: JDK 1.8
+     *
+     * @description: 数据库新增方法
+     * @param: [model]
+     * @return: boolean
+     */
     public static boolean insert (Object model){
         if (model == null){
             logger.info(model+"为空对象");
@@ -134,6 +161,15 @@ public class MongoUtil {
 
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 10:52
+     * @since: JDK 1.8
+     *
+     * @description: 数据库假删除方法
+     * @param: [model]
+     * @return: boolean
+     */
     public static boolean delete(Object model){
         if (model == null){
             logger.info(model+"为空对象");
@@ -166,6 +202,15 @@ public class MongoUtil {
     }
 
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 10:53
+     * @since: JDK 1.8
+     *
+     * @description: 获取数据库信息方法
+     * @param: [model]
+     * @return: org.springframework.data.mongodb.core.query.Query
+     */
     public  Query getQuery(Object model){
         Query query;
         try {
