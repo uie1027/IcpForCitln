@@ -172,6 +172,15 @@ public class PlatformController {
         return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(platformService.getPlatformDirectoryInfoList(), PlatformDirectoryInfoVO.class));
     }
 
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-23 下午 2:35
+     * @since: JDK 1.8
+     *
+     * @description: 平台目录新增
+     * @param: [platformDirectoryInfoAddDTO]
+     * @return: void
+     */
     @PostMapping("/addPlatformDirectoryInfo")
     public void addPlatformDirectoryInfo(PlatformDirectoryInfoAddDTO platformDirectoryInfoAddDTO){
         platformService.addPlatformDirectoryInfo(platformDirectoryInfoAddDTO);

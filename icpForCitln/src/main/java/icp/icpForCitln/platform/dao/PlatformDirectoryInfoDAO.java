@@ -9,9 +9,6 @@ package icp.icpForCitln.platform.dao;
 
 import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
 
-import java.util.List;
-
 public interface PlatformDirectoryInfoDAO {
     void saveTest(PlatformDirectoryInfo platformDirectoryInfo);     //存储测试接口
-    List<PlatformDirectoryInfo> getPlatformDirectoryInfoList();     //获取平台目录所有信息列表
 }

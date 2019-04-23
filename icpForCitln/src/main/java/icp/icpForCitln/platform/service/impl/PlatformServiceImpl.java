@@ -8,6 +8,7 @@
 package icp.icpForCitln.platform.service.impl;
 
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.GeneratedUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.platform.dao.*;
 import icp.icpForCitln.platform.dto.PlatformDirectoryInfoAddDTO;
@@ -112,7 +113,9 @@ public class PlatformServiceImpl implements PlatformService {
      */
     @Override
     public List<PlatformDirectoryInfo> getPlatformDirectoryInfoList() {
-        return platformDirectoryInfoDAO.getPlatformDirectoryInfoList();
+        PlatformDirectoryInfo platformDirectoryInfo = new PlatformDirectoryInfo();
+        platformDirectoryInfo.setPlatformDirectoryCode("45616");
+        return MongoUtil.select(platformDirectoryInfo);
     }
 
     /**
@@ -127,6 +130,7 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public void addPlatformDirectoryInfo(PlatformDirectoryInfoAddDTO platformDirectoryInfoAddDTO) {
         PlatformDirectoryInfo platformDirectoryInfo = BeanCopyUtil.copy(platformDirectoryInfoAddDTO, PlatformDirectoryInfo.class);
+        platformDirectoryInfo.setPlatformDirectoryCode(GeneratedUtil.generatedCode());
         MongoUtil.insert(platformDirectoryInfo);
     }
 }
