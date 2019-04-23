@@ -33,6 +33,7 @@ public class UserInfoCacheTest {
         UserInfo userInfo1 = new UserInfo();
 
         userInfo1.setId("testId3");
+        userInfo1.setUserCode("3333");
         userInfo1.setUserNum("num3");
         userInfo1.setUserPassword("pwd3");
         userInfo1.setUserName("uname3");

@@ -14,4 +14,5 @@ import java.util.List;
 public interface PlatformDirectoryInfoDAO {
     void saveTest(PlatformDirectoryInfo platformDirectoryInfo);     //存储测试接口
     List<PlatformDirectoryInfo> getPlatformDirectoryInfoList();     //获取平台目录所有信息列表
+    void addPlatformDirectoryInfo(PlatformDirectoryInfo platformDirectoryInfo);    //新增目录
 }

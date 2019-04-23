@@ -37,6 +37,7 @@ public class UserInfoRedisTest {
         UserInfo userInfo1 = new UserInfo();
 
         userInfo1.setId("testId1");
+        userInfo1.setUserCode("1111");
         userInfo1.setUserNum("num1");
         userInfo1.setUserPassword("pwd1");
         userInfo1.setUserName("uname1");
@@ -51,6 +52,7 @@ public class UserInfoRedisTest {
         UserInfo userInfo2 = new UserInfo();
 
         userInfo2.setId("testId2");
+        userInfo2.setUserCode("222");
         userInfo2.setUserNum("num2");
         userInfo2.setUserPassword("pwd2");
         userInfo2.setUserName("uname2");

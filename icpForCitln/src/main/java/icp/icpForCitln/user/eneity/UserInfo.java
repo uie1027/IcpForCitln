@@ -22,6 +22,8 @@ public class UserInfo extends CommonField implements Serializable {
 
     private static final String OBJECT_KEY = "USER_INFO";
 
+    @Field
+    private String userCode;    //用户编码
 
     @Field("USER_NUM")
     private String userNum;     //用户帐号

@@ -8,10 +8,14 @@
 package icp.icpForCitln.platform.controller;
 
 import icp.icpForCitln.common.result.CommonResult;
+import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.platform.dto.PlatformDirectoryInfoAddDTO;
 import icp.icpForCitln.platform.eneity.*;
 import icp.icpForCitln.platform.service.PlatformService;
+import icp.icpForCitln.platform.vo.PlatformDirectoryInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -165,6 +169,11 @@ public class PlatformController {
      */
     @GetMapping("/getPlatformDirectoryInfoList")
     public CommonResult getPlatformDirectoryInfoList(){
-        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, platformService.getPlatformDirectoryInfoList());
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(platformService.getPlatformDirectoryInfoList(), PlatformDirectoryInfoVO.class));
+    }
+
+    @PostMapping("/addPlatformDirectoryInfo")
+    public void addPlatformDirectoryInfo(PlatformDirectoryInfoAddDTO platformDirectoryInfoAddDTO){
+        platformService.addPlatformDirectoryInfo(platformDirectoryInfoAddDTO);
     }
 }

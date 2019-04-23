@@ -36,6 +36,7 @@ public class UserController {
         UserInfo userInfo = new UserInfo();
 
         userInfo.setId("testId");
+        userInfo.setUserCode("1111");
         userInfo.setUserNum("numlast");
         userInfo.setUserPassword("pwd");
         userInfo.setUserName("uname");
