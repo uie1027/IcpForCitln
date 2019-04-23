@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: CustomerInfoDto
+ * File Name: CustomerInfoDTO
  * Package Name: icp.icpForCitln.customer.dto
  * Date: 19/04/22 10:46
  * Copyright (c) 2019,All Rights Reserved.
@@ -13,7 +13,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class CustomerInfoDto {
+public class CustomerInfoDTO {
     private String companyCode;     //客户编码
     private String unifiedSocialCreditCode;     //统一社会信用代码
     private String companyName;     //公司名称

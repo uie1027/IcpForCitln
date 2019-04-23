@@ -10,7 +10,7 @@ package icp.icpForCitln.supplier.service.impl;
 
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.supplier.dao.SupplierInfoDao;
-import icp.icpForCitln.supplier.dto.SupplierInfoDto;
+import icp.icpForCitln.supplier.dto.SupplierInfoDTO;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import icp.icpForCitln.supplier.service.SupplierInfoService;
 import icp.icpForCitln.supplier.vo.SupplierInfoVO;
@@ -58,7 +58,7 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
     }
 
     @Override
-    public void updateSupplierInfo(SupplierInfoDto supplierInfoDto){
+    public void updateSupplierInfo(SupplierInfoDTO supplierInfoDto){
         /**
          * @author: guoxs  
          * @date: 19/04/18 10:04
@@ -84,7 +84,7 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
      * @return: void
      */
     @Override
-    public void saveSupplierInfo(SupplierInfoDto supplierInfoDto){
+    public void saveSupplierInfo(SupplierInfoDTO supplierInfoDto){
         SupplierInfo supplierInfo = new SupplierInfo();
         BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
 
@@ -101,7 +101,7 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
      * @return: icp.icpForCitln.supplier.vo.SupplierInfoVO
      */
     @Override
-    public SupplierInfoVO supplierInfoById(SupplierInfoDto supplierInfoDto){
+    public SupplierInfoVO supplierInfoById(SupplierInfoDTO supplierInfoDto){
         SupplierInfo supplierInfo = new SupplierInfo();
         SupplierInfoVO supplierInfoVO = new SupplierInfoVO();
         BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
@@ -123,7 +123,7 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
      * @return: void
      */
     @Override
-    public void deleteSupplierInfo(SupplierInfoDto supplierInfoDto){
+    public void deleteSupplierInfo(SupplierInfoDTO supplierInfoDto){
         SupplierInfo supplierInfo = new SupplierInfo();
         BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
 
@@ -140,7 +140,7 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
      * @return: void
      */
     @Override
-    public void frozenSupplierInfo(SupplierInfoDto supplierInfoDto){
+    public void frozenSupplierInfo(SupplierInfoDTO supplierInfoDto){
         SupplierInfo supplierInfo = new SupplierInfo();
         BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
 
@@ -157,7 +157,7 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
      * @return: void
      */
     @Override
-    public void thawSupplierInfo(SupplierInfoDto supplierInfoDto){
+    public void thawSupplierInfo(SupplierInfoDTO supplierInfoDto){
         SupplierInfo supplierInfo = new SupplierInfo();
         BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
 

@@ -9,7 +9,7 @@ package icp.icpForCitln.customer.service.impl;
 
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.customer.dao.CustomerInfoDAO;
-import icp.icpForCitln.customer.dto.CustomerInfoDto;
+import icp.icpForCitln.customer.dto.CustomerInfoDTO;
 import icp.icpForCitln.customer.eneity.CustomerInfo;
 import icp.icpForCitln.customer.service.CustomerService;
 import icp.icpForCitln.customer.vo.CustomerInfoVO;
@@ -50,7 +50,7 @@ public class CustomerServiceImpl implements CustomerService {
      * @return: void
      */
     @Override
-    public void saveCustomerInfo(CustomerInfoDto customerInfoDto){
+    public void saveCustomerInfo(CustomerInfoDTO customerInfoDto){
         CustomerInfo customerInfo = new CustomerInfo();
 
         BeanUtils.copyProperties(customerInfoDto,customerInfo);
@@ -92,7 +92,7 @@ public class CustomerServiceImpl implements CustomerService {
      * @return: void
      */
     @Override
-    public void updateCustomerInfo(CustomerInfoDto customerInfoDto){
+    public void updateCustomerInfo(CustomerInfoDTO customerInfoDto){
         CustomerInfo customerInfo = new CustomerInfo();
 
         BeanUtils.copyProperties(customerInfoDto,customerInfo);
@@ -110,7 +110,7 @@ public class CustomerServiceImpl implements CustomerService {
      * @return: icp.icpForCitln.customer.CustomerInfoVO
      */
     @Override
-    public CustomerInfoVO getCustomerInfoById(CustomerInfoDto customerInfoDto){
+    public CustomerInfoVO getCustomerInfoById(CustomerInfoDTO customerInfoDto){
         CustomerInfo customerInfo = new CustomerInfo();
         CustomerInfoVO customerInfoVO = new CustomerInfoVO();
         BeanUtils.copyProperties(customerInfoDto,customerInfo);
@@ -134,7 +134,7 @@ public class CustomerServiceImpl implements CustomerService {
      * @return: void
      */
     @Override
-    public void deleteCustomerInfo(CustomerInfoDto customerInfoDto){
+    public void deleteCustomerInfo(CustomerInfoDTO customerInfoDto){
         CustomerInfo customerInfo = new CustomerInfo();
 
         BeanUtils.copyProperties(customerInfoDto,customerInfo);

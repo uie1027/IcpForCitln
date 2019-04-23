@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: SupplierInfoDto
+ * File Name: SupplierInfoDTO
  * Package Name: icp.icpForCitln.supplier.dto
  * Date: 19/04/17 11:39
  * Copyright (c) 2019,All Rights Reserved.
@@ -13,7 +13,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class SupplierInfoDto {
+public class SupplierInfoDTO {
     private String companyCode;    //供应商编码
     private String unifiedSocialCreditCode;    //统一社会信用代码
     private String companyName;    //公司名称

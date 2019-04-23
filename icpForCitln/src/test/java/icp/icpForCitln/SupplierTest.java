@@ -9,7 +9,7 @@
 package icp.icpForCitln;
 
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.supplier.dto.SupplierInfoDto;
+import icp.icpForCitln.supplier.dto.SupplierInfoDTO;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import icp.icpForCitln.supplier.service.SupplierInfoService;
 import org.junit.Test;
@@ -72,14 +72,14 @@ public class SupplierTest {
 
     @Test
     public void supplierInfoById(){
-        SupplierInfoDto supplierInfoDto = new SupplierInfoDto();
+        SupplierInfoDTO supplierInfoDto = new SupplierInfoDTO();
         supplierInfoDto.setId("TEST1");
         System.out.println(supplierInfoService.supplierInfoById(supplierInfoDto));
     }
 
     @Test
     public void updateSupplierInfo(){
-        SupplierInfoDto supplierInfoDto = new SupplierInfoDto();
+        SupplierInfoDTO supplierInfoDto = new SupplierInfoDTO();
         supplierInfoDto.setId("TEST1");
         supplierInfoDto.setUnifiedSocialCreditCode("asddfsdcxv");
         supplierInfoDto.setCompanyName("huafe");
@@ -89,7 +89,7 @@ public class SupplierTest {
 
     @Test
     public void deleteSupplierInfo(){
-        SupplierInfoDto supplierInfoDto = new SupplierInfoDto();
+        SupplierInfoDTO supplierInfoDto = new SupplierInfoDTO();
 
         supplierInfoDto.setId("1");
 
