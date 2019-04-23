@@ -14,6 +14,9 @@ import icp.icpForCitln.user.eneity.UserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -22,7 +25,9 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class MongoUtil {
@@ -201,6 +206,64 @@ public class MongoUtil {
         return true;
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/23 13:19
+     * @since: JDK 1.8
+     *
+     * @description: 单表查询方法，带分页
+     * @param: [pageIndex, pageSize, model]
+     * @return: java.util.List
+     */
+    public static List select(Integer pageIndex, Integer pageSize, Object model){
+        if (model == null){
+            logger.info(model+"为空对象！");
+            return null;
+        }
+
+        Pageable pageable = PageRequest.of(pageIndex,pageSize);
+
+        Criteria criteria = new Criteria();
+        List<Criteria> criteriaList = new ArrayList<>();
+
+        Object obj;
+        String fieldName;
+
+        for (Field field:model.getClass().getDeclaredFields()){
+            try {
+                fieldName = field.getName();
+            }catch (Exception e){
+                logger.info("无法获取"+model+"对象");
+                return null;
+            }
+
+            String functionName = "get"+StringUtil.toInitialUpperCase(fieldName);
+
+            String mongoFieldName = StringUtil.toMongoDBField(fieldName);
+
+            try {
+                obj = model.getClass().getMethod(functionName).invoke(model, new Object[]{});
+            }catch (Exception e){
+                logger.info("无法获取"+model+"对象的值");
+                return null;
+            }
+
+            if (obj!=null){
+                Criteria cri = new Criteria(mongoFieldName).regex(obj.toString());
+                criteriaList.add(cri);
+            }
+        }
+
+        if (criteriaList.size()>0){
+            Criteria[] criteriaNum= criteriaList.toArray(new Criteria[criteriaList.size()]);
+            criteria.orOperator(criteriaNum);
+        }
+
+        Query query = new Query(criteria.and("IS_DELETE").is(2)).with(pageable).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
+
+        return mongoUtil.mongoTemplate.find(query,model.getClass());
+
+    }
 
     /**
      * @author: guoxs

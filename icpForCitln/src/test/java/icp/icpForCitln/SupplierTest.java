@@ -20,6 +20,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -101,10 +102,8 @@ public class SupplierTest {
     public void thawSupplierInfo(){
         SupplierInfo supplierInfo = new SupplierInfo();
 
-        supplierInfo.setCompanyCode("cc");
-        supplierInfo.setFrozen(2);
+        List<SupplierInfo> supplierInfoList = MongoUtil.select(0,10,supplierInfo);
 
-        MongoUtil.insert(supplierInfo);
-
+        System.out.println(supplierInfoList);
     }
 }
