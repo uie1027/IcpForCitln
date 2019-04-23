@@ -8,7 +8,7 @@
 
 package icp.icpForCitln;
 
-import icp.icpForCitln.common.util.MongoUpsertUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.supplier.dto.SupplierInfoDto;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import icp.icpForCitln.supplier.service.SupplierInfoService;
@@ -101,11 +101,10 @@ public class SupplierTest {
     public void thawSupplierInfo(){
         SupplierInfo supplierInfo = new SupplierInfo();
 
-        supplierInfo.setId("TEST1");
-        supplierInfo.setCompanyCode("guotestssasd");
+        supplierInfo.setCompanyCode("cc");
         supplierInfo.setFrozen(2);
 
-        System.out.println(MongoUpsertUtil.upsert(supplierInfo));
+        MongoUtil.insert(supplierInfo);
 
     }
 }

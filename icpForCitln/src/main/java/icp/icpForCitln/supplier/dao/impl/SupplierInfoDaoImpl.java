@@ -8,7 +8,7 @@
 
 package icp.icpForCitln.supplier.dao.impl;
 
-import icp.icpForCitln.common.util.MongoUpsertUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.supplier.dao.SupplierInfoDao;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,7 +104,7 @@ public class SupplierInfoDaoImpl implements SupplierInfoDao {
      */
     @Override
     public void updateSupplierInfo(SupplierInfo supplierInfo){
-        MongoUpsertUtil.upsert(supplierInfo);
+        MongoUtil.upsert(supplierInfo);
     }
 
     /**

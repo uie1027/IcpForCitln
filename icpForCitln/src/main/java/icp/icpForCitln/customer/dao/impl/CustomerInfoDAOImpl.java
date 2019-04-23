@@ -7,7 +7,7 @@
  */
 package icp.icpForCitln.customer.dao.impl;
 
-import icp.icpForCitln.common.util.MongoUpsertUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.customer.dao.CustomerInfoDAO;
 import icp.icpForCitln.customer.eneity.CustomerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,7 +105,7 @@ public class CustomerInfoDAOImpl implements CustomerInfoDAO {
      */
     @Override
     public void updateCustomerInfo(CustomerInfo customerInfo) {
-            MongoUpsertUtil.upsert(customerInfo);
+            MongoUtil.upsert(customerInfo);
     }
 
     /**
