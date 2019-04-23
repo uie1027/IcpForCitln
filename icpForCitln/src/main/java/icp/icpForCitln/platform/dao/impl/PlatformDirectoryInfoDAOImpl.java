@@ -56,18 +56,4 @@ public class PlatformDirectoryInfoDAOImpl implements PlatformDirectoryInfoDAO {
             return platformDirectoryInfoList;
         }
     }
-
-    /**
-     * @author: 方瑞冬
-     * @date: 2019-04-22 下午 2:12
-     * @since: JDK 1.8
-     *
-     * @description: 新增目录
-     * @param: [platformDirectoryInfo]
-     * @return: void
-     */
-    @Override
-    public void addPlatformDirectoryInfo(PlatformDirectoryInfo platformDirectoryInfo) {
-        mongoTemplate.save(platformDirectoryInfo);
-    }
 }

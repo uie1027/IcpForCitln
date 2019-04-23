@@ -12,6 +12,8 @@ import lombok.Data;
 @Data
 public class PlatformDirectoryInfoVO {      //目录返显
 
+    private String id;  //ID
+
     private String platformDirectoryCode;   //平台目录编码
 
     private String platformDirectoryName;   //平台目录名称

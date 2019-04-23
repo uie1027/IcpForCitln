@@ -8,7 +8,7 @@
 package icp.icpForCitln.platform.service.impl;
 
 import icp.icpForCitln.common.util.BeanCopyUtil;
-import icp.icpForCitln.common.util.SessionUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.platform.dao.*;
 import icp.icpForCitln.platform.dto.PlatformDirectoryInfoAddDTO;
 import icp.icpForCitln.platform.eneity.*;
@@ -16,7 +16,6 @@ import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -128,8 +127,6 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public void addPlatformDirectoryInfo(PlatformDirectoryInfoAddDTO platformDirectoryInfoAddDTO) {
         PlatformDirectoryInfo platformDirectoryInfo = BeanCopyUtil.copy(platformDirectoryInfoAddDTO, PlatformDirectoryInfo.class);
-        platformDirectoryInfo.setCreater(SessionUtil.getByKey("userNum"));
-        platformDirectoryInfo.setCreateTime(new Date());
-        platformDirectoryInfo.setLastMondifier(SessionUtil.getByKey("userNum"));
+        MongoUtil.insert(platformDirectoryInfo);
     }
 }
