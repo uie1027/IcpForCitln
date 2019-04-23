@@ -8,6 +8,7 @@
 package icp.icpForCitln.platform.service;
 
 import icp.icpForCitln.platform.dto.PlatformDirectoryInfoAddDTO;
+import icp.icpForCitln.platform.dto.PlatformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.eneity.*;
 
 import java.util.List;
@@ -20,4 +21,5 @@ public interface PlatformService {
     void platformMailDisplaySaveTest(PlatformMailDisplay platformMailDisplay);     //存储测试
     List<PlatformDirectoryInfo> getPlatformDirectoryInfoList(); //获取平台目录所有信息列表
     void addPlatformDirectoryInfo(PlatformDirectoryInfoAddDTO platformDirectoryInfoAddDTO);     //新增目录
+    void deletePlatformDirectoryInfo(PlatformDirectoryInfoDeleteDTO platformDirectoryInfoDeleteDTO);     //删除目录
 }

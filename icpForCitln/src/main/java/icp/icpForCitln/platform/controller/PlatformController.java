@@ -10,6 +10,7 @@ package icp.icpForCitln.platform.controller;
 import icp.icpForCitln.common.result.CommonResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.platform.dto.PlatformDirectoryInfoAddDTO;
+import icp.icpForCitln.platform.dto.PlatformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.eneity.*;
 import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.vo.PlatformDirectoryInfoVO;
@@ -184,5 +185,19 @@ public class PlatformController {
     @PostMapping("/addPlatformDirectoryInfo")
     public void addPlatformDirectoryInfo(PlatformDirectoryInfoAddDTO platformDirectoryInfoAddDTO){
         platformService.addPlatformDirectoryInfo(platformDirectoryInfoAddDTO);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-23 下午 3:31
+     * @since: JDK 1.8
+     *
+     * @description: 删除目录
+     * @param: [platformDirectoryInfoDeleteDTO]
+     * @return: void
+     */
+    @PostMapping("/deletePlatformDirectoryInfo")
+    public void deletePlatformDirectoryInfo(PlatformDirectoryInfoDeleteDTO platformDirectoryInfoDeleteDTO){
+        platformService.deletePlatformDirectoryInfo(platformDirectoryInfoDeleteDTO);
     }
 }

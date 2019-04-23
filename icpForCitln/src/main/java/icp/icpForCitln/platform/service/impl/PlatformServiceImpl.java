@@ -12,6 +12,7 @@ import icp.icpForCitln.common.util.GeneratedUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.platform.dao.*;
 import icp.icpForCitln.platform.dto.PlatformDirectoryInfoAddDTO;
+import icp.icpForCitln.platform.dto.PlatformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.eneity.*;
 import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -132,5 +133,20 @@ public class PlatformServiceImpl implements PlatformService {
         PlatformDirectoryInfo platformDirectoryInfo = BeanCopyUtil.copy(platformDirectoryInfoAddDTO, PlatformDirectoryInfo.class);
         platformDirectoryInfo.setPlatformDirectoryCode(GeneratedUtil.generatedCode());
         MongoUtil.insert(platformDirectoryInfo);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-23 下午 3:30
+     * @since: JDK 1.8
+     *
+     * @description: 删除目录
+     * @param: [platformDirectoryInfoDeleteDTO]
+     * @return: void
+     */
+    @Override
+    public void deletePlatformDirectoryInfo(PlatformDirectoryInfoDeleteDTO platformDirectoryInfoDeleteDTO) {
+        PlatformDirectoryInfo platformDirectoryInfo = BeanCopyUtil.copy(platformDirectoryInfoDeleteDTO, PlatformDirectoryInfo.class);
+        MongoUtil.delete(platformDirectoryInfo);
     }
 }
