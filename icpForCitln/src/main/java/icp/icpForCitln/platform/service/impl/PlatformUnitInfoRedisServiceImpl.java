@@ -30,7 +30,7 @@ public class PlatformUnitInfoRedisServiceImpl implements PlatformUnitInfoRedisSe
      */
     @Override
     public void put(PlatformUnitInfo platformUnitInfo) {
-        redisTemplate.opsForHash().put(platformUnitInfo.getObjectKey(), platformUnitInfo.getKey(), platformUnitInfo);
+        redisTemplate.opsForHash().put(platformUnitInfo.redisObjectKey(), platformUnitInfo.redisKey(), platformUnitInfo);
     }
 
     /**
@@ -44,7 +44,7 @@ public class PlatformUnitInfoRedisServiceImpl implements PlatformUnitInfoRedisSe
      */
     @Override
     public PlatformUnitInfo get(PlatformUnitInfo platformUnitInfo) {
-        return (PlatformUnitInfo) redisTemplate.opsForHash().get(platformUnitInfo.getObjectKey(), platformUnitInfo.getKey());
+        return (PlatformUnitInfo) redisTemplate.opsForHash().get(platformUnitInfo.redisObjectKey(), platformUnitInfo.redisKey());
     }
 
     /**
@@ -58,6 +58,6 @@ public class PlatformUnitInfoRedisServiceImpl implements PlatformUnitInfoRedisSe
      */
     @Override
     public void delete(PlatformUnitInfo platformUnitInfo) {
-        redisTemplate.opsForHash().delete(platformUnitInfo.getObjectKey(), platformUnitInfo.getKey());
+        redisTemplate.opsForHash().delete(platformUnitInfo.redisObjectKey(), platformUnitInfo.redisKey());
     }
 }

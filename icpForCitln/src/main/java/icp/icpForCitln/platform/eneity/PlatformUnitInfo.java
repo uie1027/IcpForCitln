@@ -20,7 +20,7 @@ public class PlatformUnitInfo extends CommonField implements Serializable {
 
     private static final long serialVersionUID = -7898194272883238670L;
 
-    private static final String OBJECT_KEY = "PLATFORMUNITINFO";
+    private static final String OBJECT_KEY = "PLATFORM_UNIT_INFO";
 
     @Field("UNIT_CODE")
     private String unitCode;    //单位编码
@@ -34,11 +34,11 @@ public class PlatformUnitInfo extends CommonField implements Serializable {
     @Field("UNIT_DESCRIPTION")
     private String unitDescription; //单位描述  例：米
 
-    public String getKey() {        //获取 Redis 存储键名
+    public String redisKey() {        //获取 Redis 存储键名
         return this.unitCode;
     }
 
-    public String getObjectKey() {      //Redis 存储块名
-        return OBJECT_KEY + this.unitVariety;
+    public String redisObjectKey() {      //Redis 存储块名
+        return OBJECT_KEY  + "_" + this.unitVariety;
     }
 }
