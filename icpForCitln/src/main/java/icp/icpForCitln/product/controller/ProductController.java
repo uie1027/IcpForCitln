@@ -8,6 +8,10 @@
 
 package icp.icpForCitln.product.controller;
 
+import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.GeneratedUtil;
+import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.product.dto.ProductAttribuitDefinitionAddDTO;
 import icp.icpForCitln.product.eneity.ProductAttribuit;
 import icp.icpForCitln.product.eneity.ProductAttribuitDefinition;
 import icp.icpForCitln.product.eneity.ProductAttribuitValue;
@@ -15,6 +19,7 @@ import icp.icpForCitln.product.eneity.ProductInfo;
 import icp.icpForCitln.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -144,5 +149,22 @@ public class ProductController {
         productInfo.setLastMondifier("w");
 
         productService.productInfoSaveTest(productInfo);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-24 下午 5:16
+     * @since: JDK 1.8
+     *
+     * @description: 新建产品属性
+     * @param: [productAttribuitDefinitionAddDTO]
+     * @return: void
+     */
+    @PostMapping("/addProductAttribuitDefinition")
+    public void addProductAttribuitDefinition(ProductAttribuitDefinitionAddDTO productAttribuitDefinitionAddDTO){
+        ProductAttribuitDefinition productAttribuitDefinition = BeanCopyUtil.copy(productAttribuitDefinitionAddDTO, ProductAttribuitDefinition.class);
+        productAttribuitDefinition.setProductAttribuitDefinitionCode(GeneratedUtil.generatedCode());
+
+        MongoUtil.insert(productAttribuitDefinition);
     }
 }

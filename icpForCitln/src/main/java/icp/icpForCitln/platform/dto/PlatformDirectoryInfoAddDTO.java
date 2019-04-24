@@ -10,7 +10,7 @@ package icp.icpForCitln.platform.dto;
 import lombok.Data;
 
 @Data
-public class PlatformDirectoryInfoAddDTO {
+public class PlatformDirectoryInfoAddDTO {      //新增目录
 
     private String platformDirectoryName;   //平台目录名称
 

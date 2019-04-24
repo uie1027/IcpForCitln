@@ -10,6 +10,6 @@ package icp.icpForCitln.platform.dto;
 import lombok.Data;
 
 @Data
-public class PlatformDirectoryInfoDeleteDTO {
+public class PlatformDirectoryInfoDeleteDTO {   //删除目录
     private String id;  //目录ID
 }
