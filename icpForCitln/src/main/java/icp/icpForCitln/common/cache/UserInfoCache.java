@@ -8,39 +8,18 @@
 package icp.icpForCitln.common.cache;
 
 import icp.icpForCitln.IcpForCitlnApplication;
+import icp.icpForCitln.common.util.RedisCommonUtil;
 import icp.icpForCitln.user.eneity.UserInfo;
-import icp.icpForCitln.user.service.UserInfoRedisService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-
-import javax.annotation.PostConstruct;
 
 @Component
 public class UserInfoCache {
     private final static Logger logger = LoggerFactory.getLogger(IcpForCitlnApplication.class);
 
-    @Autowired
-    private UserInfoRedisService userInfoRedisService;
-
     private static UserInfoCache userInfoCache;
-
-    /**
-     * @author: 方瑞冬
-     * @date: 2019-04-17 下午 1:29
-     * @since: JDK 1.8
-     *
-     * @description: 初始化 userInfoRedisService
-     * @param: []
-     * @return: void
-     */
-    @PostConstruct
-    public void init() {
-        userInfoCache = this;
-        userInfoCache.userInfoRedisService = this.userInfoRedisService;
-    }
 
     /**
      * @author: 方瑞冬
@@ -52,7 +31,7 @@ public class UserInfoCache {
      * @return: void
      */
     public static void put(UserInfo userInfo) {
-        userInfoCache.userInfoRedisService.put(userInfo);
+        RedisCommonUtil.put(userInfo);
     }
 
     /**
@@ -74,7 +53,7 @@ public class UserInfoCache {
 
         userInfo.setUserNum(userNum);
 
-        UserInfo userInfoResult = userInfoCache.userInfoRedisService.get(userInfo);
+        UserInfo userInfoResult = (UserInfo) RedisCommonUtil.get(userInfo);
         if(userInfoResult == null){
             logger.info("未查询到 " + userNum + " 用户信息");
             return null;
@@ -92,6 +71,6 @@ public class UserInfoCache {
 
         userInfo.setUserNum(userNum);
 
-        userInfoCache.userInfoRedisService.delete(userInfo);
+        RedisCommonUtil.delete(userInfo);
     }
 }

@@ -9,11 +9,11 @@ package icp.icpForCitln.platform.controller;
 
 import icp.icpForCitln.common.result.CommonResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.RedisCommonUtil;
 import icp.icpForCitln.platform.dto.PlatformDirectoryInfoAddDTO;
 import icp.icpForCitln.platform.dto.PlatformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.eneity.*;
 import icp.icpForCitln.platform.service.PlatformService;
-import icp.icpForCitln.platform.service.PlatformUnitInfoRedisService;
 import icp.icpForCitln.platform.vo.PlatformDirectoryInfoVO;
 import icp.icpForCitln.platform.vo.PlatformUnitInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +29,6 @@ import java.util.Date;
 public class PlatformController {
     @Autowired
     private PlatformService platformService;
-
-    @Autowired
-    private PlatformUnitInfoRedisService platformUnitInfoRedisService;
 
     /**
      * @author: 方瑞冬
@@ -220,6 +217,6 @@ public class PlatformController {
         PlatformUnitInfo platformUnitInfo = new PlatformUnitInfo();
         platformUnitInfo.setUnitVariety(1);
 
-        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(platformUnitInfoRedisService.getList(platformUnitInfo), PlatformUnitInfoVO.class));
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(RedisCommonUtil.getList(platformUnitInfo), PlatformUnitInfoVO.class));
     }
 }

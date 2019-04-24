@@ -1,25 +1,22 @@
 /**
  * Project Name: icpForCitln
- * File Name: PlatformUnitInfoRedisServiceTest
+ * File Name: PlatformUnitInfoRedisTest
  * Package Name: icp.icpForCitln
  * Date: 2019-04-18 上午 10:47
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
  */
 package icp.icpForCitln;
 
+import icp.icpForCitln.common.util.RedisCommonUtil;
 import icp.icpForCitln.platform.eneity.PlatformUnitInfo;
-import icp.icpForCitln.platform.service.PlatformUnitInfoRedisService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PlatformUnitInfoRedisServiceTest {
-    @Autowired
-    private PlatformUnitInfoRedisService platformUnitInfoRedisService;
+public class PlatformUnitInfoRedisTest {
 
     /**
      * @author: 方瑞冬
@@ -40,7 +37,7 @@ public class PlatformUnitInfoRedisServiceTest {
         platformUnitInfo1.setUnitValue("m");
         platformUnitInfo1.setUnitDescription("米");
 
-        platformUnitInfoRedisService.put(platformUnitInfo1);
+        RedisCommonUtil.put(platformUnitInfo1);
 
         PlatformUnitInfo platformUnitInfo2 = new PlatformUnitInfo();
 
@@ -50,7 +47,7 @@ public class PlatformUnitInfoRedisServiceTest {
         platformUnitInfo2.setUnitValue("RMB");
         platformUnitInfo2.setUnitDescription("人民币");
 
-        platformUnitInfoRedisService.put(platformUnitInfo2);
+        RedisCommonUtil.put(platformUnitInfo2);
     }
 
     /**
@@ -69,7 +66,7 @@ public class PlatformUnitInfoRedisServiceTest {
         platformUnitInfo.setUnitVariety(2);
         platformUnitInfo.setUnitCode("testCodexxxxxx");
 
-        System.out.println(platformUnitInfoRedisService.get(platformUnitInfo));
+        System.out.println(RedisCommonUtil.get(platformUnitInfo));
     }
 
     /**
@@ -88,7 +85,7 @@ public class PlatformUnitInfoRedisServiceTest {
         platformUnitInfo.setUnitVariety(2);
         platformUnitInfo.setUnitCode("testCodexxxxxx");
 
-        platformUnitInfoRedisService.delete(platformUnitInfo);
+        RedisCommonUtil.delete(platformUnitInfo);
     }
 
     /**
@@ -106,6 +103,6 @@ public class PlatformUnitInfoRedisServiceTest {
 
         platformUnitInfo.setUnitVariety(1);
 
-        System.out.println(platformUnitInfoRedisService.getList(platformUnitInfo));
+        System.out.println(RedisCommonUtil.getList(platformUnitInfo));
     }
 }
