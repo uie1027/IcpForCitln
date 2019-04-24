@@ -9,12 +9,15 @@
 package icp.icpForCitln.supplier.controller;
 
 
+import icp.icpForCitln.common.result.CommonResult;
+import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.GeneratedUtil;
+import icp.icpForCitln.supplier.dto.SupplierInfoDTO;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import icp.icpForCitln.supplier.service.SupplierInfoService;
+import icp.icpForCitln.supplier.vo.SupplierInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -56,11 +59,111 @@ public class SupplierInfoController {
         supplierInfoService.saveTest(supplierInfo);
     }
 
-    @RequestMapping("/supplierListByPage")
-    public void supplierListByPage(
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:30
+     * @since: JDK 1.8
+     *
+     * @description: 获取供应商信息
+     * @param: [pageIndex, pageSize, supplierInfoDTO]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @GetMapping("/supplierListByPage")
+    public CommonResult supplierListByPage(
             @RequestParam(value = "pageIndex" , defaultValue = "0" ) Integer pageIndex,
-            @RequestParam(value = "pageSize" , defaultValue = "10") Integer pageSize,
-            @RequestParam(value = "codeOrName" , defaultValue = "") String CodeOrName){
-        System.out.println(supplierInfoService.supplierListByPage(pageIndex,pageSize,CodeOrName));
+            @RequestParam(value = "pageSize" , defaultValue = "10") Integer pageSize, SupplierInfoDTO supplierInfoDTO){
+        return CommonResult.returnResult(CommonResult.ERROR_CODE,supplierInfoService.supplierListByPage(pageIndex,pageSize,supplierInfoDTO));
+    }
+
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:30
+     * @since: JDK 1.8
+     *
+     * @description: 保存供应商信息
+     * @param: [supplierInfoDto]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @PostMapping("/saveSupplierInfo")
+    public CommonResult saveSupplierInfo(SupplierInfoDTO supplierInfoDto){
+        supplierInfoDto.setCompanyCode(GeneratedUtil.generatedCode());
+        supplierInfoService.saveSupplierInfo(supplierInfoDto);
+        return CommonResult.returnResult(CommonResult.ERROR_CODE,null);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:30
+     * @since: JDK 1.8
+     *
+     * @description: 冻结供应商
+     * @param: [supplierInfoDto]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @PostMapping("/frozenSupplierInfo")
+    public CommonResult frozenSupplierInfo(SupplierInfoDTO supplierInfoDto){
+        supplierInfoService.frozenSupplierInfo(supplierInfoDto);
+        return CommonResult.returnResult(CommonResult.ERROR_CODE,null);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:29
+     * @since: JDK 1.8
+     *
+     * @description: 解冻供应商
+     * @param: [supplierInfoDto]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @PostMapping("/thawSupplierInfo")
+    public CommonResult thawSupplierInfo(SupplierInfoDTO supplierInfoDto){
+        supplierInfoService.thawSupplierInfo(supplierInfoDto);
+        return CommonResult.returnResult(CommonResult.ERROR_CODE,null);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:29
+     * @since: JDK 1.8
+     *
+     * @description: 编辑供应商信息
+     * @param: [supplierInfoDto]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @PostMapping("/updateSupplierInfo")
+    public CommonResult updateSupplierInfo(SupplierInfoDTO supplierInfoDto){
+        supplierInfoService.updateSupplierInfo(supplierInfoDto);
+        return CommonResult.returnResult(CommonResult.ERROR_CODE,null);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:29
+     * @since: JDK 1.8
+     *
+     * @description: 获取供应商详情
+     * @param: [supplierInfoDto]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @GetMapping("/supplierInfoById")
+    public CommonResult supplierInfoById(SupplierInfoDTO supplierInfoDto){
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,BeanCopyUtil.copy(supplierInfoService.supplierInfoById(supplierInfoDto), SupplierInfoVO.class));
+    }
+
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:29
+     * @since: JDK 1.8
+     *
+     * @description: 删除供应商信息
+     * @param: [supplierInfoDto]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @PostMapping("/deleteSupplierInfo")
+    public CommonResult deleteSupplierInfo(SupplierInfoDTO supplierInfoDto){
+        supplierInfoService.deleteSupplierInfo(supplierInfoDto);
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,null);
     }
 }

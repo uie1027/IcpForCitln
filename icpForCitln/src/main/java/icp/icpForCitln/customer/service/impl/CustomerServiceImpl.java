@@ -8,17 +8,15 @@
 package icp.icpForCitln.customer.service.impl;
 
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.customer.dao.CustomerInfoDAO;
 import icp.icpForCitln.customer.dto.CustomerInfoDTO;
 import icp.icpForCitln.customer.eneity.CustomerInfo;
 import icp.icpForCitln.customer.service.CustomerService;
 import icp.icpForCitln.customer.vo.CustomerInfoVO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -51,11 +49,8 @@ public class CustomerServiceImpl implements CustomerService {
      */
     @Override
     public void saveCustomerInfo(CustomerInfoDTO customerInfoDto){
-        CustomerInfo customerInfo = new CustomerInfo();
-
-        BeanUtils.copyProperties(customerInfoDto,customerInfo);
-
-        customerInfoDAO.saveCustomerInfo(customerInfo);
+        CustomerInfo customerInfo = BeanCopyUtil.copy(customerInfoDto,CustomerInfo.class);
+        MongoUtil.insert(customerInfo);
     }
 
     /**
@@ -68,18 +63,9 @@ public class CustomerServiceImpl implements CustomerService {
      * @return: java.util.List<icp.icpForCitln.customer.CustomerInfoVO>
      */
     @Override
-    public List<CustomerInfoVO> customerInfoListByPage(Integer pageIndex, Integer pageSize, String codeOrName){
-        List<CustomerInfo> customerInfos;
-        List<CustomerInfoVO> customerInfoVOS = new ArrayList<>();
-        if (codeOrName!="" && codeOrName!=null){
-            customerInfos = customerInfoDAO.customerInfoListByCodeOrName(pageIndex,pageSize,codeOrName);
-        }else {
-            customerInfos = customerInfoDAO.customerInfoListByPage(pageIndex, pageSize);
-        }
-        if (!CollectionUtils.isEmpty(customerInfos)){
-            customerInfoVOS = BeanCopyUtil.copy(customerInfos,CustomerInfoVO.class);
-        }
-        return customerInfoVOS;
+    public List<CustomerInfoVO> customerInfoListByPage(Integer pageIndex, Integer pageSize, CustomerInfoDTO customerInfoDto){
+        CustomerInfo customerInfo = BeanCopyUtil.copy(customerInfoDto,CustomerInfo.class);
+        return MongoUtil.select(pageIndex,pageSize,customerInfo);
     }
 
     /**
@@ -93,11 +79,8 @@ public class CustomerServiceImpl implements CustomerService {
      */
     @Override
     public void updateCustomerInfo(CustomerInfoDTO customerInfoDto){
-        CustomerInfo customerInfo = new CustomerInfo();
-
-        BeanUtils.copyProperties(customerInfoDto,customerInfo);
-
-        customerInfoDAO.updateCustomerInfo(customerInfo);
+        CustomerInfo customerInfo = BeanCopyUtil.copy(customerInfoDto,CustomerInfo.class);
+        MongoUtil.upsert(customerInfo);
     }
 
     /**
@@ -110,18 +93,9 @@ public class CustomerServiceImpl implements CustomerService {
      * @return: icp.icpForCitln.customer.CustomerInfoVO
      */
     @Override
-    public CustomerInfoVO getCustomerInfoById(CustomerInfoDTO customerInfoDto){
-        CustomerInfo customerInfo = new CustomerInfo();
-        CustomerInfoVO customerInfoVO = new CustomerInfoVO();
-        BeanUtils.copyProperties(customerInfoDto,customerInfo);
-        customerInfo = customerInfoDAO.getCustomerInfoById(customerInfo);
-
-        if (customerInfo!=null){
-            BeanUtils.copyProperties(customerInfo,customerInfoVO);
-            return customerInfoVO;
-        }
-
-        return null;
+    public CustomerInfo getCustomerInfoById(CustomerInfoDTO customerInfoDto){
+        CustomerInfo customerInfo = BeanCopyUtil.copy(customerInfoDto,CustomerInfo.class);
+        return (CustomerInfo) MongoUtil.select(customerInfo).get(0);
     }
 
     /**
@@ -135,10 +109,7 @@ public class CustomerServiceImpl implements CustomerService {
      */
     @Override
     public void deleteCustomerInfo(CustomerInfoDTO customerInfoDto){
-        CustomerInfo customerInfo = new CustomerInfo();
-
-        BeanUtils.copyProperties(customerInfoDto,customerInfo);
-
-        customerInfoDAO.deleteCustomerInfo(customerInfo);
+        CustomerInfo customerInfo = BeanCopyUtil.copy(customerInfoDto,CustomerInfo.class);
+        MongoUtil.delete(customerInfo);
     }
 }
