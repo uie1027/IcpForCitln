@@ -34,12 +34,11 @@ public class UserInfo extends CommonField implements Serializable {
     @Field("USER_NAME")
     private String userName;        //用户姓名
 
+    public String redisObjectKey() {      //Redis 存储块名
+        return OBJECT_KEY;
+    }
 
     public String redisKey() {        //获取 Redis 存储键名
         return this.userNum;
-    }
-
-    public String redisObjectKey() {      //Redis 存储块名
-        return OBJECT_KEY;
     }
 }
