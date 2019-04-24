@@ -26,7 +26,7 @@ public class PlatformUnitInfo extends CommonField implements Serializable {
     private String unitCode;    //单位编码
 
     @Field("UNIT_VARIETY")
-    private Integer unitVariety;    //单位种类 1，2，3，4
+    private Integer unitVariety;    //单位种类   1代表基本单位、2代表币种、3代表税率
 
     @Field("UNIT_VALUE")
     private String unitValue;   //单位属性值  例：m

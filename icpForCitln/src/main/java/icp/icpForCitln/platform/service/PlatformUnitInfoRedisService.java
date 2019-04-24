@@ -9,8 +9,11 @@ package icp.icpForCitln.platform.service;
 
 import icp.icpForCitln.platform.eneity.PlatformUnitInfo;
 
+import java.util.List;
+
 public interface PlatformUnitInfoRedisService {
     void put(PlatformUnitInfo platformUnitInfo);    //Redis 存储单位信息
-    PlatformUnitInfo get(PlatformUnitInfo platformUnitInfo);    //Redis 获取单位信息
+    PlatformUnitInfo get(PlatformUnitInfo platformUnitInfo);    //Redis 获取单个单位信息
     void delete(PlatformUnitInfo platformUnitInfo);    //Redis 删除单位信息
+    List<PlatformUnitInfo> getList(PlatformUnitInfo platformUnitInfo);      //Redis 获取多个单位信息
 }

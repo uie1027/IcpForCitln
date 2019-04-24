@@ -58,7 +58,7 @@ public class PlatformUnitInfoRedisServiceTest {
      * @date: 2019-04-18 上午 11:14
      * @since: JDK 1.8
      *
-     * @description: Redis 获取单位信息 测试
+     * @description: Redis 获取单个单位信息 测试
      * @param: []
      * @return: void
      */
@@ -89,5 +89,23 @@ public class PlatformUnitInfoRedisServiceTest {
         platformUnitInfo.setUnitCode("testCodexxxxxx");
 
         platformUnitInfoRedisService.delete(platformUnitInfo);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-24 上午 10:41
+     * @since: JDK 1.8
+     *
+     * @description: Redis 获取多个单位信息 测试
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void getList(){
+        PlatformUnitInfo platformUnitInfo = new PlatformUnitInfo();
+
+        platformUnitInfo.setUnitVariety(1);
+
+        System.out.println(platformUnitInfoRedisService.getList(platformUnitInfo));
     }
 }
