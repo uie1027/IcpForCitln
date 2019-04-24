@@ -9,13 +9,12 @@
 package icp.icpForCitln.supplier.service.impl;
 
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.supplier.dao.SupplierInfoDao;
 import icp.icpForCitln.supplier.dto.SupplierInfoDTO;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import icp.icpForCitln.supplier.service.SupplierInfoService;
-import icp.icpForCitln.supplier.vo.SupplierInfoVO;
 import icp.icpForCitln.supplier.vo.SupplierListVO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,37 +40,24 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
      * @return: java.util.List<icp.icpForCitln.supplier.vo.SupplierListVO>
      */
     @Override
-    public List<SupplierListVO> supplierListByPage(Integer pageIndex, Integer pageSize,String CodeOrName){
-        List<SupplierInfo> supplierInfos;
-        if (CodeOrName!="" && CodeOrName!=null){
-            supplierInfos = supplierInfoDao.supplierListByCodeOrName(pageIndex,pageSize,CodeOrName);
-        }else {
-            supplierInfos = supplierInfoDao.supplierListByPage(pageIndex,pageSize);
-        }
-
-        if(supplierInfos!=null && supplierInfos.size()>0) {
-            List<SupplierListVO> supplierListVOS;
-            supplierListVOS = BeanCopyUtil.copy(supplierInfos,SupplierListVO.class);
-            return supplierListVOS;
-        }
-        return null;
+    public List<SupplierListVO> supplierListByPage(Integer pageIndex, Integer pageSize,SupplierInfoDTO supplierInfoDTO){
+        SupplierInfo supplierInfo = BeanCopyUtil.copy(supplierInfoDTO,SupplierInfo.class);
+        return MongoUtil.select(pageIndex,pageSize,supplierInfo);
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/18 10:04
+     * @since: JDK 1.8
+     *
+     * @description: 修改供应商信息
+     * @param: [supplierInfoDto]
+     * @return: void
+     */
     @Override
     public void updateSupplierInfo(SupplierInfoDTO supplierInfoDto){
-        /**
-         * @author: guoxs  
-         * @date: 19/04/18 10:04
-         * @since: JDK 1.8
-         * 
-         * @description: 修改供应商信息 
-         * @param: [supplierInfoDto]
-         * @return: void
-         */
-        SupplierInfo supplierInfo = new SupplierInfo();
-        BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
-
-        supplierInfoDao.updateSupplierInfo(supplierInfo);
+        SupplierInfo supplierInfo = BeanCopyUtil.copy(supplierInfoDto,SupplierInfo.class);
+        MongoUtil.upsert(supplierInfo);
     }
 
     /**
@@ -85,10 +71,8 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
      */
     @Override
     public void saveSupplierInfo(SupplierInfoDTO supplierInfoDto){
-        SupplierInfo supplierInfo = new SupplierInfo();
-        BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
-
-        supplierInfoDao.saveSupplierInfo(supplierInfo);
+        SupplierInfo supplierInfo = BeanCopyUtil.copy(supplierInfoDto,SupplierInfo.class);
+        MongoUtil.insert(supplierInfo);
     }
 
     /**
@@ -101,16 +85,9 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
      * @return: icp.icpForCitln.supplier.vo.SupplierInfoVO
      */
     @Override
-    public SupplierInfoVO supplierInfoById(SupplierInfoDTO supplierInfoDto){
-        SupplierInfo supplierInfo = new SupplierInfo();
-        SupplierInfoVO supplierInfoVO = new SupplierInfoVO();
-        BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
-
-        supplierInfo = supplierInfoDao.supplierInfoById(supplierInfo);
-
-        BeanUtils.copyProperties(supplierInfo,supplierInfoVO);
-
-        return supplierInfoVO;
+    public SupplierInfo supplierInfoById(SupplierInfoDTO supplierInfoDto){
+        SupplierInfo supplierInfo = BeanCopyUtil.copy(supplierInfoDto,SupplierInfo.class);
+        return (SupplierInfo) MongoUtil.select(supplierInfo).get(0);
     }
 
     /**
@@ -124,10 +101,8 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
      */
     @Override
     public void deleteSupplierInfo(SupplierInfoDTO supplierInfoDto){
-        SupplierInfo supplierInfo = new SupplierInfo();
-        BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
-
-        supplierInfoDao.deleteSupplierInfo(supplierInfo);
+        SupplierInfo supplierInfo = BeanCopyUtil.copy(supplierInfoDto,SupplierInfo.class);
+        MongoUtil.delete(supplierInfo);
     }
 
     /**
@@ -141,9 +116,7 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
      */
     @Override
     public void frozenSupplierInfo(SupplierInfoDTO supplierInfoDto){
-        SupplierInfo supplierInfo = new SupplierInfo();
-        BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
-
+        SupplierInfo supplierInfo = BeanCopyUtil.copy(supplierInfoDto,SupplierInfo.class);
         supplierInfoDao.frozenSupplierInfo(supplierInfo);
     }
 
@@ -158,9 +131,7 @@ public class SupplierInfoServiceImpl implements SupplierInfoService {
      */
     @Override
     public void thawSupplierInfo(SupplierInfoDTO supplierInfoDto){
-        SupplierInfo supplierInfo = new SupplierInfo();
-        BeanUtils.copyProperties(supplierInfoDto,supplierInfo);
-
+        SupplierInfo supplierInfo = BeanCopyUtil.copy(supplierInfoDto,SupplierInfo.class);
         supplierInfoDao.thawSupplierInfo(supplierInfo);
     }
 }

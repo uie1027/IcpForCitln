@@ -7,10 +7,14 @@
  */
 package icp.icpForCitln.customer.controller;
 
+import icp.icpForCitln.common.result.CommonResult;
+import icp.icpForCitln.common.util.GeneratedUtil;
+import icp.icpForCitln.customer.dto.CustomerInfoDTO;
 import icp.icpForCitln.customer.eneity.CustomerInfo;
 import icp.icpForCitln.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -64,5 +68,80 @@ public class CustomerController {
         customerInfo.setIsDelete(2);
 
         customerService.customerInfoSaveTest(customerInfo);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:26
+     * @since: JDK 1.8
+     *
+     * @description: 储存客户信息
+     * @param: [customerInfoDto]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @PostMapping("/saveCustomerInfo")
+    public CommonResult saveCustomerInfo(CustomerInfoDTO customerInfoDto){
+        customerInfoDto.setId(GeneratedUtil.generatedCode());
+        customerService.saveCustomerInfo(customerInfoDto);
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,null);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:27
+     * @since: JDK 1.8
+     *
+     * @description: 编辑客户信息
+     * @param: [customerInfoDto]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @PostMapping("/updateCustomerInfo")
+    public CommonResult updateCustomerInfo(CustomerInfoDTO customerInfoDto){
+        customerService.updateCustomerInfo(customerInfoDto);
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,null);
+    }
+
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:28
+     * @since: JDK 1.8
+     *
+     * @description: 删除客户信息
+     * @param: [customerInfoDto]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @PostMapping("/deleteCustomerInfo")
+    public CommonResult deleteCustomerInfo(CustomerInfoDTO customerInfoDto){
+        customerService.deleteCustomerInfo(customerInfoDto);
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,null);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:28
+     * @since: JDK 1.8
+     *
+     * @description: 查询客户列表
+     * @param: [pageIndex, pageSize, customerInfoDto]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @GetMapping("/customerInfoListByPage")
+    public  CommonResult customerInfoListByPage(Integer pageIndex, Integer pageSize, CustomerInfoDTO customerInfoDto){
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,customerService.customerInfoListByPage(pageIndex,pageSize,customerInfoDto));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/04/24 17:28
+     * @since: JDK 1.8
+     *
+     * @description: 查询客户详情
+     * @param: [customerInfoDto]
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @GetMapping("/getCustomerInfoById")
+    public CommonResult getCustomerInfoById(CustomerInfoDTO customerInfoDto){
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,customerService.getCustomerInfoById(customerInfoDto));
     }
 }
