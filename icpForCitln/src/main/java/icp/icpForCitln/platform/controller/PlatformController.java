@@ -13,7 +13,9 @@ import icp.icpForCitln.platform.dto.PlatformDirectoryInfoAddDTO;
 import icp.icpForCitln.platform.dto.PlatformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.eneity.*;
 import icp.icpForCitln.platform.service.PlatformService;
+import icp.icpForCitln.platform.service.PlatformUnitInfoRedisService;
 import icp.icpForCitln.platform.vo.PlatformDirectoryInfoVO;
+import icp.icpForCitln.platform.vo.PlatformUnitInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +29,9 @@ import java.util.Date;
 public class PlatformController {
     @Autowired
     private PlatformService platformService;
+
+    @Autowired
+    private PlatformUnitInfoRedisService platformUnitInfoRedisService;
 
     /**
      * @author: 方瑞冬
@@ -199,5 +204,22 @@ public class PlatformController {
     @PostMapping("/deletePlatformDirectoryInfo")
     public void deletePlatformDirectoryInfo(PlatformDirectoryInfoDeleteDTO platformDirectoryInfoDeleteDTO){
         platformService.deletePlatformDirectoryInfo(platformDirectoryInfoDeleteDTO);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-24 上午 11:06
+     * @since: JDK 1.8
+     *
+     * @description: 获取基本单位下拉列表信息
+     * @param: []
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @GetMapping("/getPlatformBaseUnitList")
+    public CommonResult getPlatformBaseUnitList(){
+        PlatformUnitInfo platformUnitInfo = new PlatformUnitInfo();
+        platformUnitInfo.setUnitVariety(1);
+
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(platformUnitInfoRedisService.getList(platformUnitInfo), PlatformUnitInfoVO.class));
     }
 }
