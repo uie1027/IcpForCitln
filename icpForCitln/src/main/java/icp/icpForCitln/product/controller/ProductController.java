@@ -12,6 +12,7 @@ import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.product.dto.ProductAttribuitDefinitionAddDTO;
+import icp.icpForCitln.product.dto.ProductAttribuitDefinitionDeleteDTO;
 import icp.icpForCitln.product.eneity.ProductAttribuit;
 import icp.icpForCitln.product.eneity.ProductAttribuitDefinition;
 import icp.icpForCitln.product.eneity.ProductAttribuitValue;
@@ -166,5 +167,20 @@ public class ProductController {
         productAttribuitDefinition.setProductAttribuitDefinitionCode(GeneratedUtil.generatedCode());
 
         MongoUtil.insert(productAttribuitDefinition);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-24 下午 5:33
+     * @since: JDK 1.8
+     *
+     * @description: 删除产品属性
+     * @param: [productAttribuitDefinitionDeleteDTO]
+     * @return: void
+     */
+    @PostMapping("/deleteProductAttribuitDefinition")
+    public void deleteProductAttribuitDefinition(ProductAttribuitDefinitionDeleteDTO productAttribuitDefinitionDeleteDTO){
+        ProductAttribuitDefinition productAttribuitDefinition = BeanCopyUtil.copy(productAttribuitDefinitionDeleteDTO, ProductAttribuitDefinition.class);
+        MongoUtil.delete(productAttribuitDefinition);
     }
 }
