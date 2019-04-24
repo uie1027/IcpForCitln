@@ -8,11 +8,15 @@
 
 package icp.icpForCitln.productGroup.controller;
 
+import icp.icpForCitln.common.result.CommonResult;
+import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.RedisCommonUtil;
 import icp.icpForCitln.productGroup.entity.ProductGroupEnterpeiseAttribute;
 import icp.icpForCitln.productGroup.entity.ProductGroupInfo;
 import icp.icpForCitln.productGroup.entity.ProductGroupMailDisplay;
 import icp.icpForCitln.productGroup.entity.ProductGroupPlatformAttribute;
 import icp.icpForCitln.productGroup.service.ProductGroupService;
+import icp.icpForCitln.productGroup.vo.ProductGroupInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,5 +101,8 @@ public class ProductGroupController {
         productGroupService.productGroupPlatformAttributeSaveTest(productGroupPlatformAttribute);
     }
 
-
+    @GetMapping("/getProductGroupInfoList")
+    public CommonResult getProductGroupInfoList(){
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(RedisCommonUtil.getList(new ProductGroupInfo()), ProductGroupInfoVO.class));
+    }
 }
