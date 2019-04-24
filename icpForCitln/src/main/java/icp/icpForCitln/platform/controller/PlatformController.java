@@ -14,6 +14,7 @@ import icp.icpForCitln.platform.dto.PlatformDirectoryInfoAddDTO;
 import icp.icpForCitln.platform.dto.PlatformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.eneity.*;
 import icp.icpForCitln.platform.service.PlatformService;
+import icp.icpForCitln.platform.vo.PlatformBrandInfoVO;
 import icp.icpForCitln.platform.vo.PlatformDirectoryInfoVO;
 import icp.icpForCitln.platform.vo.PlatformUnitInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -218,5 +219,19 @@ public class PlatformController {
         platformUnitInfo.setUnitVariety(1);
 
         return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(RedisCommonUtil.getList(platformUnitInfo), PlatformUnitInfoVO.class));
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-24 下午 4:41
+     * @since: JDK 1.8
+     *
+     * @description: 品牌下拉列表获取
+     * @param: []
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @GetMapping("/getPlatformBrandInfoList")
+    public CommonResult getPlatformBrandInfoList(){
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(RedisCommonUtil.getList(new PlatformBrandInfo()), PlatformBrandInfoVO.class));
     }
 }

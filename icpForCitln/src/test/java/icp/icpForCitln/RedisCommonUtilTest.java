@@ -8,7 +8,10 @@
 package icp.icpForCitln;
 
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.GeneratedUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisCommonUtil;
+import icp.icpForCitln.platform.eneity.PlatformBrandInfo;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
 import icp.icpForCitln.user.eneity.UserInfo;
 import org.junit.Test;
@@ -144,5 +147,62 @@ public class RedisCommonUtilTest {
         platformDirectoryInfoT.setIsDelete(2);
 
         RedisCommonUtil.put(platformDirectoryInfoT);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-24 下午 4:04
+     * @since: JDK 1.8
+     *
+     * @description: 创建品牌表
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void brandInsert(){
+        PlatformBrandInfo platformBrandInfo = new PlatformBrandInfo();
+
+        platformBrandInfo.setBrandCode(GeneratedUtil.generatedCode());
+        platformBrandInfo.setBrandName("品牌1");
+
+        MongoUtil.insert(platformBrandInfo);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-24 下午 4:49
+     * @since: JDK 1.8
+     *
+     * @description: 品牌 Redis 测试
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void brandRedis(){
+        PlatformBrandInfo platformBrandInfo = new PlatformBrandInfo();
+
+        platformBrandInfo.setId(GeneratedUtil.generatedCode());
+        platformBrandInfo.setBrandCode(GeneratedUtil.generatedCode());
+        platformBrandInfo.setBrandName("品牌1");
+        platformBrandInfo.setCreater("testcreater");
+        platformBrandInfo.setCreateTime(new Date());
+        platformBrandInfo.setLastMondifier("lastman");
+        platformBrandInfo.setLastModificationTime(new Date());
+        platformBrandInfo.setIsDelete(2);
+
+        RedisCommonUtil.put(platformBrandInfo);
+
+        PlatformBrandInfo platformBrandInfo1 = new PlatformBrandInfo();
+
+        platformBrandInfo1.setId(GeneratedUtil.generatedCode());
+        platformBrandInfo1.setBrandCode(GeneratedUtil.generatedCode());
+        platformBrandInfo1.setBrandName("品牌1");
+        platformBrandInfo1.setCreater("testcreater");
+        platformBrandInfo1.setCreateTime(new Date());
+        platformBrandInfo1.setLastMondifier("lastman");
+        platformBrandInfo1.setLastModificationTime(new Date());
+        platformBrandInfo1.setIsDelete(2);
+
+        RedisCommonUtil.put(platformBrandInfo1);
     }
 }
