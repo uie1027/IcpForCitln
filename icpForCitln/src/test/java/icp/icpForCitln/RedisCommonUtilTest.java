@@ -9,6 +9,7 @@ package icp.icpForCitln;
 
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.RedisCommonUtil;
+import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
 import icp.icpForCitln.user.eneity.UserInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -99,5 +100,49 @@ public class RedisCommonUtilTest {
     public void getListTest(){
         List<UserInfo> userInfoList = BeanCopyUtil.copy(RedisCommonUtil.getList(new UserInfo()), UserInfo.class);
         System.out.println(userInfoList);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-24 下午 2:51
+     * @since: JDK 1.8
+     *
+     * @description: 平台目录 Redis 存储测试
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void platformDirectoryInfoPutTest(){
+        PlatformDirectoryInfo platformDirectoryInfo = new PlatformDirectoryInfo();
+
+        platformDirectoryInfo.setId("testId");
+        platformDirectoryInfo.setPlatformDirectoryCode("testCode");
+        platformDirectoryInfo.setPlatformDirectoryName("testName");
+        platformDirectoryInfo.setPlatformDirectoryLevel(1);
+        platformDirectoryInfo.setParenetPlatformDirectoryCode("1");
+        platformDirectoryInfo.setPlatformDirectoryDescription("备注测试");
+        platformDirectoryInfo.setCreater("testcreater");
+        platformDirectoryInfo.setCreateTime(new Date());
+        platformDirectoryInfo.setLastMondifier("lastman");
+        platformDirectoryInfo.setLastModificationTime(new Date());
+        platformDirectoryInfo.setIsDelete(2);
+
+        RedisCommonUtil.put(platformDirectoryInfo);
+
+        PlatformDirectoryInfo platformDirectoryInfoT = new PlatformDirectoryInfo();
+
+        platformDirectoryInfoT.setId("testId");
+        platformDirectoryInfoT.setPlatformDirectoryCode("testCodeT");
+        platformDirectoryInfoT.setPlatformDirectoryName("testName");
+        platformDirectoryInfoT.setPlatformDirectoryLevel(1);
+        platformDirectoryInfoT.setParenetPlatformDirectoryCode("1");
+        platformDirectoryInfoT.setPlatformDirectoryDescription("备注测试");
+        platformDirectoryInfoT.setCreater("testcreater");
+        platformDirectoryInfoT.setCreateTime(new Date());
+        platformDirectoryInfoT.setLastMondifier("lastman");
+        platformDirectoryInfoT.setLastModificationTime(new Date());
+        platformDirectoryInfoT.setIsDelete(2);
+
+        RedisCommonUtil.put(platformDirectoryInfoT);
     }
 }

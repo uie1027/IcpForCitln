@@ -172,7 +172,7 @@ public class PlatformController {
      */
     @GetMapping("/getPlatformDirectoryInfoList")
     public CommonResult getPlatformDirectoryInfoList(){
-        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(platformService.getPlatformDirectoryInfoList(), PlatformDirectoryInfoVO.class));
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(RedisCommonUtil.getList(new PlatformDirectoryInfo()), PlatformDirectoryInfoVO.class));
     }
 
     /**

@@ -18,8 +18,6 @@ import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class PlatformServiceImpl implements PlatformService {
     @Autowired
@@ -101,22 +99,6 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public void platformMailDisplaySaveTest(PlatformMailDisplay platformMailDisplay) {
         platformMailDisplayDAO.saveTest(platformMailDisplay);
-    }
-
-    /**
-     * @author: 方瑞冬
-     * @date: 2019-04-22 下午 1:57
-     * @since: JDK 1.8
-     *
-     * @description: 获取平台目录所有信息列表
-     * @param: []
-     * @return: java.util.List<icp.icpForCitln.platform.eneity.PlatformDirectoryInfo>
-     */
-    @Override
-    public List<PlatformDirectoryInfo> getPlatformDirectoryInfoList() {
-        PlatformDirectoryInfo platformDirectoryInfo = new PlatformDirectoryInfo();
-        platformDirectoryInfo.setPlatformDirectoryCode("45616");
-        return MongoUtil.select(platformDirectoryInfo);
     }
 
     /**

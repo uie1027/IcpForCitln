@@ -12,9 +12,15 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.io.Serializable;
+
 @Data
 @Document(collection = "PLATFORM_DIRECTORY_INFO")   //平台目录表
-public class PlatformDirectoryInfo extends CommonField {
+public class PlatformDirectoryInfo extends CommonField implements Serializable {
+
+    private static final long serialVersionUID = -7898194272883238670L;
+
+    private static final String OBJECT_KEY = "PLATFORM_DIRECTORY_INFO";
 
     @Field("PLATFORM_DIRECTORY_CODE")
     private String platformDirectoryCode;   //平台目录编码
@@ -30,4 +36,12 @@ public class PlatformDirectoryInfo extends CommonField {
 
     @Field("PLATFORM_DIRECTORY_DESCRIPTION")
     private String platformDirectoryDescription;       //平台目录备注
+
+    public String redisObjectKey() {      //Redis 存储块名
+        return OBJECT_KEY;
+    }
+
+    public String redisKey() {        //获取 Redis 存储键名
+        return this.platformDirectoryCode;
+    }
 }
