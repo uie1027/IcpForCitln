@@ -16,6 +16,7 @@ import icp.icpForCitln.platform.eneity.*;
 import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.vo.PlatformBrandInfoVO;
 import icp.icpForCitln.platform.vo.PlatformDirectoryInfoVO;
+import icp.icpForCitln.platform.vo.PlatformMailDisplayVO;
 import icp.icpForCitln.platform.vo.PlatformUnitInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -233,5 +234,19 @@ public class PlatformController {
     @GetMapping("/getPlatformBrandInfoList")
     public CommonResult getPlatformBrandInfoList(){
         return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(RedisCommonUtil.getList(new PlatformBrandInfo()), PlatformBrandInfoVO.class));
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-25 上午 10:25
+     * @since: JDK 1.8
+     *
+     * @description: 商城展示多选 获取
+     * @param: []
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @GetMapping("/getPlatformMailDisplayList")
+    public CommonResult getPlatformMailDisplayList(){
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(RedisCommonUtil.getList(new PlatformMailDisplay()), PlatformMailDisplayVO.class));
     }
 }

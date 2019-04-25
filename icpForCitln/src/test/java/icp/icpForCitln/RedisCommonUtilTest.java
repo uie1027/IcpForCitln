@@ -13,6 +13,7 @@ import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisCommonUtil;
 import icp.icpForCitln.platform.eneity.PlatformBrandInfo;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
+import icp.icpForCitln.platform.eneity.PlatformMailDisplay;
 import icp.icpForCitln.product.eneity.ProductAttribuitDefinition;
 import icp.icpForCitln.user.eneity.UserInfo;
 import org.junit.Test;
@@ -248,5 +249,43 @@ public class RedisCommonUtilTest {
         productAttribuitDefinition1.setLastMondifier("w");
 
         RedisCommonUtil.put(productAttribuitDefinition1);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-25 上午 10:14
+     * @since: JDK 1.8
+     *
+     * @description: 商城展示 Redis 测试
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void PlatformMailDisplayRedis(){
+        PlatformMailDisplay platformMailDisplay = new PlatformMailDisplay();
+
+        platformMailDisplay.setId(GeneratedUtil.generatedCode());
+        platformMailDisplay.setMailDisplayCode(GeneratedUtil.generatedCode());
+        platformMailDisplay.setMailName("测试工业产品超市");
+        platformMailDisplay.setCreater("testcreater");
+        platformMailDisplay.setCreateTime(new Date());
+        platformMailDisplay.setLastMondifier("lastman");
+        platformMailDisplay.setLastModificationTime(new Date());
+        platformMailDisplay.setIsDelete(2);
+
+        RedisCommonUtil.put(platformMailDisplay);
+
+        PlatformMailDisplay platformMailDisplay1 = new PlatformMailDisplay();
+
+        platformMailDisplay1.setId(GeneratedUtil.generatedCode());
+        platformMailDisplay1.setMailDisplayCode(GeneratedUtil.generatedCode());
+        platformMailDisplay1.setMailName("测试集采中心");
+        platformMailDisplay1.setCreater("testcreater");
+        platformMailDisplay1.setCreateTime(new Date());
+        platformMailDisplay1.setLastMondifier("lastman");
+        platformMailDisplay1.setLastModificationTime(new Date());
+        platformMailDisplay1.setIsDelete(2);
+
+        RedisCommonUtil.put(platformMailDisplay1);
     }
 }
