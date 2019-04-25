@@ -196,7 +196,7 @@ public class ProductController {
      * @param: []
      * @return: icp.icpForCitln.common.result.CommonResult
      */
-    @GetMapping("/getProductAttribuitDefinition")
+    @GetMapping("/getProductAttribuitDefinitionList")
     public CommonResult getProductAttribuitDefinition(){
         return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(RedisCommonUtil.getList(new ProductAttribuitDefinition()), ProductAttribuitDefinitionVO.class));
     }
