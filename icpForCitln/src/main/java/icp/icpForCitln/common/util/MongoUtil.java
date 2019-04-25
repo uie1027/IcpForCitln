@@ -91,7 +91,7 @@ public class MongoUtil {
             String mongoFieldName = StringUtil.toMongoDBField(fieldName);
 
             try {
-                obj = model.getClass().getMethod(functionName).invoke(model, new Object[]{});
+                obj = model.getClass().getMethod(functionName).invoke(model, null);
             }catch (Exception e){
                 logger.info("无法获取"+model+"对象的值");
                 return false;
@@ -269,7 +269,7 @@ public class MongoUtil {
     public  Query getQuery(Object model){
         Query query;
         try {
-            query = new Query(Criteria.where("_id").is(model.getClass().getMethod("getId").invoke(model, new Object[]{})));
+            query = new Query(Criteria.where("_id").is(model.getClass().getMethod("getId").invoke(model,null)));
         }catch (Exception e){
             logger.info("无法获取"+model+"对象");
             return null;
@@ -312,7 +312,7 @@ public class MongoUtil {
             String mongoFieldName = StringUtil.toMongoDBField(fieldName);
 
             try {
-                obj = model.getClass().getMethod(functionName).invoke(model, new Object[]{});
+                obj = model.getClass().getMethod(functionName).invoke(model,null);
             }catch (Exception e){
                 logger.info("无法获取"+model+"对象的值");
                 return null;

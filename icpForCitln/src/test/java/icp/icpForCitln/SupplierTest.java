@@ -67,11 +67,6 @@ public class SupplierTest {
     }
 
     @Test
-    public void supplierListByPage(){
-        System.out.println(supplierInfoService.supplierListByPage(0,20,""));
-    }
-
-    @Test
     public void supplierInfoById(){
         SupplierInfoDTO supplierInfoDto = new SupplierInfoDTO();
         supplierInfoDto.setId("TEST1");
