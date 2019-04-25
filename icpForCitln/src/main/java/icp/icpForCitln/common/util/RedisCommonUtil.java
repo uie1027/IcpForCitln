@@ -51,7 +51,19 @@ public class RedisCommonUtil {
      * @return: void
      */
     public static void put(Object object){
-        redisCommonUtil.redisTemplate.opsForHash().put(getRedisObjectKey(object), getRedisKey(object), object);
+        if(StringUtil.isEmpty(getRedisObjectKey(object))){
+            logger.info("Hash 值为空，保存数据失败");
+            return;
+        }
+        if(StringUtil.isEmpty(getRedisKey(object))){
+            logger.info("Hash key 值为空，保存数据失败");
+            return;
+        }
+        try {
+            redisCommonUtil.redisTemplate.opsForHash().put(getRedisObjectKey(object), getRedisKey(object), object);
+        } catch (Exception e){
+            logger.error("保存信息失败" + e);
+        }
     }
 
     /**
@@ -64,7 +76,20 @@ public class RedisCommonUtil {
      * @return: java.lang.Object
      */
     public static Object get(Object object){
-        return redisCommonUtil.redisTemplate.opsForHash().get(getRedisObjectKey(object), getRedisKey(object));
+        if(StringUtil.isEmpty(getRedisObjectKey(object))){
+            logger.info("Hash 值为空，未查询到数据");
+            return null;
+        }
+        if(StringUtil.isEmpty(getRedisKey(object))){
+            logger.info("Hash key 值为空，未查询到数据");
+            return null;
+        }
+        try{
+            return redisCommonUtil.redisTemplate.opsForHash().get(getRedisObjectKey(object), getRedisKey(object));
+        } catch (Exception e){
+            logger.error("查询信息失败" + e);
+            return null;
+        }
     }
 
     /**
@@ -77,7 +102,19 @@ public class RedisCommonUtil {
      * @return: void
      */
     public static void delete(Object object){
-        redisCommonUtil.redisTemplate.opsForHash().delete(getRedisObjectKey(object), getRedisKey(object));
+        if(StringUtil.isEmpty(getRedisObjectKey(object))){
+            logger.info("Hash 值为空，删除数据失败");
+            return;
+        }
+        if(StringUtil.isEmpty(getRedisKey(object))){
+            logger.info("Hash key 值为空，删除数据失败");
+            return;
+        }
+        try {
+            redisCommonUtil.redisTemplate.opsForHash().delete(getRedisObjectKey(object), getRedisKey(object));
+        } catch (Exception e){
+            logger.error("删除数据失败" + e);
+        }
     }
 
     /**
@@ -90,7 +127,16 @@ public class RedisCommonUtil {
      * @return: java.util.List<java.lang.Object>
      */
     public static List<Object> getList(Object object){
-        return redisCommonUtil.redisTemplate.opsForHash().values(getRedisObjectKey(object));
+        if(StringUtil.isEmpty(getRedisObjectKey(object))){
+            logger.info("Hash 值为空，未查询到数据");
+            return null;
+        }
+        try {
+            return redisCommonUtil.redisTemplate.opsForHash().values(getRedisObjectKey(object));
+        } catch (Exception e){
+            logger.error("查询信息失败" + e);
+            return null;
+        }
     }
 
     /**
