@@ -8,9 +8,11 @@
 
 package icp.icpForCitln.product.controller;
 
+import icp.icpForCitln.common.result.CommonResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedUtil;
 import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.common.util.RedisCommonUtil;
 import icp.icpForCitln.product.dto.ProductAttribuitDefinitionAddDTO;
 import icp.icpForCitln.product.dto.ProductAttribuitDefinitionDeleteDTO;
 import icp.icpForCitln.product.eneity.ProductAttribuit;
@@ -18,6 +20,7 @@ import icp.icpForCitln.product.eneity.ProductAttribuitDefinition;
 import icp.icpForCitln.product.eneity.ProductAttribuitValue;
 import icp.icpForCitln.product.eneity.ProductInfo;
 import icp.icpForCitln.product.service.ProductService;
+import icp.icpForCitln.product.vo.ProductAttribuitDefinitionVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -182,5 +185,19 @@ public class ProductController {
     public void deleteProductAttribuitDefinition(ProductAttribuitDefinitionDeleteDTO productAttribuitDefinitionDeleteDTO){
         ProductAttribuitDefinition productAttribuitDefinition = BeanCopyUtil.copy(productAttribuitDefinitionDeleteDTO, ProductAttribuitDefinition.class);
         MongoUtil.delete(productAttribuitDefinition);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-25 上午 9:34
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性 多选 返回
+     * @param: []
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
+    @GetMapping("/getProductAttribuitDefinition")
+    public CommonResult getProductAttribuitDefinition(){
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(RedisCommonUtil.getList(new ProductAttribuitDefinition()), ProductAttribuitDefinitionVO.class));
     }
 }

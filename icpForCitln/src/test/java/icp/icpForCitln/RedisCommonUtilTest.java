@@ -13,6 +13,7 @@ import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisCommonUtil;
 import icp.icpForCitln.platform.eneity.PlatformBrandInfo;
 import icp.icpForCitln.platform.eneity.PlatformDirectoryInfo;
+import icp.icpForCitln.product.eneity.ProductAttribuitDefinition;
 import icp.icpForCitln.user.eneity.UserInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -204,5 +205,48 @@ public class RedisCommonUtilTest {
         platformBrandInfo1.setIsDelete(2);
 
         RedisCommonUtil.put(platformBrandInfo1);
+    }
+
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-25 上午 9:59
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性 Redis 测试
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void ProductAttribuitDefinitionRedis(){
+        ProductAttribuitDefinition productAttribuitDefinition = new ProductAttribuitDefinition();
+
+        productAttribuitDefinition.setProductAttribuitDefinitionCode(GeneratedUtil.generatedCode());
+        productAttribuitDefinition.setProductAttribuitDefinitionName("测试产品属性1");
+        productAttribuitDefinition.setProductAttribuitDefinitionType("2");
+        productAttribuitDefinition.setUnitCode("!");
+        productAttribuitDefinition.setCreater("s");
+        productAttribuitDefinition.setCreateTime(new Date());
+        productAttribuitDefinition.setId("1");
+        productAttribuitDefinition.setIsDelete(0);
+        productAttribuitDefinition.setLastModificationTime(new Date());
+        productAttribuitDefinition.setLastMondifier("w");
+
+        RedisCommonUtil.put(productAttribuitDefinition);
+
+        ProductAttribuitDefinition productAttribuitDefinition1 = new ProductAttribuitDefinition();
+
+        productAttribuitDefinition1.setProductAttribuitDefinitionCode(GeneratedUtil.generatedCode());
+        productAttribuitDefinition1.setProductAttribuitDefinitionName("测试产品属性2");
+        productAttribuitDefinition1.setProductAttribuitDefinitionType("2");
+        productAttribuitDefinition1.setUnitCode("!");
+        productAttribuitDefinition1.setCreater("s");
+        productAttribuitDefinition1.setCreateTime(new Date());
+        productAttribuitDefinition1.setId("1");
+        productAttribuitDefinition1.setIsDelete(0);
+        productAttribuitDefinition1.setLastModificationTime(new Date());
+        productAttribuitDefinition1.setLastMondifier("w");
+
+        RedisCommonUtil.put(productAttribuitDefinition1);
     }
 }

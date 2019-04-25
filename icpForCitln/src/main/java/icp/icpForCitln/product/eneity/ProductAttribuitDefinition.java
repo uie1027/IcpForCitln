@@ -13,9 +13,15 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.io.Serializable;
+
 @Data
 @Document(collection = "PRODUCT_ATTRIBUIT_DEFINITION")  //定义企业产品属性
-public class ProductAttribuitDefinition extends CommonField {
+public class ProductAttribuitDefinition extends CommonField implements Serializable {
+    private static final long serialVersionUID = -7898194272883238670L;
+
+    private static final String OBJECT_KEY = "PRODUCT_ATTRIBUIT_DEFINITION";
+
     @Field("PRODUCT_ATTRIBUIT_DEFINITION_CODE")
     private String productAttribuitDefinitionCode; //企业产品属性编码
 
@@ -27,4 +33,12 @@ public class ProductAttribuitDefinition extends CommonField {
 
     @Field("UNIT_CODE")
     private String unitCode; //单位编码
+
+    public String redisObjectKey() {      //Redis 存储块名
+        return OBJECT_KEY;
+    }
+
+    public String redisKey() {        //获取 Redis 存储键名
+        return this.productAttribuitDefinitionCode;
+    }
 }
