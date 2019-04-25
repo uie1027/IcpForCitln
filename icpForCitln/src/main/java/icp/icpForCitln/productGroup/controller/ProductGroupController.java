@@ -101,6 +101,15 @@ public class ProductGroupController {
         productGroupService.productGroupPlatformAttributeSaveTest(productGroupPlatformAttribute);
     }
 
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-25 上午 10:36
+     * @since: JDK 1.8
+     *
+     * @description: 产品组下拉列表获取
+     * @param: []
+     * @return: icp.icpForCitln.common.result.CommonResult
+     */
     @GetMapping("/getProductGroupInfoList")
     public CommonResult getProductGroupInfoList(){
         return CommonResult.returnResult(CommonResult.SUCCESS_CODE, BeanCopyUtil.copy(RedisCommonUtil.getList(new ProductGroupInfo()), ProductGroupInfoVO.class));
