@@ -7,8 +7,22 @@
  */
 package icp.icpForCitln.pricePorchase.service;
 
-import icp.icpForCitln.pricePorchase.eneity.PricePurchaseProductSupplier;
+import icp.icpForCitln.pricePorchase.dto.PricePurchaseProductSupplierDTO;
+import icp.icpForCitln.pricePorchase.vo.PricePurchaseProductSupplierVO;
+
+import java.util.List;
 
 public interface PricePurchaseService {
-    void pricePurchaseProductSupplierSaveTest(PricePurchaseProductSupplier pricePurchaseProductSupplier);     //存储测试
+    void pricePurchaseProductSupplierSave(
+            PricePurchaseProductSupplierDTO pricePurchaseProductSupplierDTO);     //存储测试
+
+    void pricePurchaseProductSupplierUpdate(PricePurchaseProductSupplierDTO pricePurchaseProductSupplierDTO);
+
+
+    void pricePurchaseProductSupplierDelete(List<PricePurchaseProductSupplierDTO> list);
+
+
+    List<PricePurchaseProductSupplierVO> pricePurchaseProductSupplierFindByPage(
+            PricePurchaseProductSupplierDTO pricePurchaseProductSupplierDTO ,
+            Integer pageIndex,Integer pageSize);
 }

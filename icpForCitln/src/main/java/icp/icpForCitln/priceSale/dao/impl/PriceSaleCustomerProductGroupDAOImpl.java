@@ -36,7 +36,7 @@ public class PriceSaleCustomerProductGroupDAOImpl implements PriceSaleCustomerPr
      * @return: void
      */
     @Override
-    public void priceSaleCustomerProductGroupSaveTest(PriceSaleCustomerProductGroup priceSaleCustomerProductGroup){
+    public void priceSaleCustomerProductGroupSave(PriceSaleCustomerProductGroup priceSaleCustomerProductGroup){
         mongoTemplate.save(priceSaleCustomerProductGroup);
     }
 
@@ -51,7 +51,7 @@ public class PriceSaleCustomerProductGroupDAOImpl implements PriceSaleCustomerPr
      * @return: void
      */
     @Override
-    public void priceSaleCustomerProducGrouptDel(List<String> idParam) {
+    public void priceSaleCustomerProducGrouptDelete(List<String> idParam) {
         Criteria criteria = Criteria.where("_id").in(idParam);
         Query query = Query.query(criteria);
         //TODO 操作人和最后修改时间

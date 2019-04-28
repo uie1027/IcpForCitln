@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: PriceSaleProductGroupDto
+ * File Name: PriceSaleProductGroupDTO
  * Package Name: icp.icpForCitln.priceSale.vo
  * Date: 2019/4/16 10:00
  * Copyright (c) 2019,All Rights Reserved.
@@ -13,7 +13,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class PriceSaleProductGroupDto {
+public class PriceSaleProductGroupDTO {
 
     private String id; //主键
 

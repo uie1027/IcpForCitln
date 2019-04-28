@@ -36,7 +36,7 @@ public class PriceSaleProductGroupDAOImpl implements PriceSaleProductGroupDAO {
      * @return: void
      */
     @Override
-    public void priceSaleProductGroupSaveTest(PriceSaleProductGroup priceSaleProductGroup){
+    public void priceSaleProductGroupSave(PriceSaleProductGroup priceSaleProductGroup){
         mongoTemplate.save(priceSaleProductGroup);
     }
 
@@ -50,7 +50,7 @@ public class PriceSaleProductGroupDAOImpl implements PriceSaleProductGroupDAO {
      * @return: void
      */
     @Override
-    public void priceSaleProductGroupDel(List<String> idParam) {
+    public void priceSaleProductGroupDelete(List<String> idParam) {
 
         Criteria criteria = Criteria.where("_id").in(idParam);
         Query query = Query.query(criteria);

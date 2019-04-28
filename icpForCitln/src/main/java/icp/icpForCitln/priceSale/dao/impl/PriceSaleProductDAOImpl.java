@@ -8,6 +8,7 @@
 
 package icp.icpForCitln.priceSale.dao.impl;
 
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.priceSale.dao.PriceSaleProductDAO;
 import icp.icpForCitln.priceSale.eneity.PriceSaleProduct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,8 @@ public class PriceSaleProductDAOImpl implements PriceSaleProductDAO {
      * @return: void
      */
     @Override
-    public void priceSaleProductSaveTest(PriceSaleProduct priceSaleProduct){
-        mongoTemplate.save(priceSaleProduct);
+    public void priceSaleProductSave(PriceSaleProduct priceSaleProduct){
+        MongoUtil.insert(priceSaleProduct);
     }
 
 
@@ -51,7 +52,7 @@ public class PriceSaleProductDAOImpl implements PriceSaleProductDAO {
      * @return: void
      */
     @Override
-    public void priceSaleProductDel( List<String> idParam) {
+    public void priceSaleProductDelete( List<String> idParam) {
         Criteria criteria = Criteria.where("_id").in(idParam);
         Query query = Query.query(criteria);
         //TODO 操作人和最后修改时间

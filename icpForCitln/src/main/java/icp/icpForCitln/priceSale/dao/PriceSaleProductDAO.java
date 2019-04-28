@@ -5,9 +5,9 @@ import icp.icpForCitln.priceSale.eneity.PriceSaleProduct;
 import java.util.List;
 
 public interface PriceSaleProductDAO {
-    void priceSaleProductSaveTest(PriceSaleProduct priceSaleProduct); //存储测试接口
+    void priceSaleProductSave(PriceSaleProduct priceSaleProduct); //存储测试接口
 
-    void priceSaleProductDel(List<String> idParam);
+    void priceSaleProductDelete(List<String> idParam);
 
     void priceSaleProductUpdate(List<PriceSaleProduct> list);
 

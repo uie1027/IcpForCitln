@@ -36,12 +36,12 @@ public class PriceSaleCustomerProductDAOImpl implements PriceSaleCustomerProduct
      * @return: void
      */
     @Override
-    public void priceSaleCustomerProductSaveTest(PriceSaleCustomerProduct priceSaleCustomerProduct){
+    public void priceSaleCustomerProductSave(PriceSaleCustomerProduct priceSaleCustomerProduct){
         mongoTemplate.save(priceSaleCustomerProduct);
     }
 
     @Override
-    public void priceSaleCustomerProductDel(List<String> idParam) {
+    public void priceSaleCustomerProductDelete(List<String> idParam) {
         Criteria criteria = Criteria.where("_id").in(idParam);
         Query query = Query.query(criteria);
         //TODO 操作人和最后修改时间

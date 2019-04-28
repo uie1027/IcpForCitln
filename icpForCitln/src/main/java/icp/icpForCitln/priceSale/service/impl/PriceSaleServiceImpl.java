@@ -9,14 +9,15 @@
 package icp.icpForCitln.priceSale.service.impl;
 
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.priceSale.dao.PriceSaleCustomerProductDAO;
 import icp.icpForCitln.priceSale.dao.PriceSaleCustomerProductGroupDAO;
 import icp.icpForCitln.priceSale.dao.PriceSaleProductDAO;
 import icp.icpForCitln.priceSale.dao.PriceSaleProductGroupDAO;
-import icp.icpForCitln.priceSale.dto.PriceSaleCustomerProductDto;
-import icp.icpForCitln.priceSale.dto.PriceSaleCustomerProductGroupDto;
-import icp.icpForCitln.priceSale.dto.PriceSaleProductDto;
-import icp.icpForCitln.priceSale.dto.PriceSaleProductGroupDto;
+import icp.icpForCitln.priceSale.dto.PriceSaleCustomerProductDTO;
+import icp.icpForCitln.priceSale.dto.PriceSaleCustomerProductGroupDTO;
+import icp.icpForCitln.priceSale.dto.PriceSaleProductDTO;
+import icp.icpForCitln.priceSale.dto.PriceSaleProductGroupDTO;
 import icp.icpForCitln.priceSale.eneity.PriceSaleCustomerProduct;
 import icp.icpForCitln.priceSale.eneity.PriceSaleCustomerProductGroup;
 import icp.icpForCitln.priceSale.eneity.PriceSaleProduct;
@@ -28,6 +29,7 @@ import icp.icpForCitln.priceSale.vo.PriceSaleProductGroupVO;
 import icp.icpForCitln.priceSale.vo.PriceSaleProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,8 +57,9 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      * @return: void
      */
     @Override
-    public void priceSaleProductSaveTest(PriceSaleProduct priceSaleProduct){
-        priceSaleProductDAO.priceSaleProductSaveTest(priceSaleProduct);
+    public void priceSaleProductSave(PriceSaleProductDTO priceSaleProductDto){
+        PriceSaleProduct priceSaleProduct = BeanCopyUtil.copy(priceSaleProductDto,PriceSaleProduct.class);
+        priceSaleProductDAO.priceSaleProductSave(priceSaleProduct);
     }
 
     /**
@@ -69,10 +72,8 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      * @return: void
      */
     @Override
-    public void priceSaleProductDel(String ids) {
-        //TODO 按照某种格式分割字符串
-        List<String> idParam = Arrays.asList(ids.split(","));
-        priceSaleProductDAO.priceSaleProductDel(idParam);
+    public void priceSaleProductDelete(List<String> idList) {
+        priceSaleProductDAO.priceSaleProductDelete(idList);
     }
 
     /**
@@ -85,7 +86,7 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      * @return: void
      */
     @Override
-    public void priceSaleProductUpdate(List<PriceSaleProductDto> list) {
+    public void priceSaleProductUpdate(List<PriceSaleProductDTO> list) {
         List<PriceSaleProduct>  priceSaleProducts
                 = BeanCopyUtil.copy(list,PriceSaleProduct.class);
         if( priceSaleProducts != null && priceSaleProducts.size() >0 ){
@@ -123,8 +124,9 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      * @return: void
      */
     @Override
-    public void priceSaleProductGroupSaveTest(PriceSaleProductGroup priceSaleProductGroup){
-        priceSaleProductGroupDAO.priceSaleProductGroupSaveTest(priceSaleProductGroup);
+    public void priceSaleProductGroupSave(PriceSaleProductGroupDTO priceSaleProductGroupDto){
+        PriceSaleProductGroup priceSaleProductGroup = BeanCopyUtil.copy(priceSaleProductGroupDto,PriceSaleProductGroup.class);
+        priceSaleProductGroupDAO.priceSaleProductGroupSave(priceSaleProductGroup);
     }
 
     /**
@@ -137,10 +139,9 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      * @return: void
      */
     @Override
-    public void priceSaleProductGroupDel(String ids) {
+    public void priceSaleProductGroupDelete(List<String> idList) {
         //TODO 按照某种格式分割字符串
-        List<String> idParam = Arrays.asList(ids.split(","));
-        priceSaleProductGroupDAO.priceSaleProductGroupDel(idParam);
+        priceSaleProductGroupDAO.priceSaleProductGroupDelete(idList);
     }
 
     /**
@@ -153,7 +154,7 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      * @return: void
      */
     @Override
-    public void priceSaleProductGroupUpdate(List<PriceSaleProductGroupDto> list) {
+    public void priceSaleProductGroupUpdate(List<PriceSaleProductGroupDTO> list) {
         List<PriceSaleProductGroup>  priceSaleProductGroups
                 = BeanCopyUtil.copy(list,PriceSaleProductGroup.class);
         if( priceSaleProductGroups != null && priceSaleProductGroups.size() >0 ){
@@ -192,8 +193,9 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      * @return: void
      */
     @Override
-    public void priceSaleCustomerProductSaveTest(PriceSaleCustomerProduct priceSaleCustomerProduct){
-        priceSaleCustomerProductDAO.priceSaleCustomerProductSaveTest(priceSaleCustomerProduct);
+    public void priceSaleCustomerProductSave(PriceSaleCustomerProductDTO priceSaleCustomerProductDto){
+        PriceSaleCustomerProduct priceSaleCustomerProduct = BeanCopyUtil.copy(priceSaleCustomerProductDto,PriceSaleCustomerProduct.class);
+        MongoUtil.insert(priceSaleCustomerProduct);
     }
 
     /**
@@ -206,10 +208,8 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      * @return: void
      */
     @Override
-    public void priceSaleCustomerProductDel(String ids) {
-        //TODO 按照某种格式分割字符串
-        List<String> idParam = Arrays.asList(ids.split(","));
-        priceSaleCustomerProductDAO.priceSaleCustomerProductDel(idParam);
+    public void priceSaleCustomerProductDelete(List<String> idList) {
+        priceSaleCustomerProductDAO.priceSaleCustomerProductDelete(idList);
     }
 
     /**
@@ -222,7 +222,7 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      * @return: void
      */
     @Override
-    public void priceSaleCustomerProductUpdate(List<PriceSaleCustomerProductDto> list) {
+    public void priceSaleCustomerProductUpdate(List<PriceSaleCustomerProductDTO> list) {
         List<PriceSaleCustomerProduct> priceSaleCustomerProducts
                 = BeanCopyUtil.copy(list ,PriceSaleCustomerProduct.class);
         if(priceSaleCustomerProducts != null && priceSaleCustomerProducts.size() >0){
@@ -265,19 +265,21 @@ public class PriceSaleServiceImpl implements PriceSaleService {
      * @return: void
      */
     @Override
-    public void priceSaleCustomerProductGroupSaveTest(PriceSaleCustomerProductGroup priceSaleCustomerProductGroup){
-        priceSaleCustomerProductGroupDAO.priceSaleCustomerProductGroupSaveTest(priceSaleCustomerProductGroup);
+    public void priceSaleCustomerProductGroupSave(PriceSaleCustomerProductGroupDTO priceSaleCustomerProductGroupDto){
+        PriceSaleCustomerProductGroup priceSaleCustomerProductGroup
+                = BeanCopyUtil.copy(priceSaleCustomerProductGroupDto,PriceSaleCustomerProductGroup.class);
+        MongoUtil.insert(priceSaleCustomerProductGroup);
+
+        priceSaleCustomerProductGroupDAO.priceSaleCustomerProductGroupSave(priceSaleCustomerProductGroup);
     }
 
     @Override
-    public void priceSaleCustomerProductGroupDel(String ids) {
-        //TODO 按照某种格式分割字符串
-        List<String> idParam = Arrays.asList(ids.split(","));
-        priceSaleCustomerProductGroupDAO.priceSaleCustomerProducGrouptDel(idParam);
+    public void priceSaleCustomerProductGroupDelete(List<String> idList) {
+        priceSaleCustomerProductGroupDAO.priceSaleCustomerProducGrouptDelete(idList);
     }
 
     @Override
-    public void priceSaleCustomerProductGroupUpdate(List<PriceSaleCustomerProductGroupDto> list) {
+    public void priceSaleCustomerProductGroupUpdate(List<PriceSaleCustomerProductGroupDTO> list) {
         List<PriceSaleCustomerProductGroup> priceSaleCustomerProductGroups
                 = BeanCopyUtil.copy(list, PriceSaleCustomerProductGroup.class);
         if(priceSaleCustomerProductGroups != null && priceSaleCustomerProductGroups.size() >0){
