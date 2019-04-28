@@ -10,7 +10,7 @@ package icp.icpForCitln.common.util;
 
 import com.mongodb.client.gridfs.model.GridFSFile;
 import icp.icpForCitln.IcpForCitlnApplication;
-import icp.icpForCitln.supplier.service.SupplierInfoService;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +19,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsResource;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Base64Utils;
 
 import javax.annotation.PostConstruct;
 import java.io.InputStream;
@@ -57,12 +58,16 @@ public class FileUtil {
      * @param: [inputStream, fileName]
      * @return: java.lang.String
      */
-    public  static String fileUpload(InputStream inputStream,String fileName){
+    public  static String fileUpload(InputStream file){
+        if (file == null){
+            logger.info("获取不到文件");
+            return "获取不到文件";
+        }
         try {
-            Object id = fileUtil.gridFsTemplate.store(inputStream,fileName);
+            Object id = fileUtil.gridFsTemplate.store(file,GeneratedUtil.generatedCode());
             return id.toString();
         }catch (Exception e){
-            logger.error(fileName+"文件上传失败");
+            logger.error("文件上传失败");
             return null;
         }
     }
@@ -76,23 +81,26 @@ public class FileUtil {
      * @param: [id]
      * @return: java.io.InputStream
      */
-    public static InputStream fileDownload(String id){
+    public static String fileDownload(String id){
         Query query = new Query(Criteria.where("_id").is(id));
         GridFSFile file;
         GridFsResource resource;
         try {
              file = fileUtil.gridFsTemplate.findOne(query);
+            resource = fileUtil.gridFsTemplate.getResource(file);
+            byte[] fu = IOUtils.toByteArray(resource.getInputStream());
+            return Base64Utils.encodeToString(fu);
         }catch (Exception e){
             logger.error("文件"+id+"不存在");
             return null;
         }
-        try {
-            resource = fileUtil.gridFsTemplate.getResource(file);
-            return resource.getInputStream();
-        }catch (Exception e){
-            logger.error("获取文件"+id+"失败");
-            return null;
-        }
+//        try {
+//            resource = fileUtil.gridFsTemplate.getResource(file);
+//            return resource;
+//        }catch (Exception e){
+//            logger.error("获取文件"+id+"失败");
+//            return null;
+//        }
     }
 
     /**

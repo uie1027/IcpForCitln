@@ -16,6 +16,7 @@ import icp.icpForCitln.supplier.dto.SupplierInfoDTO;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import icp.icpForCitln.supplier.service.SupplierInfoService;
 import icp.icpForCitln.supplier.vo.SupplierInfoVO;
+import icp.icpForCitln.supplier.vo.SupplierListVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -68,11 +69,11 @@ public class SupplierInfoController {
      * @param: [pageIndex, pageSize, supplierInfoDTO]
      * @return: icp.icpForCitln.common.result.CommonResult
      */
-    @GetMapping("/supplierListByPage")
+    @PostMapping("/supplierListByPage")
     public CommonResult supplierListByPage(
             @RequestParam(value = "pageIndex" , defaultValue = "0" ) Integer pageIndex,
             @RequestParam(value = "pageSize" , defaultValue = "10") Integer pageSize, SupplierInfoDTO supplierInfoDTO){
-        return CommonResult.returnResult(CommonResult.ERROR_CODE,supplierInfoService.supplierListByPage(pageIndex,pageSize,supplierInfoDTO));
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,BeanCopyUtil.copy(supplierInfoService.supplierListByPage(pageIndex,pageSize,supplierInfoDTO), SupplierListVO.class));
     }
 
 
@@ -88,8 +89,9 @@ public class SupplierInfoController {
     @PostMapping("/saveSupplierInfo")
     public CommonResult saveSupplierInfo(SupplierInfoDTO supplierInfoDto){
         supplierInfoDto.setCompanyCode(GeneratedUtil.generatedCode());
+        supplierInfoDto.setFrozen(2);
         supplierInfoService.saveSupplierInfo(supplierInfoDto);
-        return CommonResult.returnResult(CommonResult.ERROR_CODE,null);
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,null);
     }
 
     /**
@@ -104,7 +106,7 @@ public class SupplierInfoController {
     @PostMapping("/frozenSupplierInfo")
     public CommonResult frozenSupplierInfo(SupplierInfoDTO supplierInfoDto){
         supplierInfoService.frozenSupplierInfo(supplierInfoDto);
-        return CommonResult.returnResult(CommonResult.ERROR_CODE,null);
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,null);
     }
 
     /**
@@ -119,7 +121,7 @@ public class SupplierInfoController {
     @PostMapping("/thawSupplierInfo")
     public CommonResult thawSupplierInfo(SupplierInfoDTO supplierInfoDto){
         supplierInfoService.thawSupplierInfo(supplierInfoDto);
-        return CommonResult.returnResult(CommonResult.ERROR_CODE,null);
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,null);
     }
 
     /**
@@ -127,14 +129,14 @@ public class SupplierInfoController {
      * @date: 19/04/24 17:29
      * @since: JDK 1.8
      *
-     * @description: 编辑供应商信息
+     * @description: 保存编辑供应商信息
      * @param: [supplierInfoDto]
      * @return: icp.icpForCitln.common.result.CommonResult
      */
     @PostMapping("/updateSupplierInfo")
     public CommonResult updateSupplierInfo(SupplierInfoDTO supplierInfoDto){
         supplierInfoService.updateSupplierInfo(supplierInfoDto);
-        return CommonResult.returnResult(CommonResult.ERROR_CODE,null);
+        return CommonResult.returnResult(CommonResult.SUCCESS_CODE,null);
     }
 
     /**
@@ -142,7 +144,7 @@ public class SupplierInfoController {
      * @date: 19/04/24 17:29
      * @since: JDK 1.8
      *
-     * @description: 获取供应商详情
+     * @description: 获取供应商信息
      * @param: [supplierInfoDto]
      * @return: icp.icpForCitln.common.result.CommonResult
      */
