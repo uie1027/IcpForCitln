@@ -101,7 +101,7 @@ public class BeanCopyUtil {
         } catch (Exception e) {
             //TODO 异常信息
             logger.error(GetPropertiesUtil.getPropertiesVal(
-                    "message.properties","BeanCopyUtil.Bean.CopyBean.Exception "), new Object[]{s.getClass(), t, e.toString()});
+                    "message.properties","BeanCopyUtil.Bean.CopyBean.Exception"), new Object[]{s.getClass(), t, e.toString()});
             return null;
         }
     }
