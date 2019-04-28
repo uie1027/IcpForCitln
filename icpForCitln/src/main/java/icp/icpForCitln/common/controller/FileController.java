@@ -26,6 +26,15 @@ import java.util.Map;
 @RequestMapping("/file")
 public class FileController {
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/28 15:43
+     * @since: JDK 1.8
+     *
+     * @description: 文件上传
+     * @param: [bfile]
+     * @return: java.util.List<java.lang.String>
+     */
     @PostMapping("/upload")
     public List<String> fileUpload(HttpServletRequest bfile) {
         List<String> ids = new ArrayList<>();
@@ -46,6 +55,15 @@ public class FileController {
         return ids;
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/28 15:43
+     * @since: JDK 1.8
+     *
+     * @description: 文件获取
+     * @param: [id]
+     * @return: java.lang.String
+     */
     @GetMapping(value = "/get")
     public String fileGet(String id){
         if (id==null){
