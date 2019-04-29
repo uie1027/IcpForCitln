@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: userTest
+ * File Name: UserTest
  * Package Name: icp.icpForCitln.tableInitializeTest
  * Date: 2019-04-29 上午 11:05
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
@@ -23,7 +23,7 @@ import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class userTest {
+public class UserTest {
 
     /**
      * @author: 方瑞冬

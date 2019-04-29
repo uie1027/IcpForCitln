@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: companyTest
+ * File Name: CompanyTest
  * Package Name: icp.icpForCitln.tableInitializeTest
  * Date: 2019-04-29 下午 2:14
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
@@ -12,6 +12,7 @@ import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.SessionUtil;
 import icp.icpForCitln.company.eneity.CompanyAddressInfo;
 import icp.icpForCitln.company.eneity.CompanyDepartmentInfo;
+import icp.icpForCitln.company.eneity.CompanyFactory;
 import icp.icpForCitln.company.eneity.CompanyInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +24,7 @@ import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class companyTest {
+public class CompanyTest {
     /**
      * @author: 方瑞冬
      * @date: 2019-04-29 下午 2:33
@@ -90,7 +91,7 @@ public class companyTest {
      * @return: void
      */
     @Test
-    public void CompanyDepartmentInfoTest(){
+    public void companyDepartmentInfoTest(){
         CompanyDepartmentInfo companyDepartmentInfo = new CompanyDepartmentInfo();
 
         companyDepartmentInfo.setCompanyInfoId("sdad");
@@ -117,7 +118,7 @@ public class companyTest {
      * @return: void
      */
     @Test
-    public void CompanyAddressInfoTest(){
+    public void companyAddressInfoTest(){
         CompanyAddressInfo companyAddressInfo = new CompanyAddressInfo();
 
         companyAddressInfo.setCompanyInfoId("asdasd");
@@ -130,5 +131,30 @@ public class companyTest {
         companyAddressInfo.setIsDisplay(1);
 
         MongoUtil.insert(companyAddressInfo);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-29 下午 2:51
+     * @since: JDK 1.8
+     *
+     * @description: CompanyFactory 测试
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void companyFactoryTest(){
+        CompanyFactory companyFactory = new CompanyFactory();
+
+        companyFactory.setCompyInfoId("45652");
+        companyFactory.setFactoryInfoId("544");
+        companyFactory.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyFactory.setCreateTime(new Date());
+        companyFactory.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyFactory.setLastModificationTime(new Date());
+        companyFactory.setIsDelete(2);
+        companyFactory.setIsDisplay(1);
+
+        MongoUtil.insert(companyFactory);
     }
 }
