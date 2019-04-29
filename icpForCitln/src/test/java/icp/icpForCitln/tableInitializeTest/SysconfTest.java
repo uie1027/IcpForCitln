@@ -100,4 +100,13 @@ public class SysconfTest {
 
         MongoUtil.insert(systemProductAttribuit);
     }
+
+    @Test
+    public void test(){
+        SystemDictionaryInfo s = new SystemDictionaryInfo();
+        s.setId("5cc69982a898f2295c4d64e6");
+        s.setSystemDictionaryCode("2");
+        s.setSystemDictionaryValue("newtest");
+        System.out.println(MongoUtil.upsert(s,1));
+    }
 }

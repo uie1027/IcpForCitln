@@ -30,4 +30,8 @@ public class SystemDictionaryInfo extends BaseEntity {
 
     @Field("SYSTEM_DICTIONARY_DESCRIPTION")
     private String systemDictionaryDescription;  //字典内容
+
+    public String readField(){
+        return "systemDictionaryCode";
+    }
 }

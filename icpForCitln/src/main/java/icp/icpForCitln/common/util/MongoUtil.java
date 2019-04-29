@@ -63,66 +63,24 @@ public class MongoUtil {
      * @param: [model]
      * @return: boolean
      */
-    public static boolean upsert(Object model) {
+
+    public static boolean upsert(Object model){
+        Query query = mongoUtil.getQuery(model);
         if (model == null){
             logger.info(model+"为空对象！");
             return false;
         }
 
-        Query query = mongoUtil.getQuery(model);
         if (query ==null){
             logger.info("获取数据库信息失败!");
             return false;
         }
-        Update update = new Update();
-        Object obj;
-        String fieldName;
+        Update update = mongoUtil.getUpdate(model,query);
 
-        for (Field field:model.getClass().getDeclaredFields()){
-            try {
-                fieldName = field.getName();
-            }catch (Exception e){
-                logger.info("无法获取"+model+"对象");
-                return false;
-            }
-
-            String functionName = "get"+StringUtil.toInitialUpperCase(fieldName);
-
-            String mongoFieldName = StringUtil.toMongoDBField(fieldName);
-
-            try {
-                obj = model.getClass().getMethod(functionName).invoke(model, null);
-            }catch (Exception e){
-                logger.info("无法获取"+model+"对象的值");
-                return false;
-            }
-
-            if (obj!=null) {
-                update.set(mongoFieldName, obj);
-            }
-        }
-
-        UserInfo userInfo = UserInfoCache.get(SessionUtil.getByKey("userNum"));
-
-        if (userInfo==null){
-            logger.info("获取redis失败");
-            return false;
-        }
-
-        update.currentDate("LAST_MODIFICATION_TIME");
-
-        update.set("LAST_MODIFIER", userInfo.getUserCode());
-
-        try {
-            mongoUtil.mongoTemplate.upsert(query,update,model.getClass());
-        }catch (Exception e){
-            logger.info(model+"更新数据失败！");
-            return false;
-        }
+        mongoUtil.mongoTemplate.upsert(query,update,model.getClass());
 
         return true;
     }
-
 
     /**
      * @author: guoxs
@@ -252,7 +210,7 @@ public class MongoUtil {
         Query query;
         Criteria criteria = mongoUtil.getCriteria(model);
 
-        query = new Query(criteria.and("IS_DELETE").is(2)).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
+        query = new Query(criteria.and("IS_DELETE").is(2).and("IS_DISPLAY").is(1)).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
 
         return mongoUtil.mongoTemplate.find(query,model.getClass());
 
@@ -334,6 +292,59 @@ public class MongoUtil {
     }
 
 
+    /**
+     * @author: guoxs
+     * @date: 19/04/29 16:20
+     * @since: JDK 1.8
+     *
+     * @description: getUpdate 方法
+     * @param: [model, query]
+     * @return: boolean
+     */
+    public Update getUpdate(Object model,Query query) {
+        Update update = new Update();
+        Object obj;
+        String fieldName;
+
+        for (Field field:model.getClass().getDeclaredFields()){
+            try {
+                fieldName = field.getName();
+            }catch (Exception e){
+                logger.info("无法获取"+model+"对象");
+                return null;
+            }
+
+            String functionName = "get"+StringUtil.toInitialUpperCase(fieldName);
+
+            String mongoFieldName = StringUtil.toMongoDBField(fieldName);
+
+            try {
+                obj = model.getClass().getMethod(functionName).invoke(model, null);
+            }catch (Exception e){
+                logger.info("无法获取"+model+"对象的值");
+                return null;
+            }
+
+            if (obj!=null) {
+                update.set(mongoFieldName, obj);
+            }
+        }
+
+        UserInfo userInfo = UserInfoCache.get(SessionUtil.getByKey("userNum"));
+
+        if (userInfo==null){
+            logger.info("获取redis失败");
+            return null;
+        }
+
+        update.currentDate("LAST_MODIFICATION_TIME");
+
+        update.set("LAST_MODIFIER", userInfo.getUserCode());
+
+
+
+        return update;
+    }
     /**
      * @author: guoxs
      * @date: 19/04/23 17:04
@@ -421,5 +432,71 @@ public class MongoUtil {
         return true;
     }
 
+    public static boolean upsert(Object model,Integer flag){
+        if (model == null||flag == null){
+            logger.info("传入对象为空！");
+            return false;
+        }
 
+        String fieldName = "";
+        try {
+            fieldName = model.getClass().getMethod("readField").invoke(model,null).toString();
+        }catch (Exception e){
+            return false;
+        }
+
+        String functionName = "get"+StringUtil.toInitialUpperCase(fieldName);
+
+        String mongoFieldName = StringUtil.toMongoDBField(fieldName);
+
+        Query query;
+
+        Update update = new Update();
+
+        if (flag == 1){
+            try {
+                query = new Query(Criteria.where(mongoFieldName).is(model.getClass().getMethod(functionName).invoke(model,null).toString()));
+            }catch (Exception e){
+                return false;
+            }
+            update = mongoUtil.getUpdate(model,query);
+
+            UserInfo userInfo = UserInfoCache.get(SessionUtil.getByKey("userNum"));
+
+            if (userInfo==null){
+                logger.info("获取redis失败");
+                return false;
+            }
+
+            update.currentDate("LAST_MODIFICATION_TIME");
+
+            update.set("LAST_MODIFIER", userInfo.getUserCode());
+            mongoUtil.mongoTemplate.updateMulti(query,update,model.getClass());
+
+        }else if (flag == 2){
+            query = mongoUtil.getQuery(model);
+            try {
+                update.set("IS_DISPLAY",2);
+
+                UserInfo userInfo = UserInfoCache.get(SessionUtil.getByKey("userNum"));
+
+                if (userInfo==null){
+                    logger.info("获取redis失败");
+                    return false;
+                }
+
+                update.currentDate("LAST_MODIFICATION_TIME");
+
+                update.set("LAST_MODIFIER", userInfo.getUserCode());
+
+                mongoUtil.mongoTemplate.upsert(query,update,model.getClass());
+                model.getClass().getMethod("setId",new Class[]{String.class}).invoke(model,new Object[]{null});
+                MongoUtil.insert(model);
+            }catch (Exception e){
+                return false;
+            }
+
+        }
+        return true;
+    }
 }
