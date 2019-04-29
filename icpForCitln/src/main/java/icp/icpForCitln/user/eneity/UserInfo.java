@@ -32,7 +32,16 @@ public class UserInfo extends BaseEntity implements Serializable {
     private String userPassword;    //用户密码
 
     @Field("USER_NAME")
-    private String userName;        //用户姓名
+    private String userName;    //用户姓名
+
+    @Field("USER_PHONE")
+    private String userPhone;   //用户手机
+
+    @Field("USER_EMAIL")
+    private String userEmail;   //用户邮箱
+
+    @Field("USER_TYPE")
+    private Integer userType;   //用户类型 将来开放第三方登录留用
 
     public String redisObjectKey() {      //Redis 存储块名
         return OBJECT_KEY;

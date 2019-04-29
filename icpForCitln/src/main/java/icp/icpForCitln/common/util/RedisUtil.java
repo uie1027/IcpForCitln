@@ -18,13 +18,13 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Component
-public class RedisCommonUtil {
+public class RedisUtil {
     private final static Logger logger = LoggerFactory.getLogger(IcpForCitlnApplication.class);
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
-    private static RedisCommonUtil redisCommonUtil;
+    private static RedisUtil redisCommonUtil;
 
     /**
      * @author: 方瑞冬

@@ -8,7 +8,7 @@
 package icp.icpForCitln.common.cache;
 
 import icp.icpForCitln.IcpForCitlnApplication;
-import icp.icpForCitln.common.util.RedisCommonUtil;
+import icp.icpForCitln.common.util.RedisUtil;
 import icp.icpForCitln.user.eneity.UserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +31,7 @@ public class UserInfoCache {
      * @return: void
      */
     public static void put(UserInfo userInfo) {
-        RedisCommonUtil.put(userInfo);
+        RedisUtil.put(userInfo);
     }
 
     /**
@@ -53,7 +53,7 @@ public class UserInfoCache {
 
         userInfo.setUserNum(userNum);
 
-        UserInfo userInfoResult = (UserInfo) RedisCommonUtil.get(userInfo);
+        UserInfo userInfoResult = (UserInfo) RedisUtil.get(userInfo);
         if(userInfoResult == null){
             logger.info("未查询到 " + userNum + " 用户信息");
             return null;
@@ -71,6 +71,6 @@ public class UserInfoCache {
 
         userInfo.setUserNum(userNum);
 
-        RedisCommonUtil.delete(userInfo);
+        RedisUtil.delete(userInfo);
     }
 }

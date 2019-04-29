@@ -77,7 +77,7 @@ public class SessionUtil {
         HttpSession session = sessionUtil.httpServletRequest.getSession();
         String value;
 
-        SessionUtil.save("userNum", "testUser");
+        SessionUtil.save("userNum", "12138");
 
         try{
             value = session.getAttribute(key).toString();
