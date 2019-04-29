@@ -10,6 +10,7 @@ package icp.icpForCitln.tableInitializeTest;
 import icp.icpForCitln.common.cache.UserInfoCache;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.SessionUtil;
+import icp.icpForCitln.product.eneity.ProductAttribuit;
 import icp.icpForCitln.product.eneity.ProductInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,5 +60,32 @@ public class ProductTest {
         productInfo.setIsDisplay(1);
 
         MongoUtil.insert(productInfo);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-29 下午 3:29
+     * @since: JDK 1.8
+     *
+     * @description: ProductAttribuit 测试
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void productAttribuitTest(){
+        ProductAttribuit productAttribuit = new ProductAttribuit();
+
+        productAttribuit.setProductInfoId("65654");
+        productAttribuit.setSystemProductAttribuitId("65151");
+        productAttribuit.setSystemProductAttribuitValueId("Asdadasd");
+        productAttribuit.setSystemProductAttribuitValue("as4d2as4");
+        productAttribuit.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        productAttribuit.setCreateTime(new Date());
+        productAttribuit.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        productAttribuit.setLastModificationTime(new Date());
+        productAttribuit.setIsDelete(2);
+        productAttribuit.setIsDisplay(1);
+
+        MongoUtil.insert(productAttribuit);
     }
 }
