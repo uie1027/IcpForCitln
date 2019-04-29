@@ -158,6 +158,7 @@ public class MongoUtil {
             model.getClass().getMethod("setLastMondifier",new Class[]{String.class}).invoke(model,new Object[]{user.getUserCode()});
             model.getClass().getMethod("setLastModificationTime",new Class[]{Date.class}).invoke(model,new Object[]{new Date()});
             model.getClass().getMethod("setIsDelete",new Class[]{Integer.class}).invoke(model,new Object[]{2});
+            model.getClass().getMethod("setIsDisplay",new Class[]{Integer.class}).invoke(model,new Object[]{1});
         }catch (Exception e){
             return false;
         }
