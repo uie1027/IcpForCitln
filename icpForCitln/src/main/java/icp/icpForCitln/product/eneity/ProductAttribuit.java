@@ -10,11 +10,13 @@ package icp.icpForCitln.product.eneity;
 
 import icp.icpForCitln.common.enetity.BaseEntity;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Document(collection = "PRODUCT_ATTRIBUIT") //产品属性表
+@ToString(callSuper = true)
 public class ProductAttribuit extends BaseEntity {
     @Field("PRODUCT_INFO_ID")
     private String productInfoId;  //产品id
