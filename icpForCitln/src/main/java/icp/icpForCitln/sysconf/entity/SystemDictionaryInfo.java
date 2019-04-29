@@ -22,10 +22,10 @@ public class SystemDictionaryInfo extends BaseEntity {
     private String systemDictionaryCode; //字典编码
 
     @Field("SYSTEM_DICTIONARY_CATEGORY")
-    private String systemDictionaryCategory;  //字典种类
+    private Integer systemDictionaryCategory;  //字典种类
 
     @Field("SYSTEM_DICTIONARY_VALUE")
-    private Integer systemDictionaryValue;  //字典内容
+    private String systemDictionaryValue;  //字典内容
 
 
     @Field("SYSTEM_DICTIONARY_DESCRIPTION")
