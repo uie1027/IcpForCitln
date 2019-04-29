@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: CommonResult
+ * File Name: PageResult
  * Package Name: icp.icpForCitln.common.result
  * Date: 2019/4/18 15:58
  * Copyright (c) 2019,All Rights Reserved.
@@ -11,7 +11,7 @@ package icp.icpForCitln.common.result;
 import lombok.Data;
 
 @Data
-public class CommonResult {
+public class PageResult {
     public static final int SUCCESS_CODE = 200;
     public static final int ERROR_CODE = 404;
 
@@ -25,10 +25,10 @@ public class CommonResult {
      *
      * @description: 返回结果方法
      * @param: [code, result]
-     * @return: icp.icpForCitln.common.result.CommonResult
+     * @return: icp.icpForCitln.common.result.PageResult
      */
-    public static  CommonResult returnResult(int code,Object result){
-        CommonResult commonResult = new CommonResult();
+    public static PageResult returnResult(int code, Object result){
+        PageResult commonResult = new PageResult();
         commonResult.setCode(code);
         commonResult.setData(result);
         return commonResult;
