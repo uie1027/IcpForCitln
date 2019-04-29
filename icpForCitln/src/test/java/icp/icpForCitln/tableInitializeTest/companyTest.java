@@ -10,6 +10,7 @@ package icp.icpForCitln.tableInitializeTest;
 import icp.icpForCitln.common.cache.UserInfoCache;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.SessionUtil;
+import icp.icpForCitln.company.eneity.CompanyAddressInfo;
 import icp.icpForCitln.company.eneity.CompanyDepartmentInfo;
 import icp.icpForCitln.company.eneity.CompanyInfo;
 import org.junit.Test;
@@ -104,5 +105,30 @@ public class companyTest {
         companyDepartmentInfo.setIsDisplay(1);
 
         MongoUtil.insert(companyDepartmentInfo);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-29 下午 2:43
+     * @since: JDK 1.8
+     *
+     * @description: CompanyAddressInfo 测试
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void CompanyAddressInfoTest(){
+        CompanyAddressInfo companyAddressInfo = new CompanyAddressInfo();
+
+        companyAddressInfo.setCompanyInfoId("asdasd");
+        companyAddressInfo.setCompanyAddress("456");
+        companyAddressInfo.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyAddressInfo.setCreateTime(new Date());
+        companyAddressInfo.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyAddressInfo.setLastModificationTime(new Date());
+        companyAddressInfo.setIsDelete(2);
+        companyAddressInfo.setIsDisplay(1);
+
+        MongoUtil.insert(companyAddressInfo);
     }
 }
