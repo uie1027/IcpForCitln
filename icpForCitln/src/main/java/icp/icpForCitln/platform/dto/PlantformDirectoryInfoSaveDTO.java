@@ -15,7 +15,7 @@ public class PlantformDirectoryInfoSaveDTO {
 
     private Integer plantformDirectoryLevel;    //系统目录等级1 1级 2 2级...
 
-    private Integer plantformDirectoryId;    //父级系统目录ID	1级目录存0
+    private String plantformDirectoryId;    //父级系统目录ID	1级目录存0
 
     private String plantformDirectoryDescription;    //系统目录备注
 }

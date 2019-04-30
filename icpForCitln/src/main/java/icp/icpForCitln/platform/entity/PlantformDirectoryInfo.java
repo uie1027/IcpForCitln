@@ -26,7 +26,7 @@ public class PlantformDirectoryInfo extends BaseEntity {
     private Integer plantformDirectoryLevel;    //系统目录等级1 1级 2 2级...
 
     @Field("PLANTFORM_DIRECTORY_ID")
-    private Integer plantformDirectoryId;    //父级系统目录ID	1级目录存0
+    private String plantformDirectoryId;    //父级系统目录ID	1级目录存0
 
     @Field("PLANTFORM_DIRECTORY_DESCRIPTION")
     private String plantformDirectoryDescription;    //系统目录备注
