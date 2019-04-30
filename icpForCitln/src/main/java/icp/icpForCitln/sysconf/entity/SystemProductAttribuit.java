@@ -22,7 +22,7 @@ public class SystemProductAttribuit extends BaseEntity {
     private String systemProductAttribuitCode; //产品属性编码
 
     @Field("SYSTEM_PRODUCT_ATTRIBUIT_TYPE")
-    private String systemProductAttribuitType;  //产品属性类型
+    private Integer systemProductAttribuitType;  //产品属性类型   1定性 2定量
 
     @Field("SYSTEM_PRODUCT_ATTRIBUIT_NAME")
     private String systemProductAttribuitName;  //产品属性名称

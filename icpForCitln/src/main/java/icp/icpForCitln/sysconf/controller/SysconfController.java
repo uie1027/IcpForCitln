@@ -10,6 +10,7 @@ package icp.icpForCitln.sysconf.controller;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.sysconf.dto.SystemDictionaryInfoGetListDTO;
+import icp.icpForCitln.sysconf.dto.SystemProductAttribuitSaveDTO;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.service.SysconfService;
 import icp.icpForCitln.sysconf.vo.SystemDictionaryInfoGetListVO;
@@ -39,5 +40,20 @@ public class SysconfController {
     public PageResult systemDictionaryInfoListFindByPage(SystemDictionaryInfoGetListDTO systemDictionaryInfoGetListDTO){
         List<SystemDictionaryInfo> systemDictionaryInfoList = sysconfService.systemDictionaryInfoListFindByPage(systemDictionaryInfoGetListDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemDictionaryInfoList, SystemDictionaryInfoGetListVO.class));
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-30 下午 12:09
+     * @since: JDK 1.8
+     *
+     * @description: 新增产品属性
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/systemProductAttribuitSave")
+    public PageResult systemProductAttribuitSave(SystemProductAttribuitSaveDTO systemProductAttribuitSaveDTO){
+        sysconfService.systemProductAttribuitSave(systemProductAttribuitSaveDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "新增产品属性成功");
     }
 }

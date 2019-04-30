@@ -8,9 +8,13 @@
 package icp.icpForCitln.sysconf.service.impl;
 
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.GeneratedCodeUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
 import icp.icpForCitln.sysconf.dto.SystemDictionaryInfoGetListDTO;
+import icp.icpForCitln.sysconf.dto.SystemProductAttribuitSaveDTO;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
+import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
 import icp.icpForCitln.sysconf.service.SysconfService;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +35,21 @@ public class SysconfServiceImpl implements SysconfService {
     public List<SystemDictionaryInfo> systemDictionaryInfoListFindByPage(SystemDictionaryInfoGetListDTO systemDictionaryInfoGetListDTO) {
         List<Object> objectList = RedisUtil.getList(BeanCopyUtil.copy(systemDictionaryInfoGetListDTO, SystemDictionaryInfo.class));
         return BeanCopyUtil.copy(objectList, SystemDictionaryInfo.class);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-30 下午 12:15
+     * @since: JDK 1.8
+     *
+     * @description: 新增产品属性
+     * @param: [systemProductAttribuitSaveDTO]
+     * @return: void
+     */
+    @Override
+    public void systemProductAttribuitSave(SystemProductAttribuitSaveDTO systemProductAttribuitSaveDTO) {
+        SystemProductAttribuit systemProductAttribuit = BeanCopyUtil.copy(systemProductAttribuitSaveDTO, SystemProductAttribuit.class);
+        systemProductAttribuit.setSystemProductAttribuitCode(GeneratedCodeUtil.generatedCode());
+        MongoUtil.insert(systemProductAttribuit);
     }
 }

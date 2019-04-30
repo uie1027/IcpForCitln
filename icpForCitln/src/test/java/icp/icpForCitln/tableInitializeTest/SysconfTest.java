@@ -96,7 +96,7 @@ public class SysconfTest {
         systemProductAttribuit.setBasicUnitId("2");
         systemProductAttribuit.setSystemProductAttribuitCode("@");
         systemProductAttribuit.setSystemProductAttribuitName("2");
-        systemProductAttribuit.setSystemProductAttribuitType("2");
+        systemProductAttribuit.setSystemProductAttribuitType(1);
 
         MongoUtil.insert(systemProductAttribuit);
     }
