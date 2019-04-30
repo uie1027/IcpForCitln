@@ -10,7 +10,7 @@ package icp.icpForCitln.platform.dto;
 import lombok.Data;
 
 @Data
-public class PlantformDirectoryInfoSaveDTO {
+public class PlantformDirectoryInfoSaveDTO {        //保存目录
     private String plantformDirectoryName;    //系统目录名称
 
     private Integer plantformDirectoryLevel;    //系统目录等级1 1级 2 2级...

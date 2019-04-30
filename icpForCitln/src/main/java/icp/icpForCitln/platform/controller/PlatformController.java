@@ -9,6 +9,7 @@ package icp.icpForCitln.platform.controller;
 
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.vo.PlantformDirectoryInfoGetListVO;
@@ -54,5 +55,20 @@ public class PlatformController {
     public PageResult plantformDirectoryInfoGetList(){
         List<PlantformDirectoryInfoGetListVO> plantformDirectoryInfoGetListVOList = BeanCopyUtil.copy(platformService.plantformDirectoryInfoGetList(), PlantformDirectoryInfoGetListVO.class);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, plantformDirectoryInfoGetListVOList);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-30 上午 11:59
+     * @since: JDK 1.8
+     *
+     * @description: 删除目录
+     * @param: [plantformDirectoryInfoDeleteDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/plantformDirectoryInfoDelete")
+    public PageResult plantformDirectoryInfoDelete(PlantformDirectoryInfoDeleteDTO plantformDirectoryInfoDeleteDTO){
+        platformService.plantformDirectoryInfoDelete(plantformDirectoryInfoDeleteDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "删除目录成功");
     }
 }

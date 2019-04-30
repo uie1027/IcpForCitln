@@ -11,6 +11,7 @@ import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
+import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
 import icp.icpForCitln.platform.service.PlatformService;
@@ -50,5 +51,19 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public List<PlantformDirectoryInfo> plantformDirectoryInfoGetList() {
         return BeanCopyUtil.copy(RedisUtil.getList(new PlantformDirectoryInfo()), PlantformDirectoryInfo.class);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-30 上午 11:59
+     * @since: JDK 1.8
+     *
+     * @description: 删除目录
+     * @param: [plantformDirectoryInfoDeleteDTO]
+     * @return: void
+     */
+    @Override
+    public void plantformDirectoryInfoDelete(PlantformDirectoryInfoDeleteDTO plantformDirectoryInfoDeleteDTO) {
+        MongoUtil.delete(BeanCopyUtil.copy(plantformDirectoryInfoDeleteDTO, PlantformDirectoryInfo.class));
     }
 }

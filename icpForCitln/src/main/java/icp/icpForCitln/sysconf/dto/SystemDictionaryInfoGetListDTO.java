@@ -10,6 +10,6 @@ package icp.icpForCitln.sysconf.dto;
 import lombok.Data;
 
 @Data
-public class SystemDictionaryInfoGetListDTO {
+public class SystemDictionaryInfoGetListDTO {       //根据字典种类查询
     private Integer systemDictionaryCategory;  //字典种类
 }

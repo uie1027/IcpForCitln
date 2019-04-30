@@ -10,7 +10,7 @@ package icp.icpForCitln.sysconf.vo;
 import lombok.Data;
 
 @Data
-public class SystemDictionaryInfoGetListVO {
+public class SystemDictionaryInfoGetListVO {        //返回字典列表
     private String id;      //ID
 
     private String systemDictionaryCode; //字典编码
