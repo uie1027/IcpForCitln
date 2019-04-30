@@ -10,6 +10,7 @@ package icp.icpForCitln.sysconf.controller;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.sysconf.dto.SystemDictionaryInfoGetListDTO;
+import icp.icpForCitln.sysconf.dto.SystemProductAttribuitDeleteDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitSaveDTO;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.service.SysconfService;
@@ -55,5 +56,20 @@ public class SysconfController {
     public PageResult systemProductAttribuitSave(SystemProductAttribuitSaveDTO systemProductAttribuitSaveDTO){
         sysconfService.systemProductAttribuitSave(systemProductAttribuitSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "新增产品属性成功");
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-30 下午 12:29
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性删除
+     * @param: [systemProductAttribuitDeleteDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/systemProductAttribuitDelete")
+    public PageResult systemProductAttribuitDelete(SystemProductAttribuitDeleteDTO systemProductAttribuitDeleteDTO){
+        sysconfService.systemProductAttribuitDelete(systemProductAttribuitDeleteDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "删除产品属性成功");
     }
 }

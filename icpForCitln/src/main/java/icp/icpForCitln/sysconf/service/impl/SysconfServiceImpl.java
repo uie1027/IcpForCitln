@@ -12,6 +12,7 @@ import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
 import icp.icpForCitln.sysconf.dto.SystemDictionaryInfoGetListDTO;
+import icp.icpForCitln.sysconf.dto.SystemProductAttribuitDeleteDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitSaveDTO;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
@@ -51,5 +52,19 @@ public class SysconfServiceImpl implements SysconfService {
         SystemProductAttribuit systemProductAttribuit = BeanCopyUtil.copy(systemProductAttribuitSaveDTO, SystemProductAttribuit.class);
         systemProductAttribuit.setSystemProductAttribuitCode(GeneratedCodeUtil.generatedCode());
         MongoUtil.insert(systemProductAttribuit);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-30 下午 12:30
+     * @since: JDK 1.8
+     *
+     * @description: 删除产品属性
+     * @param: [systemProductAttribuitDeleteDTO]
+     * @return: void
+     */
+    @Override
+    public void systemProductAttribuitDelete(SystemProductAttribuitDeleteDTO systemProductAttribuitDeleteDTO) {
+        MongoUtil.delete(BeanCopyUtil.copy(systemProductAttribuitDeleteDTO, SystemProductAttribuit.class));
     }
 }

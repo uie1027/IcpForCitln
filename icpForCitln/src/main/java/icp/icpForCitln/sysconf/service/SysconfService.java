@@ -8,6 +8,7 @@
 package icp.icpForCitln.sysconf.service;
 
 import icp.icpForCitln.sysconf.dto.SystemDictionaryInfoGetListDTO;
+import icp.icpForCitln.sysconf.dto.SystemProductAttribuitDeleteDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitSaveDTO;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 
@@ -16,4 +17,5 @@ import java.util.List;
 public interface SysconfService {
     List<SystemDictionaryInfo> systemDictionaryInfoListFindByPage(SystemDictionaryInfoGetListDTO systemDictionaryInfoGetListDTO);   //根据字典类别查询字典 List
     void systemProductAttribuitSave(SystemProductAttribuitSaveDTO systemProductAttribuitSaveDTO);   //新增产品属性
+    void systemProductAttribuitDelete(SystemProductAttribuitDeleteDTO systemProductAttribuitDeleteDTO);     //删除产品属性
 }
