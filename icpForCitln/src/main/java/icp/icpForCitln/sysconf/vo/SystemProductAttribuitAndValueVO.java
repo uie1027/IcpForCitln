@@ -12,6 +12,8 @@ import lombok.Data;
 @Data
 
 public class SystemProductAttribuitAndValueVO {     //产品属性页面返回
+    private String id;      //产品属性ID
+
     private String systemProductAttribuitCode; //产品属性编码
 
     private Integer systemProductAttribuitType;  //产品属性类型   1定性 2定量

@@ -7,6 +7,7 @@
  */
 package icp.icpForCitln.sysconf.dto;
 
+import icp.icpForCitln.common.enetity.BaseEntity;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -14,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.List;
 
 @Data
-public class SystemProductAttribuitAndValueDTO {
+public class SystemProductAttribuitAndValueDTO  extends BaseEntity {
     @Field("SYSTEM_PRODUCT_ATTRIBUIT_CODE")
     private String systemProductAttribuitCode; //产品属性编码
 
