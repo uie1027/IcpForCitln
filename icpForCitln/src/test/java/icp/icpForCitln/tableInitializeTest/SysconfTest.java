@@ -73,7 +73,7 @@ public class SysconfTest {
     public void SystemProductAttribuitValueSaveTest(){
         SystemProductAttribuitValue systemProductAttribuitValue = new SystemProductAttribuitValue();
 
-        systemProductAttribuitValue.setSystemProductAttribuit("2");
+        systemProductAttribuitValue.setSystemProductAttribuitId("2");
         systemProductAttribuitValue.setSystemProductAttribuitContent("2");
         systemProductAttribuitValue.setSystemProductAttribuitValueCode("2");
 

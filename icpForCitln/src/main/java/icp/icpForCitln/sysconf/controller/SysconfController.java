@@ -12,10 +12,12 @@ import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.sysconf.dto.SystemDictionaryInfoGetListDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitDeleteDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitSaveDTO;
+import icp.icpForCitln.sysconf.dto.SystemProductAttribuitValueSaveDTO;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.service.SysconfService;
 import icp.icpForCitln.sysconf.vo.SystemDictionaryInfoGetListVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -71,5 +73,34 @@ public class SysconfController {
     public PageResult systemProductAttribuitDelete(SystemProductAttribuitDeleteDTO systemProductAttribuitDeleteDTO){
         sysconfService.systemProductAttribuitDelete(systemProductAttribuitDeleteDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "删除产品属性成功");
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-30 下午 5:09
+     * @since: JDK 1.8
+     *
+     * @description: 新增产品属性值
+     * @param: [systemProductAttribuitValueSaveDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/systemProductAttribuitValueSave")
+    public PageResult systemProductAttribuitValueSave(SystemProductAttribuitValueSaveDTO systemProductAttribuitValueSaveDTO){
+        sysconfService.systemProductAttribuitValueSave(systemProductAttribuitValueSaveDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值保存成功");
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-04-30 下午 12:38
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性列表返回（页面列表）
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/systemProductAttribuitAndValueGetList")
+    public PageResult systemProductAttribuitAndValueGetList(){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, sysconfService.systemProductAttribuitAndValueGetList());
     }
 }

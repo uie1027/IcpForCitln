@@ -18,8 +18,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection = "SYSTEM_PRODUCT_ATTRIBUIT_VALUE") //系统产品属性值表
 @ToString(callSuper = true)
 public class SystemProductAttribuitValue extends BaseEntity {
-    @Field("SYSTEM_PRODUCT_ATTRIBUIT")
-    private String systemProductAttribuit; //产品属性编码
+    @Field("SYSTEM_PRODUCT_ATTRIBUIT_ID")
+    private String systemProductAttribuitId; //产品属性ID
 
     @Field("SYSTEM_PRODUCT_ATTRIBUIT_VALUE_CODE")
     private String systemProductAttribuitValueCode; //产品属性值编码
