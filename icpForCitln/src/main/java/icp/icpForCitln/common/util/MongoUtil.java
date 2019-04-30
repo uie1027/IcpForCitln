@@ -11,6 +11,7 @@ package icp.icpForCitln.common.util;
 import icp.icpForCitln.IcpForCitlnApplication;
 import icp.icpForCitln.common.cache.UserInfoCache;
 import icp.icpForCitln.user.eneity.UserInfo;
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,6 +112,7 @@ public class MongoUtil {
         }
 
         try {
+            model.getClass().getMethod("setId",new Class[]{String.class}).invoke(model,new Object[]{"cx" + new ObjectId()});
             model.getClass().getMethod("setCreater",new Class[]{String.class}).invoke(model,new Object[]{user.getUserCode()});
             model.getClass().getMethod("setCreateTime",new Class[]{Date.class}).invoke(model,new Object[]{new Date()});
             model.getClass().getMethod("setLastMondifier",new Class[]{String.class}).invoke(model,new Object[]{user.getUserCode()});
