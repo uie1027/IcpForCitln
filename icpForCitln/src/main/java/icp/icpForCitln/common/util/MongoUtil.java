@@ -113,9 +113,9 @@ public class MongoUtil {
 
         try {
             model.getClass().getMethod("setId",new Class[]{String.class}).invoke(model,new Object[]{"cx" + new ObjectId()});
-            model.getClass().getMethod("setCreater",new Class[]{String.class}).invoke(model,new Object[]{user.getUserCode()});
+            model.getClass().getMethod("setCreater",new Class[]{String.class}).invoke(model,new Object[]{user.getId()});
             model.getClass().getMethod("setCreateTime",new Class[]{Date.class}).invoke(model,new Object[]{new Date()});
-            model.getClass().getMethod("setLastMondifier",new Class[]{String.class}).invoke(model,new Object[]{user.getUserCode()});
+            model.getClass().getMethod("setLastMondifier",new Class[]{String.class}).invoke(model,new Object[]{user.getId()});
             model.getClass().getMethod("setLastModificationTime",new Class[]{Date.class}).invoke(model,new Object[]{new Date()});
             model.getClass().getMethod("setIsDelete",new Class[]{Integer.class}).invoke(model,new Object[]{2});
             model.getClass().getMethod("setIsDisplay",new Class[]{Integer.class}).invoke(model,new Object[]{1});
@@ -159,7 +159,7 @@ public class MongoUtil {
             return false;
         }
 
-        update.set("LAST_MODIFIER",userInfo.getUserCode());
+        update.set("LAST_MODIFIER",userInfo.getId());
         update.currentDate("LAST_MODIFICATION_TIME");
         update.set("IS_DELETE",1);
 
@@ -341,7 +341,7 @@ public class MongoUtil {
 
         update.currentDate("LAST_MODIFICATION_TIME");
 
-        update.set("LAST_MODIFIER", userInfo.getUserCode());
+        update.set("LAST_MODIFIER", userInfo.getId());
 
 
 
@@ -472,7 +472,7 @@ public class MongoUtil {
 
             update.currentDate("LAST_MODIFICATION_TIME");
 
-            update.set("LAST_MODIFIER", userInfo.getUserCode());
+            update.set("LAST_MODIFIER", userInfo.getId());
             mongoUtil.mongoTemplate.updateMulti(query,update,model.getClass());
 
         }else if (flag == 2){
@@ -489,7 +489,7 @@ public class MongoUtil {
 
                 update.currentDate("LAST_MODIFICATION_TIME");
 
-                update.set("LAST_MODIFIER", userInfo.getUserCode());
+                update.set("LAST_MODIFIER", userInfo.getId());
 
                 mongoUtil.mongoTemplate.upsert(query,update,model.getClass());
                 model.getClass().getMethod("setId",new Class[]{String.class}).invoke(model,new Object[]{null});
