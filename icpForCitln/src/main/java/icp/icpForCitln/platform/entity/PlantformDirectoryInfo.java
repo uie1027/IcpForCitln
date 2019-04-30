@@ -13,9 +13,16 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.io.Serializable;
+
 @Data
 @Document(value = "PLANTFORM_DIRECTORY_INFO")   //平台目录表
-public class PlantformDirectoryInfo extends BaseEntity {
+public class PlantformDirectoryInfo extends BaseEntity implements Serializable {
+
+    private static final long serialVersionUID = -7898194272883238670L;
+
+    private static final String OBJECT_KEY = "PLANTFORM_DIRECTORY_INFO";
+
     @Field("PLANTFORM_DIRECTORY_CODE")
     private String plantformDirectoryCode;    //系统目录编码
 
@@ -30,4 +37,12 @@ public class PlantformDirectoryInfo extends BaseEntity {
 
     @Field("PLANTFORM_DIRECTORY_DESCRIPTION")
     private String plantformDirectoryDescription;    //系统目录备注
+
+    public String redisObjectKey() {      //Redis 存储块名
+        return OBJECT_KEY;
+    }
+
+    public String redisKey() {        //获取 Redis 存储键名
+        return super.getId();
+    }
 }

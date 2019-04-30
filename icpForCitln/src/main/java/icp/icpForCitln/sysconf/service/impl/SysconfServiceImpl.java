@@ -23,7 +23,7 @@ public class SysconfServiceImpl implements SysconfService {
      * @date: 2019-04-30 上午 10:34
      * @since: JDK 1.8
      *
-     * @description: 根据字典类别查询字典 List
+     * @description: 根据字典类别查询字典 List 从 Redis 中
      * @param: [systemDictionaryInfoGetListDTO]
      * @return: java.util.List<icp.icpForCitln.sysconf.entity.SystemDictionaryInfo>
      */
