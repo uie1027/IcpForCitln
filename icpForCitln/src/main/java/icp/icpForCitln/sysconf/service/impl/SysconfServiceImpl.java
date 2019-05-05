@@ -13,6 +13,7 @@ import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
 import icp.icpForCitln.sysconf.dao.SysconfDAO;
 import icp.icpForCitln.sysconf.dto.*;
+import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue;
@@ -125,5 +126,20 @@ public class SysconfServiceImpl implements SysconfService {
     public List<SystemProductAttribuit> systemProductAttribuitGetList() {
         List list = RedisUtil.getList(new SystemProductAttribuit());
         return BeanCopyUtil.copy(list, SystemProductAttribuit.class);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-05-05 下午 1:14
+     * @since: JDK 1.8
+     *
+     * @description: 品牌下拉列表
+     * @param: []
+     * @return: java.util.List<icp.icpForCitln.sysconf.entity.SystemBrandInfoVO>
+     */
+    @Override
+    public List<SystemBrandInfo> systemBrandInfoGetList() {
+        List list = RedisUtil.getList(new SystemBrandInfo());
+        return BeanCopyUtil.copy(list, SystemBrandInfo.class);
     }
 }

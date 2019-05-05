@@ -8,7 +8,7 @@
 package icp.icpForCitln.tableInitializeTest;
 
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.supplier.SupplierInfo;
+import icp.icpForCitln.supplier.entity.SupplierInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

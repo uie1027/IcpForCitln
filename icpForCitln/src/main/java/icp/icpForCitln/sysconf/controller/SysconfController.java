@@ -13,9 +13,11 @@ import icp.icpForCitln.sysconf.dto.SystemDictionaryInfoGetListDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitDeleteDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitSaveDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitValueSaveDTO;
+import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
 import icp.icpForCitln.sysconf.service.SysconfService;
+import icp.icpForCitln.sysconf.vo.SystemBrandInfoVO;
 import icp.icpForCitln.sysconf.vo.SystemDictionaryInfoGetListVO;
 import icp.icpForCitln.sysconf.vo.SystemProductAttribuitVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,5 +121,20 @@ public class SysconfController {
     public PageResult systemProductAttribuitGetList(){
         List<SystemProductAttribuit> systemProductAttribuitList = sysconfService.systemProductAttribuitGetList();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemProductAttribuitList, SystemProductAttribuitVO.class));
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-05-05 下午 1:12
+     * @since: JDK 1.8
+     *
+     * @description: 品牌下拉列表
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/systemBrandInfoGetList")
+    public PageResult systemBrandInfoGetList(){
+        List<SystemBrandInfo> systemBrandInfoList = sysconfService.systemBrandInfoGetList();
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemBrandInfoList, SystemBrandInfoVO.class));
     }
 }

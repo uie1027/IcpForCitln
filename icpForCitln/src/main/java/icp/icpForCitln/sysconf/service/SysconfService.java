@@ -11,6 +11,7 @@ import icp.icpForCitln.sysconf.dto.SystemDictionaryInfoGetListDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitDeleteDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitSaveDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitValueSaveDTO;
+import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
 import icp.icpForCitln.sysconf.vo.SystemProductAttribuitAndValueVO;
@@ -24,4 +25,5 @@ public interface SysconfService {
     void systemProductAttribuitValueSave(SystemProductAttribuitValueSaveDTO systemProductAttribuitValueSaveDTO);    //新增产品属性值
     List<SystemProductAttribuitAndValueVO> systemProductAttribuitAndValueGetList();     //产品属性页面列表
     List<SystemProductAttribuit> systemProductAttribuitGetList();       //产品属性 List
+    List<SystemBrandInfo> systemBrandInfoGetList();     //品牌下拉列表
 }

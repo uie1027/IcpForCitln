@@ -54,7 +54,7 @@ public class PlantFormTest {
         plantformDirectoryInfo.setPlantformDirectoryCode("123");
         plantformDirectoryInfo.setPlantformDirectoryName("aaa");
         plantformDirectoryInfo.setPlantformDirectoryLevel(1);
-        plantformDirectoryInfo.setPlantformDirectoryId(1);
+        plantformDirectoryInfo.setPlantformDirectoryId("1");
         plantformDirectoryInfo.setPlantformDirectoryDescription("AAA");
         MongoUtil.insert(plantformDirectoryInfo);
     }
