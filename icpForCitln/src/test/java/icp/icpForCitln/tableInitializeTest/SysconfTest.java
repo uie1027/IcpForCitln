@@ -8,9 +8,7 @@
 
 package icp.icpForCitln.tableInitializeTest;
 
-import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.common.util.RedisUtil;
 import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
@@ -110,33 +108,5 @@ public class SysconfTest {
         s.setSystemDictionaryCode("2");
         s.setSystemDictionaryValue("newtest");
         System.out.println(MongoUtil.upsert(s,1));
-    }
-
-    /**
-     * @author: 方瑞冬
-     * @date: 2019-05-05 上午 11:40
-     * @since: JDK 1.8
-     *
-     * @description: SystemBrandInfoVO 存假数据
-     * @param: []
-     * @return: void
-     */
-    @Test
-    public void systemBrandInfoSave(){
-        SystemBrandInfo systemBrandInfo1 = new SystemBrandInfo();
-
-        systemBrandInfo1.setSystemBrandCode(GeneratedCodeUtil.generatedCode());
-        systemBrandInfo1.setSystemBrandName("金坷垃");
-
-        MongoUtil.insert(systemBrandInfo1);
-        RedisUtil.put(systemBrandInfo1);
-
-        SystemBrandInfo systemBrandInfo2 = new SystemBrandInfo();
-
-        systemBrandInfo2.setSystemBrandCode(GeneratedCodeUtil.generatedCode());
-        systemBrandInfo2.setSystemBrandName("漏油车");
-
-        MongoUtil.insert(systemBrandInfo2);
-        RedisUtil.put(systemBrandInfo2);
     }
 }

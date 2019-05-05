@@ -14,6 +14,7 @@ import icp.icpForCitln.common.util.RedisUtil;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
+import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
 import org.springframework.stereotype.Service;
 
@@ -65,5 +66,20 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public void plantformDirectoryInfoDelete(PlantformDirectoryInfoDeleteDTO plantformDirectoryInfoDeleteDTO) {
         MongoUtil.delete(BeanCopyUtil.copy(plantformDirectoryInfoDeleteDTO, PlantformDirectoryInfo.class));
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-05-05 下午 1:46
+     * @since: JDK 1.8
+     *
+     * @description: 商城展示列表获取 Redis
+     * @param: []
+     * @return: java.util.List<icp.icpForCitln.platform.entity.PlantformMailDisplay>
+     */
+    @Override
+    public List<PlantformMailDisplay> plantformMailDisplayGetList() {
+        List list = RedisUtil.getList(new PlantformMailDisplay());
+        return BeanCopyUtil.copy(list, PlantformMailDisplay.class);
     }
 }

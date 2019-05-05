@@ -11,8 +11,10 @@ import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
+import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.vo.PlantformDirectoryInfoGetListVO;
+import icp.icpForCitln.platform.vo.PlantformMailDisplayVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -70,5 +72,20 @@ public class PlatformController {
     public PageResult plantformDirectoryInfoDelete(PlantformDirectoryInfoDeleteDTO plantformDirectoryInfoDeleteDTO){
         platformService.plantformDirectoryInfoDelete(plantformDirectoryInfoDeleteDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "删除目录成功");
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-05-05 下午 1:43
+     * @since: JDK 1.8
+     *
+     * @description: 商城展示多选
+     * @param: []`
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/plantformMailDisplayGetList")
+    public PageResult plantformMailDisplayGetList(){
+        List<PlantformMailDisplay> plantformMailDisplayList = platformService.plantformMailDisplayGetList();
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(plantformMailDisplayList, PlantformMailDisplayVO.class));
     }
 }
