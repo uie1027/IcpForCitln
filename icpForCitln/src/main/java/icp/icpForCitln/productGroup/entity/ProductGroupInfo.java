@@ -19,7 +19,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @ToString(callSuper = true)
 public class ProductGroupInfo extends BaseEntity{
     @Field("PRODUCT_GROUP_CODE")
-    private String	productGroupVode;     //产品组编码
+    private String	productGroupCode;     //产品组编码
     @Field("PRODUCT_GROUP_NAME")
     private String	productGroupName;     //产品组名称
     @Field("PLANTFORM_FIRST_DIRECTORY")

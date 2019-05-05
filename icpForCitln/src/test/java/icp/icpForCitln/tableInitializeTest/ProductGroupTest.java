@@ -24,7 +24,7 @@ public class ProductGroupTest {
     @Test
     public void   ProductGroupInfoSave(){
         ProductGroupInfo productGroupInfo = new ProductGroupInfo();
-        productGroupInfo.setProductGroupVode("123");   //产品组编码
+        productGroupInfo.setProductGroupCode("123");   //产品组编码
         productGroupInfo.setProductGroupName("123");     //产品组名称
         productGroupInfo.setPlantformFirstDirectory("123");      //系统一级目录
         productGroupInfo.setPlantformSecondDirectory("123");     //系统二级目录
