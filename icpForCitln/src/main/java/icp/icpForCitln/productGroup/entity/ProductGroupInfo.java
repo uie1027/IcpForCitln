@@ -10,11 +10,13 @@ package icp.icpForCitln.productGroup.entity;
 
 import icp.icpForCitln.common.enetity.BaseEntity;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Document(value = "PRODUCT_GROUP_INFO")     //产品组基本信息表
+@ToString(callSuper = true)
 public class ProductGroupInfo extends BaseEntity{
     @Field("PRODUCT_GROUP_CODE")
     private String	productGroupVode;     //产品组编码

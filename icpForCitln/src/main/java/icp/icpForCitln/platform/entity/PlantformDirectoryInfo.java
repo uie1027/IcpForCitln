@@ -10,6 +10,7 @@ package icp.icpForCitln.platform.entity;
 
 import icp.icpForCitln.common.enetity.BaseEntity;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -17,6 +18,7 @@ import java.io.Serializable;
 
 @Data
 @Document(value = "PLANTFORM_DIRECTORY_INFO")   //平台目录表
+@ToString(callSuper = true)
 public class PlantformDirectoryInfo extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = -7898194272883238670L;

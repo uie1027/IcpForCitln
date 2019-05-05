@@ -10,11 +10,13 @@ package icp.icpForCitln.platform.entity;
 
 import icp.icpForCitln.common.enetity.BaseEntity;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Document(value = "MENU_INFO")
+@ToString(callSuper = true)
 public class MenuInfo extends BaseEntity{
     @Field("MENU_NAME")
     private String menuName;   //菜单名称

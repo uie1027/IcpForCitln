@@ -10,6 +10,7 @@ package icp.icpForCitln.price.entity;
 
 import icp.icpForCitln.common.enetity.BaseEntity;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -17,9 +18,10 @@ import java.math.BigDecimal;
 
 @Data
 @Document(collection = "PRICE_SALE_PRODUCT") //销售产品价格
+@ToString(callSuper = true)
 public class PriceSaleProduct extends BaseEntity {
     @Field("PRICE_SALE_PRODUCT_CODE")
-    private Integer	priceSaleProductCode;   //销售产品价格编码
+    private String	priceSaleProductCode;   //销售产品价格编码
     @Field("PRODUCT_INFO_ID")
     private String	productInfoId;  //产品ID
     @Field("TAX_RATE_ID")

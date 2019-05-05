@@ -10,11 +10,13 @@ package icp.icpForCitln.platform.entity;
 
 import icp.icpForCitln.common.enetity.BaseEntity;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Document(value = "PLANTFORM_DIRECTORY_ATTRIBUTE")  //平台目录属性表
+@ToString(callSuper = true)
 public class PlantformDirectoryAttribute extends BaseEntity {
     @Field("PLANTFORM_DIRECTORY_ID")
     private String plantformDirectoryId;    //系统目录id

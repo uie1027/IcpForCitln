@@ -10,11 +10,13 @@ package icp.icpForCitln.productGroup.entity;
 
 import icp.icpForCitln.common.enetity.BaseEntity;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Document(value = "PRODUCT_GROUP_MAIL_DISPLAY")     //产品组商城展示表
+@ToString(callSuper = true)
 public class ProductGroupMailDisplay extends BaseEntity{
     @Field("PRODUCT_GROUP_INFO_ID")
     private String productGroupInfoId;  //产品组ID
