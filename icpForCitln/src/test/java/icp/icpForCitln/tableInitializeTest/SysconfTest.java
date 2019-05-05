@@ -109,4 +109,18 @@ public class SysconfTest {
         s.setSystemDictionaryValue("newtest");
         System.out.println(MongoUtil.upsert(s,1));
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-05-05 上午 11:40
+     * @since: JDK 1.8
+     *
+     * @description: SystemBrandInfo 存假数据
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void systemBrandInfoSave(){
+        SystemBrandInfo systemBrandInfo = new SystemBrandInfo();
+    }
 }

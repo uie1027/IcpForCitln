@@ -111,4 +111,19 @@ public class SysconfServiceImpl implements SysconfService {
         }
         return systemProductAttribuitAndValueVOList;
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-05-05 上午 10:07
+     * @since: JDK 1.8
+     *
+     * @description: 获取产品属性 List
+     * @param: []
+     * @return: java.util.List<icp.icpForCitln.sysconf.entity.SystemProductAttribuit>
+     */
+    @Override
+    public List<SystemProductAttribuit> systemProductAttribuitGetList() {
+        List list = RedisUtil.getList(new SystemProductAttribuit());
+        return BeanCopyUtil.copy(list, SystemProductAttribuit.class);
+    }
 }

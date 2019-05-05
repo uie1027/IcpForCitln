@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: SystemDictionaryInfoRedis
+ * File Name: SystemDictionaryInfoTest
  * Package Name: icp.icpForCitln.redisInitializeTest
  * Date: 2019-04-30 上午 9:39
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
@@ -22,7 +22,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SystemDictionaryInfoRedis {
+public class SystemDictionaryInfoTest {
     @Autowired
     private MongoTemplate mongoTemplate;
 

@@ -14,10 +14,17 @@ import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.io.Serializable;
+
 @Data
 @Document(collection = "SYSTEM_PRODUCT_ATTRIBUIT") //系统产品属性表
 @ToString(callSuper = true)
-public class SystemProductAttribuit extends BaseEntity {
+public class SystemProductAttribuit extends BaseEntity implements Serializable {
+
+    private static final long serialVersionUID = -7898194272883238670L;
+
+    private static final String OBJECT_KEY = "SYSTEM_PRODUCT_ATTRIBUIT";
+
     @Field("SYSTEM_PRODUCT_ATTRIBUIT_CODE")
     private String systemProductAttribuitCode; //产品属性编码
 
@@ -29,4 +36,12 @@ public class SystemProductAttribuit extends BaseEntity {
 
     @Field("BASIC_UNIT_ID")
     private String basicUnitId;  //基本单位id
+
+    public String redisObjectKey() {      //Redis 存储块名
+        return OBJECT_KEY;
+    }
+
+    public String redisKey() {        //获取 Redis 存储键名
+        return super.getId();
+    }
 }

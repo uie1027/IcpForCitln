@@ -14,8 +14,10 @@ import icp.icpForCitln.sysconf.dto.SystemProductAttribuitDeleteDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitSaveDTO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitValueSaveDTO;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
+import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
 import icp.icpForCitln.sysconf.service.SysconfService;
 import icp.icpForCitln.sysconf.vo.SystemDictionaryInfoGetListVO;
+import icp.icpForCitln.sysconf.vo.SystemProductAttribuitVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -102,5 +104,20 @@ public class SysconfController {
     @GetMapping("/systemProductAttribuitAndValueGetList")
     public PageResult systemProductAttribuitAndValueGetList(){
         return PageResult.returnResult(PageResult.SUCCESS_CODE, sysconfService.systemProductAttribuitAndValueGetList());
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019-05-05 上午 10:03
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性多选
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/systemProductAttribuitGetList")
+    public PageResult systemProductAttribuitGetList(){
+        List<SystemProductAttribuit> systemProductAttribuitList = sysconfService.systemProductAttribuitGetList();
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemProductAttribuitList, SystemProductAttribuitVO.class));
     }
 }
