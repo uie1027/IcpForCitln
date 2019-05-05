@@ -9,15 +9,20 @@
 package icp.icpForCitln.tableInitializeTest;
 
 import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.customer.contorller.CustomerController;
+import icp.icpForCitln.customer.dto.CustomerInfoSaveDTO;
 import icp.icpForCitln.customer.entity.CustomerInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CustomerTest {
+    @Autowired
+    CustomerController customerController;
 
     /**
      * @author: guoxs
@@ -54,5 +59,20 @@ public class CustomerTest {
         customerInfo.setUnifiedSocialCreditCode("asdvc21351");
 
         MongoUtil.insert(customerInfo);
+    }
+
+    @Test
+    public void test(){
+        CustomerInfoSaveDTO customerInfoSaveDTO = new CustomerInfoSaveDTO();
+        customerInfoSaveDTO.setBankAccount("333");
+        Class c = customerInfoSaveDTO.getClass();
+        try {
+            Object m = c.newInstance();
+            m.getClass().getMethod("setBankAccount",new Class[]{String.class}).invoke(m,new Object[]{"222"});
+            System.out.println(m);
+        }catch (Exception e){
+            System.out.println("asd");
+        }
+        System.out.println(customerInfoSaveDTO);
     }
 }
