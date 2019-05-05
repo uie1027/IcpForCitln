@@ -5,7 +5,7 @@
  * Date: 2019-04-29 下午 3:46
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
  */
-package icp.icpForCitln.supplier;
+package icp.icpForCitln.supplier.entity;
 
 import icp.icpForCitln.common.enetity.BaseEntity;
 import lombok.Data;
