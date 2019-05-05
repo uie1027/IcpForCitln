@@ -11,8 +11,8 @@ package icp.icpForCitln.customer.contorller;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.customer.dto.CustomerInfoDelDTO;
-import icp.icpForCitln.customer.dto.CustomerInfoSaveDTO;
+import icp.icpForCitln.customer.dto.CustomerInfoDTO;
+import icp.icpForCitln.customer.dto.CustomerInfoSaveAndUpdateDTO;
 import icp.icpForCitln.customer.entity.CustomerInfo;
 import icp.icpForCitln.customer.vo.CustomerInfoVO;
 import icp.icpForCitln.customer.vo.CustomerListVO;
@@ -25,31 +25,76 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/customer")
 public class CustomerController {
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/05 10:14
+     * @since: JDK 1.8
+     *
+     * @description: 客户主数据保存
+     * @param: [supplierSaveAndUpdateDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
     @PostMapping("/customerInfoSave")
-    public PageResult customerInfoSave(CustomerInfoSaveDTO customerInfoSaveDTO){
-        MongoUtil.insert(BeanCopyUtil.copy(customerInfoSaveDTO, CustomerInfo.class));
+    public PageResult customerInfoSave(CustomerInfoSaveAndUpdateDTO customerInfoSaveAndUpdateDTO){
+        MongoUtil.insert(BeanCopyUtil.copy(customerInfoSaveAndUpdateDTO, CustomerInfo.class));
         return PageResult.returnResult(PageResult.SUCCESS_CODE, null);
     }
 
-    @GetMapping("/customerListFindByPage")
-    public PageResult customerListFindByPage(Integer pageIndex, Integer pageSize, CustomerInfoSaveDTO customerInfoSaveDTO){
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(MongoUtil.select(pageIndex,pageSize,BeanCopyUtil.copy(customerInfoSaveDTO,CustomerInfo.class)), CustomerListVO.class));
-    }
-
+    /**
+     * @author: guoxs
+     * @date: 19/05/05 10:16
+     * @since: JDK 1.8
+     *
+     * @description: 客户主数据删除
+     * @param: [supplierInfoDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
     @PostMapping("/customerDelete")
-    public PageResult customerDelete(CustomerInfoDelDTO customerInfoDelDTO){
-        MongoUtil.delete(BeanCopyUtil.copy(customerInfoDelDTO,CustomerInfo.class));
+    public PageResult customerDelete(CustomerInfoDTO customerInfoDTO){
+        MongoUtil.delete(BeanCopyUtil.copy(customerInfoDTO,CustomerInfo.class));
         return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/05 10:16
+     * @since: JDK 1.8
+     *
+     * @description: 客户主数据更新
+     * @param: [supplierSaveAndUpdateDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
     @PostMapping("/customerUpdate")
-    public PageResult customerUpdate(CustomerInfoSaveDTO customerInfoSaveDTO){
-        MongoUtil.upsert(BeanCopyUtil.copy(customerInfoSaveDTO,CustomerInfo.class));
+    public PageResult customerUpdate(CustomerInfoSaveAndUpdateDTO customerInfoSaveAndUpdateDTO){
+        MongoUtil.upsert(BeanCopyUtil.copy(customerInfoSaveAndUpdateDTO,CustomerInfo.class));
         return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
 
-    @GetMapping("/customerInfoGet")
-    public PageResult customerInfoGet(CustomerInfoDelDTO customerInfoDelDTO){
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(MongoUtil.select(BeanCopyUtil.copy(customerInfoDelDTO,CustomerInfo.class)), CustomerInfoVO.class));
+    /**
+     * @author: guoxs
+     * @date: 19/05/05 10:17
+     * @since: JDK 1.8
+     *
+     * @description: 客户主数据详情获取
+     * @param: [supplierInfoDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/customerInfoFind")
+    public PageResult customerInfoFind(CustomerInfoDTO customerInfoDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(MongoUtil.select(BeanCopyUtil.copy(customerInfoDTO,CustomerInfo.class)), CustomerInfoVO.class));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/05 10:17
+     * @since: JDK 1.8
+     *
+     * @description: 客户主数据列表获取
+     * @param: [pageIndex, pageSize, supplierInfoDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/customerListFindByPage")
+    public PageResult customerListFindByPage(Integer pageIndex, Integer pageSize, CustomerInfoDTO customerInfoDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(MongoUtil.select(pageIndex,pageSize,BeanCopyUtil.copy(customerInfoDTO,CustomerInfo.class)), CustomerListVO.class));
     }
 }

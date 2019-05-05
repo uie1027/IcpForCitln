@@ -10,7 +10,7 @@ package icp.icpForCitln.tableInitializeTest;
 
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.customer.contorller.CustomerController;
-import icp.icpForCitln.customer.dto.CustomerInfoSaveDTO;
+import icp.icpForCitln.customer.dto.CustomerInfoSaveAndUpdateDTO;
 import icp.icpForCitln.customer.entity.CustomerInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -63,9 +63,9 @@ public class CustomerTest {
 
     @Test
     public void test(){
-        CustomerInfoSaveDTO customerInfoSaveDTO = new CustomerInfoSaveDTO();
-        customerInfoSaveDTO.setBankAccount("333");
-        Class c = customerInfoSaveDTO.getClass();
+        CustomerInfoSaveAndUpdateDTO customerInfoSaveAndUpdateDTO = new CustomerInfoSaveAndUpdateDTO();
+        customerInfoSaveAndUpdateDTO.setBankAccount("333");
+        Class c = customerInfoSaveAndUpdateDTO.getClass();
         try {
             Object m = c.newInstance();
             m.getClass().getMethod("setBankAccount",new Class[]{String.class}).invoke(m,new Object[]{"222"});
@@ -73,6 +73,6 @@ public class CustomerTest {
         }catch (Exception e){
             System.out.println("asd");
         }
-        System.out.println(customerInfoSaveDTO);
+        System.out.println(customerInfoSaveAndUpdateDTO);
     }
 }
