@@ -8,7 +8,11 @@
 package icp.icpForCitln.productGroup.service;
 
 import icp.icpForCitln.productGroup.dto.ProductGroupInfoAddDTO;
+import icp.icpForCitln.productGroup.entity.ProductGroupInfo;
+
+import java.util.List;
 
 public interface ProductGroupService {
     void productGroupSave(ProductGroupInfoAddDTO productGroupInfoAddDTO);       //新建产品组
+    List<ProductGroupInfo> productGroupInfoGetList();   //获取产品组列表
 }

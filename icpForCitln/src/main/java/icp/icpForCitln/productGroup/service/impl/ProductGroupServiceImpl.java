@@ -10,12 +10,15 @@ package icp.icpForCitln.productGroup.service.impl;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.common.util.RedisUtil;
 import icp.icpForCitln.productGroup.dto.ProductGroupInfoAddDTO;
 import icp.icpForCitln.productGroup.entity.ProductGroupInfo;
 import icp.icpForCitln.productGroup.entity.ProductGroupMailDisplay;
 import icp.icpForCitln.productGroup.entity.ProductGroupSystemAttribute;
 import icp.icpForCitln.productGroup.service.ProductGroupService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProductGroupServiceImpl implements ProductGroupService {
@@ -50,5 +53,20 @@ public class ProductGroupServiceImpl implements ProductGroupService {
             productGroupMailDisplay.setPlantformMailDisplayId(productGroupMailDisplayIdList[j]);
             MongoUtil.insert(productGroupMailDisplay);
         }
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/6 15:49
+     * @since: JDK 1.8
+     *
+     * @description: 获取产品组列表 从 Redis
+     * @param: []
+     * @return: java.util.List<icp.icpForCitln.productGroup.entity.ProductGroupInfo>
+     */
+    @Override
+    public List<ProductGroupInfo> productGroupInfoGetList() {
+        List list = RedisUtil.getList(new ProductGroupInfo());
+        return BeanCopyUtil.copy(list, ProductGroupInfo.class);
     }
 }
