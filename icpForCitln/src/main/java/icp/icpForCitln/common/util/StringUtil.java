@@ -43,6 +43,12 @@ public class StringUtil {
         return String.valueOf(str.charAt(0)).toUpperCase() + str.substring(1,str.length());
     }
 
+    public static String toMongoDBFieldByFind(String str){
+        if(isEmpty(str)) return null;
+        str = str.replace("_",".");
+        return ToTableName(str);
+    }
+
 
     /**
      * @author: Hujh
@@ -58,7 +64,9 @@ public class StringUtil {
         StringBuilder stringBuilder = new StringBuilder();
         for(int i= 0 ;i < className.length(); i++){
             char c = className.charAt(i);
-            if(Character.isUpperCase(c) && i == 0 ) {
+            if(".".equals(String.valueOf(c))){
+                stringBuilder.append(c);
+            }else if(Character.isUpperCase(c) && i == 0 ) {
                 stringBuilder.append(c);
             }else if(Character.isUpperCase(c)){
                 stringBuilder.append("_"+c);
