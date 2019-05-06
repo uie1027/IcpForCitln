@@ -29,9 +29,9 @@ public class ProductionReceiptListDTO extends BaseEntity {
 
     private String factoryName; //工厂名
 
-    @Field("FACTORY")
-    private FactoryInfo factoryInfoList; //工厂信息
+    @Field("FACTORY_INFO")
+    private FactoryInfo factoryInfo; //工厂信息
 
-    @Field("ORDER")
-    private ProductionOrder productionOrderList; //订单信息
+    @Field("PRODUCTION_ORDER")
+    private ProductionOrder productionOrder; //订单信息
 }

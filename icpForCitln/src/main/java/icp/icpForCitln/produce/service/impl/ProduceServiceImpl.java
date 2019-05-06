@@ -25,8 +25,12 @@ public class ProduceServiceImpl implements ProduceService {
         List<ProductionReceiptListDTO> listDTOS= produceDAO.productionReceiptListFind(pageIndex,pageSize,productionReceiptFindDTO);
         if (listDTOS.size()>0){
             for (ProductionReceiptListDTO productionReceiptListDTO:listDTOS){
-                productionReceiptListDTO.setFactoryName(productionReceiptListDTO.getFactoryInfoList().getFactoryName());
-                productionReceiptListDTO.setOrderCode(productionReceiptListDTO.getProductionOrderList().getOrderNumber());
+                if (productionReceiptListDTO.getFactoryInfo()!=null) {
+                    productionReceiptListDTO.setFactoryName(productionReceiptListDTO.getFactoryInfo().getFactoryName());
+                }
+                if (productionReceiptListDTO.getProductionOrder()!=null) {
+                    productionReceiptListDTO.setOrderCode(productionReceiptListDTO.getProductionOrder().getOrderNumber());
+                }
             }
         }
         return listDTOS;

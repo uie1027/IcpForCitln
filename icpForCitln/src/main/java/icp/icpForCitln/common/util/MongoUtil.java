@@ -19,6 +19,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -184,7 +186,7 @@ public class MongoUtil {
         }
 
         Query query;
-        Criteria criteria = mongoUtil.getCriteria(model);
+        Criteria criteria = mongoUtil.getCriteria(model,1);
 
         Pageable  pageable = PageRequest.of(pageIndex, pageSize);
 
@@ -210,7 +212,7 @@ public class MongoUtil {
         }
 
         Query query;
-        Criteria criteria = mongoUtil.getCriteria(model);
+        Criteria criteria = mongoUtil.getCriteria(model,1);
 
         query = new Query(criteria.and("IS_DELETE").is(2).and("IS_DISPLAY").is(1)).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
 
@@ -248,7 +250,7 @@ public class MongoUtil {
      * @param: [model]
      * @return: org.springframework.data.mongodb.core.query.Criteria
      */
-    public Criteria getCriteria(Object model){
+    public Criteria getCriteria(Object model,Integer flag){
         if (model == null){
             logger.info(model+"为空对象！");
             return null;
@@ -270,7 +272,7 @@ public class MongoUtil {
 
             String functionName = "get"+StringUtil.toInitialUpperCase(fieldName);
 
-            String mongoFieldName = StringUtil.toMongoDBField(fieldName);
+            String mongoFieldName = mongoUtil.getMongoName(fieldName,flag);
 
             try {
                 obj = model.getClass().getMethod(functionName).invoke(model,null);
@@ -293,6 +295,22 @@ public class MongoUtil {
         return criteria;
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/06 18:33
+     * @since: JDK 1.8
+     *
+     * @description: 获取Mongodb 字段名
+     * @param: [fieldName, flag]
+     * @return: java.lang.String
+     */
+    public String getMongoName(String fieldName,Integer flag){
+        if (flag == 1){
+            return StringUtil.toMongoDBField(fieldName);
+        }else{
+            return StringUtil.toMongoDBFieldByFind(fieldName);
+        }
+    }
 
     /**
      * @author: guoxs
@@ -500,5 +518,35 @@ public class MongoUtil {
 
         }
         return true;
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/06 18:34
+     * @since: JDK 1.8
+     *
+     * @description: mongo聚合查询
+     * @param: [minorClass, mainClass, model, returnClass, pageIndex, pageSize]
+     * @return: java.util.List
+     */
+    public static List aggregateSelect(List<Class> minorClass,Class mainClass,Object model,Class returnClass,Integer pageIndex,Integer pageSize){
+        if (mainClass == null||minorClass.size() == 0||model == null||returnClass == null){
+            logger.error("传入参数出错！");
+            return null;
+        }
+        List<AggregationOperation> list = new ArrayList<>();
+        for (Class clazz:minorClass){
+            String mongoName = StringUtil.ToTableName(clazz.getSimpleName());
+            AggregationOperation lookup = Aggregation.lookup(mongoName,mongoName+"_ID","_id",mongoName);
+            list.add(lookup);
+        }
+
+        list.add(Aggregation.match(mongoUtil.getCriteria(model,2)));
+        list.add(Aggregation.skip(pageIndex));
+        list.add(Aggregation.limit(pageSize));
+        Aggregation aggregation = Aggregation.newAggregation(
+                list.toArray(new AggregationOperation[list.size()])
+        );
+        return   mongoUtil.mongoTemplate.aggregate(aggregation,StringUtil.ToTableName(mainClass.getSimpleName()),returnClass).getMappedResults();
     }
 }

@@ -21,7 +21,7 @@ public class ProductionReceiptInfoDTO {
 
     private String orderNumberId; //订单编号ID
 
-    private String factoryId; //工厂ID
+    private String factoryInfoId; //工厂ID
 
     private String productId; //产品ID
 
