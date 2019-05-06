@@ -8,8 +8,13 @@
 
 package icp.icpForCitln.price.service;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-public class PriceSupplierService {
+import icp.icpForCitln.price.entity.PricePurchaseProductSupplier;
+
+import java.util.List;
+
+public interface PriceSupplierService {
+    List<PricePurchaseProductSupplier> priceSupplierFindByPage(
+            String supplierInfo,String productInfo,Integer pageIndex,Integer pageSize);
+
 }

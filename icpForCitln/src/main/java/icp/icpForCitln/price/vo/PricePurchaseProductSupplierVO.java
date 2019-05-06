@@ -13,7 +13,6 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-//销售客户产品价格组
 public class PricePurchaseProductSupplierVO {
     private String	pricePurchaseProductSupplierCode;   //供应商产品价格编码
     private String	supplierInfoId;   //供应商ID

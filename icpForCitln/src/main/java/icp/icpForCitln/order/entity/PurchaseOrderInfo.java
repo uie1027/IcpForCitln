@@ -14,6 +14,8 @@ import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.math.BigDecimal;
+
 @Data
 @Document(collection = "PURCHASE_ORDER_INFO") //采购订单表
 @ToString(callSuper = true)
@@ -23,6 +25,9 @@ public class PurchaseOrderInfo extends BaseEntity {
 
     @Field("ORDER_TYPE_ID")
     private String orderTypeId;  //订单类型
+
+    @Field("ORDER_ORIGIN_ID")
+    private String orderOriginId;  //订单来源
 
     @Field("SUPPLIE_INFO_ID")
     private String supplieInfoId; //供应商id
@@ -38,6 +43,9 @@ public class PurchaseOrderInfo extends BaseEntity {
 
     @Field("CURRENCY_ID")
     private String currencyId; //币种
+
+    @Field("TOTAL_AMOUNT")
+    private BigDecimal totalAmount; //订单总金额
 
     @Field("PURCHASE_ORDER_TITLE_REMARKS")
     private String purchaseOrderTitleRemarks;//抬头备注

@@ -6,15 +6,21 @@
  * Copyright (c) 2019,All Rights Reserved.
  */
 
-package icp.icpForCitln.price.service;
+package icp.icpForCitln.price.service.impl;
 
 
 import icp.icpForCitln.price.entity.PricePurchaseProductSupplier;
+import icp.icpForCitln.price.service.PriceSupplierService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+@Service
+public class PriceSupplierServiceImpl implements PriceSupplierService {
 
-public interface PriceSupplierService {
-    List<PricePurchaseProductSupplier> priceSupplierFindByPage(
-            String supplierInfo,String productInfo,Integer pageIndex,Integer pageSize);
 
+    @Override
+    public List<PricePurchaseProductSupplier> priceSupplierFindByPage(
+            String supplierInfo, String productInfo, Integer pageIndex, Integer pageSize) {
+        return null;
+    }
 }

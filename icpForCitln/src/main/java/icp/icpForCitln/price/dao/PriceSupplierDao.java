@@ -8,5 +8,11 @@
 
 package icp.icpForCitln.price.dao;
 
-public class PriceSupplierDao {
+import icp.icpForCitln.price.dto.PricePurchaseProductSupplierDTO;
+
+import java.util.List;
+
+public interface PriceSupplierDao {
+    List<PricePurchaseProductSupplierDTO> priceSupplierFindByPage(
+            String supplierInfo,String productInfo,Integer pageIndex,Integer pageSize);
 }
