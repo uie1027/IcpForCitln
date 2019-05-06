@@ -9,7 +9,7 @@
 package icp.icpForCitln.tableInitializeTest;
 
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.order.entity.PurchaseOrderDetilInfo;
+import icp.icpForCitln.order.entity.PurchaseOrderDetailInfo;
 import icp.icpForCitln.order.entity.PurchaseOrderInfo;
 import icp.icpForCitln.order.entity.SaleOrderDetilInfo;
 import icp.icpForCitln.order.entity.SaleOrderInfo;
@@ -37,7 +37,6 @@ public class OrderTest {
     @Test
     public void PurchaseOrderInfoSaveTest(){
         PurchaseOrderInfo purchaseOrderInfo = new PurchaseOrderInfo();
-
         purchaseOrderInfo.setCompanyInfoId("2");
         purchaseOrderInfo.setCurrencyId("2");
         purchaseOrderInfo.setOrderTypeId("2");
@@ -45,9 +44,9 @@ public class OrderTest {
         purchaseOrderInfo.setPurchaseContractCode("2");
         purchaseOrderInfo.setPurchaseOrderCode("2");
         purchaseOrderInfo.setPurchaseOrderStatus("2");
+        purchaseOrderInfo.setTotalAmount(new BigDecimal("222.2"));
         purchaseOrderInfo.setPurchaseOrderTitleRemarks("2");
         purchaseOrderInfo.setSupplieInfoId("2");
-
         MongoUtil.insert(purchaseOrderInfo);
     }
 
@@ -56,13 +55,13 @@ public class OrderTest {
      * @date: 19/04/29 14:41
      * @since: JDK 1.8
      *
-     * @description: PurchaseOrderDetilInfo 保存测试
+     * @description: PurchaseOrderDetailInfo 保存测试
      * @param: []
      * @return: void
      */
     @Test
     public void PurchaseOrderDetilInfoSaveTest(){
-        PurchaseOrderDetilInfo purchaseOrderDetilInfo = new PurchaseOrderDetilInfo();
+        PurchaseOrderDetailInfo purchaseOrderDetilInfo = new PurchaseOrderDetailInfo();
 
         purchaseOrderDetilInfo.setAgreementCode("2");
         purchaseOrderDetilInfo.setAgreementRowCode("2");
