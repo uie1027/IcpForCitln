@@ -10,9 +10,10 @@ package icp.icpForCitln.order.service.impl;
 
 import icp.icpForCitln.order.entity.PurchaseOrderDetailInfo;
 import icp.icpForCitln.order.service.PurchaseOrderDetailService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class PurchaseOrderDetailServiceImpl implements PurchaseOrderDetailService {
 
     @Override
