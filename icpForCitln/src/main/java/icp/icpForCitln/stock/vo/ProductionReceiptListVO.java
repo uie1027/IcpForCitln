@@ -6,7 +6,7 @@
  * Copyright (c) 2019,All Rights Reserved.
  */
 
-package icp.icpForCitln.produce.vo;
+package icp.icpForCitln.stock.vo;
 
 import lombok.Data;
 

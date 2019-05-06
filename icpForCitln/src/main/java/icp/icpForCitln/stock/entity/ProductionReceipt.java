@@ -6,7 +6,7 @@
  * Copyright (c) 2019,All Rights Reserved.
  */
 
-package icp.icpForCitln.produce.entity;
+package icp.icpForCitln.stock.entity;
 
 import icp.icpForCitln.common.enetity.BaseEntity;
 import lombok.Data;

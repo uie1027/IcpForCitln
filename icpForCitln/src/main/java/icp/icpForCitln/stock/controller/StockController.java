@@ -1,0 +1,63 @@
+/**
+ * Project Name: icpForCitln
+ * File Name: StockController
+ * Package Name: icp.icpForCitln.stock.controller
+ * Date: 19/05/06 19:00
+ * Copyright (c) 2019,All Rights Reserved.
+ */
+
+package icp.icpForCitln.stock.controller;
+
+import icp.icpForCitln.common.result.PageResult;
+import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.stock.dto.ProductionReceiptFindDTO;
+import icp.icpForCitln.stock.dto.ProductionReceiptInfoDTO;
+import icp.icpForCitln.stock.dto.ProductionReceiptListDTO;
+import icp.icpForCitln.stock.entity.ProductionReceipt;
+import icp.icpForCitln.stock.service.StockService;
+import icp.icpForCitln.stock.vo.ProductionReceiptListVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/stock")
+public class StockController {
+    @Autowired
+    StockService stockService;
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/06 19:01
+     * @since: JDK 1.8
+     *
+     * @description: 生产入库单创建
+     * @param: [productionReceiptInfoDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/productionReceiptSave")
+    public PageResult productionReceiptSave(ProductionReceiptInfoDTO productionReceiptInfoDTO){
+        MongoUtil.insert(BeanCopyUtil.copy(productionReceiptInfoDTO, ProductionReceipt.class));
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/06 19:01
+     * @since: JDK 1.8
+     *
+     * @description: 生产入库单列表
+     * @param: [pageIndex, pageSize, productionReceiptFindDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/productionReceiptListFindByPage")
+    public PageResult productionReceiptListFindByPage(Integer pageIndex, Integer pageSize, ProductionReceiptFindDTO productionReceiptFindDTO){
+        List<ProductionReceiptListDTO> dtos = stockService.productionReceiptListFind(pageIndex,pageSize,productionReceiptFindDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(dtos, ProductionReceiptListVO.class));
+    }
+}

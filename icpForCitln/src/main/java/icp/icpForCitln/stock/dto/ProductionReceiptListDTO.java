@@ -6,7 +6,7 @@
  * Copyright (c) 2019,All Rights Reserved.
  */
 
-package icp.icpForCitln.produce.dto;
+package icp.icpForCitln.stock.dto;
 
 import icp.icpForCitln.common.enetity.BaseEntity;
 import icp.icpForCitln.factory.entity.FactoryInfo;

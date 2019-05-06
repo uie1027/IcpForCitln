@@ -9,8 +9,8 @@
 package icp.icpForCitln.produce.service.impl;
 
 import icp.icpForCitln.produce.dao.ProduceDAO;
-import icp.icpForCitln.produce.dto.ProductionReceiptFindDTO;
-import icp.icpForCitln.produce.dto.ProductionReceiptListDTO;
+import icp.icpForCitln.stock.dto.ProductionReceiptFindDTO;
+import icp.icpForCitln.stock.dto.ProductionReceiptListDTO;
 import icp.icpForCitln.produce.service.ProduceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,20 +19,5 @@ import java.util.List;
 
 @Service
 public class ProduceServiceImpl implements ProduceService {
-    @Autowired
-    ProduceDAO produceDAO;
-    public List<ProductionReceiptListDTO> productionReceiptListFind(Integer pageIndex, Integer pageSize, ProductionReceiptFindDTO productionReceiptFindDTO){
-        List<ProductionReceiptListDTO> listDTOS= produceDAO.productionReceiptListFind(pageIndex,pageSize,productionReceiptFindDTO);
-        if (listDTOS.size()>0){
-            for (ProductionReceiptListDTO productionReceiptListDTO:listDTOS){
-                if (productionReceiptListDTO.getFactoryInfo()!=null) {
-                    productionReceiptListDTO.setFactoryName(productionReceiptListDTO.getFactoryInfo().getFactoryName());
-                }
-                if (productionReceiptListDTO.getProductionOrder()!=null) {
-                    productionReceiptListDTO.setOrderCode(productionReceiptListDTO.getProductionOrder().getOrderNumber());
-                }
-            }
-        }
-        return listDTOS;
-    }
+
 }

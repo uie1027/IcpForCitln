@@ -10,8 +10,6 @@ package icp.icpForCitln.price.dao.impl;
 
 import icp.icpForCitln.price.dao.PriceSupplierDao;
 import icp.icpForCitln.price.dto.PricePurchaseProductSupplierDTO;
-import icp.icpForCitln.price.entity.PricePurchaseProductSupplier;
-import icp.icpForCitln.produce.dto.ProductionReceiptListDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;

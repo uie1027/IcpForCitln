@@ -10,7 +10,7 @@ package icp.icpForCitln.tableInitializeTest;
 
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.produce.entity.ProductionOrder;
-import icp.icpForCitln.produce.entity.ProductionReceipt;
+import icp.icpForCitln.stock.entity.ProductionReceipt;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
