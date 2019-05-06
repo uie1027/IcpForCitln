@@ -8,9 +8,8 @@
 
 package icp.icpForCitln.tableInitializeTest;
 
-import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.produce.dto.ProductionReceiptInfoDTO;
+import icp.icpForCitln.produce.entity.ProductionOrder;
 import icp.icpForCitln.produce.entity.ProductionReceipt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,11 +24,11 @@ import java.util.Date;
 public class ProduceTest {
     @Test
     public void productionReceiptSaveTest(){
-        ProductionReceiptInfoDTO productionReceiptInfoDTO = new ProductionReceiptInfoDTO();
+        ProductionReceipt productionReceiptInfoDTO = new ProductionReceipt();
 
         productionReceiptInfoDTO.setDocumentType(1);
         productionReceiptInfoDTO.setFactoryId("22");
-        productionReceiptInfoDTO.setOrderNumberId("33");
+        productionReceiptInfoDTO.setProductionOrderId("33");
         productionReceiptInfoDTO.setRemark("2222");
         productionReceiptInfoDTO.setCompanyInfoId("111");
         productionReceiptInfoDTO.setInventoryLocationId("2s");
@@ -39,6 +38,16 @@ public class ProduceTest {
         productionReceiptInfoDTO.setWarehouseNumber(new BigDecimal("44"));
         productionReceiptInfoDTO.setOrderCreateTime(new Date());
 
-        MongoUtil.insert(BeanCopyUtil.copy(productionReceiptInfoDTO, ProductionReceipt.class));
+        MongoUtil.insert(productionReceiptInfoDTO);
+    }
+
+    @Test
+    public void productionOrderSaveTest(){
+        ProductionOrder productionOrder = new ProductionOrder();
+
+        productionOrder.setOrderNumber("222");
+        productionOrder.setOrderType("2");
+
+        MongoUtil.insert(productionOrder);
     }
 }
