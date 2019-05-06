@@ -21,14 +21,17 @@ import java.util.Date;
 @Document(collection = "PRODUCTION_RECEIPT") //生产入库单
 @ToString(callSuper = true)
 public class ProductionReceipt extends BaseEntity {
+    @Field("PRODUCTION_RECEIPT_CODE")
+    private String productionReceiptCode;  //生产入库单号
+
     @Field("DOCUMENT_TYPE")
     private Integer documentType; //凭证类型 1 生产订单 2 其他订单
 
     @Field("COMPANY_INFO_ID")
     private String companyInfoId; //公司ID
 
-    @Field("ORDER_NUMBER_ID")
-    private String orderNumberId; //订单编号ID
+    @Field("PRODUCTION_ORDER_ID")
+    private String productionOrderId; //订单编号ID
 
     @Field("FACTORY_ID")
     private String factoryId; //工厂ID
@@ -48,6 +51,8 @@ public class ProductionReceipt extends BaseEntity {
     @Field("INVENTORY_LOCATION_ID")
     private String inventoryLocationId; //库存地点id
 
+    @Field("RECEIPT_STATUS")
+    private Integer receiptStatus; //入库单状态 1已入库 2已取消
 
     @Field("ORDER_CREATE_TIME")
     private Date orderCreateTime; //订单创建时间

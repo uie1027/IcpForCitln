@@ -44,7 +44,6 @@ public class OrderTest {
         purchaseOrderInfo.setPurchaseContractCode("2");
         purchaseOrderInfo.setPurchaseOrderCode("2");
         purchaseOrderInfo.setPurchaseOrderStatus("2");
-        purchaseOrderInfo.setTotalAmount(new BigDecimal("222.2"));
         purchaseOrderInfo.setPurchaseOrderTitleRemarks("2");
         purchaseOrderInfo.setSupplieInfoId("2");
         MongoUtil.insert(purchaseOrderInfo);
