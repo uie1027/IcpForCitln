@@ -8,11 +8,8 @@
 
 package icp.icpForCitln.produce.service;
 
-import icp.icpForCitln.stock.dto.ProductionReceiptFindDTO;
-import icp.icpForCitln.stock.dto.ProductionReceiptListDTO;
-
-import java.util.List;
+import icp.icpForCitln.produce.dto.PlannedOrderSaveDTO;
 
 public interface ProduceService {
-
+    void PlannedOrderSave(PlannedOrderSaveDTO plannedOrderSaveDTO);
 }

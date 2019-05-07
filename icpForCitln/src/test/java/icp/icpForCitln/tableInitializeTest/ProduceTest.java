@@ -9,11 +9,15 @@
 package icp.icpForCitln.tableInitializeTest;
 
 import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.produce.dto.PlannedOrderSaveDTO;
+import icp.icpForCitln.produce.entity.PlannedOrderDetail;
 import icp.icpForCitln.produce.entity.ProductionOrder;
+import icp.icpForCitln.produce.service.ProduceService;
 import icp.icpForCitln.stock.entity.ProductionReceipt;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -25,6 +29,8 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProduceTest {
+    @Autowired
+    ProduceService produceService;
     @Test
     public void productionReceiptSaveTest(){
         ProductionReceipt productionReceiptInfoDTO = new ProductionReceipt();
@@ -62,5 +68,30 @@ public class ProduceTest {
         List<Class> list = new ArrayList<>();
         list.add(SupplierInfo.class);
         System.out.println(SupplierInfo.class.getSimpleName());
+    }
+
+    @Test
+    public void test(){
+        PlannedOrderSaveDTO plannedOrderSaveDTO = new PlannedOrderSaveDTO();
+        PlannedOrderDetail plannedOrderDetail = new PlannedOrderDetail();
+        List<PlannedOrderDetail> list = new ArrayList<>();
+
+        plannedOrderSaveDTO.setCompanyInfoId("22");
+        plannedOrderSaveDTO.setDocumentType(1);
+        plannedOrderSaveDTO.setOrderCreateTime(new Date());
+        plannedOrderSaveDTO.setRemark("32");
+
+        plannedOrderDetail.setFactoryId("22");
+        plannedOrderDetail.setEndTime(new Date());
+        plannedOrderDetail.setOrderQuantity(new BigDecimal("12"));
+        plannedOrderDetail.setOrderStatus(1);
+        plannedOrderDetail.setProductInfoId("222");
+        plannedOrderDetail.setRemark("222");
+        plannedOrderDetail.setStartTime(new Date());
+
+        list.add(plannedOrderDetail);
+        plannedOrderSaveDTO.setDetailList(list);
+
+        produceService.PlannedOrderSave(plannedOrderSaveDTO);
     }
 }

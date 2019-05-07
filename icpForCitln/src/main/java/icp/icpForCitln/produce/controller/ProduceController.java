@@ -9,14 +9,10 @@
 package icp.icpForCitln.produce.controller;
 
 import icp.icpForCitln.common.result.PageResult;
-import icp.icpForCitln.common.util.BeanCopyUtil;
-import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.produce.dto.ProductionOrderInfoDTO;
-import icp.icpForCitln.produce.entity.ProductionOrder;
+import icp.icpForCitln.produce.dto.PlannedOrderSaveDTO;
 import icp.icpForCitln.produce.service.ProduceService;
-import icp.icpForCitln.produce.vo.ProductionOrderVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,9 +22,18 @@ public class ProduceController {
     @Autowired
     ProduceService produceService;
 
-    @GetMapping("/productionOrderFind")
-    public PageResult productionOrderFind(ProductionOrderInfoDTO productionOrderInfoDTO){
-        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(MongoUtil.select(BeanCopyUtil.copy(productionOrderInfoDTO, ProductionOrder.class)), ProductionOrderVO.class));
+    /**
+     * @author: guoxs
+     * @date: 19/05/07 14:52
+     * @since: JDK 1.8
+     *
+     * @description: 计划订单创建
+     * @param: [plannedOrderSaveDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/PlannedOrderSave")
+    public PageResult PlannedOrderSave(PlannedOrderSaveDTO plannedOrderSaveDTO){
+        produceService.PlannedOrderSave(plannedOrderSaveDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
-
 }
