@@ -292,7 +292,7 @@ public class MongoUtil {
             criteria.orOperator(criteriaNum);
         }
 
-        return criteria;
+        return criteria.and("IS_DELETE").is(2).and("IS_DISPLAY").is(1);
     }
 
     /**
@@ -544,6 +544,7 @@ public class MongoUtil {
         list.add(Aggregation.match(mongoUtil.getCriteria(model,2)));
         list.add(Aggregation.skip(pageIndex));
         list.add(Aggregation.limit(pageSize));
+        list.add(Aggregation.sort(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME")));
         Aggregation aggregation = Aggregation.newAggregation(
                 list.toArray(new AggregationOperation[list.size()])
         );
