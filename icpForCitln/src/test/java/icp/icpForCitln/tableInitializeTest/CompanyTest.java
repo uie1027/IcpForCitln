@@ -7,7 +7,7 @@
  */
 package icp.icpForCitln.tableInitializeTest;
 
-import icp.icpForCitln.common.cache.UserInfoCache;
+import icp.icpForCitln.common.cache.UserAndCompanyCache;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.SessionUtil;
 import icp.icpForCitln.company.eneity.CompanyAddressInfo;
@@ -71,9 +71,9 @@ public class CompanyTest {
         companyInfo.setAuthenticationCertificationStartDate(new Date());
         companyInfo.setAuthenticationCertificationEndDate(new Date());
         companyInfo.setAuthenticationRemark("agdrgdg");
-        companyInfo.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyInfo.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         companyInfo.setCreateTime(new Date());
-        companyInfo.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyInfo.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         companyInfo.setLastModificationTime(new Date());
         companyInfo.setIsDelete(2);
         companyInfo.setIsDisplay(1);
@@ -98,9 +98,9 @@ public class CompanyTest {
         companyDepartmentInfo.setCompanyDepartmentCode("dsfasfd");
         companyDepartmentInfo.setCompanyDepartmentName("faffFSDF");
         companyDepartmentInfo.setCompanyDepartmentRemark("DFSDFSADFSA");
-        companyDepartmentInfo.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyDepartmentInfo.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         companyDepartmentInfo.setCreateTime(new Date());
-        companyDepartmentInfo.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyDepartmentInfo.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         companyDepartmentInfo.setLastModificationTime(new Date());
         companyDepartmentInfo.setIsDelete(2);
         companyDepartmentInfo.setIsDisplay(1);
@@ -123,9 +123,9 @@ public class CompanyTest {
 
         companyAddressInfo.setCompanyInfoId("asdasd");
         companyAddressInfo.setCompanyAddress("456");
-        companyAddressInfo.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyAddressInfo.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         companyAddressInfo.setCreateTime(new Date());
-        companyAddressInfo.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyAddressInfo.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         companyAddressInfo.setLastModificationTime(new Date());
         companyAddressInfo.setIsDelete(2);
         companyAddressInfo.setIsDisplay(1);
@@ -148,9 +148,9 @@ public class CompanyTest {
 
         companyFactory.setCompyInfoId("45652");
         companyFactory.setFactoryInfoId("544");
-        companyFactory.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyFactory.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         companyFactory.setCreateTime(new Date());
-        companyFactory.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        companyFactory.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         companyFactory.setLastModificationTime(new Date());
         companyFactory.setIsDelete(2);
         companyFactory.setIsDisplay(1);

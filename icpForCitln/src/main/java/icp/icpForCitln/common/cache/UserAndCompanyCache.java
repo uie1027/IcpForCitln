@@ -8,18 +8,16 @@
 package icp.icpForCitln.common.cache;
 
 import icp.icpForCitln.IcpForCitlnApplication;
+import icp.icpForCitln.common.enetity.UserAndCompanyInfo;
 import icp.icpForCitln.common.util.RedisUtil;
-import icp.icpForCitln.user.eneity.UserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 @Component
-public class UserInfoCache {
+public class UserAndCompanyCache {
     private final static Logger logger = LoggerFactory.getLogger(IcpForCitlnApplication.class);
-
-    private static UserInfoCache userInfoCache;
 
     /**
      * @author: 方瑞冬
@@ -30,8 +28,8 @@ public class UserInfoCache {
      * @param: [userInfo]
      * @return: void
      */
-    public static void put(UserInfo userInfo) {
-        RedisUtil.put(userInfo);
+    public static void put(UserAndCompanyInfo userAndCompanyInfo) {
+        RedisUtil.put(userAndCompanyInfo);
     }
 
     /**
@@ -43,22 +41,22 @@ public class UserInfoCache {
      * @param: [userNum]
      * @return: icp.icpForCitln.user.eneity.UserInfo
      */
-    public static UserInfo get(String userNum){
+    public static UserAndCompanyInfo get(String userNum){
         if(StringUtils.isEmpty(userNum)){
             logger.error("传入参数 userNum 为空，查询用户信息失败");
             return null;
         }
 
-        UserInfo userInfo = new UserInfo();
+        UserAndCompanyInfo userAndCompanyInfo = new UserAndCompanyInfo();
 
-        userInfo.setUserNum(userNum);
+        userAndCompanyInfo.setUserNum(userNum);
 
-        UserInfo userInfoResult = (UserInfo) RedisUtil.get(userInfo);
-        if(userInfoResult == null){
+        UserAndCompanyInfo userAndCompanyInfoResult = (UserAndCompanyInfo) RedisUtil.get(userAndCompanyInfo);
+        if(userAndCompanyInfoResult == null){
             logger.info("未查询到 " + userNum + " 用户信息");
             return null;
         } else {
-            return userInfoResult;
+            return userAndCompanyInfoResult;
         }
     }
 
@@ -67,10 +65,10 @@ public class UserInfoCache {
             logger.error("传入参数 userNum 为空，删除缓存失败");
         }
 
-        UserInfo userInfo = new UserInfo();
+        UserAndCompanyInfo userAndCompanyInfo = new UserAndCompanyInfo();
 
-        userInfo.setUserNum(userNum);
+        userAndCompanyInfo.setUserNum(userNum);
 
-        RedisUtil.delete(userInfo);
+        RedisUtil.delete(userAndCompanyInfo);
     }
 }

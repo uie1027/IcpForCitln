@@ -7,7 +7,7 @@
  */
 package icp.icpForCitln.tableInitializeTest;
 
-import icp.icpForCitln.common.cache.UserInfoCache;
+import icp.icpForCitln.common.cache.UserAndCompanyCache;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.SessionUtil;
 import icp.icpForCitln.enterprise.EnterpriseInfo;
@@ -36,9 +36,9 @@ public class Enterprise {
 
         enterpriseInfo.setEnterpriseCode("65465+4");
         enterpriseInfo.setEnterpriseName("sadasdad");
-        enterpriseInfo.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        enterpriseInfo.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         enterpriseInfo.setCreateTime(new Date());
-        enterpriseInfo.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        enterpriseInfo.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         enterpriseInfo.setLastModificationTime(new Date());
         enterpriseInfo.setIsDelete(2);
         enterpriseInfo.setIsDisplay(1);

@@ -15,10 +15,7 @@ import icp.icpForCitln.product.dto.ProductInfoSaveDTO;
 import icp.icpForCitln.product.eneity.ProductInfo;
 import icp.icpForCitln.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/product")
@@ -42,7 +39,7 @@ public class ProductController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/productInfoSave")
-    public PageResult productInfoSave(ProductInfoSaveDTO productInfoSaveDTO){
+    public PageResult productInfoSave(@RequestBody ProductInfoSaveDTO productInfoSaveDTO){
         productService.productInfoSave(productInfoSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品保存成功");
     }

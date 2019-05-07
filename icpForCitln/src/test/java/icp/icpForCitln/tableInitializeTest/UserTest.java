@@ -7,7 +7,7 @@
  */
 package icp.icpForCitln.tableInitializeTest;
 
-import icp.icpForCitln.common.cache.UserInfoCache;
+import icp.icpForCitln.common.cache.UserAndCompanyCache;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.SessionUtil;
@@ -45,9 +45,9 @@ public class UserTest {
         userInfo.setUserPhone("手机号");
         userInfo.setUserEmail("邮箱");
         userInfo.setUserType(1);
-        userInfo.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        userInfo.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         userInfo.setCreateTime(new Date());
-        userInfo.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        userInfo.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         userInfo.setLastModificationTime(new Date());
         userInfo.setIsDelete(2);
         userInfo.setIsDisplay(1);
@@ -71,9 +71,9 @@ public class UserTest {
         userRole.setUserRoleCode(GeneratedCodeUtil.generatedCode());
         userRole.setUserInfoId("5cc68b96ba4b701984cc8d5e");
         userRole.setRoleInfoId("5cc68b96ba4b701984cc8d5e");
-        userRole.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        userRole.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         userRole.setCreateTime(new Date());
-        userRole.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        userRole.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         userRole.setLastModificationTime(new Date());
         userRole.setIsDelete(2);
         userRole.setIsDisplay(1);
@@ -96,9 +96,9 @@ public class UserTest {
 
         userCompany.setUserInfoId("5cc68b96ba4b701984cc8d5e");
         userCompany.setCompanyInfoId("5cc68b96ba4b701984cc8d5e");
-        userCompany.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        userCompany.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         userCompany.setCreateTime(new Date());
-        userCompany.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        userCompany.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         userCompany.setLastModificationTime(new Date());
         userCompany.setIsDelete(2);
         userCompany.setIsDisplay(1);

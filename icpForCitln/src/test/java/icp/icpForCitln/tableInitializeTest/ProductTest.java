@@ -7,7 +7,7 @@
  */
 package icp.icpForCitln.tableInitializeTest;
 
-import icp.icpForCitln.common.cache.UserInfoCache;
+import icp.icpForCitln.common.cache.UserAndCompanyCache;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.SessionUtil;
 import icp.icpForCitln.product.eneity.ProductAttribuit;
@@ -52,9 +52,9 @@ public class ProductTest {
         productInfo.setQualityInspectionCycle(2);
         productInfo.setSaleContent("3");
         productInfo.setBasicUnitId("@");
-        productInfo.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        productInfo.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         productInfo.setCreateTime(new Date());
-        productInfo.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        productInfo.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         productInfo.setLastModificationTime(new Date());
         productInfo.setIsDelete(2);
         productInfo.setIsDisplay(1);
@@ -79,9 +79,9 @@ public class ProductTest {
         productAttribuit.setSystemProductAttribuitId("65151");
         productAttribuit.setSystemProductAttribuitValueId("Asdadasd");
         productAttribuit.setSystemProductAttribuitValue("as4d2as4");
-        productAttribuit.setCreater(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        productAttribuit.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         productAttribuit.setCreateTime(new Date());
-        productAttribuit.setLastMondifier(UserInfoCache.get(SessionUtil.getByKey("userNum")).getId());
+        productAttribuit.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         productAttribuit.setLastModificationTime(new Date());
         productAttribuit.setIsDelete(2);
         productAttribuit.setIsDisplay(1);

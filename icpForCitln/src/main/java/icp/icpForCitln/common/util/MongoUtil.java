@@ -9,7 +9,7 @@
 package icp.icpForCitln.common.util;
 
 import icp.icpForCitln.IcpForCitlnApplication;
-import icp.icpForCitln.common.cache.UserInfoCache;
+import icp.icpForCitln.common.cache.UserAndCompanyCache;
 import icp.icpForCitln.user.eneity.UserInfo;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
@@ -106,7 +106,7 @@ public class MongoUtil {
             return false;
         }
 
-        UserInfo user = UserInfoCache.get(SessionUtil.getByKey("userNum"));
+        UserInfo user = BeanCopyUtil.copy(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")), UserInfo.class);
 
         if (user==null){
             logger.info("获取redis失败");
@@ -154,7 +154,7 @@ public class MongoUtil {
 
         Update update = new Update();
 
-        UserInfo userInfo = UserInfoCache.get(SessionUtil.getByKey("userNum"));
+        UserInfo userInfo = BeanCopyUtil.copy(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")), UserInfo.class);
 
         if (userInfo==null){
             logger.info("获取redis失败");
@@ -335,7 +335,7 @@ public class MongoUtil {
             }
         }
 
-        UserInfo userInfo = UserInfoCache.get(SessionUtil.getByKey("userNum"));
+        UserInfo userInfo = BeanCopyUtil.copy(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")), UserInfo.class);
 
         if (userInfo==null){
             logger.info("获取redis失败");
@@ -466,8 +466,7 @@ public class MongoUtil {
             }
             update = mongoUtil.getUpdate(model,query);
 
-            UserInfo userInfo = UserInfoCache.get(SessionUtil.getByKey("userNum"));
-
+            UserInfo userInfo = BeanCopyUtil.copy(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")), UserInfo.class);
             if (userInfo==null){
                 logger.info("获取redis失败");
                 return false;
@@ -483,7 +482,7 @@ public class MongoUtil {
             try {
                 update.set("IS_DISPLAY",2);
 
-                UserInfo userInfo = UserInfoCache.get(SessionUtil.getByKey("userNum"));
+                UserInfo userInfo = BeanCopyUtil.copy(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")), UserInfo.class);
 
                 if (userInfo==null){
                     logger.info("获取redis失败");
