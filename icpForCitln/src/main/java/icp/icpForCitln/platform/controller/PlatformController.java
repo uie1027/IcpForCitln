@@ -88,4 +88,5 @@ public class PlatformController {
         List<PlantformMailDisplay> plantformMailDisplayList = platformService.plantformMailDisplayGetList();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(plantformMailDisplayList, PlantformMailDisplayVO.class));
     }
+    
 }
