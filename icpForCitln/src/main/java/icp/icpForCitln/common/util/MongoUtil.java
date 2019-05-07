@@ -185,7 +185,7 @@ public class MongoUtil {
 
         Pageable  pageable = PageRequest.of(pageIndex, pageSize);
 
-             query = new Query(criteria.and("IS_DELETE").is(2).and("IS_DISPLAY").is(1)).with(pageable).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
+             query = new Query(criteria).with(pageable).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
 
         return mongoUtil.mongoTemplate.find(query,model.getClass());
 
@@ -204,7 +204,7 @@ public class MongoUtil {
         Query query;
         Criteria criteria = mongoUtil.getCriteria(model,1);
 
-        query = new Query(criteria.and("IS_DELETE").is(2).and("IS_DISPLAY").is(1)).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
+        query = new Query(criteria).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
 
         return mongoUtil.mongoTemplate.find(query,model.getClass());
 
