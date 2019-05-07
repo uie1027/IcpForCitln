@@ -8,10 +8,15 @@
 
 package icp.icpForCitln.price.dao.impl;
 
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.StringUtil;
+import icp.icpForCitln.customer.entity.CustomerInfo;
 import icp.icpForCitln.price.dao.PriceSaleDao;
-import icp.icpForCitln.price.dto.PriceSaleProductDTO;
-import icp.icpForCitln.price.dto.PriceSaleProductGroupDTO;
+import icp.icpForCitln.price.dto.*;
+import icp.icpForCitln.price.entity.PriceSaleCustomerProduct;
+import icp.icpForCitln.price.entity.PriceSaleCustomerProductGroup;
+import icp.icpForCitln.product.eneity.ProductInfo;
+import icp.icpForCitln.productGroup.entity.ProductGroupInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
@@ -98,4 +103,59 @@ public class PriceSaleDaoImpl implements PriceSaleDao {
         return mongoTemplate.aggregate(aggregation,"PRICE_SALE_PRODUCT",PriceSaleProductDTO.class).getMappedResults();
 
     }
+
+
+
+    /**
+     * @author: Hujh
+     * @date: 2019/5/7 11:18
+     * @since: JDK 1.8
+     *
+     * @description:
+     * @param: [customerInfo, productGroupInfo, pageIndex, pageSize]
+     * @return: java.util.List<icp.icpForCitln.price.dto.PriceSaleCustomerProductGroupDTO>
+     */
+    @Override
+    public List<PriceSaleCustomerProductGroupDTO> priceSaleCustomerProductGroupFindByPage(
+            String customerInfo, String productGroupInfo, Integer pageIndex, Integer pageSize) {
+        //关联表
+        List<Class> minorClass = new ArrayList<>();
+        minorClass.add(ProductGroupInfo.class); //产品组表关联
+        minorClass.add(CustomerInfo.class); //客户表关联
+        //查询条件赋值
+        PriceSaleSearchDTO priceSaleSearchDTO = new PriceSaleSearchDTO();
+        priceSaleSearchDTO.setCustomerInfo_customerCode(customerInfo);
+        priceSaleSearchDTO.setCustomerInfo_customerName(customerInfo);
+        priceSaleSearchDTO.setProductGroupInfo_productGroupCode(productGroupInfo);
+        priceSaleSearchDTO.setProductGroupInfo_productGroupName(productGroupInfo);
+        return MongoUtil.aggregateSelect(minorClass, PriceSaleCustomerProductGroup.class,priceSaleSearchDTO,PriceSaleCustomerProductGroupDTO.class,pageIndex,pageSize);
+
+    }
+
+    /**
+     * @author: Hujh
+     * @date: 2019/5/7 11:18
+     * @since: JDK 1.8
+     *
+     * @description: 这里用一句话描述这个方法的作用
+     * @param: [customerInfo, productInfo, pageIndex, pageSize]
+     * @return: java.util.List<icp.icpForCitln.price.dto.PriceSaleCustomerProductDTO>
+     */
+    @Override
+    public List<PriceSaleCustomerProductDTO> priceSaleCustomerProductFindByPage(
+            String customerInfo, String productInfo, Integer pageIndex, Integer pageSize) {
+        //关联表
+        List<Class> minorClass = new ArrayList<>();
+        minorClass.add(ProductInfo.class); //产品表关联
+        minorClass.add(CustomerInfo.class); //客户表关联
+        //查询条件赋值
+        PriceSaleSearchDTO priceSaleSearchDTO = new PriceSaleSearchDTO();
+        priceSaleSearchDTO.setCustomerInfo_customerCode(customerInfo);
+        priceSaleSearchDTO.setCustomerInfo_customerName(customerInfo);
+        priceSaleSearchDTO.setProductInfo_productCode(productInfo);
+        priceSaleSearchDTO.setProductInfo_productName(productInfo);
+        return MongoUtil.aggregateSelect(minorClass, PriceSaleCustomerProduct.class,priceSaleSearchDTO,PriceSaleCustomerProductDTO.class,pageIndex,pageSize);
+    }
+
+
 }

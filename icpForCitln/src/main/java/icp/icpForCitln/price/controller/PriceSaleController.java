@@ -10,11 +10,10 @@ package icp.icpForCitln.price.controller;
 
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
-import icp.icpForCitln.price.dto.PricePurchaseProductSupplierDTO;
+import icp.icpForCitln.price.entity.PriceSaleCustomerProduct;
+import icp.icpForCitln.price.entity.PriceSaleCustomerProductGroup;
 import icp.icpForCitln.price.service.PriceSaleService;
-import icp.icpForCitln.price.vo.PricePurchaseProductSupplierVO;
-import icp.icpForCitln.price.vo.PriceSaleProductGroupVO;
-import icp.icpForCitln.price.vo.PriceSaleProductVO;
+import icp.icpForCitln.price.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,9 +64,6 @@ public class PriceSaleController {
         return  PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(list, PriceSaleProductVO.class));
     }
 
-
-
-
     /**
      * @author: Hujh
      * @date: 2019/5/7 9:41
@@ -83,9 +79,9 @@ public class PriceSaleController {
             @RequestParam(value = "productGroupInfo") String productGroupInfo,
             @RequestParam(value = "pageIndex") Integer pageIndex,
             @RequestParam(value = "pageSize") Integer pageSize ){
-        List<PriceSaleProductVO> list =
-                priceSaleService.priceSaleProductFindByPage(customerInfo,pageIndex,pageSize);
-        return  PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(list, PricePurchaseProductSupplierVO.class));
+        List<PriceSaleCustomerProductGroupVO> list =
+                priceSaleService.priceSaleCustomerProductGroupFindByPage(customerInfo,productGroupInfo,pageIndex,pageSize);
+        return  PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(list, PriceSaleCustomerProductGroupVO.class));
     }
 
 
@@ -104,9 +100,8 @@ public class PriceSaleController {
             @RequestParam(value = "productInfo") String productInfo,
             @RequestParam(value = "pageIndex") Integer pageIndex,
             @RequestParam(value = "pageSize") Integer pageSize ){
-        List<PriceSaleProductVO> list =
-                priceSaleService.priceSaleProductFindByPage(customerInfo,pageIndex,pageSize);
-        return  PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(list, PricePurchaseProductSupplierVO.class));
+        List<PriceSaleCustomerProductVO> list =
+                priceSaleService.priceSaleCustomerProductFindByPage(customerInfo,productInfo,pageIndex,pageSize);
+        return  PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(list, PriceSaleCustomerProductVO.class));
     }
-
 }

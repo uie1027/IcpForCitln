@@ -8,19 +8,44 @@
 
 package icp.icpForCitln.price.dto;
 
+import icp.icpForCitln.customer.entity.CustomerInfo;
+import icp.icpForCitln.productGroup.entity.ProductGroupInfo;
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 //销售客户产品价格组
 public class PriceSaleCustomerProductGroupDTO {
+    @Field("PRICE_SALE_CUSTOMER_PRODUCT_GROUP_CODE")
     private String	priceSaleCustomerProductGroupCode;  //销售产品组价格编码
+    @Field("CUSTOMER_INFO_ID")
     private String	customerInfoId;     //客户ID
+    private String	customerCode;     //客户编码
+    private String	customerName;     //客户名称
+
+    @Field("PRODUCT_GROUP_INFO_ID")
     private String	productGroupInfoId;     //产品组ID
+    private String	productGroupCode;     //产品组编码
+    private String	productGroupName;     //产品组名称
+
+    @Field("TAX_RATE_ID")
     private String	taxRateId;  //税率
+    @Field("TAX_INCLUDED_PRICE")
     private BigDecimal taxIncludedPrice;    //含税单价
+    @Field("CURRENCY_ID")
     private String	currencyId;     //币种
+    @Field("EACH")
     private Integer	each;   //每
+    @Field("BASIC_UNIT_ID")
     private String	basicUnitId;    //基本单位BASIC_UNIT_ID
+    @Field("LAST_MODIFICATION_TIME")
+    private Date lastModificationTime;  //最后更改时间
+    @Field("CUSTOMER_INFO")
+    private CustomerInfo customerInfo;
+    @Field("PRODUCT_GROUP_INFO")
+    private ProductGroupInfo productGroupInfo;
+
 }
