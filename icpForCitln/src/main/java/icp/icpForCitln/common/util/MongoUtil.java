@@ -180,11 +180,6 @@ public class MongoUtil {
      * @return: java.util.List
      */
     public static List select(Integer pageIndex, Integer pageSize, Object model){
-        if (model == null){
-            logger.info(model+"为空对象！");
-            return null;
-        }
-
         Query query;
         Criteria criteria = mongoUtil.getCriteria(model,1);
 
@@ -206,11 +201,6 @@ public class MongoUtil {
      * @return: java.util.List
      */
     public static List select(Object model){
-        if (model == null){
-            logger.info(model+"为空对象！");
-            return null;
-        }
-
         Query query;
         Criteria criteria = mongoUtil.getCriteria(model,1);
 
@@ -530,7 +520,7 @@ public class MongoUtil {
      * @return: java.util.List
      */
     public static List aggregateSelect(List<Class> minorClass,Class mainClass,Object model,Class returnClass,Integer pageIndex,Integer pageSize){
-        if (mainClass == null||minorClass.size() == 0||model == null||returnClass == null){
+        if (mainClass == null||minorClass.size() == 0||returnClass == null){
             logger.error("传入参数出错！");
             return null;
         }
