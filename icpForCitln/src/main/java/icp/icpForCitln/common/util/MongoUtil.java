@@ -241,11 +241,6 @@ public class MongoUtil {
      * @return: org.springframework.data.mongodb.core.query.Criteria
      */
     public Criteria getCriteria(Object model,Integer flag){
-        if (model == null){
-            logger.info(model+"为空对象！");
-            return null;
-        }
-
         Criteria criteria = new Criteria();
         List<Criteria> criteriaList = new ArrayList<>();
 
