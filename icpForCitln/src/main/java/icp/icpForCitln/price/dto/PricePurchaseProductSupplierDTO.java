@@ -14,6 +14,7 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 //销售客户产品价格组
@@ -23,7 +24,11 @@ public class PricePurchaseProductSupplierDTO {
     private String	productInfoId;   //产品ID
     private String	taxRateId;   //税率
 
+    private String	supplierCode;   //供应商编码
+    private String	supplierName;   //供应商名称
 
+    private String	productCode;   //产品编码
+    private String	productName;   //产品名称
 
     @Field("TAX_INCLUDED_PRICE")
     private BigDecimal taxIncludedPrice;   //含税单价
@@ -34,11 +39,11 @@ public class PricePurchaseProductSupplierDTO {
     @Field("BASIC_UNIT_ID")
     private String	basicUnitId;   //基本BASIC_UNIT_ID
     @Field("CREATE_TIME")
-    private String	createTime;   //基本BASIC_UNIT_ID
+    private Date createTime;   //基本BASIC_UNIT_ID
 
     @Field("PRODUCT")
-    private ProductInfo procutInfoList;
+    private ProductInfo procutInfo;
 
     @Field("SUPPLIER")
-    private SupplierInfo supplierInfoList;
+    private SupplierInfo supplierInfo;
 }

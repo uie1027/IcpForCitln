@@ -29,8 +29,8 @@ public class PurchaseOrderInfo extends BaseEntity {
     @Field("ORDER_ORIGIN_ID")
     private String orderOriginId;  //订单来源
 
-    @Field("SUPPLIE_INFO_ID")
-    private String supplieInfoId; //供应商id
+    @Field("SUPPLIER_INFO_ID")
+    private String supplierInfoId; //供应商id
 
     @Field("PAYMENT_METHOD_ID")
     private String payentMethodId; //付款方式

@@ -10,16 +10,15 @@ package icp.icpForCitln.order.service.impl;
 
 import icp.icpForCitln.order.entity.PurchaseOrderDetailInfo;
 import icp.icpForCitln.order.service.PurchaseOrderDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public class PurchaseOrderDetailServiceImpl implements PurchaseOrderDetailService {
-
     @Override
     public String createOrderDetail(List<PurchaseOrderDetailInfo> purchaseOrderDetailInfos,
                                     String orderId) {
-
         return null;
     }
 }

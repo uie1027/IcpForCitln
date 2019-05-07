@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.math.BigDecimal;
 
 @Data
-@Document(collection = "PRICE_SALE_CUSTOMER_PRODUCT") //供应商产品价格
+@Document(collection = "PRICE_PURCHASE_PRODUCT_SUPPLIER") //供应商产品价格
 @ToString(callSuper = true)
 public class PricePurchaseProductSupplier extends BaseEntity{
     @Field("PRICE_PURCHASE_PRODUCT_SUPPLIER_CODE")

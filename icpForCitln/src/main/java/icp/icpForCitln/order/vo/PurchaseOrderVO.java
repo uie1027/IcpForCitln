@@ -22,7 +22,9 @@ public class PurchaseOrderVO {
 
     private String purchaseOrderCode;   //采购订单编号
 
-    private String supplieInfoId; //供应商编码/名称
+    private String supplierInfoId; //供应商ID
+
+    private String supplierName; //供应商名称
 
     private String purchaseOrderStatus;  //订单状态
 

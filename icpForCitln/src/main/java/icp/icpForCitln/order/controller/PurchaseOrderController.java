@@ -61,8 +61,7 @@ public class PurchaseOrderController {
     public PageResult purchaseOrderListFindByPage(@RequestParam(value = "searchField") String searchField,
                                              @RequestParam(value = "pageIndex") Integer pageIndex,
                                              @RequestParam(value = "pageSize") Integer pageSize){
-        Pageable pageable = PageRequest.of(pageIndex, pageSize);
-        List<PurchaseOrderVO> list = purchaseOrderService.purchaseOrderListFindByPage(searchField,pageable);
+        List<PurchaseOrderVO> list = purchaseOrderService.purchaseOrderListFindByPage(searchField,pageIndex,pageSize);
         return PageResult.returnResult(PageResult.SUCCESS_CODE,list);
     }
 

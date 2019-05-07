@@ -8,9 +8,14 @@
 
 package icp.icpForCitln.price.service;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-public class PriceSaleService {
+import icp.icpForCitln.price.vo.PriceSaleProductGroupVO;
+import icp.icpForCitln.price.vo.PriceSaleProductVO;
 
+import java.util.List;
+
+public interface PriceSaleService {
+    List<PriceSaleProductGroupVO>  priceSaleProductGroupFindByPage(String searchField,Integer pageIndex ,Integer pageSize);
+
+    List<PriceSaleProductVO>  priceSaleProductFindByPage(String searchField, Integer pageIndex , Integer pageSize);
 }

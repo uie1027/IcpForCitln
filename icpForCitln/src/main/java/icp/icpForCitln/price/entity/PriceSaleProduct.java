@@ -15,6 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @Document(collection = "PRICE_SALE_PRODUCT") //销售产品价格
@@ -29,7 +30,7 @@ public class PriceSaleProduct extends BaseEntity {
     @Field("TAX_INCLUDED_PRICE")
     private BigDecimal taxIncludedPrice;    //含税单价
     @Field("CURRENCY_ID")
-    private String	currencyId;     //含税单价
+    private String	currencyId;     //货币
     @Field("EACH")
     private Integer	each;   //每
     @Field("BASIC_UNIT_ID")

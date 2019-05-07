@@ -36,17 +36,19 @@ public class OrderTest {
      */
     @Test
     public void PurchaseOrderInfoSaveTest(){
-        PurchaseOrderInfo purchaseOrderInfo = new PurchaseOrderInfo();
-        purchaseOrderInfo.setCompanyInfoId("2");
-        purchaseOrderInfo.setCurrencyId("2");
-        purchaseOrderInfo.setOrderTypeId("2");
-        purchaseOrderInfo.setPayentMethodId("2");
-        purchaseOrderInfo.setPurchaseContractCode("2");
-        purchaseOrderInfo.setPurchaseOrderCode("2");
-        purchaseOrderInfo.setPurchaseOrderStatus("2");
-        purchaseOrderInfo.setPurchaseOrderTitleRemarks("2");
-        purchaseOrderInfo.setSupplieInfoId("2");
-        MongoUtil.insert(purchaseOrderInfo);
+       for(int i = 0 ; i <100 ; i++){
+           PurchaseOrderInfo purchaseOrderInfo = new PurchaseOrderInfo();
+           purchaseOrderInfo.setCompanyInfoId("2");  //公司ID
+           purchaseOrderInfo.setCurrencyId("2"); //币种
+           purchaseOrderInfo.setOrderTypeId("2");   //订单类型
+           purchaseOrderInfo.setPayentMethodId("2");    //付款方式
+           purchaseOrderInfo.setPurchaseContractCode("2");  //采购合同编号
+           purchaseOrderInfo.setPurchaseOrderCode(String.valueOf((int)(i+ Math.random()*1000))); //采购订单编号
+           purchaseOrderInfo.setPurchaseOrderStatus("2");   //订单状态
+           purchaseOrderInfo.setPurchaseOrderTitleRemarks("2"); //订单备注
+           purchaseOrderInfo.setSupplierInfoId("cx5ccff31217ca8f17a0f85e4d");    //供应商ID
+           MongoUtil.insert(purchaseOrderInfo);
+       }
     }
 
     /**

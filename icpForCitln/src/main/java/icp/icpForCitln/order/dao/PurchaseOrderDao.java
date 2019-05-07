@@ -8,6 +8,7 @@
 
 package icp.icpForCitln.order.dao;
 
+import icp.icpForCitln.order.dto.PurchaseOrderDTO;
 import icp.icpForCitln.order.entity.PurchaseOrderInfo;
 import org.springframework.data.domain.Pageable;
 
@@ -15,5 +16,5 @@ import java.util.List;
 
 public interface PurchaseOrderDao {
      void  createOrder(PurchaseOrderInfo purchaseOrderInfo);
-     List<PurchaseOrderInfo> getOrderListFindByPage (String searchField, Pageable pageable);
+     List<PurchaseOrderDTO> getOrderListFindByPage (String searchField, Integer pageIndex , Integer pageSize);
 }

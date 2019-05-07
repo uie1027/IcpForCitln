@@ -16,5 +16,5 @@ import java.util.List;
 
 public interface PurchaseOrderService {
      void  purchaseOrderSave(PurchaseOrderDTO purchaseOrderDTO);
-     List<PurchaseOrderVO> purchaseOrderListFindByPage (String searchField, Pageable pageable);
+     List<PurchaseOrderVO> purchaseOrderListFindByPage (String searchField, Integer pageIndex, Integer pageSize);
 }

@@ -9,12 +9,13 @@
 package icp.icpForCitln.price.service;
 
 
+import icp.icpForCitln.price.dto.PricePurchaseProductSupplierDTO;
 import icp.icpForCitln.price.entity.PricePurchaseProductSupplier;
 
 import java.util.List;
 
 public interface PriceSupplierService {
-    List<PricePurchaseProductSupplier> priceSupplierFindByPage(
+    List<PricePurchaseProductSupplierDTO> priceSupplierFindByPage(
             String supplierInfo,String productInfo,Integer pageIndex,Integer pageSize);
 
 }
