@@ -1,6 +1,8 @@
 HELP.md
 /target/
 /logs/
+/classes/
+/src/main/resources/META-INF/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
