@@ -6,13 +6,13 @@
  * Copyright (c) 2019,All Rights Reserved.
  */
 
-package icp.icpForCitln.produce.dto;
+package icp.icpForCitln.stock.dto;
 
 import lombok.Data;
 
 @Data
 public class ProductionReceiptFindDTO {
     private String productionReceiptCode;  //生产入库单号
-    private String factoryName;  //工厂名称
-    private String factoryCode;  //工厂编码
+    private String factoryInfo_factoryName;  //工厂名称
+    private String factoryInfo_factoryCode;  //工厂编码
 }

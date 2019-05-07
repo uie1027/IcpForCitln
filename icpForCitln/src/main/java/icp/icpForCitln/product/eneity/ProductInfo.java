@@ -14,8 +14,6 @@ import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.util.Date;
-
 @Data
 @Document(collection = "PRODUCT_INFO")  //产品基本信息
 @ToString(callSuper = true)
@@ -66,7 +64,7 @@ public class ProductInfo extends BaseEntity {
     private String financialContent;  //财务文本
 
     @Field("FINANCIAL_CYCLE")
-    private Date financialCycle;  //财务周期
+    private Integer financialCycle;  //财务周期
 
     @Field("FROZEN")
     private Integer frozen;  //冻结标识（1冻结 2未冻结）

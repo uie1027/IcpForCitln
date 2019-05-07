@@ -10,14 +10,17 @@ package icp.icpForCitln.tableInitializeTest;
 
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.produce.entity.ProductionOrder;
-import icp.icpForCitln.produce.entity.ProductionReceipt;
+import icp.icpForCitln.stock.entity.ProductionReceipt;
+import icp.icpForCitln.supplier.entity.SupplierInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,7 +30,8 @@ public class ProduceTest {
         ProductionReceipt productionReceiptInfoDTO = new ProductionReceipt();
 
         productionReceiptInfoDTO.setDocumentType(1);
-        productionReceiptInfoDTO.setFactoryId("22");
+        productionReceiptInfoDTO.setProductionReceiptCode("1233");
+        productionReceiptInfoDTO.setFactoryInfoId("22");
         productionReceiptInfoDTO.setProductionOrderId("33");
         productionReceiptInfoDTO.setRemark("2222");
         productionReceiptInfoDTO.setCompanyInfoId("111");
@@ -36,6 +40,7 @@ public class ProduceTest {
         productionReceiptInfoDTO.setReceivingFactoryId("22");
         productionReceiptInfoDTO.setUnstockedNumber(new BigDecimal("345"));
         productionReceiptInfoDTO.setWarehouseNumber(new BigDecimal("44"));
+        productionReceiptInfoDTO.setReceiptStatus(1);
         productionReceiptInfoDTO.setOrderCreateTime(new Date());
 
         MongoUtil.insert(productionReceiptInfoDTO);
@@ -49,5 +54,13 @@ public class ProduceTest {
         productionOrder.setOrderType("2");
 
         MongoUtil.insert(productionOrder);
+    }
+
+
+    @Test
+    public void mongoTest(){
+        List<Class> list = new ArrayList<>();
+        list.add(SupplierInfo.class);
+        System.out.println(SupplierInfo.class.getSimpleName());
     }
 }

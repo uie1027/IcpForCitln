@@ -36,7 +36,7 @@ public class ProductTest {
         ProductInfo productInfo = new ProductInfo();
 
         productInfo.setFinancialContent("1");
-        productInfo.setFinancialCycle(new Date());
+        productInfo.setFinancialCycle(5);
         productInfo.setFrozen(0);
         productInfo.setHaulCycle(1);
         productInfo.setLogisticsContent("2");

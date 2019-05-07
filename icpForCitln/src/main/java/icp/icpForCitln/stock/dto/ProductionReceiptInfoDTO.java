@@ -6,7 +6,7 @@
  * Copyright (c) 2019,All Rights Reserved.
  */
 
-package icp.icpForCitln.produce.dto;
+package icp.icpForCitln.stock.dto;
 
 import lombok.Data;
 
@@ -21,7 +21,7 @@ public class ProductionReceiptInfoDTO {
 
     private String orderNumberId; //订单编号ID
 
-    private String factoryId; //工厂ID
+    private String factoryInfoId; //工厂ID
 
     private String productId; //产品ID
 

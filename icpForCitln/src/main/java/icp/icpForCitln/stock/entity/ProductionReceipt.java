@@ -6,7 +6,7 @@
  * Copyright (c) 2019,All Rights Reserved.
  */
 
-package icp.icpForCitln.produce.entity;
+package icp.icpForCitln.stock.entity;
 
 import icp.icpForCitln.common.enetity.BaseEntity;
 import lombok.Data;
@@ -33,8 +33,8 @@ public class ProductionReceipt extends BaseEntity {
     @Field("PRODUCTION_ORDER_ID")
     private String productionOrderId; //订单编号ID
 
-    @Field("FACTORY_ID")
-    private String factoryId; //工厂ID
+    @Field("FACTORY_INFO_ID")
+    private String factoryInfoId; //工厂ID
 
     @Field("PRODUCT_Id")
     private String productId; //产品ID

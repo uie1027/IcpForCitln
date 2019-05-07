@@ -10,9 +10,11 @@ package icp.icpForCitln.productGroup.controller;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.productGroup.dto.ProductGroupInfoAddDTO;
+import icp.icpForCitln.productGroup.dto.ProductGroupSystemAttributeDTO;
 import icp.icpForCitln.productGroup.entity.ProductGroupInfo;
 import icp.icpForCitln.productGroup.service.ProductGroupService;
 import icp.icpForCitln.productGroup.vo.ProductGroupInfoVO;
+import icp.icpForCitln.productGroup.vo.ProductGroupSystemAttributeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,5 +57,20 @@ public class ProductGroupController {
     public PageResult productGroupInfoGetList(){
         List<ProductGroupInfo> productGroupInfoList = productGroupService.productGroupInfoGetList();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(productGroupInfoList, ProductGroupInfoVO.class));
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/6 17:36
+     * @since: JDK 1.8
+     *
+     * @description: 新建产品查询产品组属性
+     * @param: [productGroupSystemAttributeDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/productGroupAttributeFindByPage")
+    public PageResult productGroupAttributeFindByPage(ProductGroupSystemAttributeDTO productGroupSystemAttributeDTO){
+        List<ProductGroupSystemAttributeVO> productGroupSystemAttributeVOList = productGroupService.productGroupAttributeFindByPage(productGroupSystemAttributeDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, productGroupSystemAttributeVOList);
     }
 }
