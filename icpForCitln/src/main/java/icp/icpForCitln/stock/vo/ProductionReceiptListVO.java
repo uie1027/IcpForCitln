@@ -14,6 +14,8 @@ import java.util.Date;
 
 @Data
 public class ProductionReceiptListVO {
+    private String id;
+
     private String productionReceiptCode;  //生产入库单号
 
     private Integer documentType; //凭证类型 1 生产订单 2 其他订单

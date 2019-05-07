@@ -11,12 +11,11 @@ package icp.icpForCitln.stock.controller;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.stock.dto.ProductionReceiptFindDTO;
-import icp.icpForCitln.stock.dto.ProductionReceiptInfoDTO;
-import icp.icpForCitln.stock.dto.ProductionReceiptListDTO;
+import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.entity.ProductionReceipt;
 import icp.icpForCitln.stock.service.StockService;
 import icp.icpForCitln.stock.vo.ProductionReceiptListVO;
+import icp.icpForCitln.stock.vo.PurchaseReceiptListVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -59,5 +58,37 @@ public class StockController {
     public PageResult productionReceiptListFindByPage(Integer pageIndex, Integer pageSize, ProductionReceiptFindDTO productionReceiptFindDTO){
         List<ProductionReceiptListDTO> dtos = stockService.productionReceiptListFind(pageIndex,pageSize,productionReceiptFindDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(dtos, ProductionReceiptListVO.class));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/07 10:47
+     * @since: JDK 1.8
+     *
+     * @description: 采购入库单创建
+     * @param: [purchaseReceiptSaveDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/purchaseReceiptSave")
+    public PageResult purchaseReceiptSave(PurchaseReceiptSaveDTO purchaseReceiptSaveDTO){
+        if(stockService.purchaseReceiptSave(purchaseReceiptSaveDTO)){
+            return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+        }
+        return PageResult.returnResult(PageResult.ERROR_CODE,null);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/07 13:18
+     * @since: JDK 1.8
+     *
+     * @description: 采购入库单列表
+     * @param: [pageIndex, pageSize, purchaseReceiptFindDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/purchaseReceiptListFindByPage")
+    public PageResult purchaseReceiptListFindByPage(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
+        List<PurchaseReceiptListDTO> dtos = stockService.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(dtos, PurchaseReceiptListVO.class));
     }
 }
