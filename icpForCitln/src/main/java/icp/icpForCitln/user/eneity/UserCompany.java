@@ -22,4 +22,7 @@ public class UserCompany extends BaseEntity {
 
     @Field("COMPANY_INFO_ID")
     private String companyInfoId;   //公司ID
+
+    @Field("COMPANY_DEPARTMENT_INFO_ID")
+    private String companyDepartmentInfoId;     //部门表ID
 }
