@@ -96,4 +96,32 @@ public class StockServiceImpl implements StockService {
         }
         return dtos;
     }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/08 14:54
+     * @since: JDK 1.8
+     *
+     * @description: 其他出库列表
+     * @param: [pageIndex, pageSize, otherOutboundFindDTO]
+     * @return: java.util.List<icp.icpForCitln.stock.dto.OtherOutboundListDTO>
+     */
+    public List<OtherOutboundListDTO> OtherOutboundListFind(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO){
+        List<OtherOutboundListDTO> dtos = stockDAO.OtherOutboundListFind(pageIndex,pageSize,otherOutboundFindDTO);
+        if (dtos.size()>0){
+            for (OtherOutboundListDTO dto:dtos){
+                if (dto.getFactoryInfo()!=null){
+                    dto.setFactoryName(dto.getFactoryInfo().getFactoryName());
+                }
+                if (dto.getProductInfo()!=null){
+                    dto.setProductCode(dto.getProductInfo().getProductCode());
+                    dto.setProductName(dto.getProductInfo().getProductName());
+                }
+                if (dto.getSystemDictionaryInfo()!=null){
+                    dto.setBasicUntil(dto.getSystemDictionaryInfo().getSystemDictionaryValue());
+                }
+            }
+        }
+        return dtos;
+    }
 }

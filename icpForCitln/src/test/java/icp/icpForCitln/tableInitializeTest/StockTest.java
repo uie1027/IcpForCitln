@@ -8,7 +8,10 @@
 
 package icp.icpForCitln.tableInitializeTest;
 
+import icp.icpForCitln.common.util.GeneratedCodeUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.stock.dto.PurchaseReceiptSaveDTO;
+import icp.icpForCitln.stock.entity.OtherOutbound;
 import icp.icpForCitln.stock.entity.PurchaseReceiptDetail;
 import icp.icpForCitln.stock.service.StockService;
 import org.junit.Test;
@@ -54,6 +57,23 @@ public class StockTest {
         saveDTO.setPurchaseReceiptDetailList(list);
 
         stockService.purchaseReceiptSave(saveDTO);
+    }
+
+    @Test
+    public void outbound(){
+        OtherOutbound otherOutbound = new OtherOutbound();
+        otherOutbound.setDocumentTime(new Date());
+        otherOutbound.setDocumentType(1);
+        otherOutbound.setFactoryInfoId("@");
+        otherOutbound.setInventoryLocationId("1");
+        otherOutbound.setOtherOutboundCode(GeneratedCodeUtil.generatedCode());
+        otherOutbound.setReceiptStatus(1);
+        otherOutbound.setRemark("@1");
+        otherOutbound.setProductInfoId("1");
+        otherOutbound.setOutboundNumber(new BigDecimal("22"));
+        otherOutbound.setSystemDictionaryInfoId("1");
+
+        MongoUtil.insert(otherOutbound);
     }
 
 }

@@ -10,10 +10,13 @@ package icp.icpForCitln.stock.controller;
 
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.stock.dto.*;
+import icp.icpForCitln.stock.entity.OtherOutbound;
 import icp.icpForCitln.stock.entity.ProductionReceipt;
 import icp.icpForCitln.stock.service.StockService;
+import icp.icpForCitln.stock.vo.OtherOutboundListVO;
 import icp.icpForCitln.stock.vo.ProductionReceiptListVO;
 import icp.icpForCitln.stock.vo.PurchaseReceiptListVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,5 +93,35 @@ public class StockController {
     public PageResult purchaseReceiptListFindByPage(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
         List<PurchaseReceiptListDTO> dtos = stockService.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(dtos, PurchaseReceiptListVO.class));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/08 14:19
+     * @since: JDK 1.8
+     *
+     * @description: 其他出库创建
+     * @param: [otherOutboundSaveDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/otherOutboundSave")
+    public PageResult otherOutboundSave(OtherOutboundSaveDTO otherOutboundSaveDTO){
+        otherOutboundSaveDTO.setOtherOutboundCode(GeneratedCodeUtil.generatedCode());
+        MongoUtil.insert(BeanCopyUtil.copy(otherOutboundSaveDTO, OtherOutbound.class));
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/08 14:54
+     * @since: JDK 1.8
+     *
+     * @description: 其他出库列表
+     * @param: [pageIndex, pageSize, otherOutboundFindDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/otherOutboundListFindByPage")
+    public PageResult otherOutboundListFindByPage(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(stockService.OtherOutboundListFind(pageIndex,pageSize,otherOutboundFindDTO), OtherOutboundListVO.class));
     }
 }
