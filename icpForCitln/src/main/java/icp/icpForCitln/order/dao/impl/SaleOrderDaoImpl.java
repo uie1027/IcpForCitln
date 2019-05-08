@@ -8,16 +8,14 @@
 
 package icp.icpForCitln.order.dao.impl;
 
+import icp.icpForCitln.common.enetity.MongoResult;
+import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.customer.entity.CustomerInfo;
 import icp.icpForCitln.order.dao.SaleOrderDao;
 import icp.icpForCitln.order.dto.SaleOrderInfoDTO;
 import icp.icpForCitln.order.dto.SaleOrderInfoSearchDTO;
 import icp.icpForCitln.order.entity.SaleOrderInfo;
-import icp.icpForCitln.price.dto.PriceSaleCustomerProductDTO;
-import icp.icpForCitln.price.dto.PriceSaleSearchDTO;
-import icp.icpForCitln.price.entity.PriceSaleCustomerProduct;
-import icp.icpForCitln.product.eneity.ProductInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -44,6 +42,7 @@ public class SaleOrderDaoImpl implements SaleOrderDao{
         saleOrderInfoSearchDTO.setCustomerInfo_customerCode(searchField);
         saleOrderInfoSearchDTO.setCustomerInfo_customerName(searchField);
         saleOrderInfoSearchDTO.setSaleOrderCode(searchField);
-        return MongoUtil.aggregateSelect(minorClass, SaleOrderInfo.class,saleOrderInfoSearchDTO,SaleOrderInfoDTO.class,pageIndex,pageSize);
+        MongoResult mongoResult = MongoUtil.aggregateSelect(minorClass, SaleOrderInfo.class,saleOrderInfoSearchDTO,SaleOrderInfoDTO.class,pageIndex,pageSize);
+        return BeanCopyUtil.copy(mongoResult.getResultList(),SaleOrderInfoDTO.class);
     }
 }

@@ -8,6 +8,8 @@
 
 package icp.icpForCitln.stock.dao.impl;
 
+import icp.icpForCitln.common.enetity.MongoResult;
+import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.factory.entity.FactoryInfo;
 import icp.icpForCitln.order.entity.PurchaseOrderInfo;
@@ -45,7 +47,8 @@ public class StockDAOImpl implements StockDAO {
         List<Class> minorClass = new ArrayList<>();
         minorClass.add(FactoryInfo.class);
         minorClass.add(ProductionOrder.class);
-        return MongoUtil.aggregateSelect(minorClass, ProductionReceipt.class,productionReceiptFindDTO,ProductionReceiptListDTO.class,pageIndex,pageSize);
+        MongoResult mongoResult = MongoUtil.aggregateSelect(minorClass, ProductionReceipt.class,productionReceiptFindDTO,ProductionReceiptListDTO.class,pageIndex,pageSize);
+        return BeanCopyUtil.copy(mongoResult.getResultList(),ProductionReceiptListDTO.class);
     }
 
     /**
@@ -61,7 +64,8 @@ public class StockDAOImpl implements StockDAO {
         List<Class> minorClass = new ArrayList<>();
         minorClass.add(PurchaseOrderInfo.class);
         minorClass.add(SupplierInfo.class);
-        return MongoUtil.aggregateSelect(minorClass, PurchaseReceipt.class,purchaseReceiptFindDTO,PurchaseReceiptListDTO.class,pageIndex,pageSize);
+        MongoResult mongoResult = MongoUtil.aggregateSelect(minorClass, PurchaseReceipt.class,purchaseReceiptFindDTO,PurchaseReceiptListDTO.class,pageIndex,pageSize);
+        return BeanCopyUtil.copy(mongoResult.getResultList(),PurchaseReceiptListDTO.class);
     }
 
     /**
@@ -78,6 +82,7 @@ public class StockDAOImpl implements StockDAO {
         minorClass.add(FactoryInfo.class);
         minorClass.add(ProductInfo.class);
         minorClass.add(SystemDictionaryInfo.class);
-        return MongoUtil.aggregateSelect(minorClass, OtherOutbound.class,otherOutboundFindDTO,OtherOutboundListDTO.class,pageIndex,pageSize);
+        MongoResult mongoResult = MongoUtil.aggregateSelect(minorClass, OtherOutbound.class,otherOutboundFindDTO,OtherOutboundListDTO.class,pageIndex,pageSize);
+        return BeanCopyUtil.copy(mongoResult.getResultList(),OtherOutboundListDTO.class);
     }
 }

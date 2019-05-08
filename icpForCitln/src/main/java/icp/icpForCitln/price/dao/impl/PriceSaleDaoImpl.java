@@ -8,6 +8,8 @@
 
 package icp.icpForCitln.price.dao.impl;
 
+import icp.icpForCitln.common.enetity.MongoResult;
+import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.StringUtil;
 import icp.icpForCitln.customer.entity.CustomerInfo;
@@ -128,8 +130,8 @@ public class PriceSaleDaoImpl implements PriceSaleDao {
         priceSaleSearchDTO.setCustomerInfo_customerName(customerInfo);
         priceSaleSearchDTO.setProductGroupInfo_productGroupCode(productGroupInfo);
         priceSaleSearchDTO.setProductGroupInfo_productGroupName(productGroupInfo);
-        return MongoUtil.aggregateSelect(minorClass, PriceSaleCustomerProductGroup.class,priceSaleSearchDTO,PriceSaleCustomerProductGroupDTO.class,pageIndex,pageSize);
-
+        MongoResult mongoResult = MongoUtil.aggregateSelect(minorClass, PriceSaleCustomerProductGroup.class,priceSaleSearchDTO,PriceSaleCustomerProductGroupDTO.class,pageIndex,pageSize);
+        return BeanCopyUtil.copy(mongoResult.getResultList(),PriceSaleCustomerProductGroupDTO.class);
     }
 
     /**
@@ -154,7 +156,8 @@ public class PriceSaleDaoImpl implements PriceSaleDao {
         priceSaleSearchDTO.setCustomerInfo_customerName(customerInfo);
         priceSaleSearchDTO.setProductInfo_productCode(productInfo);
         priceSaleSearchDTO.setProductInfo_productName(productInfo);
-        return MongoUtil.aggregateSelect(minorClass, PriceSaleCustomerProduct.class,priceSaleSearchDTO,PriceSaleCustomerProductDTO.class,pageIndex,pageSize);
+        MongoResult mongoResult =  MongoUtil.aggregateSelect(minorClass, PriceSaleCustomerProduct.class,priceSaleSearchDTO,PriceSaleCustomerProductDTO.class,pageIndex,pageSize);
+        return BeanCopyUtil.copy(mongoResult.getResultList(),PriceSaleCustomerProductDTO.class);
     }
 
 
