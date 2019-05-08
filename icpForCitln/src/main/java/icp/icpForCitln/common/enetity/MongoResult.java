@@ -14,7 +14,7 @@ import java.util.List;
 
 @Data
 public class MongoResult {
-    List<Object> resultList;
+    List resultList;
 
-    Integer count;
+    Long count;
 }
