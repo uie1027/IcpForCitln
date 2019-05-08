@@ -8,9 +8,11 @@
 package icp.icpForCitln.company.controller;
 
 import icp.icpForCitln.common.result.PageResult;
+import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.company.dto.CompanySaveDTO;
 import icp.icpForCitln.company.eneity.CompanyInfo;
 import icp.icpForCitln.company.service.CompanyService;
+import icp.icpForCitln.company.vo.CompanyVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -49,5 +51,20 @@ public class CompanyController {
     public PageResult companyInfoGetList(){
         List<CompanyInfo> companyInfoList = companyService.companyInfoGetList();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, companyInfoList);
+    }
+    /**
+     * @author: 汪明月
+     * date: 2019/5/8 16:15
+     * @since: JDK 1.8
+     *
+     * @description: 这里用一句话描述这个方法的作用
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+
+    @GetMapping("/companyInfoFindByEnterpriseId")
+    public PageResult companyInfoFindByEnterpriseId(){
+        List<CompanyInfo> companyId = companyService.companyInfoFindByEnterpriseId();
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(companyId, CompanyVO.class));
     }
 }

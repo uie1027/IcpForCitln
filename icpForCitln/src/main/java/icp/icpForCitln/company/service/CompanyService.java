@@ -10,4 +10,8 @@ public interface CompanyService {
     void companySave(CompanySaveDTO companySaveDTO);  //保存公司信息
 
     List<CompanyInfo> companyInfoGetList();  //公司信息列表
+
+    List<CompanyInfo> companyInfoFindByEnterpriseId();   //通过企业id查公司信息
+
+
 }

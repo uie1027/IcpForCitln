@@ -8,9 +8,12 @@
 package icp.icpForCitln.company.service.impl;
 
 import com.fasterxml.jackson.databind.util.BeanUtil;
+import icp.icpForCitln.common.cache.UserAndCompanyCache;
+import icp.icpForCitln.common.enetity.UserAndCompanyInfo;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.common.util.SessionUtil;
 import icp.icpForCitln.company.dto.CompanySaveDTO;
 import icp.icpForCitln.company.eneity.CompanyAddressInfo;
 import icp.icpForCitln.company.eneity.CompanyDepartmentInfo;
@@ -66,5 +69,21 @@ public class CompanyServiceImpl implements CompanyService {
     public List<CompanyInfo> companyInfoGetList() {
         List CompanyInfo = BeanCopyUtil.copy(MongoUtil.select(new CompanyInfo()), CompanyInfo.class);
         return CompanyInfo;
+    }
+    /**
+     * @author: 汪明月
+     * date: 2019/5/8 16:16
+     * @since: JDK 1.8
+     *
+     * @description: 根据企业id查公司信息
+     * @param: []
+     * @return: java.util.List<icp.icpForCitln.company.eneity.CompanyInfo>
+     */
+    @Override
+    public List<CompanyInfo> companyInfoFindByEnterpriseId() {
+        CompanyInfo companyInfo=new CompanyInfo();
+        companyInfo.setEnterpriseInfoId(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getEnterpriseInfo().getId());
+        List<CompanyInfo>  companyInfoList= MongoUtil.select(companyInfo);
+        return companyInfoList;
     }
 }
