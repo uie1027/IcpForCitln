@@ -189,8 +189,10 @@ public class MongoUtil {
 
              query = new Query(criteria).with(pageable).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
 
-        List<Object> resultList =  BeanCopyUtil.copy(mongoUtil.mongoTemplate.find(query,model.getClass()),Object.class);
+        List resultList =  mongoUtil.mongoTemplate.find(query,model.getClass());
         mongoResult.setResultList(resultList);
+        Long count = mongoUtil.mongoTemplate.count(new Query(criteria),model.getClass());
+        mongoResult.setCount(count);
         return mongoResult;
 
     }
@@ -530,7 +532,8 @@ public class MongoUtil {
             list.add(lookup);
         }
 
-        list.add(Aggregation.match(mongoUtil.getCriteria(model,2)));
+        Criteria criteria = mongoUtil.getCriteria(model,2);
+        list.add(Aggregation.match(criteria));
         list.add(Aggregation.skip(pageIndex));
         list.add(Aggregation.limit(pageSize));
         list.add(Aggregation.sort(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME")));
