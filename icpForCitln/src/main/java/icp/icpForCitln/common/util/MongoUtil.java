@@ -534,7 +534,7 @@ public class MongoUtil {
 
         Criteria criteria = mongoUtil.getCriteria(model,2);
         list.add(Aggregation.match(criteria));
-        list.add(Aggregation.skip(pageIndex));
+        list.add(Aggregation.skip(pageIndex*pageSize));
         list.add(Aggregation.limit(pageSize));
         list.add(Aggregation.sort(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME")));
         Aggregation aggregation = Aggregation.newAggregation(
