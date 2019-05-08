@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
         MongoUtil.insert(productInfo);
 
         for (int i = 0; i < productAttribuitList.size(); i++){
-            productAttribuitList.get(0).setProductInfoId(productInfo.getId());
+            productAttribuitList.get(i).setProductInfoId(productInfo.getId());
         }
         MongoUtil.insert(productAttribuitList);
     }
