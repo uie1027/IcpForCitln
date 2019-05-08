@@ -10,6 +10,7 @@ package icp.icpForCitln.common.util;
 
 import icp.icpForCitln.IcpForCitlnApplication;
 import icp.icpForCitln.common.cache.UserAndCompanyCache;
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.user.eneity.UserInfo;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
@@ -179,15 +180,18 @@ public class MongoUtil {
      * @param: [pageIndex, pageSize, model]
      * @return: java.util.List
      */
-    public static List select(Integer pageIndex, Integer pageSize, Object model){
+    public static MongoResult select(Integer pageIndex, Integer pageSize, Object model){
         Query query;
+        MongoResult mongoResult = new MongoResult();
         Criteria criteria = mongoUtil.getCriteria(model,1);
 
         Pageable  pageable = PageRequest.of(pageIndex, pageSize);
 
              query = new Query(criteria).with(pageable).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
 
-        return mongoUtil.mongoTemplate.find(query,model.getClass());
+        List<Object> resultList =  BeanCopyUtil.copy(mongoUtil.mongoTemplate.find(query,model.getClass()),Object.class);
+        mongoResult.setResultList(resultList);
+        return mongoResult;
 
     }
 
@@ -513,7 +517,8 @@ public class MongoUtil {
      * @param: [minorClass, mainClass, model, returnClass, pageIndex, pageSize]
      * @return: java.util.List
      */
-    public static List aggregateSelect(List<Class> minorClass,Class mainClass,Object model,Class returnClass,Integer pageIndex,Integer pageSize){
+    public static MongoResult aggregateSelect(List<Class> minorClass,Class mainClass,Object model,Class returnClass,Integer pageIndex,Integer pageSize){
+        MongoResult mongoResult = new MongoResult();
         if (mainClass == null||minorClass.size() == 0||returnClass == null){
             logger.error("传入参数出错！");
             return null;
@@ -532,6 +537,8 @@ public class MongoUtil {
         Aggregation aggregation = Aggregation.newAggregation(
                 list.toArray(new AggregationOperation[list.size()])
         );
-        return   mongoUtil.mongoTemplate.aggregate(aggregation,StringUtil.ToTableName(mainClass.getSimpleName()),returnClass).getMappedResults();
+        List<Object> resultList = mongoUtil.mongoTemplate.aggregate(aggregation,StringUtil.ToTableName(mainClass.getSimpleName()),returnClass).getMappedResults();
+        mongoResult.setResultList(resultList);
+        return mongoResult;
     }
 }
