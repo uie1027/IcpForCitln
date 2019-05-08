@@ -20,10 +20,16 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class MenuInfo extends BaseEntity{
     @Field("MENU_NAME")
     private String menuName;   //菜单名称
+
     @Field("MENU_CODE")
-    private String  menuCode;   //菜单编码
+    private String menuCode;   //菜单编码
+
     @Field("MENU_URL")
-    private String  menuUrl;   //菜单url
+    private String menuUrl;   //菜单url
+
     @Field("MENU_LEVEL")
-    private String  menuLevel;   //菜单级别
+    private String menuLevel;   //菜单级别
+
+    @Field("PARENT_MENU_INFO_ID")
+    private String parentMenuInfoId;    //父级菜单ID
 }

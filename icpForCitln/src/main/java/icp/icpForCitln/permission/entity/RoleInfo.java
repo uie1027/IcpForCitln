@@ -26,4 +26,7 @@ public class RoleInfo extends BaseEntity {
 
     @Field("ROLE_DESCRIPTION")
     private String roleDescription;  //角色描述
+
+    @Field("IS_FORBIDDEN")
+    private Integer isForbidden;    //是否禁用 1禁用2不禁用
 }

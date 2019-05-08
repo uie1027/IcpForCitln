@@ -37,4 +37,7 @@ public class UserInfo extends BaseEntity {
 
     @Field("USER_TYPE")
     private Integer userType;   //用户类型 将来开放第三方登录留用
+
+    @Field("IS_FORBIDDEN")
+    private Integer isForbidden;    //是否禁用 1禁用2不禁用
 }
