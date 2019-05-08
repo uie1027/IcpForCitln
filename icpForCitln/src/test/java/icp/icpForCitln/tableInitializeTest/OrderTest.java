@@ -90,18 +90,18 @@ public class OrderTest {
      */
     @Test
     public void SaleOrderInfoSaveTest(){
-        SaleOrderInfo saleOrderInfo = new SaleOrderInfo();
-
-        saleOrderInfo.setCompanyInfoId("2");
-        saleOrderInfo.setCustomerInfoId("2");
-        saleOrderInfo.setCurrencyId("s");
-        saleOrderInfo.setPayentMethodId("2");
-        saleOrderInfo.setPurchaseContractCode("2");
-        saleOrderInfo.setPurchaseOrderCode("2");
-        saleOrderInfo.setPurchaseOrderStatus("2");
-        saleOrderInfo.setPurchaseOrderTitleRemarks("2");
-
-        MongoUtil.insert(saleOrderInfo);
+        for(int i = 0 ; i < 100 ;i++){
+            SaleOrderInfo saleOrderInfo = new SaleOrderInfo();
+            saleOrderInfo.setSaleOrderCode(String.valueOf((int)(Math.random()*1000000)));
+            saleOrderInfo.setCustomerInfoId("cx5cd1142837db1c3460b01355");
+            saleOrderInfo.setCompanyInfoId("AAA");
+            saleOrderInfo.setCurrencyId("￥");
+            saleOrderInfo.setPayentMethodId("现金");
+            saleOrderInfo.setSaleContractCode("A12346789");
+            saleOrderInfo.setSaleOrderStatus("已确认");
+            saleOrderInfo.setSaleOrderTitleRemarks("备注");
+            MongoUtil.insert(saleOrderInfo);
+        }
     }
 
     /**

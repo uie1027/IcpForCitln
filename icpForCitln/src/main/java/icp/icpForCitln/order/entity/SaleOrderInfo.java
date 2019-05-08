@@ -19,7 +19,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @ToString(callSuper = true)
 public class SaleOrderInfo extends BaseEntity {
     @Field("SALE_ORDER_CODE")
-    private String purchaseOrderCode;  //销售订单编码
+    private String saleOrderCode;  //销售订单编码
 
     @Field("CUSTOMER_INFO_ID")
     private String customerInfoId; //客户id
@@ -31,14 +31,14 @@ public class SaleOrderInfo extends BaseEntity {
     private String companyInfoId; //公司id
 
     @Field("SALE_CONTRACT_CODE")
-    private String purchaseContractCode; //销售合同编号
+    private String saleContractCode; //销售合同编号
 
     @Field("CURRENCY_ID")
     private String currencyId; //币种
 
     @Field("SALE_ORDER_TITLE_REMARKS")
-    private String purchaseOrderTitleRemarks;//抬头备注
+    private String saleOrderTitleRemarks;//抬头备注
 
     @Field("SALE_ORDER_STATUS")
-    private String purchaseOrderStatus;  //订单状态
+    private String saleOrderStatus;  //订单状态
 }
