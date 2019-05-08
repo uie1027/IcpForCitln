@@ -29,10 +29,8 @@ public class InventoryTest {
     @Test
     public void inventoryLocationInfoTest(){
         InventoryLocationInfo inventoryLocationInfo = new InventoryLocationInfo();
-
-        inventoryLocationInfo.setInventoryLocationCode("5646541");
-        inventoryLocationInfo.setInventoryLocationName("5465");
-
+        inventoryLocationInfo.setInventoryLocationCode("DEPOSITORY-A10002");
+        inventoryLocationInfo.setInventoryLocationName("库存地点二");
         MongoUtil.insert(inventoryLocationInfo);
     }
 }

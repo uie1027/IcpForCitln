@@ -15,6 +15,7 @@ import java.util.Date;
 
 @Data
 public class PurchaseOrderDetailDTO {
+    private String purchaseOrderRowCode;//行项目号
     private String productInfoId;  //产品id
     private BigDecimal unitPrice; //含税单价
     private Double quantity;  //数量

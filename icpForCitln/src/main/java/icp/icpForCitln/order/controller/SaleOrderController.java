@@ -9,17 +9,16 @@
 package icp.icpForCitln.order.controller;
 
 import icp.icpForCitln.common.result.PageResult;
+import icp.icpForCitln.order.dto.SaleOrderInfoDTO;
 import icp.icpForCitln.order.service.SaleOrderService;
 import icp.icpForCitln.order.vo.SaleOrderInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/saleOrder")
+    @RequestMapping("/saleOrder")
 public class SaleOrderController {
     @Autowired
     private SaleOrderService saleOrderService;
@@ -34,7 +33,7 @@ public class SaleOrderController {
      * @param: [searchField, pageIndex, pageSize]
      * @return: icp.icpForCitln.common.result.PageResult
      */
-    @RequestMapping("/saleOrderFindByPage")
+    @GetMapping("/saleOrderFindByPage")
     public PageResult saleOrderFindByPage(
             @RequestParam(value = "searchField") String searchField,
             @RequestParam(value = "pageIndex") Integer pageIndex,
@@ -42,4 +41,26 @@ public class SaleOrderController {
         List<SaleOrderInfoVO> list = saleOrderService.saleOrderFindByPage(searchField,pageIndex,pageSize);
         return PageResult.returnResult(PageResult.SUCCESS_CODE,list);
     }
+
+    /**
+     * @author: Hujh
+     * @date: 2019/5/8 11:05
+     * @since: JDK 1.8
+     *
+     * @description: 创建销售订单
+     * @param: [saleOrderInfoDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/saleOrderSave")
+    public PageResult saleOrderSave(@RequestBody SaleOrderInfoDTO saleOrderInfoDTO) {
+        try {
+            if(saleOrderInfoDTO != null && saleOrderInfoDTO.getSaleOrderDetailInfoDTOS() != null){
+                saleOrderService.saleOrderSave(saleOrderInfoDTO);
+            }
+        } catch (Exception ex) {
+            ex.toString();
+        }
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,"订单创建成功！");
+    }
+
 }

@@ -35,15 +35,15 @@ public class PurchaseOrderController {
      * @param: [purchaseOrderDTO]
      * @return: icp.icpForCitln.common.result.PageResult
      */
-    @PostMapping("/createOrder")
-    public PageResult createOrder(@RequestBody PurchaseOrderDTO purchaseOrderDTO){
+    @PostMapping("/purchaseOrderSave")
+    public PageResult purchaseOrderSave(@RequestBody PurchaseOrderDTO purchaseOrderDTO){
         if(purchaseOrderDTO == null
                 || purchaseOrderDTO.getPurchaseOrderDetailDTOS() == null){
             //TODO 未处理项
-            return  PageResult.returnResult(PageResult.ERROR_CODE,null);
+            return  PageResult.returnResult(PageResult.ERROR_CODE,"订单创建失败，为获取到数据！");
         }else{
             purchaseOrderService.purchaseOrderSave(purchaseOrderDTO);
-            return  PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+            return  PageResult.returnResult(PageResult.SUCCESS_CODE,"订单创建成功！");
         }
     }
 

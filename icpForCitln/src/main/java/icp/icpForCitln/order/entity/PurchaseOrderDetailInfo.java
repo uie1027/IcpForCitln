@@ -22,10 +22,10 @@ import java.util.Date;
 @ToString(callSuper = true)
 public class PurchaseOrderDetailInfo extends BaseEntity {
     @Field("PURCHASE_ORDER_INFO_ID")
-    private String purchaseOrderInfoId;  //采购订单表id
+    private String purchaseOrderInfoId;  //采购订单表ID
 
     @Field("PURCHASE_ORDER_ROW_CODE")
-    private String purchaseOrderRowCode;  //采购订单编码
+    private String purchaseOrderRowCode;  //行项目编号
 
     @Field("PRODUCT_INFO_ID")
     private String productInfoId;  //产品id

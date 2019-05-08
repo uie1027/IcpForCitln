@@ -42,7 +42,7 @@ public class PurchaseOrderDTO  {
     private String companyName; //公司id
 
     @Field("PURCHASE_CONTRACT_CODE")
-    private String purchaseContractCode; //采购合同编号
+        private String purchaseContractCode; //采购合同编号
 
     private BigDecimal amount; //订单总金额
 

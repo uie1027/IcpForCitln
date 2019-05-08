@@ -13,6 +13,6 @@ import icp.icpForCitln.order.entity.PurchaseOrderDetailInfo;
 import java.util.List;
 
 public interface PurchaseOrderDetailService {
-     String  createOrderDetail(List<PurchaseOrderDetailInfo> purchaseOrderDetailInfos,String orderId);
+     void  createOrderDetail(List<PurchaseOrderDetailInfo> purchaseOrderDetailInfos);
 
 }

@@ -38,14 +38,15 @@ public class OrderTest {
     public void PurchaseOrderInfoSaveTest(){
        for(int i = 0 ; i <100 ; i++){
            PurchaseOrderInfo purchaseOrderInfo = new PurchaseOrderInfo();
+           purchaseOrderInfo.setOrderOriginId("线下订单");
+           purchaseOrderInfo.setOrderTypeId("标准订单");   //订单类型
            purchaseOrderInfo.setCompanyInfoId("2");  //公司ID
-           purchaseOrderInfo.setCurrencyId("2"); //币种
-           purchaseOrderInfo.setOrderTypeId("2");   //订单类型
+           purchaseOrderInfo.setCurrencyId("￥"); //币种
            purchaseOrderInfo.setPayentMethodId("2");    //付款方式
-           purchaseOrderInfo.setPurchaseContractCode("2");  //采购合同编号
            purchaseOrderInfo.setPurchaseOrderCode(String.valueOf((int)(i+ Math.random()*1000))); //采购订单编号
-           purchaseOrderInfo.setPurchaseOrderStatus("2");   //订单状态
-           purchaseOrderInfo.setPurchaseOrderTitleRemarks("2"); //订单备注
+           purchaseOrderInfo.setPurchaseContractCode(purchaseOrderInfo.getPurchaseOrderCode());  //采购合同编号
+           purchaseOrderInfo.setPurchaseOrderStatus("已确认");   //订单状态
+           purchaseOrderInfo.setPurchaseOrderTitleRemarks("订单备注"); //订单备注
            purchaseOrderInfo.setSupplierInfoId("cx5ccff31217ca8f17a0f85e4d");    //供应商ID
            MongoUtil.insert(purchaseOrderInfo);
        }
@@ -90,8 +91,10 @@ public class OrderTest {
      */
     @Test
     public void SaleOrderInfoSaveTest(){
-        for(int i = 0 ; i < 100 ;i++){
+//        for(int i = 0 ; i < 100 ;i++){
             SaleOrderInfo saleOrderInfo = new SaleOrderInfo();
+            saleOrderInfo.setOrderOriginId("商城订单");
+            saleOrderInfo.setOrderTypeId("标准订单");
             saleOrderInfo.setSaleOrderCode(String.valueOf((int)(Math.random()*1000000)));
             saleOrderInfo.setCustomerInfoId("cx5cd1142837db1c3460b01355");
             saleOrderInfo.setCompanyInfoId("AAA");
@@ -101,7 +104,7 @@ public class OrderTest {
             saleOrderInfo.setSaleOrderStatus("已确认");
             saleOrderInfo.setSaleOrderTitleRemarks("备注");
             MongoUtil.insert(saleOrderInfo);
-        }
+//        }
     }
 
     /**
@@ -116,19 +119,17 @@ public class OrderTest {
     @Test
     public void SaleOrderDetilInfoSaveTest(){
         SaleOrderDetilInfo saleOrderDetilInfo = new SaleOrderDetilInfo();
-
         saleOrderDetilInfo.setBasicUnitId("2");
         saleOrderDetilInfo.setDeliveryDate(new Date());
         saleOrderDetilInfo.setFactoryInfoId("2");
         saleOrderDetilInfo.setInventoryLocationInfoId("2");
         saleOrderDetilInfo.setProductContrastId("s");
         saleOrderDetilInfo.setProductInfoId("2");
-        saleOrderDetilInfo.setPurchaseOrderInfoId("2");
-        saleOrderDetilInfo.setPurchaseOrderRowCode("2");
+        saleOrderDetilInfo.setSaleOrderInfoId("2");
+        saleOrderDetilInfo.setSaleOrderRowCode("2");
         saleOrderDetilInfo.setSaleOrderQuantity(5.23);
         saleOrderDetilInfo.setTaxRateId("2");
         saleOrderDetilInfo.setUnitPrice(new BigDecimal("123.56"));
-
         MongoUtil.insert(saleOrderDetilInfo);
     }
 }

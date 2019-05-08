@@ -38,8 +38,8 @@ public class CompanyTest {
     public void companyInfoTest(){
         CompanyInfo companyInfo = new CompanyInfo();
 
-        companyInfo.setCompanyCode("sda");
-        companyInfo.setCompanyName("dsad");
+        companyInfo.setCompanyCode("A1001");
+        companyInfo.setCompanyName("上海华峰超纤有限公司");
         companyInfo.setEnterpriseInfoId("asda");
         companyInfo.setCompanyShortName("sda");
         companyInfo.setCompanyType("sad");

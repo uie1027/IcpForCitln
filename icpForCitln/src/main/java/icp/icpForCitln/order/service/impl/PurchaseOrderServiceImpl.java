@@ -8,8 +8,11 @@
 
 package icp.icpForCitln.order.service.impl;
 
+import icp.icpForCitln.common.cache.UserAndCompanyCache;
+import icp.icpForCitln.common.enetity.UserAndCompanyInfo;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
+import icp.icpForCitln.common.util.SessionUtil;
 import icp.icpForCitln.common.util.StringUtil;
 import icp.icpForCitln.order.dao.PurchaseOrderDao;
 import icp.icpForCitln.order.dto.PurchaseOrderDTO;
@@ -48,9 +51,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService{
     @Override
     @Transactional
     public void purchaseOrderSave(PurchaseOrderDTO purchaseOrderDTO) {
-        //生成采购合同编号
+        //生成采购订单编码
         PurchaseOrderInfo purchaseOrderInfo = BeanCopyUtil.copy(purchaseOrderDTO,PurchaseOrderInfo.class );
         purchaseOrderInfo.setPurchaseOrderCode(GeneratedCodeUtil.generatedCode());
+
 
         //获取行项目信息
         List<PurchaseOrderDetailInfo> list = BeanCopyUtil.copy(
@@ -66,8 +70,16 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService{
         try {
             //设置订单总金额 保存订单
             purchaseOrderInfo.setTotalAmount(totalAmount);
+            UserAndCompanyInfo userAndCompanyInfo = UserAndCompanyCache.get(SessionUtil.getByKey("userNum"));
+            purchaseOrderInfo.setCreater(userAndCompanyInfo.getId()); //用户ID
+            purchaseOrderInfo.setCompanyInfoId(userAndCompanyInfo.getCompanyInfo().getId());//公司ID
             purchaseOrderDao.createOrder(purchaseOrderInfo);
-            purchaseOrderDetailService.createOrderDetail(list,purchaseOrderInfo.getId());
+            for (PurchaseOrderDetailInfo purchaseOrderDetailInfo : list){
+                purchaseOrderDetailInfo.setPurchaseOrderInfoId(purchaseOrderInfo.getId());
+                purchaseOrderDetailInfo.setCreater(userAndCompanyInfo.getId());
+                purchaseOrderDetailInfo.setLastMondifier(userAndCompanyInfo.getId());
+            }
+            purchaseOrderDetailService.createOrderDetail(list);
         }catch (Exception ex){
             throw  new RuntimeException(ex.toString());
         }

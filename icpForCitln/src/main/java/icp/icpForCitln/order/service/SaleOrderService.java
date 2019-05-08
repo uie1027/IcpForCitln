@@ -8,6 +8,7 @@
 
 package icp.icpForCitln.order.service;
 
+import icp.icpForCitln.order.dto.SaleOrderInfoDTO;
 import icp.icpForCitln.order.entity.SaleOrderInfo;
 import icp.icpForCitln.order.vo.SaleOrderInfoVO;
 
@@ -15,4 +16,6 @@ import java.util.List;
 
 public interface SaleOrderService {
     List<SaleOrderInfoVO> saleOrderFindByPage(String searchField,Integer pageIndex,Integer pageSize);
+
+    void saleOrderSave(SaleOrderInfoDTO saleOrderInfoDTO);
 }
