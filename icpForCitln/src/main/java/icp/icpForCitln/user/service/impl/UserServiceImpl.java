@@ -7,13 +7,15 @@
  */
 package icp.icpForCitln.user.service.impl;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.user.dto.UserInfoListFindByPageDTO;
 import icp.icpForCitln.user.dto.UserInfoSaveDTO;
 import icp.icpForCitln.user.eneity.UserCompanyDepartmentRole;
 import icp.icpForCitln.user.eneity.UserInfo;
 import icp.icpForCitln.user.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import icp.icpForCitln.user.view.UserInfoUser;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -55,9 +57,21 @@ public class UserServiceImpl implements UserService {
         for(UserCompanyDepartmentRole userCompanyDepartmentRole:userCompanyDepartmentRoleList){
            MongoUtil.insert(userCompanyDepartmentRole);
         }
+    }
 
-
-
-
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/9 16:41
+     * @since: JDK 1.8
+     *
+     * @description: 查询用户列表信息 带分页 带条件
+     * @param: [userInfoListFindByPageDTO]
+     * @return: icp.icpForCitln.common.enetity.MongoResult
+     */
+    @Override
+    public MongoResult userInfoListFindByPage(UserInfoListFindByPageDTO userInfoListFindByPageDTO) {
+        UserInfoUser userInfoUser = new UserInfoUser();
+        userInfoUser.setUserName(userInfoListFindByPageDTO.getUserName());
+        return MongoUtil.select(userInfoListFindByPageDTO.getPageIndex(), userInfoListFindByPageDTO.getPageSize(), userInfoUser);
     }
 }
