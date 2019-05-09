@@ -8,6 +8,7 @@
 
 package icp.icpForCitln.stock.service.impl;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
@@ -15,12 +16,16 @@ import icp.icpForCitln.stock.dao.StockDAO;
 import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.entity.PurchaseReceipt;
 import icp.icpForCitln.stock.entity.PurchaseReceiptDetail;
+import icp.icpForCitln.stock.entity.SalesDelivery;
+import icp.icpForCitln.stock.entity.SalesDeliveryDetail;
 import icp.icpForCitln.stock.service.StockService;
+import icp.icpForCitln.stock.view.OtherOutboundFindView;
+import icp.icpForCitln.stock.view.ProductionReceiptFindView;
+import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
+import icp.icpForCitln.stock.view.SalesDeliveryFindView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-
-import java.util.List;
 
 @Service
 public class StockServiceImpl implements StockService {
@@ -36,19 +41,9 @@ public class StockServiceImpl implements StockService {
      * @param: [pageIndex, pageSize, productionReceiptFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.ProductionReceiptListDTO>
      */
-    public List<ProductionReceiptListDTO> productionReceiptListFind(Integer pageIndex, Integer pageSize, ProductionReceiptFindDTO productionReceiptFindDTO){
-        List<ProductionReceiptListDTO> listDTOS= stockDAO.productionReceiptListFind(pageIndex,pageSize,productionReceiptFindDTO);
-        if (listDTOS.size()>0){
-            for (ProductionReceiptListDTO productionReceiptListDTO:listDTOS){
-                if (productionReceiptListDTO.getFactoryInfo()!=null) {
-                    productionReceiptListDTO.setFactoryName(productionReceiptListDTO.getFactoryInfo().getFactoryName());
-                }
-                if (productionReceiptListDTO.getProductionOrder()!=null) {
-                    productionReceiptListDTO.setOrderCode(productionReceiptListDTO.getProductionOrder().getOrderNumber());
-                }
-            }
-        }
-        return listDTOS;
+    @Override
+    public MongoResult productionReceiptListFind(Integer pageIndex, Integer pageSize, ProductionReceiptFindDTO productionReceiptFindDTO){
+        return stockDAO.productionReceiptListFind(pageIndex,pageSize,BeanCopyUtil.copy(productionReceiptFindDTO, ProductionReceiptFindView.class));
     }
 
     /**
@@ -60,6 +55,7 @@ public class StockServiceImpl implements StockService {
      * @param: [purchaseReceiptSaveDTO]
      * @return: boolean
      */
+    @Override
     public boolean purchaseReceiptSave(PurchaseReceiptSaveDTO purchaseReceiptSaveDTO){
         purchaseReceiptSaveDTO.setPurchaseReceiptCode(GeneratedCodeUtil.generatedCode());
         PurchaseReceipt purchaseReceipt = BeanCopyUtil.copy(purchaseReceiptSaveDTO, PurchaseReceipt.class);
@@ -82,19 +78,9 @@ public class StockServiceImpl implements StockService {
      * @param: [pageIndex, pageSize, purchaseReceiptFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.PurchaseReceiptListDTO>
      */
-    public List<PurchaseReceiptListDTO> purchaseReceiptListFind(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
-        List<PurchaseReceiptListDTO> dtos = stockDAO.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindDTO);
-        if (dtos.size()>0){
-            for (PurchaseReceiptListDTO purchaseReceiptListDTO:dtos){
-                if (purchaseReceiptListDTO.getPurchaseOrderInfo()!=null) {
-                    purchaseReceiptListDTO.setPurchaseOrderInfoCode(purchaseReceiptListDTO.getPurchaseOrderInfo().getPurchaseOrderCode());
-                }
-                if (purchaseReceiptListDTO.getSupplierInfo()!=null) {
-                    purchaseReceiptListDTO.setSupplierInfoName(purchaseReceiptListDTO.getSupplierInfo().getSupplierName());
-                }
-            }
-        }
-        return dtos;
+    @Override
+    public MongoResult purchaseReceiptListFind(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
+        return stockDAO.purchaseReceiptListFind(pageIndex,pageSize,BeanCopyUtil.copy(purchaseReceiptFindDTO,PurchaseReceiptFindView.class));
     }
 
     /**
@@ -106,22 +92,46 @@ public class StockServiceImpl implements StockService {
      * @param: [pageIndex, pageSize, otherOutboundFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.OtherOutboundListDTO>
      */
-    public List<OtherOutboundListDTO> OtherOutboundListFind(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO){
-        List<OtherOutboundListDTO> dtos = stockDAO.OtherOutboundListFind(pageIndex,pageSize,otherOutboundFindDTO);
-        if (dtos.size()>0){
-            for (OtherOutboundListDTO dto:dtos){
-                if (dto.getFactoryInfo()!=null){
-                    dto.setFactoryName(dto.getFactoryInfo().getFactoryName());
-                }
-                if (dto.getProductInfo()!=null){
-                    dto.setProductCode(dto.getProductInfo().getProductCode());
-                    dto.setProductName(dto.getProductInfo().getProductName());
-                }
-                if (dto.getSystemDictionaryInfo()!=null){
-                    dto.setBasicUntil(dto.getSystemDictionaryInfo().getSystemDictionaryValue());
-                }
+    @Override
+    public MongoResult OtherOutboundListFind(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO){
+        return stockDAO.OtherOutboundListFind(pageIndex,pageSize,BeanCopyUtil.copy(otherOutboundFindDTO, OtherOutboundFindView.class));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/09 17:44
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单 保存
+     * @param: [salesDeliverySaveDTO]
+     * @return: boolean
+     */
+    @Override
+    public boolean salesDeliverySave(SalesDeliverySaveDTO salesDeliverySaveDTO){
+        salesDeliverySaveDTO.setSalesDeliveryCode(GeneratedCodeUtil.generatedCode());
+        SalesDelivery salesDelivery = BeanCopyUtil.copy(salesDeliverySaveDTO, SalesDelivery.class);
+        MongoUtil.insert(salesDelivery);
+        if (!CollectionUtils.isEmpty(salesDeliverySaveDTO.getDetailList())){
+            for (SalesDeliveryDetail salesDeliveryDetail:salesDeliverySaveDTO.getDetailList()){
+                salesDeliveryDetail.setSalesDeliveryDetailCode(GeneratedCodeUtil.generatedCode());
+                salesDeliveryDetail.setSalesDeliverId(salesDelivery.getId());
+                MongoUtil.insert(salesDeliveryDetail);
             }
         }
-        return dtos;
+        return true;
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/09 18:34
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单列表
+     * @param: [pageIndex, pageSize, salesDeliveryFindDTO]
+     * @return: icp.icpForCitln.common.enetity.MongoResult
+     */
+    @Override
+    public MongoResult salesDeliveryListFind(Integer pageIndex, Integer pageSize, SalesDeliveryFindDTO salesDeliveryFindDTO){
+        return stockDAO.salesDeliveryListFind(pageIndex,pageSize,BeanCopyUtil.copy(salesDeliveryFindDTO,SalesDeliveryFindView.class));
     }
 }

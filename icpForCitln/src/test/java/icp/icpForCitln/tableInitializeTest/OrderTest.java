@@ -94,7 +94,7 @@ public class OrderTest {
 //        for(int i = 0 ; i < 100 ;i++){
             SaleOrderInfo saleOrderInfo = new SaleOrderInfo();
             saleOrderInfo.setOrderOriginId("商城订单");
-            saleOrderInfo.setOrderTypeId("标准订单");
+            saleOrderInfo.setOrderTypeId("非标准订单");
             saleOrderInfo.setSaleOrderCode(String.valueOf((int)(Math.random()*1000000)));
             saleOrderInfo.setCustomerInfoId("cx5cd1142837db1c3460b01355");
             saleOrderInfo.setCompanyInfoId("AAA");

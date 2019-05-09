@@ -9,12 +9,12 @@ package icp.icpForCitln.company.controller;
 
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.company.dto.CompanyInfoGetListDTO;
 import icp.icpForCitln.company.dto.CompanySaveDTO;
 import icp.icpForCitln.company.eneity.CompanyInfo;
 import icp.icpForCitln.company.service.CompanyService;
 import icp.icpForCitln.company.vo.CompanyVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +24,7 @@ import java.util.List;
 public class CompanyController {
     @Autowired
     private CompanyService companyService;
+
     /**
      * @author: 汪明月
      * date: 2019/5/8 13:47
@@ -38,6 +39,7 @@ public class CompanyController {
         companyService.companySave(companySaveDTO);
         return  PageResult.returnResult(PageResult.SUCCESS_CODE, "");
     }
+
     /**
      * @author: 汪明月
      * date: 2019/5/8 14:37
@@ -52,6 +54,7 @@ public class CompanyController {
         List<CompanyInfo> companyInfoList = companyService.companyInfoGetList();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, companyInfoList);
     }
+
     /**
      * @author: 汪明月
      * date: 2019/5/8 16:15
@@ -61,10 +64,23 @@ public class CompanyController {
      * @param: []
      * @return: icp.icpForCitln.common.result.PageResult
      */
-
     @GetMapping("/companyInfoFindByEnterpriseId")
     public PageResult companyInfoFindByEnterpriseId(){
         List<CompanyInfo> companyId = companyService.companyInfoFindByEnterpriseId();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(companyId, CompanyVO.class));
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/9 14:31
+     * @since: JDK 1.8
+     *
+     * @description: 公司列表
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/companyInfoListFindByPage")
+    public PageResult companyInfoListFindByPage(CompanyInfoGetListDTO companyInfoGetListDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, companyService.companyInfoListFindByPage(companyInfoGetListDTO));
     }
 }

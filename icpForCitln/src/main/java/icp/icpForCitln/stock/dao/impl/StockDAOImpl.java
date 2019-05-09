@@ -9,30 +9,16 @@
 package icp.icpForCitln.stock.dao.impl;
 
 import icp.icpForCitln.common.enetity.MongoResult;
-import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.factory.entity.FactoryInfo;
-import icp.icpForCitln.order.entity.PurchaseOrderInfo;
-import icp.icpForCitln.produce.entity.ProductionOrder;
-import icp.icpForCitln.product.eneity.ProductInfo;
 import icp.icpForCitln.stock.dao.StockDAO;
-import icp.icpForCitln.stock.dto.*;
-import icp.icpForCitln.stock.entity.OtherOutbound;
-import icp.icpForCitln.stock.entity.ProductionReceipt;
-import icp.icpForCitln.stock.entity.PurchaseReceipt;
-import icp.icpForCitln.supplier.entity.SupplierInfo;
-import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import icp.icpForCitln.stock.view.OtherOutboundFindView;
+import icp.icpForCitln.stock.view.ProductionReceiptFindView;
+import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
+import icp.icpForCitln.stock.view.SalesDeliveryFindView;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Repository
 public class StockDAOImpl implements StockDAO {
-    @Autowired
-    MongoTemplate mongoTemplate;
 
     /**
      * @author: guoxs
@@ -43,12 +29,9 @@ public class StockDAOImpl implements StockDAO {
      * @param: [pageIndex, pageSize, productionReceiptFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.ProductionReceiptListDTO>
      */
-    public List<ProductionReceiptListDTO> productionReceiptListFind(Integer pageIndex, Integer pageSize, ProductionReceiptFindDTO productionReceiptFindDTO){
-        List<Class> minorClass = new ArrayList<>();
-        minorClass.add(FactoryInfo.class);
-        minorClass.add(ProductionOrder.class);
-        MongoResult mongoResult = MongoUtil.aggregateSelect(minorClass, ProductionReceipt.class,productionReceiptFindDTO,ProductionReceiptListDTO.class,pageIndex,pageSize);
-        return BeanCopyUtil.copy(mongoResult.getResultList(),ProductionReceiptListDTO.class);
+    @Override
+    public MongoResult productionReceiptListFind(Integer pageIndex, Integer pageSize, ProductionReceiptFindView productionReceiptFindView){
+        return MongoUtil.select(pageIndex,pageSize,productionReceiptFindView);
     }
 
     /**
@@ -60,12 +43,9 @@ public class StockDAOImpl implements StockDAO {
      * @param: [pageIndex, pageSize, purchaseReceiptFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.PurchaseReceiptListDTO>
      */
-    public List<PurchaseReceiptListDTO> purchaseReceiptListFind(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
-        List<Class> minorClass = new ArrayList<>();
-        minorClass.add(PurchaseOrderInfo.class);
-        minorClass.add(SupplierInfo.class);
-        MongoResult mongoResult = MongoUtil.aggregateSelect(minorClass, PurchaseReceipt.class,purchaseReceiptFindDTO,PurchaseReceiptListDTO.class,pageIndex,pageSize);
-        return BeanCopyUtil.copy(mongoResult.getResultList(),PurchaseReceiptListDTO.class);
+    @Override
+    public MongoResult purchaseReceiptListFind(Integer pageIndex, Integer pageSize, PurchaseReceiptFindView purchaseReceiptFindView){
+        return MongoUtil.select(pageIndex,pageSize,purchaseReceiptFindView);
     }
 
     /**
@@ -77,12 +57,22 @@ public class StockDAOImpl implements StockDAO {
      * @param: [pageIndex, pageSize, otherOutboundFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.OtherOutboundListDTO>
      */
-    public List<OtherOutboundListDTO> OtherOutboundListFind(Integer pageIndex, Integer pageSize, OtherOutboundFindDTO otherOutboundFindDTO){
-        List<Class> minorClass = new ArrayList<>();
-        minorClass.add(FactoryInfo.class);
-        minorClass.add(ProductInfo.class);
-        minorClass.add(SystemDictionaryInfo.class);
-        MongoResult mongoResult = MongoUtil.aggregateSelect(minorClass, OtherOutbound.class,otherOutboundFindDTO,OtherOutboundListDTO.class,pageIndex,pageSize);
-        return BeanCopyUtil.copy(mongoResult.getResultList(),OtherOutboundListDTO.class);
+    @Override
+    public MongoResult OtherOutboundListFind(Integer pageIndex, Integer pageSize, OtherOutboundFindView otherOutboundFindView){
+        return MongoUtil.select(pageIndex,pageSize,otherOutboundFindView);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/09 18:34
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单列表
+     * @param: [pageIndex, pageSize, salesDeliveryFindView]
+     * @return: icp.icpForCitln.common.enetity.MongoResult
+     */
+    @Override
+    public MongoResult salesDeliveryListFind(Integer pageIndex, Integer pageSize, SalesDeliveryFindView salesDeliveryFindView){
+        return MongoUtil.select(pageIndex,pageSize,salesDeliveryFindView);
     }
 }

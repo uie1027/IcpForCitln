@@ -16,16 +16,11 @@ import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.entity.OtherOutbound;
 import icp.icpForCitln.stock.entity.ProductionReceipt;
 import icp.icpForCitln.stock.service.StockService;
-import icp.icpForCitln.stock.vo.OtherOutboundListVO;
-import icp.icpForCitln.stock.vo.ProductionReceiptListVO;
-import icp.icpForCitln.stock.vo.PurchaseReceiptListVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/stock")
@@ -59,8 +54,7 @@ public class StockController {
      */
     @GetMapping("/productionReceiptListFindByPage")
     public PageResult productionReceiptListFindByPage(Integer pageIndex, Integer pageSize, ProductionReceiptFindDTO productionReceiptFindDTO){
-        List<ProductionReceiptListDTO> dtos = stockService.productionReceiptListFind(pageIndex,pageSize,productionReceiptFindDTO);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(dtos, ProductionReceiptListVO.class));
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.productionReceiptListFind(pageIndex,pageSize,productionReceiptFindDTO));
     }
 
     /**
@@ -91,8 +85,7 @@ public class StockController {
      */
     @GetMapping("/purchaseReceiptListFindByPage")
     public PageResult purchaseReceiptListFindByPage(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
-        List<PurchaseReceiptListDTO> dtos = stockService.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindDTO);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(dtos, PurchaseReceiptListVO.class));
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindDTO));
     }
 
     /**
@@ -122,6 +115,38 @@ public class StockController {
      */
     @GetMapping("/otherOutboundListFindByPage")
     public PageResult otherOutboundListFindByPage(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO){
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(stockService.OtherOutboundListFind(pageIndex,pageSize,otherOutboundFindDTO), OtherOutboundListVO.class));
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.OtherOutboundListFind(pageIndex,pageSize,otherOutboundFindDTO));
+    }
+
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/09 17:44
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单 保存
+     * @param: [salesDeliverySaveDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/salesDeliverySave")
+    public PageResult salesDeliverySave(SalesDeliverySaveDTO salesDeliverySaveDTO){
+        if (stockService.salesDeliverySave(salesDeliverySaveDTO)){
+            return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+        }
+        return PageResult.returnResult(PageResult.ERROR_CODE,null);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/09 18:34
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单列表
+     * @param: [pageIndex, pageSize, salesDeliveryFindDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/salesDeliveryListFind")
+    public PageResult salesDeliveryListFind(Integer pageIndex, Integer pageSize, SalesDeliveryFindDTO salesDeliveryFindDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.salesDeliveryListFind(pageIndex,pageSize,salesDeliveryFindDTO));
     }
 }

@@ -66,7 +66,7 @@ public class SupplierController {
      */
     @PostMapping("/supplierUpdate")
     public PageResult supplierUpdate(SupplierSaveAndUpdateDTO supplierSaveAndUpdateDTO){
-        MongoUtil.upsert(BeanCopyUtil.copy(supplierSaveAndUpdateDTO,SupplierInfo.class));
+        MongoUtil.upsert(BeanCopyUtil.copy(supplierSaveAndUpdateDTO,SupplierInfo.class),1);
         return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
 

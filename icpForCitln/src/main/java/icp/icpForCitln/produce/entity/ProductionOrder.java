@@ -18,9 +18,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection = "PRODUCTION_ORDER") //生产订单表
 @ToString(callSuper = true)
 public class ProductionOrder extends BaseEntity {
-    @Field("ORDER_TYPE")
-    private String orderType; //订单类型
+    @Field("PRODUCTION_ORDER_TYPE")
+    private String productionOrderType; //订单类型
 
-    @Field("ORDER_NUMBER")
-    private String orderNumber;  //订单编号
+    @Field("PRODUCTION_ORDER_CODE")
+    private String productionOrderCode;  //订单编号
 }

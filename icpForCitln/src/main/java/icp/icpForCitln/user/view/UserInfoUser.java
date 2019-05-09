@@ -1,11 +1,11 @@
 /**
  * Project Name: icpForCitln
- * File Name: RoleInfoUserView
- * Package Name: icp.icpForCitln.permission.view
- * Date: 2019/5/9 10:22
+ * File Name: UserInfoUser
+ * Package Name: icp.icpForCitln.user.view
+ * Date: 2019/5/9 16:25
  * Copyright (c) 2019, huafon Chuangxiang Co., Ltd. All Rights Reserved.
  */
-package icp.icpForCitln.permission.view;
+package icp.icpForCitln.user.view;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -15,19 +15,22 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.Date;
 
 @Data
-@Document(collection = "ROLE_INFO_USER")        //角色列表视图
-public class RoleInfoUserView {
+@Document(collection = "USER_INFO_USER")
+public class UserInfoUser {
     @Id
-    private String id;  //ID
+    private String id;  //主键
 
     @Field("IS_FORBIDDEN")
     private Integer isForbidden;    //是否禁用 1禁用2不禁用
 
-    @Field("ROLE_NAME")
-    private String roleName;  //角色名称
+    @Field("USER_NUM")
+    private String userNum;     //用户帐号
 
-    @Field("ROLE_DESCRIPTION")
-    private String roleDescription;  //角色描述
+    @Field("USER_NAME")
+    private String userName;    //用户姓名
+
+    @Field("USER_PHONE")
+    private String userPhone;   //用户手机
 
     @Field("LAST_MODIFIER_USER.USER_NAME")
     private String lastMondifier;   //最后更改人

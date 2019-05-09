@@ -42,7 +42,7 @@ public class ProduceTest {
         productionReceiptInfoDTO.setRemark("2222");
         productionReceiptInfoDTO.setCompanyInfoId("111");
         productionReceiptInfoDTO.setInventoryLocationId("2s");
-        productionReceiptInfoDTO.setProductId("22");
+        productionReceiptInfoDTO.setProductInfoId("22");
         productionReceiptInfoDTO.setReceivingFactoryId("22");
         productionReceiptInfoDTO.setUnstockedNumber(new BigDecimal("345"));
         productionReceiptInfoDTO.setWarehouseNumber(new BigDecimal("44"));
@@ -56,8 +56,8 @@ public class ProduceTest {
     public void productionOrderSaveTest(){
         ProductionOrder productionOrder = new ProductionOrder();
 
-        productionOrder.setOrderNumber("222");
-        productionOrder.setOrderType("2");
+        productionOrder.setProductionOrderCode("222");
+        productionOrder.setProductionOrderType("2");
 
         MongoUtil.insert(productionOrder);
     }

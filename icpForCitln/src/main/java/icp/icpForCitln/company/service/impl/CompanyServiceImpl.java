@@ -7,18 +7,19 @@
  */
 package icp.icpForCitln.company.service.impl;
 
-import com.fasterxml.jackson.databind.util.BeanUtil;
 import icp.icpForCitln.common.cache.UserAndCompanyCache;
-import icp.icpForCitln.common.enetity.UserAndCompanyInfo;
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.SessionUtil;
+import icp.icpForCitln.company.dto.CompanyInfoGetListDTO;
 import icp.icpForCitln.company.dto.CompanySaveDTO;
 import icp.icpForCitln.company.eneity.CompanyAddressInfo;
 import icp.icpForCitln.company.eneity.CompanyDepartmentInfo;
 import icp.icpForCitln.company.eneity.CompanyInfo;
 import icp.icpForCitln.company.service.CompanyService;
+import icp.icpForCitln.company.view.CompanyInfoUserView;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -85,5 +86,20 @@ public class CompanyServiceImpl implements CompanyService {
         companyInfo.setEnterpriseInfoId(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getEnterpriseInfo().getId());
         List<CompanyInfo>  companyInfoList= MongoUtil.select(companyInfo);
         return companyInfoList;
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/9 14:37
+     * @since: JDK 1.8
+     *
+     * @description: 公司列表返显  带分页 带查询条件
+     * @param: [companyInfoGetListDTO]
+     * @return: icp.icpForCitln.common.enetity.MongoResult
+     */
+    @Override
+    public MongoResult companyInfoListFindByPage(CompanyInfoGetListDTO companyInfoGetListDTO) {
+        CompanyInfoUserView companyInfoUserView = BeanCopyUtil.copy(companyInfoGetListDTO, CompanyInfoUserView.class);
+        return MongoUtil.select(companyInfoGetListDTO.getPageIndex(), companyInfoGetListDTO.getPageSize(), companyInfoUserView);
     }
 }

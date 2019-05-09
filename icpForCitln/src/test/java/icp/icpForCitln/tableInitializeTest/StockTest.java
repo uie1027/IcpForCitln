@@ -11,8 +11,10 @@ package icp.icpForCitln.tableInitializeTest;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.stock.dto.PurchaseReceiptSaveDTO;
+import icp.icpForCitln.stock.dto.SalesDeliverySaveDTO;
 import icp.icpForCitln.stock.entity.OtherOutbound;
 import icp.icpForCitln.stock.entity.PurchaseReceiptDetail;
+import icp.icpForCitln.stock.entity.SalesDeliveryDetail;
 import icp.icpForCitln.stock.service.StockService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -64,16 +66,45 @@ public class StockTest {
         OtherOutbound otherOutbound = new OtherOutbound();
         otherOutbound.setDocumentTime(new Date());
         otherOutbound.setDocumentType(1);
-        otherOutbound.setFactoryInfoId("@");
+        otherOutbound.setFactoryInfoId("cx5ccfa71da898f237b4eba0c5");
         otherOutbound.setInventoryLocationId("1");
         otherOutbound.setOtherOutboundCode(GeneratedCodeUtil.generatedCode());
         otherOutbound.setReceiptStatus(1);
         otherOutbound.setRemark("@1");
-        otherOutbound.setProductInfoId("1");
+        otherOutbound.setProductInfoId("cx5cd24b5babac561c7c3731f4");
         otherOutbound.setOutboundNumber(new BigDecimal("22"));
-        otherOutbound.setSystemDictionaryInfoId("1");
+        for (int i=0;i<100;i++) {
+            MongoUtil.insert(otherOutbound);
+        }
+    }
 
-        MongoUtil.insert(otherOutbound);
+    @Test
+    public void salesSave(){
+        SalesDeliverySaveDTO salesDeliverySaveDTO = new SalesDeliverySaveDTO();
+
+        salesDeliverySaveDTO.setCompanyInfoId("cx5cd269507aeecb391cee17c8");
+        salesDeliverySaveDTO.setCustomerInfoId("cx5cd1142837db1c3460b01355");
+        salesDeliverySaveDTO.setDocumentTime(new Date());
+        salesDeliverySaveDTO.setRemark("222");
+
+        SalesDeliveryDetail salesDeliveryDetail = new SalesDeliveryDetail();
+
+        salesDeliveryDetail.setDeliveryFactoryId("cx5ccfa71da898f237b4eba0c5");
+        salesDeliveryDetail.setDeliveryNumber(new BigDecimal("12"));
+        salesDeliveryDetail.setInventoryLocationId("111");
+        salesDeliveryDetail.setSaleOrderDetilInfoId("cx5cd289de7aeecb1678b8a345");
+        salesDeliveryDetail.setSaleOrderInfoId("cx5cd289dd7aeecb1678b8a344");
+
+        List<SalesDeliveryDetail> list = new ArrayList<>();
+        for (int i=0;i<5;i++){
+            list.add(salesDeliveryDetail);
+        }
+
+        salesDeliverySaveDTO.setDetailList(list);
+
+        for (int j = 0;j<5;j++){
+            stockService.salesDeliverySave(salesDeliverySaveDTO);
+        }
     }
 
 }
