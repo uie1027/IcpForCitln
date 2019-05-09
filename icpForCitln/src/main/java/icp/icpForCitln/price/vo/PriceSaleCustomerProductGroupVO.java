@@ -11,6 +11,7 @@ package icp.icpForCitln.price.vo;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 //销售客户产品价格组
@@ -27,4 +28,5 @@ public class PriceSaleCustomerProductGroupVO {
     private String	currencyId;     //币种
     private Integer	each;   //每
     private String	basicUnitId;    //基本单位BASIC_UNIT_ID
+    private Date lastModificationTime;  //最后更改时间
 }
