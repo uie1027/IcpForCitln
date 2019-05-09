@@ -16,6 +16,7 @@ import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
+import icp.icpForCitln.platform.view.PlantformDirectoryInfoListView;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,13 +46,13 @@ public class PlatformServiceImpl implements PlatformService {
      * @date: 2019-04-30 上午 11:14
      * @since: JDK 1.8
      *
-     * @description: 目录列表查询 从 Redis 中
+     * @description: 目录列表查询
      * @param: []
      * @return: java.util.List<icp.icpForCitln.platform.entity.PlantformDirectoryInfo>
      */
     @Override
-    public List<PlantformDirectoryInfo> plantformDirectoryInfoGetList() {
-        return BeanCopyUtil.copy(RedisUtil.getList(new PlantformDirectoryInfo()), PlantformDirectoryInfo.class);
+    public List<PlantformDirectoryInfoListView> plantformDirectoryInfoGetList() {
+        return MongoUtil.select(new PlantformDirectoryInfoListView());
     }
 
     /**

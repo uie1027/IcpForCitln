@@ -13,7 +13,6 @@ import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
-import icp.icpForCitln.platform.vo.PlantformDirectoryInfoGetListVO;
 import icp.icpForCitln.platform.vo.PlantformMailDisplayVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,8 +54,7 @@ public class PlatformController {
      */
     @GetMapping("/plantformDirectoryInfoGetList")
     public PageResult plantformDirectoryInfoGetList(){
-        List<PlantformDirectoryInfoGetListVO> plantformDirectoryInfoGetListVOList = BeanCopyUtil.copy(platformService.plantformDirectoryInfoGetList(), PlantformDirectoryInfoGetListVO.class);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE, plantformDirectoryInfoGetListVOList);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, platformService.plantformDirectoryInfoGetList());
     }
 
     /**
