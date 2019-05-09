@@ -36,8 +36,8 @@ public class ProductionReceipt extends BaseEntity {
     @Field("FACTORY_INFO_ID")
     private String factoryInfoId; //工厂ID
 
-    @Field("PRODUCT_Id")
-    private String productId; //产品ID
+    @Field("PRODUCT_INFO_ID")
+    private String productInfoId; //产品ID
 
     @Field("WAREHOUSE_NUMBER")
     private BigDecimal warehouseNumber; //入库数量

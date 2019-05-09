@@ -42,7 +42,7 @@ public class ProduceTest {
         productionReceiptInfoDTO.setRemark("2222");
         productionReceiptInfoDTO.setCompanyInfoId("111");
         productionReceiptInfoDTO.setInventoryLocationId("2s");
-        productionReceiptInfoDTO.setProductId("22");
+        productionReceiptInfoDTO.setProductInfoId("22");
         productionReceiptInfoDTO.setReceivingFactoryId("22");
         productionReceiptInfoDTO.setUnstockedNumber(new BigDecimal("345"));
         productionReceiptInfoDTO.setWarehouseNumber(new BigDecimal("44"));

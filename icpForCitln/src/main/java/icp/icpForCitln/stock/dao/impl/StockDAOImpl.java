@@ -21,6 +21,7 @@ import icp.icpForCitln.stock.dto.ProductionReceiptFindDTO;
 import icp.icpForCitln.stock.dto.ProductionReceiptListDTO;
 import icp.icpForCitln.stock.entity.OtherOutbound;
 import icp.icpForCitln.stock.entity.ProductionReceipt;
+import icp.icpForCitln.stock.view.ProductionReceiptFindView;
 import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,12 +45,9 @@ public class StockDAOImpl implements StockDAO {
      * @param: [pageIndex, pageSize, productionReceiptFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.ProductionReceiptListDTO>
      */
-    public List<ProductionReceiptListDTO> productionReceiptListFind(Integer pageIndex, Integer pageSize, ProductionReceiptFindDTO productionReceiptFindDTO){
-        List<Class> minorClass = new ArrayList<>();
-        minorClass.add(FactoryInfo.class);
-        minorClass.add(ProductionOrder.class);
-        MongoResult mongoResult = MongoUtil.aggregateSelect(minorClass, ProductionReceipt.class,productionReceiptFindDTO,ProductionReceiptListDTO.class,pageIndex,pageSize);
-        return BeanCopyUtil.copy(mongoResult.getResultList(),ProductionReceiptListDTO.class);
+    @Override
+    public MongoResult productionReceiptListFind(Integer pageIndex, Integer pageSize, ProductionReceiptFindView productionReceiptFindView){
+        return MongoUtil.select(pageIndex,pageSize,productionReceiptFindView);
     }
 
     /**

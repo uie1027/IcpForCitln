@@ -17,6 +17,7 @@ import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.entity.PurchaseReceipt;
 import icp.icpForCitln.stock.entity.PurchaseReceiptDetail;
 import icp.icpForCitln.stock.service.StockService;
+import icp.icpForCitln.stock.view.ProductionReceiptFindView;
 import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,19 +39,9 @@ public class StockServiceImpl implements StockService {
      * @param: [pageIndex, pageSize, productionReceiptFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.ProductionReceiptListDTO>
      */
-    public List<ProductionReceiptListDTO> productionReceiptListFind(Integer pageIndex, Integer pageSize, ProductionReceiptFindDTO productionReceiptFindDTO){
-        List<ProductionReceiptListDTO> listDTOS= stockDAO.productionReceiptListFind(pageIndex,pageSize,productionReceiptFindDTO);
-        if (listDTOS.size()>0){
-            for (ProductionReceiptListDTO productionReceiptListDTO:listDTOS){
-                if (productionReceiptListDTO.getFactoryInfo()!=null) {
-                    productionReceiptListDTO.setFactoryName(productionReceiptListDTO.getFactoryInfo().getFactoryName());
-                }
-                if (productionReceiptListDTO.getProductionOrder()!=null) {
-                    productionReceiptListDTO.setOrderCode(productionReceiptListDTO.getProductionOrder().getProductionOrderCode());
-                }
-            }
-        }
-        return listDTOS;
+    @Override
+    public MongoResult productionReceiptListFind(Integer pageIndex, Integer pageSize, ProductionReceiptFindDTO productionReceiptFindDTO){
+        return stockDAO.productionReceiptListFind(pageIndex,pageSize,BeanCopyUtil.copy(productionReceiptFindDTO, ProductionReceiptFindView.class));
     }
 
     /**
