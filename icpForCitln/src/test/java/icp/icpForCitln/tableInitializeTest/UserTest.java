@@ -11,9 +11,8 @@ import icp.icpForCitln.common.cache.UserAndCompanyCache;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.SessionUtil;
-import icp.icpForCitln.user.eneity.UserCompany;
+import icp.icpForCitln.user.eneity.UserCompanyDepartmentRole;
 import icp.icpForCitln.user.eneity.UserInfo;
-import icp.icpForCitln.user.eneity.UserRole;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -60,49 +59,50 @@ public class UserTest {
      * @date: 2019-04-29 下午 1:36
      * @since: JDK 1.8
      *
-     * @description: UserRole 测试
+     * @description: UserRole 测试   表结构修改 已经删除
      * @param: []
      * @return: void
      */
-    @Test
-    public void userRoleTest(){
-        UserRole userRole = new UserRole();
-
-        userRole.setUserRoleCode(GeneratedCodeUtil.generatedCode());
-        userRole.setUserInfoId("5cc68b96ba4b701984cc8d5e");
-        userRole.setRoleInfoId("5cc68b96ba4b701984cc8d5e");
-        userRole.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
-        userRole.setCreateTime(new Date());
-        userRole.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
-        userRole.setLastModificationTime(new Date());
-        userRole.setIsDelete(2);
-        userRole.setIsDisplay(1);
-
-        MongoUtil.insert(userRole);
-    }
+//    @Test
+//    public void userRoleTest(){
+//        UserRole userRole = new UserRole();
+//
+//        userRole.setUserRoleCode(GeneratedCodeUtil.generatedCode());
+//        userRole.setUserInfoId("5cc68b96ba4b701984cc8d5e");
+//        userRole.setRoleInfoId("5cc68b96ba4b701984cc8d5e");
+//        userRole.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
+//        userRole.setCreateTime(new Date());
+//        userRole.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
+//        userRole.setLastModificationTime(new Date());
+//        userRole.setIsDelete(2);
+//        userRole.setIsDisplay(1);
+//
+//        MongoUtil.insert(userRole);
+//    }
 
     /**
      * @author: 方瑞冬
      * @date: 2019-04-29 下午 1:45
      * @since: JDK 1.8
      *
-     * @description: UserCompany 测试
+     * @description: UserCompanyDepartmentRole 测试
      * @param: []
      * @return: void
      */
     @Test
     public void userCompanyTest(){
-        UserCompany userCompany = new UserCompany();
+        UserCompanyDepartmentRole userCompanyDepartmentRole = new UserCompanyDepartmentRole();
 
-        userCompany.setUserInfoId("5cc68b96ba4b701984cc8d5e");
-        userCompany.setCompanyInfoId("5cc68b96ba4b701984cc8d5e");
-        userCompany.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
-        userCompany.setCreateTime(new Date());
-        userCompany.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
-        userCompany.setLastModificationTime(new Date());
-        userCompany.setIsDelete(2);
-        userCompany.setIsDisplay(1);
+        userCompanyDepartmentRole.setUserInfoId("5cc68b96ba4b701984cc8d5e");
+        userCompanyDepartmentRole.setCompanyInfoId("5cc68b96ba4b701984cc8d5e");
+        userCompanyDepartmentRole.setRoleInfoId("5cc68b96ba4b701984cc8d5e");
+        userCompanyDepartmentRole.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
+        userCompanyDepartmentRole.setCreateTime(new Date());
+        userCompanyDepartmentRole.setLastMondifier(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
+        userCompanyDepartmentRole.setLastModificationTime(new Date());
+        userCompanyDepartmentRole.setIsDelete(2);
+        userCompanyDepartmentRole.setIsDisplay(1);
 
-        MongoUtil.insert(userCompany);
+        MongoUtil.insert(userCompanyDepartmentRole);
     }
 }

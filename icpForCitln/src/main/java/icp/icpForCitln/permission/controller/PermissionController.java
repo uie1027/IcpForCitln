@@ -9,7 +9,6 @@ package icp.icpForCitln.permission.controller;
 
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
-import icp.icpForCitln.common.util.StringUtil;
 import icp.icpForCitln.permission.dto.RoleInfoGetListDTO;
 import icp.icpForCitln.permission.dto.RoleInfoSaveDTO;
 import icp.icpForCitln.permission.entity.RoleInfo;
@@ -67,10 +66,11 @@ public class PermissionController {
      */
     @PostMapping("/roleInfoFindById")
     public PageResult roleInfoFindById(@RequestParam String id){
-        if(StringUtil.isEmpty(id)){
-            return PageResult.returnResult(PageResult.ERROR_CODE, "角色id不能为空");
-        }
         RoleInfo roleInfo = permissionService.roleInfoFindById(id);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(roleInfo, RoleInfoFindByIdVO.class));
+        if(roleInfo == null){
+            return PageResult.returnResult(PageResult.SUCCESS_CODE, "未查询到角色");
+        } else {
+            return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(roleInfo, RoleInfoFindByIdVO.class));
+        }
     }
 }
