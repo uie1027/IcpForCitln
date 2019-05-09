@@ -64,16 +64,16 @@ public class StockTest {
         OtherOutbound otherOutbound = new OtherOutbound();
         otherOutbound.setDocumentTime(new Date());
         otherOutbound.setDocumentType(1);
-        otherOutbound.setFactoryInfoId("@");
+        otherOutbound.setFactoryInfoId("cx5ccfa71da898f237b4eba0c5");
         otherOutbound.setInventoryLocationId("1");
         otherOutbound.setOtherOutboundCode(GeneratedCodeUtil.generatedCode());
         otherOutbound.setReceiptStatus(1);
         otherOutbound.setRemark("@1");
-        otherOutbound.setProductInfoId("1");
+        otherOutbound.setProductInfoId("cx5cd24b5babac561c7c3731f4");
         otherOutbound.setOutboundNumber(new BigDecimal("22"));
-        otherOutbound.setSystemDictionaryInfoId("1");
-
-        MongoUtil.insert(otherOutbound);
+        for (int i=0;i<100;i++) {
+            MongoUtil.insert(otherOutbound);
+        }
     }
 
 }

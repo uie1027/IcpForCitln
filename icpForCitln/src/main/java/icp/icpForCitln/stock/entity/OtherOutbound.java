@@ -36,9 +36,6 @@ public class OtherOutbound extends BaseEntity {
     @Field("OUTBOUND_NUMBER")
     private BigDecimal outboundNumber; //出库数量
 
-    @Field("SYSTEM_DICTIONARY_INFO_ID")
-    private String systemDictionaryInfoId;  //基本单位id
-
     @Field("INVENTORY_LOCATION_ID")
     private String inventoryLocationId; //库存地点id
 

@@ -9,27 +9,14 @@
 package icp.icpForCitln.stock.dao.impl;
 
 import icp.icpForCitln.common.enetity.MongoResult;
-import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.factory.entity.FactoryInfo;
-import icp.icpForCitln.produce.entity.ProductionOrder;
-import icp.icpForCitln.product.eneity.ProductInfo;
 import icp.icpForCitln.stock.dao.StockDAO;
-import icp.icpForCitln.stock.dto.OtherOutboundFindDTO;
-import icp.icpForCitln.stock.dto.OtherOutboundListDTO;
-import icp.icpForCitln.stock.dto.ProductionReceiptFindDTO;
-import icp.icpForCitln.stock.dto.ProductionReceiptListDTO;
-import icp.icpForCitln.stock.entity.OtherOutbound;
-import icp.icpForCitln.stock.entity.ProductionReceipt;
+import icp.icpForCitln.stock.view.OtherOutboundFindView;
 import icp.icpForCitln.stock.view.ProductionReceiptFindView;
 import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
-import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Repository
 public class StockDAOImpl implements StockDAO {
@@ -73,12 +60,8 @@ public class StockDAOImpl implements StockDAO {
      * @param: [pageIndex, pageSize, otherOutboundFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.OtherOutboundListDTO>
      */
-    public List<OtherOutboundListDTO> OtherOutboundListFind(Integer pageIndex, Integer pageSize, OtherOutboundFindDTO otherOutboundFindDTO){
-        List<Class> minorClass = new ArrayList<>();
-        minorClass.add(FactoryInfo.class);
-        minorClass.add(ProductInfo.class);
-        minorClass.add(SystemDictionaryInfo.class);
-        MongoResult mongoResult = MongoUtil.aggregateSelect(minorClass, OtherOutbound.class,otherOutboundFindDTO,OtherOutboundListDTO.class,pageIndex,pageSize);
-        return BeanCopyUtil.copy(mongoResult.getResultList(),OtherOutboundListDTO.class);
+    @Override
+    public MongoResult OtherOutboundListFind(Integer pageIndex, Integer pageSize, OtherOutboundFindView otherOutboundFindView){
+        return MongoUtil.select(pageIndex,pageSize,otherOutboundFindView);
     }
 }

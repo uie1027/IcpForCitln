@@ -13,17 +13,19 @@ import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.stock.dao.StockDAO;
-import icp.icpForCitln.stock.dto.*;
+import icp.icpForCitln.stock.dto.OtherOutboundFindDTO;
+import icp.icpForCitln.stock.dto.ProductionReceiptFindDTO;
+import icp.icpForCitln.stock.dto.PurchaseReceiptFindDTO;
+import icp.icpForCitln.stock.dto.PurchaseReceiptSaveDTO;
 import icp.icpForCitln.stock.entity.PurchaseReceipt;
 import icp.icpForCitln.stock.entity.PurchaseReceiptDetail;
 import icp.icpForCitln.stock.service.StockService;
+import icp.icpForCitln.stock.view.OtherOutboundFindView;
 import icp.icpForCitln.stock.view.ProductionReceiptFindView;
 import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-
-import java.util.List;
 
 @Service
 public class StockServiceImpl implements StockService {
@@ -88,22 +90,8 @@ public class StockServiceImpl implements StockService {
      * @param: [pageIndex, pageSize, otherOutboundFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.OtherOutboundListDTO>
      */
-    public List<OtherOutboundListDTO> OtherOutboundListFind(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO){
-        List<OtherOutboundListDTO> dtos = stockDAO.OtherOutboundListFind(pageIndex,pageSize,otherOutboundFindDTO);
-        if (dtos.size()>0){
-            for (OtherOutboundListDTO dto:dtos){
-                if (dto.getFactoryInfo()!=null){
-                    dto.setFactoryName(dto.getFactoryInfo().getFactoryName());
-                }
-                if (dto.getProductInfo()!=null){
-                    dto.setProductCode(dto.getProductInfo().getProductCode());
-                    dto.setProductName(dto.getProductInfo().getProductName());
-                }
-                if (dto.getSystemDictionaryInfo()!=null){
-                    dto.setBasicUntil(dto.getSystemDictionaryInfo().getSystemDictionaryValue());
-                }
-            }
-        }
-        return dtos;
+    @Override
+    public MongoResult OtherOutboundListFind(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO){
+        return stockDAO.OtherOutboundListFind(pageIndex,pageSize,BeanCopyUtil.copy(otherOutboundFindDTO, OtherOutboundFindView.class));
     }
 }

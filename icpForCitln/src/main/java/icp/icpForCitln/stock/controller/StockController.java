@@ -16,7 +16,6 @@ import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.entity.OtherOutbound;
 import icp.icpForCitln.stock.entity.ProductionReceipt;
 import icp.icpForCitln.stock.service.StockService;
-import icp.icpForCitln.stock.vo.OtherOutboundListVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -116,6 +115,6 @@ public class StockController {
      */
     @GetMapping("/otherOutboundListFindByPage")
     public PageResult otherOutboundListFindByPage(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO){
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(stockService.OtherOutboundListFind(pageIndex,pageSize,otherOutboundFindDTO), OtherOutboundListVO.class));
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.OtherOutboundListFind(pageIndex,pageSize,otherOutboundFindDTO));
     }
 }
