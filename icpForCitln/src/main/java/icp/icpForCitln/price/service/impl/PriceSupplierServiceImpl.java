@@ -9,15 +9,12 @@
 package icp.icpForCitln.price.service.impl;
 
 
-import icp.icpForCitln.common.util.StringUtil;
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.price.dao.PriceSupplierDao;
-import icp.icpForCitln.price.dto.PricePurchaseProductSupplierDTO;
-import icp.icpForCitln.price.entity.PricePurchaseProductSupplier;
 import icp.icpForCitln.price.service.PriceSupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Service
 public class PriceSupplierServiceImpl implements PriceSupplierService {
     @Autowired
@@ -33,37 +30,8 @@ public class PriceSupplierServiceImpl implements PriceSupplierService {
      * @return: java.util.List<icp.icpForCitln.price.dto.PricePurchaseProductSupplierDTO>
      */
     @Override
-    public List<PricePurchaseProductSupplierDTO> priceSupplierFindByPage(
+    public MongoResult priceSupplierFindByPage(
             String supplierInfo, String productInfo, Integer pageIndex, Integer pageSize) {
-        List<PricePurchaseProductSupplierDTO> list =
-                priceSupplierDao.priceSupplierFindByPage(supplierInfo,productInfo,pageIndex,pageSize);
-        if(list != null && list.size() > 0){
-            for (PricePurchaseProductSupplierDTO pricePurchaseProductSupplierDTO :list){
-                if(!StringUtil.isEmpty(pricePurchaseProductSupplierDTO.getSupplierInfo())){
-                    pricePurchaseProductSupplierDTO.setSupplierInfoId(
-                            pricePurchaseProductSupplierDTO.getSupplierInfo().getId()
-                    );
-                    pricePurchaseProductSupplierDTO.setSupplierCode(
-                            pricePurchaseProductSupplierDTO.getSupplierInfo().getSupplierCode()
-                    );
-                    pricePurchaseProductSupplierDTO.setSupplierName(
-                            pricePurchaseProductSupplierDTO.getSupplierInfo().getSupplierName()
-                    );
-                }
-
-                if(!StringUtil.isEmpty(pricePurchaseProductSupplierDTO.getProcutInfo())){
-                    pricePurchaseProductSupplierDTO.setProductInfoId(
-                            pricePurchaseProductSupplierDTO.getProcutInfo().getId()
-                    );
-                    pricePurchaseProductSupplierDTO.setProductCode(
-                            pricePurchaseProductSupplierDTO.getProcutInfo().getProductCode()
-                    );
-                    pricePurchaseProductSupplierDTO.setProductName(
-                            pricePurchaseProductSupplierDTO.getProcutInfo().getProductName()
-                    );
-                }
-            }
-        }
-        return list;
+        return  priceSupplierDao.priceSupplierFindByPage(supplierInfo,productInfo,pageIndex,pageSize);
     }
 }

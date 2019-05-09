@@ -7,12 +7,9 @@
  */
 
 package icp.icpForCitln.price.dao;
-
-import icp.icpForCitln.price.dto.PricePurchaseProductSupplierDTO;
-
-import java.util.List;
+import icp.icpForCitln.common.enetity.MongoResult;
 
 public interface PriceSupplierDao {
-    List<PricePurchaseProductSupplierDTO> priceSupplierFindByPage(
+    MongoResult priceSupplierFindByPage(
             String supplierInfo,String productInfo,Integer pageIndex,Integer pageSize);
 }

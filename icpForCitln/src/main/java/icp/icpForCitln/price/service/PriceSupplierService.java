@@ -9,13 +9,11 @@
 package icp.icpForCitln.price.service;
 
 
-import icp.icpForCitln.price.dto.PricePurchaseProductSupplierDTO;
-import icp.icpForCitln.price.entity.PricePurchaseProductSupplier;
+import icp.icpForCitln.common.enetity.MongoResult;
 
-import java.util.List;
 
 public interface PriceSupplierService {
-    List<PricePurchaseProductSupplierDTO> priceSupplierFindByPage(
+    MongoResult priceSupplierFindByPage(
             String supplierInfo,String productInfo,Integer pageIndex,Integer pageSize);
 
 }
