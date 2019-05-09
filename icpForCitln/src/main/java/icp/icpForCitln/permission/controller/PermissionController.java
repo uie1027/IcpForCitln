@@ -68,7 +68,7 @@ public class PermissionController {
     public PageResult roleInfoFindById(@RequestParam String id){
         RoleInfo roleInfo = permissionService.roleInfoFindById(id);
         if(roleInfo == null){
-            return PageResult.returnResult(PageResult.SUCCESS_CODE, "未查询到角色");
+            return PageResult.returnResult(PageResult.ERROR_CODE, "未查询到角色");
         } else {
             return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(roleInfo, RoleInfoFindByIdVO.class));
         }

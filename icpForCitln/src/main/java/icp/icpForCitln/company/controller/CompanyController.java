@@ -14,7 +14,6 @@ import icp.icpForCitln.company.eneity.CompanyInfo;
 import icp.icpForCitln.company.service.CompanyService;
 import icp.icpForCitln.company.vo.CompanyVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +23,7 @@ import java.util.List;
 public class CompanyController {
     @Autowired
     private CompanyService companyService;
+
     /**
      * @author: 汪明月
      * date: 2019/5/8 13:47
@@ -38,6 +38,7 @@ public class CompanyController {
         companyService.companySave(companySaveDTO);
         return  PageResult.returnResult(PageResult.SUCCESS_CODE, "");
     }
+
     /**
      * @author: 汪明月
      * date: 2019/5/8 14:37
@@ -52,6 +53,7 @@ public class CompanyController {
         List<CompanyInfo> companyInfoList = companyService.companyInfoGetList();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, companyInfoList);
     }
+
     /**
      * @author: 汪明月
      * date: 2019/5/8 16:15
@@ -61,7 +63,6 @@ public class CompanyController {
      * @param: []
      * @return: icp.icpForCitln.common.result.PageResult
      */
-
     @GetMapping("/companyInfoFindByEnterpriseId")
     public PageResult companyInfoFindByEnterpriseId(){
         List<CompanyInfo> companyId = companyService.companyInfoFindByEnterpriseId();
