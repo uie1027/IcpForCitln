@@ -135,4 +135,18 @@ public class StockController {
         }
         return PageResult.returnResult(PageResult.ERROR_CODE,null);
     }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/09 18:34
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单列表
+     * @param: [pageIndex, pageSize, salesDeliveryFindDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/salesDeliveryListFind")
+    public PageResult salesDeliveryListFind(Integer pageIndex, Integer pageSize, SalesDeliveryFindDTO salesDeliveryFindDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.salesDeliveryListFind(pageIndex,pageSize,salesDeliveryFindDTO));
+    }
 }

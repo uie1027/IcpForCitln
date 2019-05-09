@@ -22,6 +22,7 @@ import icp.icpForCitln.stock.service.StockService;
 import icp.icpForCitln.stock.view.OtherOutboundFindView;
 import icp.icpForCitln.stock.view.ProductionReceiptFindView;
 import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
+import icp.icpForCitln.stock.view.SalesDeliveryFindView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -118,5 +119,19 @@ public class StockServiceImpl implements StockService {
             }
         }
         return true;
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/09 18:34
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单列表
+     * @param: [pageIndex, pageSize, salesDeliveryFindDTO]
+     * @return: icp.icpForCitln.common.enetity.MongoResult
+     */
+    @Override
+    public MongoResult salesDeliveryListFind(Integer pageIndex, Integer pageSize, SalesDeliveryFindDTO salesDeliveryFindDTO){
+        return stockDAO.salesDeliveryListFind(pageIndex,pageSize,BeanCopyUtil.copy(salesDeliveryFindDTO,SalesDeliveryFindView.class));
     }
 }

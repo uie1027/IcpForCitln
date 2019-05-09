@@ -14,6 +14,7 @@ import icp.icpForCitln.stock.dao.StockDAO;
 import icp.icpForCitln.stock.view.OtherOutboundFindView;
 import icp.icpForCitln.stock.view.ProductionReceiptFindView;
 import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
+import icp.icpForCitln.stock.view.SalesDeliveryFindView;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -59,5 +60,19 @@ public class StockDAOImpl implements StockDAO {
     @Override
     public MongoResult OtherOutboundListFind(Integer pageIndex, Integer pageSize, OtherOutboundFindView otherOutboundFindView){
         return MongoUtil.select(pageIndex,pageSize,otherOutboundFindView);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/09 18:34
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单列表
+     * @param: [pageIndex, pageSize, salesDeliveryFindView]
+     * @return: icp.icpForCitln.common.enetity.MongoResult
+     */
+    @Override
+    public MongoResult salesDeliveryListFind(Integer pageIndex, Integer pageSize, SalesDeliveryFindView salesDeliveryFindView){
+        return MongoUtil.select(pageIndex,pageSize,salesDeliveryFindView);
     }
 }
