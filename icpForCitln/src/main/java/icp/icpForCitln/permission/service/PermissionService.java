@@ -7,8 +7,12 @@
  */
 package icp.icpForCitln.permission.service;
 
+import icp.icpForCitln.permission.dto.RoleInfoGetListDTO;
 import icp.icpForCitln.permission.dto.RoleInfoSaveDTO;
+import icp.icpForCitln.permission.vo.RoleInfoVO;
 
 public interface PermissionService {
     void roleInfoSave(RoleInfoSaveDTO roleInfoSaveDTO);     //角色新增
+
+    RoleInfoVO roleInfoGetList(RoleInfoGetListDTO roleInfoGetListDTO);   //查询角色列表 带分页
 }
