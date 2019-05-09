@@ -14,14 +14,10 @@ import icp.icpForCitln.stock.dao.StockDAO;
 import icp.icpForCitln.stock.view.OtherOutboundFindView;
 import icp.icpForCitln.stock.view.ProductionReceiptFindView;
 import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class StockDAOImpl implements StockDAO {
-    @Autowired
-    MongoTemplate mongoTemplate;
 
     /**
      * @author: guoxs

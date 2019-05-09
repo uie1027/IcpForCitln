@@ -117,4 +117,22 @@ public class StockController {
     public PageResult otherOutboundListFindByPage(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.OtherOutboundListFind(pageIndex,pageSize,otherOutboundFindDTO));
     }
+
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/09 17:44
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单 保存
+     * @param: [salesDeliverySaveDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/salesDeliverySave")
+    public PageResult salesDeliverySave(SalesDeliverySaveDTO salesDeliverySaveDTO){
+        if (stockService.salesDeliverySave(salesDeliverySaveDTO)){
+            return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+        }
+        return PageResult.returnResult(PageResult.ERROR_CODE,null);
+    }
 }

@@ -13,12 +13,11 @@ import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.stock.dao.StockDAO;
-import icp.icpForCitln.stock.dto.OtherOutboundFindDTO;
-import icp.icpForCitln.stock.dto.ProductionReceiptFindDTO;
-import icp.icpForCitln.stock.dto.PurchaseReceiptFindDTO;
-import icp.icpForCitln.stock.dto.PurchaseReceiptSaveDTO;
+import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.entity.PurchaseReceipt;
 import icp.icpForCitln.stock.entity.PurchaseReceiptDetail;
+import icp.icpForCitln.stock.entity.SalesDelivery;
+import icp.icpForCitln.stock.entity.SalesDeliveryDetail;
 import icp.icpForCitln.stock.service.StockService;
 import icp.icpForCitln.stock.view.OtherOutboundFindView;
 import icp.icpForCitln.stock.view.ProductionReceiptFindView;
@@ -55,6 +54,7 @@ public class StockServiceImpl implements StockService {
      * @param: [purchaseReceiptSaveDTO]
      * @return: boolean
      */
+    @Override
     public boolean purchaseReceiptSave(PurchaseReceiptSaveDTO purchaseReceiptSaveDTO){
         purchaseReceiptSaveDTO.setPurchaseReceiptCode(GeneratedCodeUtil.generatedCode());
         PurchaseReceipt purchaseReceipt = BeanCopyUtil.copy(purchaseReceiptSaveDTO, PurchaseReceipt.class);
@@ -77,6 +77,7 @@ public class StockServiceImpl implements StockService {
      * @param: [pageIndex, pageSize, purchaseReceiptFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.PurchaseReceiptListDTO>
      */
+    @Override
     public MongoResult purchaseReceiptListFind(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
         return stockDAO.purchaseReceiptListFind(pageIndex,pageSize,BeanCopyUtil.copy(purchaseReceiptFindDTO,PurchaseReceiptFindView.class));
     }
@@ -93,5 +94,29 @@ public class StockServiceImpl implements StockService {
     @Override
     public MongoResult OtherOutboundListFind(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO){
         return stockDAO.OtherOutboundListFind(pageIndex,pageSize,BeanCopyUtil.copy(otherOutboundFindDTO, OtherOutboundFindView.class));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/09 17:44
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单 保存
+     * @param: [salesDeliverySaveDTO]
+     * @return: boolean
+     */
+    @Override
+    public boolean salesDeliverySave(SalesDeliverySaveDTO salesDeliverySaveDTO){
+        salesDeliverySaveDTO.setSalesDeliveryCode(GeneratedCodeUtil.generatedCode());
+        SalesDelivery salesDelivery = BeanCopyUtil.copy(salesDeliverySaveDTO, SalesDelivery.class);
+        MongoUtil.insert(salesDelivery);
+        if (!CollectionUtils.isEmpty(salesDeliverySaveDTO.getDetailList())){
+            for (SalesDeliveryDetail salesDeliveryDetail:salesDeliverySaveDTO.getDetailList()){
+                salesDeliveryDetail.setSalesDeliveryDetailCode(GeneratedCodeUtil.generatedCode());
+                salesDeliveryDetail.setSalesDeliverId(salesDelivery.getId());
+                MongoUtil.insert(salesDeliveryDetail);
+            }
+        }
+        return true;
     }
 }
