@@ -16,9 +16,9 @@ import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.entity.OtherOutbound;
 import icp.icpForCitln.stock.entity.ProductionReceipt;
 import icp.icpForCitln.stock.service.StockService;
+import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
 import icp.icpForCitln.stock.vo.OtherOutboundListVO;
 import icp.icpForCitln.stock.vo.ProductionReceiptListVO;
-import icp.icpForCitln.stock.vo.PurchaseReceiptListVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -90,9 +90,8 @@ public class StockController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @GetMapping("/purchaseReceiptListFindByPage")
-    public PageResult purchaseReceiptListFindByPage(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
-        List<PurchaseReceiptListDTO> dtos = stockService.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindDTO);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(dtos, PurchaseReceiptListVO.class));
+    public PageResult purchaseReceiptListFindByPage(Integer pageIndex, Integer pageSize, PurchaseReceiptFindView purchaseReceiptFindView){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindView));
     }
 
     /**

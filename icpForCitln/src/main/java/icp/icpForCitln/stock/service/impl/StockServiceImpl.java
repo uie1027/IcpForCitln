@@ -8,6 +8,7 @@
 
 package icp.icpForCitln.stock.service.impl;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
@@ -16,6 +17,7 @@ import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.entity.PurchaseReceipt;
 import icp.icpForCitln.stock.entity.PurchaseReceiptDetail;
 import icp.icpForCitln.stock.service.StockService;
+import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -44,7 +46,7 @@ public class StockServiceImpl implements StockService {
                     productionReceiptListDTO.setFactoryName(productionReceiptListDTO.getFactoryInfo().getFactoryName());
                 }
                 if (productionReceiptListDTO.getProductionOrder()!=null) {
-                    productionReceiptListDTO.setOrderCode(productionReceiptListDTO.getProductionOrder().getOrderNumber());
+                    productionReceiptListDTO.setOrderCode(productionReceiptListDTO.getProductionOrder().getProductionOrderCode());
                 }
             }
         }
@@ -82,19 +84,8 @@ public class StockServiceImpl implements StockService {
      * @param: [pageIndex, pageSize, purchaseReceiptFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.PurchaseReceiptListDTO>
      */
-    public List<PurchaseReceiptListDTO> purchaseReceiptListFind(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
-        List<PurchaseReceiptListDTO> dtos = stockDAO.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindDTO);
-        if (dtos.size()>0){
-            for (PurchaseReceiptListDTO purchaseReceiptListDTO:dtos){
-                if (purchaseReceiptListDTO.getPurchaseOrderInfo()!=null) {
-                    purchaseReceiptListDTO.setPurchaseOrderInfoCode(purchaseReceiptListDTO.getPurchaseOrderInfo().getPurchaseOrderCode());
-                }
-                if (purchaseReceiptListDTO.getSupplierInfo()!=null) {
-                    purchaseReceiptListDTO.setSupplierInfoName(purchaseReceiptListDTO.getSupplierInfo().getSupplierName());
-                }
-            }
-        }
-        return dtos;
+    public MongoResult purchaseReceiptListFind(Integer pageIndex, Integer pageSize, PurchaseReceiptFindView purchaseReceiptFindView){
+        return stockDAO.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindView);
     }
 
     /**

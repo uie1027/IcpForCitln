@@ -56,8 +56,8 @@ public class ProduceTest {
     public void productionOrderSaveTest(){
         ProductionOrder productionOrder = new ProductionOrder();
 
-        productionOrder.setOrderNumber("222");
-        productionOrder.setOrderType("2");
+        productionOrder.setProductionOrderCode("222");
+        productionOrder.setProductionOrderType("2");
 
         MongoUtil.insert(productionOrder);
     }

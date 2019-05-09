@@ -12,15 +12,16 @@ import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.factory.entity.FactoryInfo;
-import icp.icpForCitln.order.entity.PurchaseOrderInfo;
 import icp.icpForCitln.produce.entity.ProductionOrder;
 import icp.icpForCitln.product.eneity.ProductInfo;
 import icp.icpForCitln.stock.dao.StockDAO;
-import icp.icpForCitln.stock.dto.*;
+import icp.icpForCitln.stock.dto.OtherOutboundFindDTO;
+import icp.icpForCitln.stock.dto.OtherOutboundListDTO;
+import icp.icpForCitln.stock.dto.ProductionReceiptFindDTO;
+import icp.icpForCitln.stock.dto.ProductionReceiptListDTO;
 import icp.icpForCitln.stock.entity.OtherOutbound;
 import icp.icpForCitln.stock.entity.ProductionReceipt;
-import icp.icpForCitln.stock.entity.PurchaseReceipt;
-import icp.icpForCitln.supplier.entity.SupplierInfo;
+import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -60,12 +61,9 @@ public class StockDAOImpl implements StockDAO {
      * @param: [pageIndex, pageSize, purchaseReceiptFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.PurchaseReceiptListDTO>
      */
-    public List<PurchaseReceiptListDTO> purchaseReceiptListFind(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
-        List<Class> minorClass = new ArrayList<>();
-        minorClass.add(PurchaseOrderInfo.class);
-        minorClass.add(SupplierInfo.class);
-        MongoResult mongoResult = MongoUtil.aggregateSelect(minorClass, PurchaseReceipt.class,purchaseReceiptFindDTO,PurchaseReceiptListDTO.class,pageIndex,pageSize);
-        return BeanCopyUtil.copy(mongoResult.getResultList(),PurchaseReceiptListDTO.class);
+    @Override
+    public MongoResult purchaseReceiptListFind(Integer pageIndex, Integer pageSize, PurchaseReceiptFindView purchaseReceiptFindView){
+        return MongoUtil.select(pageIndex,pageSize,purchaseReceiptFindView);
     }
 
     /**
