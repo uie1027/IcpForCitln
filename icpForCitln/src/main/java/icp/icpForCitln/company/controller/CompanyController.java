@@ -9,6 +9,7 @@ package icp.icpForCitln.company.controller;
 
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.company.dto.CompanyInfoGetListDTO;
 import icp.icpForCitln.company.dto.CompanySaveDTO;
 import icp.icpForCitln.company.eneity.CompanyInfo;
 import icp.icpForCitln.company.service.CompanyService;
@@ -67,5 +68,19 @@ public class CompanyController {
     public PageResult companyInfoFindByEnterpriseId(){
         List<CompanyInfo> companyId = companyService.companyInfoFindByEnterpriseId();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(companyId, CompanyVO.class));
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/9 14:31
+     * @since: JDK 1.8
+     *
+     * @description: 公司列表
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/companyInfoListFindByPage")
+    public PageResult companyInfoListFindByPage(CompanyInfoGetListDTO companyInfoGetListDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, companyService.companyInfoListFindByPage(companyInfoGetListDTO));
     }
 }
