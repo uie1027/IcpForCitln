@@ -11,6 +11,7 @@ import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.permission.dto.RoleInfoGetListDTO;
 import icp.icpForCitln.permission.dto.RoleInfoSaveDTO;
+import icp.icpForCitln.permission.dto.RoleInfoUpdateDTO;
 import icp.icpForCitln.permission.entity.RoleInfo;
 import icp.icpForCitln.permission.service.PermissionService;
 import icp.icpForCitln.permission.vo.RoleInfoFindByIdVO;
@@ -72,5 +73,20 @@ public class PermissionController {
         } else {
             return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(roleInfo, RoleInfoFindByIdVO.class));
         }
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/9 15:48
+     * @since: JDK 1.8
+     *
+     * @description: 角色编辑更新
+     * @param: [roleInfoUpdateDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/roleInfoUpdate")
+    public PageResult roleInfoUpdate(RoleInfoUpdateDTO roleInfoUpdateDTO){
+        permissionService.roleInfoUpdate(roleInfoUpdateDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "角色编辑成功");
     }
 }

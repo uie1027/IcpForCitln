@@ -13,6 +13,7 @@ import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.permission.dto.RoleInfoGetListDTO;
 import icp.icpForCitln.permission.dto.RoleInfoSaveDTO;
+import icp.icpForCitln.permission.dto.RoleInfoUpdateDTO;
 import icp.icpForCitln.permission.entity.RoleInfo;
 import icp.icpForCitln.permission.service.PermissionService;
 import icp.icpForCitln.permission.view.RoleInfoUserView;
@@ -77,5 +78,20 @@ public class PermissionServiceImpl implements PermissionService {
         } else {
             return roleInfoList.get(0);
         }
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/9 15:52
+     * @since: JDK 1.8
+     *
+     * @description: 角色更新
+     * @param: [roleInfoUpdateDTO]
+     * @return: void
+     */
+    @Override
+    public void roleInfoUpdate(RoleInfoUpdateDTO roleInfoUpdateDTO) {
+        RoleInfo roleInfo = BeanCopyUtil.copy(roleInfoUpdateDTO, RoleInfo.class);
+        MongoUtil.upsert(roleInfo, roleInfoUpdateDTO.getFlag());
     }
 }
