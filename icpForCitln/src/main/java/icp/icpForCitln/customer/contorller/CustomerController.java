@@ -66,7 +66,7 @@ public class CustomerController {
      */
     @PostMapping("/customerUpdate")
     public PageResult customerUpdate(CustomerInfoSaveAndUpdateDTO customerInfoSaveAndUpdateDTO){
-        MongoUtil.upsert(BeanCopyUtil.copy(customerInfoSaveAndUpdateDTO,CustomerInfo.class));
+        MongoUtil.upsert(BeanCopyUtil.copy(customerInfoSaveAndUpdateDTO,CustomerInfo.class),1);
         return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
 
