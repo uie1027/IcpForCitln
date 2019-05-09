@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-public class userController {
+public class UserController {
     @Autowired
     private UserService userService;
 
@@ -31,7 +31,7 @@ public class userController {
      * @param: []
      * @return: icp.icpForCitln.common.result.PageResult
      */
-    @GetMapping("userInfoGetList")
+    @GetMapping("/userInfoGetList")
     public PageResult userInfoGetList(){
         List<UserInfo> userInfoList = userService.UserInfoGetList();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, userInfoList);
