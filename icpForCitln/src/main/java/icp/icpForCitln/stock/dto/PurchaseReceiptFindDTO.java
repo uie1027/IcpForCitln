@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 public class PurchaseReceiptFindDTO {
     private String purchaseReceiptCode;  //采购入库单编码
-    private String purchaseOrderInfo_purchaseOrderCode;  //采购订单编码
-    private String supplierInfo_supplierCode;    //供应商编码
-    private String supplierInfo_supplierName;    //公司名称
+    private String purchaseOrderCode;  //采购订单编码
+    private String supplierCode;    //供应商编码
+    private String supplierName;    //公司名称
 }

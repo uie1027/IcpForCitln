@@ -39,4 +39,7 @@ public class PurchaseReceiptFindView {
 
     @Id
     private String id;
+
+    @Field("SUPPLIER_INFO.SUPPLIER_CODE")
+    private String supplierCode;
 }

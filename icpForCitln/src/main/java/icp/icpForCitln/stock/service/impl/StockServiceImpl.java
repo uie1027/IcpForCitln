@@ -84,8 +84,8 @@ public class StockServiceImpl implements StockService {
      * @param: [pageIndex, pageSize, purchaseReceiptFindDTO]
      * @return: java.util.List<icp.icpForCitln.stock.dto.PurchaseReceiptListDTO>
      */
-    public MongoResult purchaseReceiptListFind(Integer pageIndex, Integer pageSize, PurchaseReceiptFindView purchaseReceiptFindView){
-        return stockDAO.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindView);
+    public MongoResult purchaseReceiptListFind(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
+        return stockDAO.purchaseReceiptListFind(pageIndex,pageSize,BeanCopyUtil.copy(purchaseReceiptFindDTO,PurchaseReceiptFindView.class));
     }
 
     /**

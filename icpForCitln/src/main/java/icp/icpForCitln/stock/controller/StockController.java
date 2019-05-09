@@ -90,8 +90,8 @@ public class StockController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @GetMapping("/purchaseReceiptListFindByPage")
-    public PageResult purchaseReceiptListFindByPage(Integer pageIndex, Integer pageSize, PurchaseReceiptFindView purchaseReceiptFindView){
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindView));
+    public PageResult purchaseReceiptListFindByPage(Integer pageIndex, Integer pageSize, PurchaseReceiptFindDTO purchaseReceiptFindDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.purchaseReceiptListFind(pageIndex,pageSize,purchaseReceiptFindDTO));
     }
 
     /**
