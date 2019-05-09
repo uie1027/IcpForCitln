@@ -17,6 +17,9 @@ import icp.icpForCitln.permission.entity.RoleInfo;
 import icp.icpForCitln.permission.service.PermissionService;
 import icp.icpForCitln.permission.view.RoleInfoUserView;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.util.List;
 
 @Service
 public class PermissionServiceImpl implements PermissionService {
@@ -53,5 +56,26 @@ public class PermissionServiceImpl implements PermissionService {
         RoleInfoUserView roleInfoUserView = new RoleInfoUserView();
         roleInfoUserView.setRoleName(roleInfoGetListDTO.getRoleName());
         return MongoUtil.select(roleInfoGetListDTO.getPageIndex(), roleInfoGetListDTO.getPageSize(), roleInfoUserView);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/9 13:11
+     * @since: JDK 1.8
+     *
+     * @description: 根据 ID 查询角色信息
+     * @param: [id]
+     * @return: icp.icpForCitln.permission.entity.RoleInfo
+     */
+    @Override
+    public RoleInfo roleInfoFindById(String id) {
+        RoleInfo roleInfo = new RoleInfo();
+        roleInfo.setId(id);
+        List<RoleInfo> roleInfoList = MongoUtil.select(roleInfo);
+        if(CollectionUtils.isEmpty(roleInfoList)){
+            return null;
+        } else {
+            return roleInfoList.get(0);
+        }
     }
 }
