@@ -277,7 +277,7 @@ public class MongoUtil {
                 return null;
             }
 
-            if (obj!=null){
+            if (!StringUtil.isEmpty(obj)){
                 Criteria cri = new Criteria(mongoFieldName).regex(obj.toString());
                 criteriaList.add(cri);
             }
@@ -341,7 +341,7 @@ public class MongoUtil {
                 return null;
             }
 
-            if (obj!=null) {
+            if (!StringUtil.isEmpty(obj)) {
                 update.set(mongoFieldName, obj);
             }
         }
