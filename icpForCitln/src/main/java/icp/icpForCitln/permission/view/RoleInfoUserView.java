@@ -29,7 +29,7 @@ public class RoleInfoUserView {
     @Field("ROLE_DESCRIPTION")
     private String roleDescription;  //角色描述
 
-    @Field("LAST_MODIFIER_USER.LAST_MODIFIER")
+    @Field("LAST_MODIFIER_USER.USER_NAME")
     private String lastMondifier;   //最后更改人
 
     @Field("LAST_MODIFICATION_TIME")

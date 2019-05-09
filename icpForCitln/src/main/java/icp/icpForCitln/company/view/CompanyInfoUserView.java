@@ -29,13 +29,13 @@ public class CompanyInfoUserView {      //公司列表视图
     @Field("COMPANY_TELEPHONE")
     private String companyTelephone;    //公司座机
 
-    @Field("CREATER_USER.CREATER")
+    @Field("CREATER_USER.USER_NAME")
     private String creater;     //创建人
 
     @Field("CREATE_TIME")
     private Date createTime;    //创建时间
 
-    @Field("LAST_MODIFIER_USER.LAST_MODIFIER")
+    @Field("LAST_MODIFIER_USER.USER_NAME")
     private String lastMondifier;   //最后更改人
 
     @Field("LAST_MODIFICATION_TIME")
