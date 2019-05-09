@@ -12,6 +12,7 @@ import icp.icpForCitln.IcpForCitlnApplication;
 import icp.icpForCitln.common.cache.UserAndCompanyCache;
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.user.eneity.UserInfo;
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -253,7 +254,7 @@ public class MongoUtil {
         Object obj;
         String fieldName;
 
-        for (Field field:model.getClass().getDeclaredFields()){
+        for (Field field: FieldUtils.getAllFields(model.getClass())){
             try {
                 fieldName = field.getName();
             }catch (Exception e){
@@ -262,8 +263,12 @@ public class MongoUtil {
             }
 
             String functionName = "get"+StringUtil.toInitialUpperCase(fieldName);
-
-            String mongoFieldName = mongoUtil.getMongoName(fieldName,flag);
+            String mongoFieldName = "";
+            if(fieldName == "id"){
+                 mongoFieldName = "_id";
+            }else {
+                 mongoFieldName = field.getAnnotation(org.springframework.data.mongodb.core.mapping.Field.class).value();
+            }
 
             try {
                 obj = model.getClass().getMethod(functionName).invoke(model,null);
