@@ -15,11 +15,8 @@ import icp.icpForCitln.permission.dto.RoleInfoGetListDTO;
 import icp.icpForCitln.permission.dto.RoleInfoSaveDTO;
 import icp.icpForCitln.permission.entity.RoleInfo;
 import icp.icpForCitln.permission.service.PermissionService;
-import icp.icpForCitln.permission.vo.RoleInfoGetListVO;
-import icp.icpForCitln.permission.vo.RoleInfoVO;
+import icp.icpForCitln.permission.view.RoleInfoUserView;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PermissionServiceImpl implements PermissionService {
@@ -52,14 +49,9 @@ public class PermissionServiceImpl implements PermissionService {
      * @return: icp.icpForCitln.permission.vo.RoleInfoVO
      */
     @Override
-    public RoleInfoVO roleInfoGetList(RoleInfoGetListDTO roleInfoGetListDTO) {
-        RoleInfo roleInfo = new RoleInfo();
-        roleInfo.setRoleName(roleInfoGetListDTO.getRoleName());
-        MongoResult mongoResult = MongoUtil.select(roleInfoGetListDTO.getPageIndex(), roleInfoGetListDTO.getPageSize(), roleInfo);
-        List<RoleInfoGetListVO> roleInfoGetListVOList = BeanCopyUtil.copy(mongoResult.getResultList(), RoleInfoGetListVO.class);
-        RoleInfoVO roleInfoVO = new RoleInfoVO();
-        roleInfoVO.setRoleInfoGetListVOList(roleInfoGetListVOList);
-        roleInfoVO.setCount(mongoResult.getCount());
-        return roleInfoVO;
+    public MongoResult roleInfoGetList(RoleInfoGetListDTO roleInfoGetListDTO) {
+        RoleInfoUserView roleInfoUserView = new RoleInfoUserView();
+        roleInfoUserView.setRoleName(roleInfoGetListDTO.getRoleName());
+        return MongoUtil.select(roleInfoGetListDTO.getPageIndex(), roleInfoGetListDTO.getPageSize(), roleInfoUserView);
     }
 }
