@@ -13,8 +13,10 @@ import icp.icpForCitln.permission.dto.PermissionInfoSaveDTO;
 import icp.icpForCitln.permission.dto.RoleInfoGetListDTO;
 import icp.icpForCitln.permission.dto.RoleInfoSaveDTO;
 import icp.icpForCitln.permission.dto.RoleInfoUpdateDTO;
+import icp.icpForCitln.permission.entity.PermissionInfo;
 import icp.icpForCitln.permission.entity.RoleInfo;
 import icp.icpForCitln.permission.service.PermissionService;
+import icp.icpForCitln.permission.vo.PermissionInfoVO;
 import icp.icpForCitln.permission.vo.RoleInfoFindByIdVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -118,5 +120,20 @@ public class PermissionController {
     public PageResult permissionInfoSave(PermissionInfoSaveDTO permissionInfoSaveDTO){
         permissionService.permissionInfoSave(permissionInfoSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "权限保存成功");
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/10 18:47
+     * @since: JDK 1.8
+     *
+     * @description:
+     * @param: [id]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/permissionInfoUpdateGet")
+    public PageResult permissionInfoUpdateGet(@RequestParam String roleInfoId){
+        List<PermissionInfo> permissionInfoList = permissionService.permissionInfoUpdateGet(roleInfoId);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(permissionInfoList, PermissionInfoVO.class));
     }
 }

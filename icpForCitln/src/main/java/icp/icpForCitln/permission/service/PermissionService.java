@@ -12,6 +12,7 @@ import icp.icpForCitln.permission.dto.PermissionInfoSaveDTO;
 import icp.icpForCitln.permission.dto.RoleInfoGetListDTO;
 import icp.icpForCitln.permission.dto.RoleInfoSaveDTO;
 import icp.icpForCitln.permission.dto.RoleInfoUpdateDTO;
+import icp.icpForCitln.permission.entity.PermissionInfo;
 import icp.icpForCitln.permission.entity.RoleInfo;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface PermissionService {
     List<RoleInfo> roleInfoPermissionGetList();     //角色列表获取 不带分页
 
     void permissionInfoSave(PermissionInfoSaveDTO permissionInfoSaveDTO);      //权限保存
+
+    List<PermissionInfo> permissionInfoUpdateGet(String roleInfoId);    //权限编辑菜单勾选
 }

@@ -129,4 +129,20 @@ public class PermissionServiceImpl implements PermissionService {
             MongoUtil.insert(permissionInfo);
         }
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/10 18:48
+     * @since: JDK 1.8
+     *
+     * @description: 权限编辑 菜单勾选获取
+     * @param: [id]
+     * @return: java.util.List<icp.icpForCitln.permission.entity.PermissionInfo>
+     */
+    @Override
+    public List<PermissionInfo> permissionInfoUpdateGet(String roleInfoId) {
+        PermissionInfo permissionInfo = new PermissionInfo();
+        permissionInfo.setRoleInfoId(roleInfoId);
+        return MongoUtil.select(permissionInfo);
+    }
 }
