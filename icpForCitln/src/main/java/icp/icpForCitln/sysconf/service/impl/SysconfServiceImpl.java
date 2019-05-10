@@ -106,7 +106,7 @@ public class SysconfServiceImpl implements SysconfService {
         for(int i = 0; i < systemProductAttribuitAndValueVOList.size(); i++){
             String str = "";
             for(int j = 0; j < systemProductAttribuitAndValueDTOList.get(i).getSystemProductAttribuitValueList().size(); j++){
-                str += systemProductAttribuitAndValueDTOList.get(i).getSystemProductAttribuitValueList().get(j).getSystemProductAttribuitContent();
+                str = str + systemProductAttribuitAndValueDTOList.get(i).getSystemProductAttribuitValueList().get(j).getSystemProductAttribuitContent() + " ";
             }
             systemProductAttribuitAndValueVOList.get(i).setSystemProductAttribuitValueStr(str);
         }
