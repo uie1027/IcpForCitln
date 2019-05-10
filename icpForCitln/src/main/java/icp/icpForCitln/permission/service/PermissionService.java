@@ -13,6 +13,8 @@ import icp.icpForCitln.permission.dto.RoleInfoSaveDTO;
 import icp.icpForCitln.permission.dto.RoleInfoUpdateDTO;
 import icp.icpForCitln.permission.entity.RoleInfo;
 
+import java.util.List;
+
 public interface PermissionService {
     void roleInfoSave(RoleInfoSaveDTO roleInfoSaveDTO);     //角色新增
 
@@ -21,4 +23,6 @@ public interface PermissionService {
     RoleInfo roleInfoFindById(String id);   //通过 ID 查询角色
 
     void roleInfoUpdate(RoleInfoUpdateDTO roleInfoUpdateDTO);   //角色更新
+
+    List<RoleInfo> roleInfoPermissionGetList();     //角色列表获取 不带分页
 }

@@ -18,6 +18,8 @@ import icp.icpForCitln.permission.vo.RoleInfoFindByIdVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/permission")
 public class PermissionController {
@@ -85,5 +87,20 @@ public class PermissionController {
     public PageResult roleInfoUpdate(@RequestBody RoleInfoUpdateDTO roleInfoUpdateDTO){
         permissionService.roleInfoUpdate(roleInfoUpdateDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "角色编辑成功");
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/10 17:29
+     * @since: JDK 1.8
+     *
+     * @description: 角色列表获取 不带分页 不带查询条件
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/roleInfoPermissionGetList")
+    public PageResult roleInfoPermissionGetList(){
+        List<RoleInfo> roleInfoList = permissionService.roleInfoPermissionGetList();
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(roleInfoList, RoleInfoFindByIdVO.class));
     }
 }

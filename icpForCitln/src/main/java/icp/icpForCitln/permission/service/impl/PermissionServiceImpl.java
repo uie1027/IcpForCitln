@@ -94,4 +94,18 @@ public class PermissionServiceImpl implements PermissionService {
         RoleInfo roleInfo = BeanCopyUtil.copy(roleInfoUpdateDTO, RoleInfo.class);
         MongoUtil.upsert(roleInfo, roleInfoUpdateDTO.getFlag());
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/10 17:31
+     * @since: JDK 1.8
+     *
+     * @description: 角色列表查询 不带分页
+     * @param: []
+     * @return: java.util.List<icp.icpForCitln.permission.entity.RoleInfo>
+     */
+    @Override
+    public List<RoleInfo> roleInfoPermissionGetList() {
+        return MongoUtil.select(new RoleInfo());
+    }
 }
