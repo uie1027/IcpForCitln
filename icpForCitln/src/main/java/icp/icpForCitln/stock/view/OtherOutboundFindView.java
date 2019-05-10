@@ -40,6 +40,9 @@ public class OtherOutboundFindView {
     @Field("FACTORY_INFO.FACTORY_NAME")
     private String factoryName;
 
+    @Field("RECEIPT_STATUS")
+    private Integer receiptStatus; //入库单状态 1已入库 2已取消
+
     @Field("OUTBOUND_NUMBER")
     private BigDecimal outboundNumber; //出库数量
 
