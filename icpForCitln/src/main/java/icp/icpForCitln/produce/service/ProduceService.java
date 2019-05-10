@@ -8,8 +8,11 @@
 
 package icp.icpForCitln.produce.service;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.produce.dto.PlannedOrderSaveDTO;
+import icp.icpForCitln.produce.dto.ProductionConfirmOrderFindDTO;
 
 public interface ProduceService {
     void PlannedOrderSave(PlannedOrderSaveDTO plannedOrderSaveDTO);
+    MongoResult productionConfirmOrderFind(Integer pageIndex, Integer pageSize, ProductionConfirmOrderFindDTO productionConfirmOrderFindDTO);
 }

@@ -8,13 +8,16 @@
 
 package icp.icpForCitln.produce.service.impl;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.produce.dto.PlannedOrderSaveDTO;
+import icp.icpForCitln.produce.dto.ProductionConfirmOrderFindDTO;
 import icp.icpForCitln.produce.entity.PlannedOrder;
 import icp.icpForCitln.produce.entity.PlannedOrderDetail;
 import icp.icpForCitln.produce.service.ProduceService;
+import icp.icpForCitln.produce.view.ProductionConfirmOrderFindView;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -41,5 +44,9 @@ public class ProduceServiceImpl implements ProduceService {
             }
         }
 
+    }
+
+    public MongoResult productionConfirmOrderFind(Integer pageIndex, Integer pageSize, ProductionConfirmOrderFindDTO productionConfirmOrderFindDTO){
+        return MongoUtil.select(pageIndex,pageSize,BeanCopyUtil.copy(productionConfirmOrderFindDTO, ProductionConfirmOrderFindView.class));
     }
 }
