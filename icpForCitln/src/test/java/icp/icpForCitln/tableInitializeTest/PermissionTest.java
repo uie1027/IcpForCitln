@@ -33,9 +33,7 @@ public class PermissionTest {
     public void PermissionInfoSaveTest(){
         PermissionInfo permissionInfo = new PermissionInfo();
 
-        permissionInfo.setIsUrlDisplay(1);
         permissionInfo.setMenuInfoId("32");
-        permissionInfo.setPermissionCode("5");
         permissionInfo.setRoleInfoId("1");
 
         MongoUtil.insert(permissionInfo);

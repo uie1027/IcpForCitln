@@ -18,15 +18,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection = "PERMISSION_INFO") //权限信息表
 @ToString(callSuper = true)
 public class PermissionInfo extends BaseEntity {
-    @Field("PERMISSION_CODE")
-    private String permissionCode;  //权限编码
-
     @Field("ROLE_INFO_ID")
     private String roleInfoId;  //角色信息id
 
     @Field("MENU_INFO_ID")
     private String menuInfoId;  //菜单信息id
-
-    @Field("IS_URL_DISPLAY")
-    private Integer isUrlDisplay;  //是否显示url
 }

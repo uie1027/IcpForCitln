@@ -9,6 +9,7 @@ package icp.icpForCitln.permission.controller;
 
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.permission.dto.PermissionInfoSaveDTO;
 import icp.icpForCitln.permission.dto.RoleInfoGetListDTO;
 import icp.icpForCitln.permission.dto.RoleInfoSaveDTO;
 import icp.icpForCitln.permission.dto.RoleInfoUpdateDTO;
@@ -102,5 +103,20 @@ public class PermissionController {
     public PageResult roleInfoPermissionGetList(){
         List<RoleInfo> roleInfoList = permissionService.roleInfoPermissionGetList();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(roleInfoList, RoleInfoFindByIdVO.class));
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/10 18:24
+     * @since: JDK 1.8
+     *
+     * @description: 权限保存接口
+     * @param: [permissionInfoSaveDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/permissionInfoSave")
+    public PageResult permissionInfoSave(PermissionInfoSaveDTO permissionInfoSaveDTO){
+        permissionService.permissionInfoSave(permissionInfoSaveDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "权限保存成功");
     }
 }

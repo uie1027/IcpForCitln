@@ -11,9 +11,11 @@ import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.permission.dto.PermissionInfoSaveDTO;
 import icp.icpForCitln.permission.dto.RoleInfoGetListDTO;
 import icp.icpForCitln.permission.dto.RoleInfoSaveDTO;
 import icp.icpForCitln.permission.dto.RoleInfoUpdateDTO;
+import icp.icpForCitln.permission.entity.PermissionInfo;
 import icp.icpForCitln.permission.entity.RoleInfo;
 import icp.icpForCitln.permission.service.PermissionService;
 import icp.icpForCitln.permission.view.RoleInfoUserView;
@@ -107,5 +109,24 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     public List<RoleInfo> roleInfoPermissionGetList() {
         return MongoUtil.select(new RoleInfo());
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/10 18:24
+     * @since: JDK 1.8
+     *
+     * @description: 权限保存
+     * @param: [permissionInfoSaveDTO]
+     * @return: void
+     */
+    @Override
+    public void permissionInfoSave(PermissionInfoSaveDTO permissionInfoSaveDTO) {
+        PermissionInfo permissionInfo = new PermissionInfo();
+        permissionInfo.setRoleInfoId(permissionInfoSaveDTO.getRoleInfoId());
+        for(int i = 0; i < permissionInfoSaveDTO.getMenuInfoId().length; i++){
+            permissionInfo.setMenuInfoId(permissionInfoSaveDTO.getMenuInfoId()[i]);
+            MongoUtil.insert(permissionInfo);
+        }
     }
 }

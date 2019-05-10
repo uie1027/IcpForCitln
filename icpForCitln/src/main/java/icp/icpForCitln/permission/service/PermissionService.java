@@ -8,6 +8,7 @@
 package icp.icpForCitln.permission.service;
 
 import icp.icpForCitln.common.enetity.MongoResult;
+import icp.icpForCitln.permission.dto.PermissionInfoSaveDTO;
 import icp.icpForCitln.permission.dto.RoleInfoGetListDTO;
 import icp.icpForCitln.permission.dto.RoleInfoSaveDTO;
 import icp.icpForCitln.permission.dto.RoleInfoUpdateDTO;
@@ -25,4 +26,6 @@ public interface PermissionService {
     void roleInfoUpdate(RoleInfoUpdateDTO roleInfoUpdateDTO);   //角色更新
 
     List<RoleInfo> roleInfoPermissionGetList();     //角色列表获取 不带分页
+
+    void permissionInfoSave(PermissionInfoSaveDTO permissionInfoSaveDTO);      //权限保存
 }
