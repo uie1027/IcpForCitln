@@ -144,6 +144,60 @@ public class SystemDictionaryInfoTest {
         systemDictionaryInfo12.setSystemDictionaryDescription("销售订单类型2描述");
 
         MongoUtil.insert(systemDictionaryInfo12);
+
+        SystemDictionaryInfo systemDictionaryInfo13 = new SystemDictionaryInfo();
+
+        systemDictionaryInfo13.setSystemDictionaryCode(GeneratedCodeUtil.generatedCode());
+        systemDictionaryInfo13.setSystemDictionaryCategory(7);
+        systemDictionaryInfo13.setSystemDictionaryValue("生产入库单凭证类型1");
+        systemDictionaryInfo13.setSystemDictionaryDescription("生产入库单凭证类型1描述");
+
+        MongoUtil.insert(systemDictionaryInfo13);
+
+        SystemDictionaryInfo systemDictionaryInfo14 = new SystemDictionaryInfo();
+
+        systemDictionaryInfo14.setSystemDictionaryCode(GeneratedCodeUtil.generatedCode());
+        systemDictionaryInfo14.setSystemDictionaryCategory(7);
+        systemDictionaryInfo14.setSystemDictionaryValue("生产入库单凭证类型2");
+        systemDictionaryInfo14.setSystemDictionaryDescription("生产入库单凭证类型2描述");
+
+        MongoUtil.insert(systemDictionaryInfo14);
+
+        SystemDictionaryInfo systemDictionaryInfo15 = new SystemDictionaryInfo();
+
+        systemDictionaryInfo15.setSystemDictionaryCode(GeneratedCodeUtil.generatedCode());
+        systemDictionaryInfo15.setSystemDictionaryCategory(8);
+        systemDictionaryInfo15.setSystemDictionaryValue("采购入库凭证类型1");
+        systemDictionaryInfo15.setSystemDictionaryDescription("采购入库凭证类型1描述");
+
+        MongoUtil.insert(systemDictionaryInfo15);
+
+        SystemDictionaryInfo systemDictionaryInfo16 = new SystemDictionaryInfo();
+
+        systemDictionaryInfo16.setSystemDictionaryCode(GeneratedCodeUtil.generatedCode());
+        systemDictionaryInfo16.setSystemDictionaryCategory(8);
+        systemDictionaryInfo16.setSystemDictionaryValue("采购入库凭证类型2");
+        systemDictionaryInfo16.setSystemDictionaryDescription("采购入库凭证类型2描述");
+
+        MongoUtil.insert(systemDictionaryInfo16);
+
+        SystemDictionaryInfo systemDictionaryInfo17 = new SystemDictionaryInfo();
+
+        systemDictionaryInfo17.setSystemDictionaryCode(GeneratedCodeUtil.generatedCode());
+        systemDictionaryInfo17.setSystemDictionaryCategory(9);
+        systemDictionaryInfo17.setSystemDictionaryValue("其他出库凭证类型1");
+        systemDictionaryInfo17.setSystemDictionaryDescription("其他出库凭证类型1描述");
+
+        MongoUtil.insert(systemDictionaryInfo17);
+
+        SystemDictionaryInfo systemDictionaryInfo18 = new SystemDictionaryInfo();
+
+        systemDictionaryInfo18.setSystemDictionaryCode(GeneratedCodeUtil.generatedCode());
+        systemDictionaryInfo18.setSystemDictionaryCategory(9);
+        systemDictionaryInfo18.setSystemDictionaryValue("其他出库凭证类型2");
+        systemDictionaryInfo18.setSystemDictionaryDescription("其他出库凭证类型2描述");
+
+        MongoUtil.insert(systemDictionaryInfo18);
     }
 
     /**
