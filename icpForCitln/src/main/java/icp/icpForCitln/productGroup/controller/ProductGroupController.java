@@ -16,10 +16,7 @@ import icp.icpForCitln.productGroup.service.ProductGroupService;
 import icp.icpForCitln.productGroup.vo.ProductGroupInfoVO;
 import icp.icpForCitln.productGroup.vo.ProductGroupSystemAttributeVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,7 +36,7 @@ public class ProductGroupController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/productGroupSave")
-    public PageResult productGroupSave(ProductGroupInfoAddDTO productGroupInfoAddDTO){
+    public PageResult productGroupSave(@RequestBody ProductGroupInfoAddDTO productGroupInfoAddDTO){
         productGroupService.productGroupSave(productGroupInfoAddDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "新建产品组成功");
     }
@@ -69,7 +66,7 @@ public class ProductGroupController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/productGroupAttributeFindByPage")
-    public PageResult productGroupAttributeFindByPage(ProductGroupSystemAttributeDTO productGroupSystemAttributeDTO){
+    public PageResult productGroupAttributeFindByPage(@RequestBody ProductGroupSystemAttributeDTO productGroupSystemAttributeDTO){
         List<ProductGroupSystemAttributeVO> productGroupSystemAttributeVOList = productGroupService.productGroupAttributeFindByPage(productGroupSystemAttributeDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, productGroupSystemAttributeVOList);
     }

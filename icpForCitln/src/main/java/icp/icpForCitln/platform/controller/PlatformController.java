@@ -15,10 +15,7 @@ import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.vo.PlantformMailDisplayVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,7 +35,7 @@ public class PlatformController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/plantformDirectoryInfoSave")
-    public PageResult plantformDirectoryInfoSave(PlantformDirectoryInfoSaveDTO plantformDirectoryInfoSaveDTO){
+    public PageResult plantformDirectoryInfoSave(@RequestBody PlantformDirectoryInfoSaveDTO plantformDirectoryInfoSaveDTO){
         platformService.plantformDirectoryInfoSave(plantformDirectoryInfoSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "目录保存成功");
     }
@@ -67,7 +64,7 @@ public class PlatformController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/plantformDirectoryInfoDelete")
-    public PageResult plantformDirectoryInfoDelete(PlantformDirectoryInfoDeleteDTO plantformDirectoryInfoDeleteDTO){
+    public PageResult plantformDirectoryInfoDelete(@RequestBody PlantformDirectoryInfoDeleteDTO plantformDirectoryInfoDeleteDTO){
         platformService.plantformDirectoryInfoDelete(plantformDirectoryInfoDeleteDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "删除目录成功");
     }

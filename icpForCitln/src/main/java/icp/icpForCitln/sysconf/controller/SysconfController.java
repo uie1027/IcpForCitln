@@ -21,10 +21,7 @@ import icp.icpForCitln.sysconf.vo.SystemBrandInfoVO;
 import icp.icpForCitln.sysconf.vo.SystemDictionaryInfoGetListVO;
 import icp.icpForCitln.sysconf.vo.SystemProductAttribuitVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,7 +41,7 @@ public class SysconfController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/systemDictionaryInfoListFindByPage")
-    public PageResult systemDictionaryInfoListFindByPage(SystemDictionaryInfoGetListDTO systemDictionaryInfoGetListDTO){
+    public PageResult systemDictionaryInfoListFindByPage(@RequestBody SystemDictionaryInfoGetListDTO systemDictionaryInfoGetListDTO){
         List<SystemDictionaryInfo> systemDictionaryInfoList = sysconfService.systemDictionaryInfoListFindByPage(systemDictionaryInfoGetListDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemDictionaryInfoList, SystemDictionaryInfoGetListVO.class));
     }
@@ -59,7 +56,7 @@ public class SysconfController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/systemProductAttribuitSave")
-    public PageResult systemProductAttribuitSave(SystemProductAttribuitSaveDTO systemProductAttribuitSaveDTO){
+    public PageResult systemProductAttribuitSave(@RequestBody SystemProductAttribuitSaveDTO systemProductAttribuitSaveDTO){
         sysconfService.systemProductAttribuitSave(systemProductAttribuitSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "新增产品属性成功");
     }
@@ -74,7 +71,7 @@ public class SysconfController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/systemProductAttribuitDelete")
-    public PageResult systemProductAttribuitDelete(SystemProductAttribuitDeleteDTO systemProductAttribuitDeleteDTO){
+    public PageResult systemProductAttribuitDelete(@RequestBody SystemProductAttribuitDeleteDTO systemProductAttribuitDeleteDTO){
         sysconfService.systemProductAttribuitDelete(systemProductAttribuitDeleteDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "删除产品属性成功");
     }
@@ -89,7 +86,7 @@ public class SysconfController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/systemProductAttribuitValueSave")
-    public PageResult systemProductAttribuitValueSave(SystemProductAttribuitValueSaveDTO systemProductAttribuitValueSaveDTO){
+    public PageResult systemProductAttribuitValueSave(@RequestBody SystemProductAttribuitValueSaveDTO systemProductAttribuitValueSaveDTO){
         sysconfService.systemProductAttribuitValueSave(systemProductAttribuitValueSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值保存成功");
     }

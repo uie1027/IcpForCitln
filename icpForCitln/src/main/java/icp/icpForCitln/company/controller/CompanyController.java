@@ -80,7 +80,7 @@ public class CompanyController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/companyInfoListFindByPage")
-    public PageResult companyInfoListFindByPage(CompanyInfoGetListDTO companyInfoGetListDTO){
+    public PageResult companyInfoListFindByPage(@RequestBody CompanyInfoGetListDTO companyInfoGetListDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE, companyService.companyInfoListFindByPage(companyInfoGetListDTO));
     }
 }

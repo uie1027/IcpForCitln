@@ -16,10 +16,7 @@ import icp.icpForCitln.permission.entity.RoleInfo;
 import icp.icpForCitln.permission.service.PermissionService;
 import icp.icpForCitln.permission.vo.RoleInfoFindByIdVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/permission")
@@ -37,7 +34,7 @@ public class PermissionController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/roleInfoSave")
-    public PageResult roleInfoSave(RoleInfoSaveDTO roleInfoSaveDTO){
+    public PageResult roleInfoSave(@RequestBody RoleInfoSaveDTO roleInfoSaveDTO){
         permissionService.roleInfoSave(roleInfoSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "角色保存成功");
     }
@@ -52,7 +49,7 @@ public class PermissionController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/roleInfoGetList")
-    public PageResult roleInfoGetList(RoleInfoGetListDTO roleInfoGetListDTO){
+    public PageResult roleInfoGetList(@RequestBody RoleInfoGetListDTO roleInfoGetListDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE, permissionService.roleInfoGetList(roleInfoGetListDTO));
     }
 
@@ -85,7 +82,7 @@ public class PermissionController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/roleInfoUpdate")
-    public PageResult roleInfoUpdate(RoleInfoUpdateDTO roleInfoUpdateDTO){
+    public PageResult roleInfoUpdate(@RequestBody RoleInfoUpdateDTO roleInfoUpdateDTO){
         permissionService.roleInfoUpdate(roleInfoUpdateDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "角色编辑成功");
     }
