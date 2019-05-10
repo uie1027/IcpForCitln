@@ -10,24 +10,18 @@ package icp.icpForCitln.customer.vo;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class CustomerListVO {
-    private String customerCode;  //客户编码
-
     private String customerName;  //公司名称
 
     private String customerTelephone;  //公司座机
 
     private String id;  //主键
 
-    private String creater;     //创建人
+    private String customerContact;  //公司联系人
 
-    private Date createTime;    //创建时间
+    private String customerContactPhone;  //联系人手机号
 
-    private String lastMondifier;   //最后更改人
-
-    private Date lastModificationTime;  //最后更改时间
+    private String customerAddress;  //公司详细地址
 
 }

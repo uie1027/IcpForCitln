@@ -15,6 +15,7 @@ import icp.icpForCitln.customer.dto.CustomerInfoDTO;
 import icp.icpForCitln.customer.dto.CustomerInfoSaveAndUpdateDTO;
 import icp.icpForCitln.customer.entity.CustomerInfo;
 import icp.icpForCitln.customer.service.CustomerServicce;
+import icp.icpForCitln.customer.view.CustomerSaleOrderFindView;
 import icp.icpForCitln.customer.vo.CustomerInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -99,5 +100,10 @@ public class CustomerController {
     @GetMapping("/customerListFindByPage")
     public PageResult customerListFindByPage(Integer pageIndex, Integer pageSize, CustomerInfoDTO customerInfoDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE,customerServicce.customerInfoListFind(pageIndex,pageSize,customerInfoDTO));
+    }
+
+    @GetMapping("/customerListGet")
+    public PageResult customerListGet(){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,MongoUtil.select(new CustomerSaleOrderFindView()));
     }
 }
