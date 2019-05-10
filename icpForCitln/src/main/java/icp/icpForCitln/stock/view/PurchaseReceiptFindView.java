@@ -13,6 +13,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.Date;
+
 @Data
 @Document(collection = "PURCHASE_RECEIPT_FIND_VIEW")
 public class PurchaseReceiptFindView {
@@ -42,4 +44,8 @@ public class PurchaseReceiptFindView {
 
     @Field("SUPPLIER_INFO.SUPPLIER_CODE")
     private String supplierCode;
+
+    @Field("CREATE_TIME")
+    private Date createTime;    //创建时间
+
 }
