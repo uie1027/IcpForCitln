@@ -149,4 +149,9 @@ public class StockController {
     public PageResult salesDeliveryListFind(Integer pageIndex, Integer pageSize, SalesDeliveryFindDTO salesDeliveryFindDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.salesDeliveryListFind(pageIndex,pageSize,salesDeliveryFindDTO));
     }
+
+    @GetMapping("/salesOutboundListFind")
+    public PageResult salesOutboundListFind(Integer pageIndex, Integer pageSize, SalesOutboundFindDTO salesOutboundFindDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.salesOutboundListFind(pageIndex,pageSize,salesOutboundFindDTO));
+    }
 }

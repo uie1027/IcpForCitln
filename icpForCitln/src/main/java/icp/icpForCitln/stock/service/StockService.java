@@ -10,4 +10,5 @@ public interface StockService {
     MongoResult OtherOutboundListFind(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO);
     boolean salesDeliverySave(SalesDeliverySaveDTO salesDeliverySaveDTO);
     MongoResult salesDeliveryListFind(Integer pageIndex, Integer pageSize, SalesDeliveryFindDTO salesDeliveryFindDTO);
+    MongoResult salesOutboundListFind(Integer pageIndex,Integer pageSize,SalesOutboundFindDTO salesOutboundFindDTO);
 }

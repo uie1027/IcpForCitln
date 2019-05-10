@@ -96,9 +96,7 @@ public class StockTest {
         salesDeliveryDetail.setSaleOrderInfoId("cx5cd289dd7aeecb1678b8a344");
 
         List<SalesDeliveryDetail> list = new ArrayList<>();
-        for (int i=0;i<5;i++){
-            list.add(salesDeliveryDetail);
-        }
+        list.add(salesDeliveryDetail);
 
         salesDeliverySaveDTO.setDetailList(list);
 

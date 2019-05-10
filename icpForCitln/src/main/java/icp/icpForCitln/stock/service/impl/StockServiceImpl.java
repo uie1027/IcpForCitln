@@ -14,15 +14,9 @@ import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.stock.dao.StockDAO;
 import icp.icpForCitln.stock.dto.*;
-import icp.icpForCitln.stock.entity.PurchaseReceipt;
-import icp.icpForCitln.stock.entity.PurchaseReceiptDetail;
-import icp.icpForCitln.stock.entity.SalesDelivery;
-import icp.icpForCitln.stock.entity.SalesDeliveryDetail;
+import icp.icpForCitln.stock.entity.*;
 import icp.icpForCitln.stock.service.StockService;
-import icp.icpForCitln.stock.view.OtherOutboundFindView;
-import icp.icpForCitln.stock.view.ProductionReceiptFindView;
-import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
-import icp.icpForCitln.stock.view.SalesDeliveryFindView;
+import icp.icpForCitln.stock.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -111,6 +105,14 @@ public class StockServiceImpl implements StockService {
         salesDeliverySaveDTO.setSalesDeliveryCode(GeneratedCodeUtil.generatedCode());
         SalesDelivery salesDelivery = BeanCopyUtil.copy(salesDeliverySaveDTO, SalesDelivery.class);
         MongoUtil.insert(salesDelivery);
+
+        SalesOutbound salesOutbound = new SalesOutbound();
+        salesOutbound.setSalesDeliveryId(salesDelivery.getId());
+        salesOutbound.setOutboundTypeId("销售出库");
+        salesOutbound.setSalesOutbountCode(GeneratedCodeUtil.generatedCode());
+        salesOutbound.setOutboundStatus(1);
+
+        MongoUtil.insert(salesOutbound);
         if (!CollectionUtils.isEmpty(salesDeliverySaveDTO.getDetailList())){
             for (SalesDeliveryDetail salesDeliveryDetail:salesDeliverySaveDTO.getDetailList()){
                 salesDeliveryDetail.setSalesDeliveryDetailCode(GeneratedCodeUtil.generatedCode());
@@ -133,5 +135,10 @@ public class StockServiceImpl implements StockService {
     @Override
     public MongoResult salesDeliveryListFind(Integer pageIndex, Integer pageSize, SalesDeliveryFindDTO salesDeliveryFindDTO){
         return stockDAO.salesDeliveryListFind(pageIndex,pageSize,BeanCopyUtil.copy(salesDeliveryFindDTO,SalesDeliveryFindView.class));
+    }
+
+    @Override
+    public  MongoResult salesOutboundListFind(Integer pageIndex,Integer pageSize,SalesOutboundFindDTO salesOutboundFindDTO){
+        return MongoUtil.select(pageIndex,pageSize,BeanCopyUtil.copy(salesOutboundFindDTO, SalesOutboundFindView.class));
     }
 }
