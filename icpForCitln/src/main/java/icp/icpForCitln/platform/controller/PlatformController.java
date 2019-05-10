@@ -13,6 +13,7 @@ import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
+import icp.icpForCitln.platform.view.MenuInfoListView;
 import icp.icpForCitln.platform.vo.PlantformMailDisplayVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -83,5 +84,20 @@ public class PlatformController {
         List<PlantformMailDisplay> plantformMailDisplayList = platformService.plantformMailDisplayGetList();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(plantformMailDisplayList, PlantformMailDisplayVO.class));
     }
-    
+
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/10 16:28
+     * @since: JDK 1.8
+     *
+     * @description: 菜单列表获取
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/menuInfoGetList")
+    public PageResult menuInfoGetList(){
+        List<MenuInfoListView> menuInfoListViewList = platformService.menuInfoGetList();
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, menuInfoListViewList);
+    }
 }

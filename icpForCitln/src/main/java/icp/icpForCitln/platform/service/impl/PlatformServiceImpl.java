@@ -16,6 +16,7 @@ import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
+import icp.icpForCitln.platform.view.MenuInfoListView;
 import icp.icpForCitln.platform.view.PlantformDirectoryInfoListView;
 import org.springframework.stereotype.Service;
 
@@ -82,5 +83,19 @@ public class PlatformServiceImpl implements PlatformService {
     public List<PlantformMailDisplay> plantformMailDisplayGetList() {
         List list = RedisUtil.getList(new PlantformMailDisplay());
         return BeanCopyUtil.copy(list, PlantformMailDisplay.class);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/10 16:30
+     * @since: JDK 1.8
+     *
+     * @description: 菜单列表获取
+     * @param: []
+     * @return: java.util.List<icp.icpForCitln.platform.view.MenuInfoListView>
+     */
+    @Override
+    public List<MenuInfoListView> menuInfoGetList() {
+        return MongoUtil.select(new MenuInfoListView());
     }
 }
