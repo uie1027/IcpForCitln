@@ -74,7 +74,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService{
             UserAndCompanyInfo userAndCompanyInfo = UserAndCompanyCache.get(SessionUtil.getByKey("userNum"));
             purchaseOrderInfo.setCreater(userAndCompanyInfo.getId()); //用户ID
             purchaseOrderInfo.setCompanyInfoId(userAndCompanyInfo.getCompanyInfo().getId());//公司ID
-            purchaseOrderDao.createOrder(purchaseOrderInfo);
+//            purchaseOrderDao.createOrder(purchaseOrderInfo);
             for (PurchaseOrderDetailInfo purchaseOrderDetailInfo : list){
                 purchaseOrderDetailInfo.setPurchaseOrderInfoId(purchaseOrderInfo.getId());
                 purchaseOrderDetailInfo.setCreater(userAndCompanyInfo.getId());
@@ -96,17 +96,17 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService{
      * @param: [searchField, pageable]
      * @return: java.util.List<icp.icpForCitln.order.vo.PurchaseOrderVO>
      */
-    @Override
-    public MongoResult purchaseOrderListFindByPage(String searchField, Integer pageIndex , Integer pageSize) {
-        List<PurchaseOrderDTO> resList = purchaseOrderDao.getOrderListFindByPage(searchField, pageIndex , pageSize);
-        if(resList != null && resList.size() >0 ){
-            for (PurchaseOrderDTO purchaseOrderDTO:resList){
-                if(!StringUtil.isEmpty(purchaseOrderDTO.getSupplierInfo())){
-                    purchaseOrderDTO.setSupplierName(purchaseOrderDTO.getSupplierInfo().getSupplierName());
-                }
-            }
-            return BeanCopyUtil.copy(resList,PurchaseOrderVO.class);
-        }
-        return null;
-    }
+//    @Override
+//    public MongoResult purchaseOrderListFindByPage(String searchField, Integer pageIndex , Integer pageSize) {
+//        List<PurchaseOrderDTO> resList = purchaseOrderDao.getOrderListFindByPage(searchField, pageIndex , pageSize);
+//        if(resList != null && resList.size() >0 ){
+//            for (PurchaseOrderDTO purchaseOrderDTO:resList){
+//                if(!StringUtil.isEmpty(purchaseOrderDTO.getSupplierInfo())){
+//                    purchaseOrderDTO.setSupplierName(purchaseOrderDTO.getSupplierInfo().getSupplierName());
+//                }
+//            }
+//            return BeanCopyUtil.copy(resList,PurchaseOrderVO.class);
+//        }
+//        return null;
+//    }
 }

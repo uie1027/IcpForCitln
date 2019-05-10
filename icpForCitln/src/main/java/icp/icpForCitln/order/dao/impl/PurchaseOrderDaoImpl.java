@@ -10,22 +10,13 @@ package icp.icpForCitln.order.dao.impl;
 
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.common.util.StringUtil;
 import icp.icpForCitln.order.dao.PurchaseOrderDao;
 import icp.icpForCitln.order.dto.PurchaseOrderDTO;
 import icp.icpForCitln.order.entity.PurchaseOrderInfo;
-import icp.icpForCitln.price.dto.PricePurchaseProductSupplierDTO;
+import icp.icpForCitln.order.view.PurchaseOrderView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.Aggregation;
-import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
-import org.springframework.data.mongodb.core.aggregation.LookupOperation;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Repository
 public class PurchaseOrderDaoImpl implements PurchaseOrderDao {
@@ -55,11 +46,11 @@ public class PurchaseOrderDaoImpl implements PurchaseOrderDao {
       * @param: [searchField, pageable]
       * @return: java.util.List<icp.icpForCitln.order.entity.PurchaseOrderInfo>
       */
-     @Override
-     public MongoResult purchaseOrderFindByPage(String searchField, Integer pageIndex , Integer pageSize) {
-          PurchaseOrderView purchaseOrderView = new PurchaseOrderView();
-          purchaseOrderView.set
-          return mongoTemplate.aggregate(aggregation,"PURCHASE_ORDER_INFO",PurchaseOrderDTO.class).getMappedResults();
-     }
+//     @Override
+//     public MongoResult purchaseOrderFindByPage(String searchField, Integer pageIndex , Integer pageSize) {
+//          PurchaseOrderView purchaseOrderView = new PurchaseOrderView();
+////          purchaseOrderView.set
+//          return mongoTemplate.aggregate(aggregation,"PURCHASE_ORDER_INFO",PurchaseOrderDTO.class).getMappedResults();
+//     }
 
 }

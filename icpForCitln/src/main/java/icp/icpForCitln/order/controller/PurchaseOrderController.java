@@ -11,13 +11,11 @@ package icp.icpForCitln.order.controller;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.order.dto.PurchaseOrderDTO;
 import icp.icpForCitln.order.service.PurchaseOrderService;
-import icp.icpForCitln.order.vo.PurchaseOrderVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/purchaseOrder")
@@ -57,12 +55,12 @@ public class PurchaseOrderController {
      * @param: [orderNo, pageIndex, pageSize]
      * @return: icp.icpForCitln.common.result.PageResult
      */
-    @GetMapping("/purchaseOrderListFindByPage")
-    public PageResult purchaseOrderListFindByPage(@RequestParam(value = "searchField") String searchField,
-                                             @RequestParam(value = "pageIndex") Integer pageIndex,
-                                             @RequestParam(value = "pageSize") Integer pageSize){
-        List<PurchaseOrderVO> list = purchaseOrderService.purchaseOrderListFindByPage(searchField,pageIndex,pageSize);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,list);
-    }
+//    @GetMapping("/purchaseOrderListFindByPage")
+//    public PageResult purchaseOrderListFindByPage(@RequestParam(value = "searchField") String searchField,
+//                                             @RequestParam(value = "pageIndex") Integer pageIndex,
+//                                             @RequestParam(value = "pageSize") Integer pageSize){
+//        List<PurchaseOrderVO> list = purchaseOrderService.purchaseOrderListFindByPage(searchField,pageIndex,pageSize);
+//        return PageResult.returnResult(PageResult.SUCCESS_CODE,list);
+//    }
 
 }

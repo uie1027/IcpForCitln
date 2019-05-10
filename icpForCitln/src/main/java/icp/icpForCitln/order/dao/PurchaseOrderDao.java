@@ -8,10 +8,9 @@
 
 package icp.icpForCitln.order.dao;
 
-import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.order.entity.PurchaseOrderInfo;
 
 public interface PurchaseOrderDao {
      void  purchaseOrderSave(PurchaseOrderInfo purchaseOrderInfo);
-     MongoResult purchaseOrderFindByPage (String searchField, Integer pageIndex , Integer pageSize);
+//     MongoResult purchaseOrderFindByPage (String searchField, Integer pageIndex , Integer pageSize);
 }
