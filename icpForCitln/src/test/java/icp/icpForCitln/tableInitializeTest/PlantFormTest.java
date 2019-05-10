@@ -25,7 +25,7 @@ public class PlantFormTest {
         menuInfo.setMenuName("123");
         menuInfo.setMenuCode("123");
         menuInfo.setMenuUrl("123");
-        menuInfo.setMenuLevel("123");
+        menuInfo.setMenuLevel(123);
         MongoUtil.insert(menuInfo);
     }
 
