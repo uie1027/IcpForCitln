@@ -14,8 +14,9 @@ import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.supplier.dto.SupplierInfoDTO;
 import icp.icpForCitln.supplier.dto.SupplierSaveAndUpdateDTO;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
+import icp.icpForCitln.supplier.service.SupplierService;
 import icp.icpForCitln.supplier.vo.SupplierInfoVO;
-import icp.icpForCitln.supplier.vo.SupplierListVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/supplier")
 public class SupplierController {
 
+    @Autowired
+    SupplierService supplierService;
     /**
      * @author: guoxs
      * @date: 19/05/05 10:14
@@ -95,7 +98,7 @@ public class SupplierController {
      */
     @GetMapping("/supplierListFindByPage")
     public PageResult supplierListFindByPage(Integer pageIndex,Integer pageSize,SupplierInfoDTO supplierInfoDTO){
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(MongoUtil.select(pageIndex,pageSize,BeanCopyUtil.copy(supplierInfoDTO,SupplierInfo.class)), SupplierListVO.class));
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,supplierService.supplierInfoListFind(pageIndex,pageSize,supplierInfoDTO));
     }
 
 }

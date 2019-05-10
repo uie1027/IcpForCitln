@@ -13,6 +13,6 @@ import lombok.Data;
 @Data
 public class SupplierInfoDTO {
     private String id; //id
-    private String supplierCode;  //客户编码
+    private String supplierCode;  //供应商编码
     private String supplierName;  //公司名称
 }
