@@ -8,13 +8,10 @@
 
 package icp.icpForCitln.order.dao;
 
-import icp.icpForCitln.order.dto.PurchaseOrderDTO;
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.order.entity.PurchaseOrderInfo;
-import org.springframework.data.domain.Pageable;
-
-import java.util.List;
 
 public interface PurchaseOrderDao {
-     void  createOrder(PurchaseOrderInfo purchaseOrderInfo);
-     List<PurchaseOrderDTO> getOrderListFindByPage (String searchField, Integer pageIndex , Integer pageSize);
+     void  purchaseOrderSave(PurchaseOrderInfo purchaseOrderInfo);
+     MongoResult purchaseOrderFindByPage (String searchField, Integer pageIndex , Integer pageSize);
 }

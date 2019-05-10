@@ -9,6 +9,7 @@
 package icp.icpForCitln.order.service.impl;
 
 import icp.icpForCitln.common.cache.UserAndCompanyCache;
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.enetity.UserAndCompanyInfo;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
@@ -96,7 +97,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService{
      * @return: java.util.List<icp.icpForCitln.order.vo.PurchaseOrderVO>
      */
     @Override
-    public List<PurchaseOrderVO> purchaseOrderListFindByPage(String searchField, Integer pageIndex ,Integer pageSize) {
+    public MongoResult purchaseOrderListFindByPage(String searchField, Integer pageIndex , Integer pageSize) {
         List<PurchaseOrderDTO> resList = purchaseOrderDao.getOrderListFindByPage(searchField, pageIndex , pageSize);
         if(resList != null && resList.size() >0 ){
             for (PurchaseOrderDTO purchaseOrderDTO:resList){

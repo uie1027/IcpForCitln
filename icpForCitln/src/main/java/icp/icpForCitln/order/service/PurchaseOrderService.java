@@ -8,6 +8,7 @@
 
 package icp.icpForCitln.order.service;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.order.dto.PurchaseOrderDTO;
 import icp.icpForCitln.order.vo.PurchaseOrderVO;
 import org.springframework.data.domain.Pageable;
@@ -16,5 +17,5 @@ import java.util.List;
 
 public interface PurchaseOrderService {
      void  purchaseOrderSave(PurchaseOrderDTO purchaseOrderDTO);
-     List<PurchaseOrderVO> purchaseOrderListFindByPage (String searchField, Integer pageIndex, Integer pageSize);
+     MongoResult purchaseOrderListFindByPage (String searchField, Integer pageIndex, Integer pageSize);
 }

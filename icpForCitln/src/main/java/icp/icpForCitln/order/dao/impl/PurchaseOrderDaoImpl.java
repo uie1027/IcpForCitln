@@ -8,6 +8,7 @@
 
 package icp.icpForCitln.order.dao.impl;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.StringUtil;
 import icp.icpForCitln.order.dao.PurchaseOrderDao;
@@ -40,7 +41,7 @@ public class PurchaseOrderDaoImpl implements PurchaseOrderDao {
       * @param: [purchaseOrderInfo]
       * @return: void
       */
-     public void  createOrder(PurchaseOrderInfo purchaseOrderInfo){
+     public void  purchaseOrderSave(PurchaseOrderInfo purchaseOrderInfo){
           MongoUtil.insert(purchaseOrderInfo);
      }
 
@@ -55,27 +56,9 @@ public class PurchaseOrderDaoImpl implements PurchaseOrderDao {
       * @return: java.util.List<icp.icpForCitln.order.entity.PurchaseOrderInfo>
       */
      @Override
-     public List<PurchaseOrderDTO> getOrderListFindByPage(String searchField, Integer pageIndex , Integer pageSize) {
-          LookupOperation supplier = LookupOperation.newLookup().from("SUPPLIER_INFO").localField("SUPPLIER_INFO_ID").foreignField("_id").as("SUPPLIER");
-
-          Criteria criteria = new Criteria();
-          List<Criteria> list = new ArrayList<>();
-          //订单号/供应商
-          if (!StringUtil.isEmpty(searchField)){
-               //供应商名称
-               list.add(Criteria.where("SUPPLIER.SUPPLIER_NAME").regex(searchField));
-               //订单号
-               list.add(Criteria.where("PURCHASE_ORDER_CODE").regex(searchField));
-          }
-
-          AggregationOperation match = null;
-          Aggregation aggregation = null;
-          if(list.size() >0){
-               match = Aggregation.match(criteria.orOperator(list.toArray(new Criteria[list.size()])));
-               aggregation = Aggregation.newAggregation(supplier,match,Aggregation.skip(pageIndex),Aggregation.limit(pageSize));
-          }else{
-               aggregation = Aggregation.newAggregation(supplier,Aggregation.skip(pageIndex),Aggregation.limit(pageSize));
-          }
+     public MongoResult purchaseOrderFindByPage(String searchField, Integer pageIndex , Integer pageSize) {
+          PurchaseOrderView purchaseOrderView = new PurchaseOrderView();
+          purchaseOrderView.set
           return mongoTemplate.aggregate(aggregation,"PURCHASE_ORDER_INFO",PurchaseOrderDTO.class).getMappedResults();
      }
 
