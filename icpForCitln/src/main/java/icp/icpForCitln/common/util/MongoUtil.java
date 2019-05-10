@@ -186,7 +186,7 @@ public class MongoUtil {
         MongoResult mongoResult = new MongoResult();
         Criteria criteria = mongoUtil.getCriteria(model,1);
 
-        Pageable  pageable = PageRequest.of(pageIndex, pageSize);
+        Pageable  pageable = PageRequest.of(pageIndex-1, pageSize);
 
              query = new Query(criteria).with(pageable).with(new Sort(Sort.Direction.DESC,"LAST_MODIFICATION_TIME"));
 
