@@ -14,8 +14,9 @@ import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.customer.dto.CustomerInfoDTO;
 import icp.icpForCitln.customer.dto.CustomerInfoSaveAndUpdateDTO;
 import icp.icpForCitln.customer.entity.CustomerInfo;
+import icp.icpForCitln.customer.service.CustomerServicce;
 import icp.icpForCitln.customer.vo.CustomerInfoVO;
-import icp.icpForCitln.customer.vo.CustomerListVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/customer")
 public class CustomerController {
 
+    @Autowired
+    CustomerServicce customerServicce;
     /**
      * @author: guoxs
      * @date: 19/05/05 10:14
@@ -95,6 +98,6 @@ public class CustomerController {
      */
     @GetMapping("/customerListFindByPage")
     public PageResult customerListFindByPage(Integer pageIndex, Integer pageSize, CustomerInfoDTO customerInfoDTO){
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(MongoUtil.select(pageIndex,pageSize,BeanCopyUtil.copy(customerInfoDTO,CustomerInfo.class)), CustomerListVO.class));
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,customerServicce.customerInfoListFind(pageIndex,pageSize,customerInfoDTO));
     }
 }
