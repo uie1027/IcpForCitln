@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-@Document(collection = "PRODUCTION_CONFIRM_ORDER_FIND_VIEW")
+@Document(collection = "PRODUCTION_CONFIRM_ORDER_FIND_VIEW") //生产确认订单列表视图
 public class ProductionConfirmOrderFindView {
     @Id
     private String id;

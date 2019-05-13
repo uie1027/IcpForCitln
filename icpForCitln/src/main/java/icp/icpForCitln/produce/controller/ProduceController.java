@@ -11,6 +11,7 @@ package icp.icpForCitln.produce.controller;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.produce.dto.PlannedOrderSaveDTO;
 import icp.icpForCitln.produce.dto.ProductionConfirmOrderFindDTO;
+import icp.icpForCitln.produce.dto.ProductionOrderFindDTO;
 import icp.icpForCitln.produce.service.ProduceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,8 +40,31 @@ public class ProduceController {
         return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/13 14:04
+     * @since: JDK 1.8
+     *
+     * @description: 生产确认订单列表
+     * @param: [pageIndex, pageSize, productionConfirmOrderFindDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
     @GetMapping("/productionConfirmOrderFind")
     public PageResult productionConfirmOrderFind(Integer pageIndex, Integer pageSize, ProductionConfirmOrderFindDTO productionConfirmOrderFindDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE,produceService.productionConfirmOrderFind(pageIndex,pageSize,productionConfirmOrderFindDTO));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/13 14:05
+     * @since: JDK 1.8
+     *
+     * @description: 生产订单列表
+     * @param: [pageIndex, pageSize, productionOrderFindDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/productionOrderFind")
+    public PageResult productionOrderFind(Integer pageIndex, Integer pageSize, ProductionOrderFindDTO productionOrderFindDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,produceService.productionOrderFind(pageIndex,pageSize,productionOrderFindDTO));
     }
 }

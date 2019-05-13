@@ -11,6 +11,7 @@ package icp.icpForCitln.tableInitializeTest;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.produce.dto.PlannedOrderSaveDTO;
+import icp.icpForCitln.produce.dto.ProductionOrderFindDTO;
 import icp.icpForCitln.produce.entity.PlannedOrderDetail;
 import icp.icpForCitln.produce.entity.ProductionConfirmOrder;
 import icp.icpForCitln.produce.entity.ProductionOrder;
@@ -107,13 +108,13 @@ public class ProduceTest {
         productionOrder.setFactoryInfoId("cx5ccfa71da898f237b4eba0c5");
         productionOrder.setProductInfoId("cx5cd24b5babac561c7c3731f4");
         productionOrder.setStartTime(new Date());
-        productionOrder.setProductionNumber(new BigDecimal("22"));
+        productionOrder.setProductionNumber(new BigDecimal("234"));
         productionOrder.setProductionOrderStatus(1);
 
         MongoUtil.insert(productionOrder);
 
         ProductionConfirmOrder productionConfirmOrder = new ProductionConfirmOrder();
-        productionConfirmOrder.setCompletionNumber(new BigDecimal("55"));
+        productionConfirmOrder.setCompletionNumber(new BigDecimal("123"));
         productionConfirmOrder.setCompletionTime(new Date());
         productionConfirmOrder.setDocumentTime(new Date());
         productionConfirmOrder.setProductionConfirmOrderCode(GeneratedCodeUtil.generatedCode());
@@ -122,5 +123,10 @@ public class ProduceTest {
 
         MongoUtil.insert(productionConfirmOrder);
 
+    }
+
+    @Test
+    public void listtest(){
+        produceService.productionOrderFind(1,10,new ProductionOrderFindDTO());
     }
 }

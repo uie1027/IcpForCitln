@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-@Document(collection = "PLANNED_ORDER_DETAIL")
+@Document(collection = "PLANNED_ORDER_DETAIL")  //计划订单详情表
 @ToString(callSuper = true)
 public class PlannedOrderDetail extends BaseEntity {
     @Field("PLANNED_ORDER_DETAIL_CODE")
