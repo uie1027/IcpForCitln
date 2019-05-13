@@ -18,8 +18,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection = "FACTORY_INFO") //工厂信息表
 @ToString(callSuper = true)
 public class FactoryInfo extends BaseEntity {
-    @Field("COMPANY_INFO_ID")
-    private String companyInfoId;  //公司id
 
     @Field("FACTORY_CODE")
     private String factoryCode;  //工厂编码
