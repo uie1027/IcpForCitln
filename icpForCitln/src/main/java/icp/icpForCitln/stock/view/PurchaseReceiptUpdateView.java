@@ -1,8 +1,8 @@
 /**
  * Project Name: icpForCitln
- * File Name: PurchaseReceiptFindView
+ * File Name: PurchaseReceiptUpdateView
  * Package Name: icp.icpForCitln.stock.view
- * Date: 19/05/09 14:55
+ * Date: 19/05/13 17:24
  * Copyright (c) 2019,All Rights Reserved.
  */
 
@@ -14,10 +14,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
-@Document(collection = "PURCHASE_RECEIPT_VIEW") //采购入库视图
-public class PurchaseReceiptFindView {
+@Document(collection = "PURCHASE_RECEIPT_UPDATE_VIEW") //采购入库视图
+public class PurchaseReceiptUpdateView {
     @Field("PURCHASE_RECEIPT_CODE")
     private String purchaseReceiptCode;  //采购入库单编码
 
@@ -39,13 +40,12 @@ public class PurchaseReceiptFindView {
     @Field("USER_INFO.USER_NAME")
     private String creater;
 
+    @Field("ORDER_CREATE_TIME")
+    private Date orderCreateTime; //订单创建时间
+
+    @Field("PURCHASE_RECEIPT_DETAIL")
+    private List<PurchaseReceiptDetailView> purchaseReceiptDetailList;
+
     @Id
     private String id;
-
-    @Field("SUPPLIER_INFO.SUPPLIER_CODE")
-    private String supplierCode;
-
-    @Field("CREATE_TIME")
-    private Date createTime;    //创建时间
-
 }

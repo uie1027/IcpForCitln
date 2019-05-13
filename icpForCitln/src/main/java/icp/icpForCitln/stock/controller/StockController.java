@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/stock")
 public class StockController {
@@ -162,5 +164,34 @@ public class StockController {
     @GetMapping("/salesOutboundListFind")
     public PageResult salesOutboundListFind(Integer pageIndex, Integer pageSize, SalesOutboundFindDTO salesOutboundFindDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.salesOutboundListFind(pageIndex,pageSize,salesOutboundFindDTO));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/13 19:07
+     * @since: JDK 1.8
+     *
+     * @description: 采购入库详情获取
+     * @param: [purchaseReceiptFindDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/purchaseReceiptInfo")
+    public PageResult purchaseReceiptInfo(PurchaseReceiptFindDTO purchaseReceiptFindDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.purchaseReceiptInfo(purchaseReceiptFindDTO));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/13 19:08
+     * @since: JDK 1.8
+     *
+     * @description: 采购入库编辑
+     * @param: [purchaseReceiptUpdateDTO, purchaseReceiptDetailUpdateDTOList]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/purchaseReceiptUpdate")
+    public PageResult purchaseReceiptUpdate(PurchaseReceiptUpdateDTO purchaseReceiptUpdateDTO, List<PurchaseReceiptDetailUpdateDTO> purchaseReceiptDetailUpdateDTOList){
+        stockService.purchaseReceiptUpdate(purchaseReceiptUpdateDTO,purchaseReceiptDetailUpdateDTOList);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
 }

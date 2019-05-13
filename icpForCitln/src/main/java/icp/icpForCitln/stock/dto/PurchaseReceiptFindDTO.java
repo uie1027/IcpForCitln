@@ -16,4 +16,5 @@ public class PurchaseReceiptFindDTO {
     private String purchaseOrderCode;  //采购订单编码
     private String supplierCode;    //供应商编码
     private String supplierName;    //公司名称
+    private String id;
 }

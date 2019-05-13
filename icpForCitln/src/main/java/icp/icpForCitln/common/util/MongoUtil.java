@@ -322,7 +322,7 @@ public class MongoUtil {
         Object obj;
         String fieldName;
 
-        for (Field field:model.getClass().getDeclaredFields()){
+        for (Field field:FieldUtils.getAllFields(model.getClass())){
             try {
                 fieldName = field.getName();
             }catch (Exception e){
@@ -332,7 +332,12 @@ public class MongoUtil {
 
             String functionName = "get"+StringUtil.toInitialUpperCase(fieldName);
 
-            String mongoFieldName = StringUtil.toMongoDBField(fieldName);
+            String mongoFieldName = "";
+            if(fieldName == "id"){
+                mongoFieldName = "_id";
+            }else {
+                mongoFieldName = field.getAnnotation(org.springframework.data.mongodb.core.mapping.Field.class).value();
+            }
 
             try {
                 obj = model.getClass().getMethod(functionName).invoke(model, null);

@@ -21,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.List;
+
 @Service
 public class StockServiceImpl implements StockService {
     @Autowired
@@ -149,5 +151,40 @@ public class StockServiceImpl implements StockService {
     @Override
     public  MongoResult salesOutboundListFind(Integer pageIndex,Integer pageSize,SalesOutboundFindDTO salesOutboundFindDTO){
         return MongoUtil.select(pageIndex,pageSize,BeanCopyUtil.copy(salesOutboundFindDTO, SalesOutboundFindView.class));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/13 19:06
+     * @since: JDK 1.8
+     *
+     * @description: 采购入库详情获取
+     * @param: [purchaseReceiptFindDTO]
+     * @return: icp.icpForCitln.stock.view.PurchaseReceiptUpdateView
+     */
+    @Override
+    public PurchaseReceiptUpdateView purchaseReceiptInfo(PurchaseReceiptFindDTO purchaseReceiptFindDTO){
+        List<PurchaseReceiptUpdateView> list = MongoUtil.select(BeanCopyUtil.copy(purchaseReceiptFindDTO,PurchaseReceiptUpdateView.class));
+        return list.get(0);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/13 19:06
+     * @since: JDK 1.8
+     *
+     * @description: 采购入库编辑
+     * @param: [purchaseReceiptUpdateDTO, purchaseReceiptDetailUpdateDTOList]
+     * @return: void
+     */
+    @Override
+    public void purchaseReceiptUpdate(PurchaseReceiptUpdateDTO purchaseReceiptUpdateDTO,List<PurchaseReceiptDetailUpdateDTO> purchaseReceiptDetailUpdateDTOList){
+        if (purchaseReceiptUpdateDTO!=null){
+            MongoUtil.upsert(BeanCopyUtil.copy(purchaseReceiptUpdateDTO,PurchaseReceipt.class),purchaseReceiptUpdateDTO.getFlag());
+        }
+
+        if (!CollectionUtils.isEmpty(purchaseReceiptDetailUpdateDTOList)){
+            MongoUtil.upsert(BeanCopyUtil.copy(purchaseReceiptDetailUpdateDTOList,PurchaseReceiptDetail.class),1);
+        }
     }
 }

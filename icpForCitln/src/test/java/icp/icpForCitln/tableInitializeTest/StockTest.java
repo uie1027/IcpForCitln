@@ -10,7 +10,9 @@ package icp.icpForCitln.tableInitializeTest;
 
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.stock.dto.PurchaseReceiptDetailUpdateDTO;
 import icp.icpForCitln.stock.dto.PurchaseReceiptSaveDTO;
+import icp.icpForCitln.stock.dto.PurchaseReceiptUpdateDTO;
 import icp.icpForCitln.stock.dto.SalesDeliverySaveDTO;
 import icp.icpForCitln.stock.entity.OtherOutbound;
 import icp.icpForCitln.stock.entity.PurchaseReceiptDetail;
@@ -103,6 +105,24 @@ public class StockTest {
         for (int j = 0;j<5;j++){
             stockService.salesDeliverySave(salesDeliverySaveDTO);
         }
+    }
+
+    @Test
+    public void infotest(){
+        PurchaseReceiptUpdateDTO purchaseReceiptUpdateDTO = new PurchaseReceiptUpdateDTO();
+        purchaseReceiptUpdateDTO.setFlag(1);
+        purchaseReceiptUpdateDTO.setId("cx5cd118f9a898f220b829c30d");
+        purchaseReceiptUpdateDTO.setRemark("updateTest");
+
+        PurchaseReceiptDetailUpdateDTO purchaseReceiptDetail  = new PurchaseReceiptDetailUpdateDTO();
+        purchaseReceiptDetail.setId("cx5cd118faa898f220b829c30e");
+        purchaseReceiptDetail.setWarehouseNumber(new BigDecimal("77895462"));
+
+        List<PurchaseReceiptDetailUpdateDTO>purchaseReceiptDetailUpdateDTOS = new ArrayList<>();
+
+        purchaseReceiptDetailUpdateDTOS.add(purchaseReceiptDetail);
+
+        stockService.purchaseReceiptUpdate(purchaseReceiptUpdateDTO,purchaseReceiptDetailUpdateDTOS);
     }
 
 }
