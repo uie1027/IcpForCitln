@@ -194,4 +194,33 @@ public class StockController {
         stockService.purchaseReceiptUpdate(purchaseReceiptUpdateDTO,purchaseReceiptDetailUpdateDTOList);
         return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/13 19:37
+     * @since: JDK 1.8
+     *
+     * @description: 其它出库详情
+     * @param: [otherOutboundFindDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/otherOutboundInfo")
+    public PageResult otherOutboundInfo(OtherOutboundFindDTO otherOutboundFindDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.otherOutboundInfo(otherOutboundFindDTO));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/13 19:44
+     * @since: JDK 1.8
+     *
+     * @description: 其它出库编辑
+     * @param: [otherOutboundUpdateDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/otherOutboundUpdate")
+    public PageResult otherOutboundUpdate(OtherOutboundUpdateDTO otherOutboundUpdateDTO){
+        stockService.otherOutboundUpdate(otherOutboundUpdateDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+    }
 }

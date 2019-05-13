@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: OtherOutboundFindView
+ * File Name: OtherOutboundView
  * Package Name: icp.icpForCitln.stock.view
  * Date: 19/05/09 16:46
  * Copyright (c) 2019,All Rights Reserved.
@@ -17,8 +17,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-@Document(collection = "OTHER_OUTBOUND_FIND_VIEW")
-public class OtherOutboundFindView {
+@Document(collection = "OTHER_OUTBOUND_VIEW")
+public class OtherOutboundView {
     @Id
     private String id;
 
@@ -48,4 +48,13 @@ public class OtherOutboundFindView {
 
     @Field("CREATE_TIME")
     private Date createTime;
+
+    @Field("USER_INFO.USER_NAME")
+    private String creater;
+
+    @Field("REMARK")
+    private String remark;
+
+    @Field("DOCUMENT_TIME")
+    private Date documentTime;
 }

@@ -13,4 +13,5 @@ import lombok.Data;
 @Data
 public class OtherOutboundFindDTO {
     private String otherOutboundCode; //其它出库编码
+    private String id;
 }

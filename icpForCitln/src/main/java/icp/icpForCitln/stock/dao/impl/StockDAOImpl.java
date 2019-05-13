@@ -11,7 +11,7 @@ package icp.icpForCitln.stock.dao.impl;
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.stock.dao.StockDAO;
-import icp.icpForCitln.stock.view.OtherOutboundFindView;
+import icp.icpForCitln.stock.view.OtherOutboundView;
 import icp.icpForCitln.stock.view.ProductionReceiptFindView;
 import icp.icpForCitln.stock.view.PurchaseReceiptFindView;
 import icp.icpForCitln.stock.view.SalesDeliveryFindView;
@@ -58,8 +58,8 @@ public class StockDAOImpl implements StockDAO {
      * @return: java.util.List<icp.icpForCitln.stock.dto.OtherOutboundListDTO>
      */
     @Override
-    public MongoResult OtherOutboundListFind(Integer pageIndex, Integer pageSize, OtherOutboundFindView otherOutboundFindView){
-        return MongoUtil.select(pageIndex,pageSize,otherOutboundFindView);
+    public MongoResult OtherOutboundListFind(Integer pageIndex, Integer pageSize, OtherOutboundView otherOutboundView){
+        return MongoUtil.select(pageIndex,pageSize, otherOutboundView);
     }
 
     /**

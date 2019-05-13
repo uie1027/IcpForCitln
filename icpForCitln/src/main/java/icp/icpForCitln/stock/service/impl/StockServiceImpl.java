@@ -90,7 +90,7 @@ public class StockServiceImpl implements StockService {
      */
     @Override
     public MongoResult OtherOutboundListFind(Integer pageIndex, Integer pageSize,OtherOutboundFindDTO otherOutboundFindDTO){
-        return stockDAO.OtherOutboundListFind(pageIndex,pageSize,BeanCopyUtil.copy(otherOutboundFindDTO, OtherOutboundFindView.class));
+        return stockDAO.OtherOutboundListFind(pageIndex,pageSize,BeanCopyUtil.copy(otherOutboundFindDTO, OtherOutboundView.class));
     }
 
     /**
@@ -186,5 +186,25 @@ public class StockServiceImpl implements StockService {
         if (!CollectionUtils.isEmpty(purchaseReceiptDetailUpdateDTOList)){
             MongoUtil.upsert(BeanCopyUtil.copy(purchaseReceiptDetailUpdateDTOList,PurchaseReceiptDetail.class),1);
         }
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/13 19:36
+     * @since: JDK 1.8
+     *
+     * @description: 其他出库详情
+     * @param: [otherOutboundFindDTO]
+     * @return: icp.icpForCitln.stock.view.OtherOutboundView
+     */
+    @Override
+    public OtherOutboundView otherOutboundInfo(OtherOutboundFindDTO otherOutboundFindDTO){
+        List<OtherOutboundView> views = MongoUtil.select(BeanCopyUtil.copy(otherOutboundFindDTO,OtherOutboundView.class));
+        return views.get(0);
+    }
+
+    @Override
+    public void otherOutboundUpdate(OtherOutboundUpdateDTO otherOutboundUpdateDTO){
+        MongoUtil.upsert(BeanCopyUtil.copy(otherOutboundUpdateDTO,OtherOutbound.class),otherOutboundUpdateDTO.getFlag());
     }
 }

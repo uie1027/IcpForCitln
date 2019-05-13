@@ -10,10 +10,7 @@ package icp.icpForCitln.tableInitializeTest;
 
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.stock.dto.PurchaseReceiptDetailUpdateDTO;
-import icp.icpForCitln.stock.dto.PurchaseReceiptSaveDTO;
-import icp.icpForCitln.stock.dto.PurchaseReceiptUpdateDTO;
-import icp.icpForCitln.stock.dto.SalesDeliverySaveDTO;
+import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.entity.OtherOutbound;
 import icp.icpForCitln.stock.entity.PurchaseReceiptDetail;
 import icp.icpForCitln.stock.entity.SalesDeliveryDetail;
@@ -123,6 +120,17 @@ public class StockTest {
         purchaseReceiptDetailUpdateDTOS.add(purchaseReceiptDetail);
 
         stockService.purchaseReceiptUpdate(purchaseReceiptUpdateDTO,purchaseReceiptDetailUpdateDTOS);
+    }
+
+    @Test
+    public void updateTest(){
+        OtherOutboundUpdateDTO otherOutboundUpdateDTO = new OtherOutboundUpdateDTO();
+        otherOutboundUpdateDTO.setId("cx5cd3e880a898f211bcec9f49");
+        otherOutboundUpdateDTO.setFlag(1);
+        otherOutboundUpdateDTO.setOutboundNumber(new BigDecimal("6578231"));
+        otherOutboundUpdateDTO.setRemark("updateTest");
+
+        stockService.otherOutboundUpdate(otherOutboundUpdateDTO);
     }
 
 }
