@@ -23,4 +23,7 @@ public class FactoryInfo extends BaseEntity {
 
     @Field("FACTORY_NAME")
     private String factoryName; //工厂名称
+
+    @Field("FACTORY_REMARK")
+    private String factoryRemark;   //工厂描述
 }
