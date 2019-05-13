@@ -12,6 +12,7 @@ import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.company.eneity.CompanyFactory;
 import icp.icpForCitln.factory.dto.FactoryInfoSaveDTO;
+import icp.icpForCitln.factory.dto.FactoryInfoUpdateDTO;
 import icp.icpForCitln.factory.entity.FactoryInfo;
 import icp.icpForCitln.factory.service.FactoryInfoService;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,24 @@ public class FactoryInfoServiceImpl implements FactoryInfoService {
         companyFactory.setFactoryInfoId(factoryInfo.getId());
         MongoUtil.insert(companyFactory);
 
+
+    }
+    /**
+     * @author: 汪明月
+     * date: 2019/5/13 15:04
+     * @since: JDK 1.8
+     *
+     * @description: 更新工厂信息
+     * @param: [factoryInfoUpdateDTO]
+     * @return: void
+     */
+
+    @Override
+    public void factoryInfoIpdate(FactoryInfoUpdateDTO factoryInfoUpdateDTO) {
+
+
+        FactoryInfo factoryInfo = BeanCopyUtil.copy(factoryInfoUpdateDTO, FactoryInfo.class);
+        MongoUtil.upsert(factoryInfo, factoryInfoUpdateDTO.getFlag());
 
     }
 }
