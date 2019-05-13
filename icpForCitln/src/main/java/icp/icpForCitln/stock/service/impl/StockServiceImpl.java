@@ -137,6 +137,15 @@ public class StockServiceImpl implements StockService {
         return stockDAO.salesDeliveryListFind(pageIndex,pageSize,BeanCopyUtil.copy(salesDeliveryFindDTO,SalesDeliveryFindView.class));
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/13 09:51
+     * @since: JDK 1.8
+     *
+     * @description: 销售出库单列表
+     * @param: [pageIndex, pageSize, salesOutboundFindDTO]
+     * @return: icp.icpForCitln.common.enetity.MongoResult
+     */
     @Override
     public  MongoResult salesOutboundListFind(Integer pageIndex,Integer pageSize,SalesOutboundFindDTO salesOutboundFindDTO){
         return MongoUtil.select(pageIndex,pageSize,BeanCopyUtil.copy(salesOutboundFindDTO, SalesOutboundFindView.class));

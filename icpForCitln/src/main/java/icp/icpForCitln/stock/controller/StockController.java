@@ -150,6 +150,15 @@ public class StockController {
         return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.salesDeliveryListFind(pageIndex,pageSize,salesDeliveryFindDTO));
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/13 09:50
+     * @since: JDK 1.8
+     *
+     * @description: 销售出库单列表
+     * @param: [pageIndex, pageSize, salesOutboundFindDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
     @GetMapping("/salesOutboundListFind")
     public PageResult salesOutboundListFind(Integer pageIndex, Integer pageSize, SalesOutboundFindDTO salesOutboundFindDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.salesOutboundListFind(pageIndex,pageSize,salesOutboundFindDTO));
