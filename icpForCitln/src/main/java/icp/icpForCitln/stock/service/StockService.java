@@ -3,6 +3,7 @@ package icp.icpForCitln.stock.service;
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.view.OtherOutboundView;
+import icp.icpForCitln.stock.view.ProductionReceiptInfoView;
 import icp.icpForCitln.stock.view.PurchaseReceiptUpdateView;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface StockService {
     void purchaseReceiptUpdate(PurchaseReceiptUpdateDTO purchaseReceiptUpdateDTO, List<PurchaseReceiptDetailUpdateDTO> purchaseReceiptDetailUpdateDTOList);
     OtherOutboundView otherOutboundInfo(OtherOutboundFindDTO otherOutboundFindDTO);
     void otherOutboundUpdate(OtherOutboundUpdateDTO otherOutboundUpdateDTO);
+    ProductionReceiptInfoView productionReceiptInfo(ProductionReceiptUpdateDTO productionReceiptUpdateDTO);
+    void productionReceiptUpdate(ProductionReceiptUpdateDTO productionReceiptUpdateDTO);
 }

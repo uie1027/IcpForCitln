@@ -45,4 +45,7 @@ public class ProductionOrder extends BaseEntity {
     @Field("FACTORY_INFO_ID")
     private String factoryInfoId;  //工厂id
 
+    @Field("ORDER_CREATE_TIME")
+    private Date orderCreateTime; //订单创建时间
+
 }

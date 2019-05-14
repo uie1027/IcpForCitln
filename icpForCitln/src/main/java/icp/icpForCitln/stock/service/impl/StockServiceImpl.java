@@ -203,8 +203,48 @@ public class StockServiceImpl implements StockService {
         return views.get(0);
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/14 11:01
+     * @since: JDK 1.8
+     *
+     * @description: 其他出库更新
+     * @param: [otherOutboundUpdateDTO]
+     * @return: void
+     */
     @Override
     public void otherOutboundUpdate(OtherOutboundUpdateDTO otherOutboundUpdateDTO){
         MongoUtil.upsert(BeanCopyUtil.copy(otherOutboundUpdateDTO,OtherOutbound.class),otherOutboundUpdateDTO.getFlag());
     }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/14 15:50
+     * @since: JDK 1.8
+     *
+     * @description: 生产入库单详情
+     * @param: [productionReceiptUpdateDTO]
+     * @return: icp.icpForCitln.stock.view.ProductionReceiptInfoView
+     */
+    @Override
+    public ProductionReceiptInfoView productionReceiptInfo(ProductionReceiptUpdateDTO productionReceiptUpdateDTO){
+        List<ProductionReceiptInfoView> list= MongoUtil.select(BeanCopyUtil.copy(productionReceiptUpdateDTO,ProductionReceiptInfoView.class));
+        return list.get(0);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/14 15:51
+     * @since: JDK 1.8
+     *
+     * @description: 生产入库单编辑
+     * @param: [productionReceiptUpdateDTO]
+     * @return: void
+     */
+    @Override
+    public void productionReceiptUpdate(ProductionReceiptUpdateDTO productionReceiptUpdateDTO){
+        MongoUtil.upsert(BeanCopyUtil.copy(productionReceiptUpdateDTO,ProductionReceipt.class),productionReceiptUpdateDTO.getFlag());
+    }
+
+
 }

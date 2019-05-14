@@ -124,13 +124,13 @@ public class StockTest {
 
     @Test
     public void updateTest(){
-        OtherOutboundUpdateDTO otherOutboundUpdateDTO = new OtherOutboundUpdateDTO();
-        otherOutboundUpdateDTO.setId("cx5cd3e880a898f211bcec9f49");
-        otherOutboundUpdateDTO.setFlag(1);
-        otherOutboundUpdateDTO.setOutboundNumber(new BigDecimal("6578231"));
-        otherOutboundUpdateDTO.setRemark("updateTest");
+        ProductionReceiptUpdateDTO productionReceiptUpdateDTO = new ProductionReceiptUpdateDTO();
+        productionReceiptUpdateDTO.setId("cx5cd3e164a898f23a34ebfde2");
+        productionReceiptUpdateDTO.setFlag(1);
+        productionReceiptUpdateDTO.setRemark("test");
+        productionReceiptUpdateDTO.setWarehouseNumber(new BigDecimal("55565"));
 
-        stockService.otherOutboundUpdate(otherOutboundUpdateDTO);
+        stockService.productionReceiptUpdate(productionReceiptUpdateDTO);
     }
 
 }

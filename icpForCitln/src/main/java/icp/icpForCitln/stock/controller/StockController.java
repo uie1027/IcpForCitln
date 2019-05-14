@@ -223,4 +223,33 @@ public class StockController {
         stockService.otherOutboundUpdate(otherOutboundUpdateDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/14 15:47
+     * @since: JDK 1.8
+     *
+     * @description: 生产入库单详情
+     * @param: [productionReceiptUpdateDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/productionReceiptInfo")
+    public PageResult productionReceiptInfo(ProductionReceiptUpdateDTO productionReceiptUpdateDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,stockService.productionReceiptInfo(productionReceiptUpdateDTO));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/14 15:49
+     * @since: JDK 1.8
+     *
+     * @description: 生产入库单编辑
+     * @param: [productionReceiptUpdateDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/productionReceiptUpdate")
+    public PageResult productionReceiptUpdate(ProductionReceiptUpdateDTO productionReceiptUpdateDTO){
+        stockService.productionReceiptUpdate(productionReceiptUpdateDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+    }
 }

@@ -109,6 +109,7 @@ public class ProduceTest {
         productionOrder.setStartTime(new Date());
         productionOrder.setProductionNumber(new BigDecimal("22"));
         productionOrder.setProductionOrderStatus(1);
+        productionOrder.setOrderCreateTime(new Date());
 
         MongoUtil.insert(productionOrder);
 

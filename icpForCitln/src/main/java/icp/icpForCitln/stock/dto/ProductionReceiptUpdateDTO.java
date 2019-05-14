@@ -8,6 +8,18 @@
 
 package icp.icpForCitln.stock.dto;
 
+import lombok.Data;
+
+import java.math.BigDecimal;
+
+@Data
 public class ProductionReceiptUpdateDTO {
     private String id;
+    private BigDecimal warehouseNumber;
+    private String factoryInfoId;
+    private String remark;
+    private String productInfoId; //产品ID
+    private String receivingFactoryId;
+
+    private Integer flag;
 }

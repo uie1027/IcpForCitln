@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-@Document(collection = "PRODUCTION_RECEIPT_VIEW")
+@Document(collection = "PRODUCTION_RECEIPT_UPDATE_VIEW")
 public class ProductionReceiptInfoView {
     @Id
     private String id;
@@ -34,30 +34,48 @@ public class ProductionReceiptInfoView {
     @Field("WAREHOUSE_NUMBER")
     private BigDecimal warehouseNumber; //入库数量
 
-    @Field("PRODUCTION_ORDER.PRODUCTION_ORDER_CODE")
-    private String productionOrderCode;  //生产订单编号
-
-    @Field("PRODUCT_INFO.PRODUCT_CODE")
-    private String productCode;  //产品编码
-
-    @Field("PRODUCT_INFO.PRODUCT_NAME")
-    private String productName;  //产品名称
-
-    @Field("BASIC_UNIT.SYSTEM_DICTIONARY_VALUE")
-    private String basicUnit;  //基本单位
-
     @Field("FACTORY_INFO.FACTORY_NAME")
     private String factoryName;  //工厂名称
-
-    @Field("FACTORY_INFO.FACTORY_CODE")
-    private String factoryCode;  //工厂编号
-
-    @Field("CREATE_TIME")
-    private Date createTime;
 
     @Field("ORDER_CREATE_TIME")
     private Date orderCreateTime; //订单创建时间
 
     @Field("USER_INFO.USER_NAME")
     private String creater;
+
+    @Field("PRODUCTION_ORDER.PRODUCTION_ORDER_CODE")
+    private String productionOrderCode;
+
+    @Field("RECEIVING__FACTORY.FACTORY_NAME")
+    private String receivingFactoryName;
+
+    @Field("PRODUCTION_ORDER.CREATE_TIME")
+    private Date productionOrderCreateTime;
+
+    @Field("PRODUCT_INFO.PRODUCT_CODE")
+    private String productCode;
+
+    @Field("PRODUCT_INFO.PRODUCT_NAME")
+    private String productName;
+
+    @Field("UNSTOCKED_NUMBER")
+    private BigDecimal unstockedNumber; //未入库数量
+
+    @Field("PRODUCTION_ORDER.PRODUCTION_NUMBER")
+    private BigDecimal productionNumber;
+
+    @Field("BASIC_UNIT.SYSTEM_DICTIONARY_VALUE")
+    private String basicUnit;
+
+    @Field("REMARK")
+    private String remark;
+
+    @Field("FACTORY_INFO_ID")
+    private String factoryInfoId;
+
+    @Field("RECEIVING_FACTORY_ID")
+    private String receivingFactoryId; //收货工厂ID
+
+    @Field("PRODUCT_INFO_ID")
+    private String productInfoId; //产品ID
 }
