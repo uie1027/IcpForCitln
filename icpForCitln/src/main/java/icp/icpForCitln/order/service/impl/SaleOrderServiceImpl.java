@@ -9,17 +9,16 @@
 package icp.icpForCitln.order.service.impl;
 
 import icp.icpForCitln.common.cache.UserAndCompanyCache;
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.enetity.UserAndCompanyInfo;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.SessionUtil;
-import icp.icpForCitln.common.util.StringUtil;
 import icp.icpForCitln.order.dao.SaleOrderDao;
 import icp.icpForCitln.order.dto.SaleOrderInfoDTO;
 import icp.icpForCitln.order.entity.SaleOrderDetilInfo;
 import icp.icpForCitln.order.entity.SaleOrderInfo;
 import icp.icpForCitln.order.service.SaleOrderService;
-import icp.icpForCitln.order.vo.SaleOrderInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,16 +41,8 @@ public class SaleOrderServiceImpl implements SaleOrderService {
      * @return: java.util.List<icp.icpForCitln.order.vo.SaleOrderInfoVO>
      */
     @Override
-    public List<SaleOrderInfoVO> saleOrderFindByPage(String searchField, Integer pageIndex, Integer pageSize) {
-        List<SaleOrderInfoDTO> resList = saleOrderDao.saleOrderFindByPage(searchField,pageIndex,pageSize);
-        if(resList == null) return null;
-        for (SaleOrderInfoDTO saleOrderInfoDTO :resList){
-            if(!StringUtil.isEmpty(saleOrderInfoDTO.getCustomerInfo())){
-                saleOrderInfoDTO.setCustomerCode(saleOrderInfoDTO.getCustomerInfo().getCustomerCode());
-                saleOrderInfoDTO.setCustomerName(saleOrderInfoDTO.getCustomerInfo().getCustomerName());
-            }
-        }
-        return BeanCopyUtil.copy(resList,SaleOrderInfoVO.class);
+    public MongoResult saleOrderFindByPage(String searchField, Integer pageIndex, Integer pageSize) {
+        return saleOrderDao.saleOrderFindByPage(searchField,pageIndex,pageSize);
     }
 
 

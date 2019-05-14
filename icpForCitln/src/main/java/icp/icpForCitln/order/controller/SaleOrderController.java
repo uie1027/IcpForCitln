@@ -11,11 +11,8 @@ package icp.icpForCitln.order.controller;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.order.dto.SaleOrderInfoDTO;
 import icp.icpForCitln.order.service.SaleOrderService;
-import icp.icpForCitln.order.vo.SaleOrderInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
     @RequestMapping("/saleOrder")
@@ -38,8 +35,8 @@ public class SaleOrderController {
             @RequestParam(value = "searchField") String searchField,
             @RequestParam(value = "pageIndex") Integer pageIndex,
             @RequestParam(value = "pageSize") Integer pageSize){
-        List<SaleOrderInfoVO> list = saleOrderService.saleOrderFindByPage(searchField,pageIndex,pageSize);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,list);
+        return  PageResult.returnResult(PageResult.SUCCESS_CODE,
+                saleOrderService.saleOrderFindByPage(searchField,pageIndex,pageSize));
     }
 
     /**
@@ -62,5 +59,4 @@ public class SaleOrderController {
         }
         return PageResult.returnResult(PageResult.SUCCESS_CODE,"订单创建成功！");
     }
-
 }

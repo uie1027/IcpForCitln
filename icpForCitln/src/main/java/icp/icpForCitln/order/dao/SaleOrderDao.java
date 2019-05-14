@@ -8,11 +8,8 @@
 
 package icp.icpForCitln.order.dao;
 
-import icp.icpForCitln.order.dto.SaleOrderInfoDTO;
-import icp.icpForCitln.order.vo.SaleOrderInfoVO;
-
-import java.util.List;
+import icp.icpForCitln.common.enetity.MongoResult;
 
 public interface SaleOrderDao {
-    List<SaleOrderInfoDTO> saleOrderFindByPage(String searchField, Integer pageIndex, Integer pageSize);
+    MongoResult saleOrderFindByPage(String searchField, Integer pageIndex, Integer pageSize);
 }
