@@ -11,7 +11,6 @@ package icp.icpForCitln.order.dao.impl;
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.order.dao.PurchaseOrderDao;
-import icp.icpForCitln.order.dto.PurchaseOrderDTO;
 import icp.icpForCitln.order.entity.PurchaseOrderInfo;
 import icp.icpForCitln.order.view.PurchaseOrderView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +45,12 @@ public class PurchaseOrderDaoImpl implements PurchaseOrderDao {
       * @param: [searchField, pageable]
       * @return: java.util.List<icp.icpForCitln.order.entity.PurchaseOrderInfo>
       */
-//     @Override
-//     public MongoResult purchaseOrderFindByPage(String searchField, Integer pageIndex , Integer pageSize) {
-//          PurchaseOrderView purchaseOrderView = new PurchaseOrderView();
-////          purchaseOrderView.set
-//          return mongoTemplate.aggregate(aggregation,"PURCHASE_ORDER_INFO",PurchaseOrderDTO.class).getMappedResults();
-//     }
+     @Override
+     public MongoResult purchaseOrderFindByPage(String searchField, Integer pageIndex , Integer pageSize) {
+          PurchaseOrderView purchaseOrderView = new PurchaseOrderView();
+          purchaseOrderView.setPurchaseOrderCode(searchField);
+          purchaseOrderView.setSupplierName(searchField);
+          return MongoUtil.select(pageIndex, pageSize, purchaseOrderView);
+     }
 
 }

@@ -8,9 +8,10 @@
 
 package icp.icpForCitln.order.service;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.order.dto.PurchaseOrderDTO;
 
 public interface PurchaseOrderService {
      void  purchaseOrderSave(PurchaseOrderDTO purchaseOrderDTO);
-//     MongoResult purchaseOrderListFindByPage (String searchField, Integer pageIndex, Integer pageSize);
+     MongoResult purchaseOrderListFindByPage (String searchField, Integer pageIndex, Integer pageSize);
 }

@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;
 
+
 @Data
 @Document("PURCHASE_ORDER_VIEW")
 public class PurchaseOrderView {
@@ -21,10 +22,16 @@ public class PurchaseOrderView {
     private String purchaseOrderCode;  //采购订单编码
 
     @Field("ORDER_TYPE_ID")
-    private String orderTypeId;  //订单类型
+    private String orderTypeId;  //订单类型ID
+
+    @Field("ORDER_TYPE.SYSTEM_DICTIONARY_VALUE")
+    private String orderType;  //订单类型
 
     @Field("ORDER_ORIGIN_ID")
-    private String orderOriginId;  //订单来源
+    private String orderOriginId;  //订单来源ID
+
+    @Field("ORDER_ORIGIN.SYSTEM_DICTIONARY_VALUE")
+    private String orderOrigin;  //订单来源
 
     @Field("SUPPLIER_INFO_ID")
     private String supplierInfoId; //供应商id
@@ -38,7 +45,7 @@ public class PurchaseOrderView {
     @Field("PAYMENT_METHOD_ID")
     private String payentMethodId; //付款方式ID
 
-    @Field("PAYMENT_METHOD.SYSTEM_DICTIONARY_VALUE")
+    @Field("PAYMENT.SYSTEM_DICTIONARY_VALUE")
     private String payentMethodName; //付款方式
 
     @Field("COMPANY_INFO_ID")
