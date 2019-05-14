@@ -48,7 +48,7 @@ public class InventoryLocationInfoController {
      * @param: []
      * @return: icp.icpForCitln.common.result.PageResult
      */
-    @PostMapping("inventoryLocationInfoSave")
+    @PostMapping("/inventoryLocationInfoSave")
     public  PageResult InventoryLocationInfoSave(@RequestBody InventoryLocationInfoSaveDTO inventoryLocationInfoSaveDTO){
         inventoryLocationInfoService.InventoryLocationInfoSave(inventoryLocationInfoSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "库存地点增加成功");

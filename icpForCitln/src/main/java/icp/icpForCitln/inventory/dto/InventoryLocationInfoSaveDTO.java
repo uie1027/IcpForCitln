@@ -12,9 +12,11 @@ import lombok.Data;
 @Data
 public class InventoryLocationInfoSaveDTO {
 
-    private String inventoryLocationInfoId;  //库存地点id
+    private String factoryInfoId;  //工厂id
 
     private String inventoryLocationName;   //库存地点名称
+
+    private String inventoryLocationRemark;  //库存地点描述
 
 
 }

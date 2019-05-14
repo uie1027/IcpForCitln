@@ -12,9 +12,11 @@ import lombok.Data;
 @Data
 public class InventoryLocationInfoUpdateDTO {
 
-    private String inventoryLocationInfoId;  //库存地点id
+    private String id;  //库存地点id
 
     private String inventoryLocationName;   //库存地点名称
+
+    private String inventoryLocationRemark;  //库存地点描述
 
     private Integer flag;   //是否更新到历史数据  1是2否
 }

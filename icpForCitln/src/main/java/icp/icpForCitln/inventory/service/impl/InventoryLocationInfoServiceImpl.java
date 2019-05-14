@@ -42,10 +42,19 @@ public class InventoryLocationInfoServiceImpl implements InventoryLocationInfoSe
         MongoUtil.insert(inventoryLocationInfo);
 
         FactoryInventoryLocation factoryInventoryLocation = new FactoryInventoryLocation();
-        factoryInventoryLocation.setInventoryLocationInfoId(inventoryLocationInfoSaveDTO.getInventoryLocationInfoId());
-        factoryInventoryLocation.setFactoryInfoId(inventoryLocationInfo.getId());
+        factoryInventoryLocation.setInventoryLocationInfoId(inventoryLocationInfo.getId());
+        factoryInventoryLocation.setFactoryInfoId(inventoryLocationInfoSaveDTO.getFactoryInfoId());
         MongoUtil.insert(factoryInventoryLocation);
     }
+    /**
+     * @author: 汪明月
+     * date: 2019/5/14 10:36
+     * @since: JDK 1.8
+     *
+     * @description: 工厂库存地点更新
+     * @param: [inventoryLocationInfoUpdateDTO]
+     * @return: void
+     */
 
     @Override
     public void InventoryLocationInfoUpdate(InventoryLocationInfoUpdateDTO inventoryLocationInfoUpdateDTO) {
