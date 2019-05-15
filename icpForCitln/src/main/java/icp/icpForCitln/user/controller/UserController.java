@@ -10,7 +10,6 @@ package icp.icpForCitln.user.controller;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.company.eneity.CompanyDepartmentInfo;
-import icp.icpForCitln.permission.entity.RoleInfo;
 import icp.icpForCitln.user.dto.UserInfoListFindByPageDTO;
 import icp.icpForCitln.user.dto.UserInfoSaveDTO;
 import icp.icpForCitln.user.eneity.UserInfo;
@@ -67,7 +66,7 @@ public class UserController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/userInfoListFindByPage")
-    public PageResult userInfoListFindByPage(UserInfoListFindByPageDTO userInfoListFindByPageDTO){
+    public PageResult userInfoListFindByPage(@RequestBody UserInfoListFindByPageDTO userInfoListFindByPageDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE, userService.userInfoListFindByPage(userInfoListFindByPageDTO));
     }
 
