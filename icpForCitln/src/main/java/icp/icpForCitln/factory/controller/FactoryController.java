@@ -7,9 +7,11 @@
  */
 package icp.icpForCitln.factory.controller;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.factory.dto.FactoryInfoSaveDTO;
 import icp.icpForCitln.factory.dto.FactoryInfoUpdateDTO;
+import icp.icpForCitln.factory.dto.OranizationInfoGetListDTO;
 import icp.icpForCitln.factory.service.FactoryInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,6 +52,21 @@ public class FactoryController {
     public PageResult factoryInfoUpdate(@RequestBody FactoryInfoUpdateDTO factoryInfoUpdateDTO){
         factoryInfoService.factoryInfoIpdate(factoryInfoUpdateDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "工厂更新成功");
+
+    }
+    /**
+     * @author: 汪明月
+     * date: 2019/5/14 16:38
+     * @since: JDK 1.8
+     *
+     * @description: 组织信息列表 带分页
+     * @param: [oranizationInfoGetListDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/oranizationInfoGetListByPage")
+    public PageResult oranizationInfoGetListByPage(@RequestBody OranizationInfoGetListDTO oranizationInfoGetListDTO){
+             MongoResult mongoResult = factoryInfoService.oranizationInfoGetListByPage(oranizationInfoGetListDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, mongoResult);
 
     }
 

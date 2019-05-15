@@ -7,15 +7,20 @@
  */
 package icp.icpForCitln.factory.service.impl;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.company.eneity.CompanyFactory;
 import icp.icpForCitln.factory.dto.FactoryInfoSaveDTO;
 import icp.icpForCitln.factory.dto.FactoryInfoUpdateDTO;
+import icp.icpForCitln.factory.dto.OranizationInfoGetListDTO;
 import icp.icpForCitln.factory.entity.FactoryInfo;
 import icp.icpForCitln.factory.service.FactoryInfoService;
+import icp.icpForCitln.factory.view.OranizationView;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class FactoryInfoServiceImpl implements FactoryInfoService {
@@ -52,10 +57,22 @@ public class FactoryInfoServiceImpl implements FactoryInfoService {
 
     @Override
     public void factoryInfoIpdate(FactoryInfoUpdateDTO factoryInfoUpdateDTO) {
-
-
         FactoryInfo factoryInfo = BeanCopyUtil.copy(factoryInfoUpdateDTO, FactoryInfo.class);
         MongoUtil.upsert(factoryInfo, factoryInfoUpdateDTO.getFlag());
 
+    }
+    /**
+     * @author: 汪明月
+     * date: 2019/5/14 17:16
+     * @since: JDK 1.8
+     *
+     * @description: 组织信息列表  分页
+     * @param: [oranizationInfoGetListDTO]
+     * @return: icp.icpForCitln.common.enetity.MongoResult
+     */
+    @Override
+    public MongoResult oranizationInfoGetListByPage(OranizationInfoGetListDTO oranizationInfoGetListDTO) {
+        OranizationView oranizationView = BeanCopyUtil.copy(oranizationInfoGetListDTO, OranizationView.class);
+        return MongoUtil.select(oranizationInfoGetListDTO.getPageIndex(), oranizationInfoGetListDTO.getPageSize(), oranizationView);
     }
 }
