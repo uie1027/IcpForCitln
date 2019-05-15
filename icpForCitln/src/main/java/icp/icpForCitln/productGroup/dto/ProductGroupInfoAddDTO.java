@@ -17,11 +17,11 @@ public class ProductGroupInfoAddDTO {
 
     private String	plantformSecondDirectory;     //系统二级目录
 
-    private String[] ProductGroupSystemAttributeIdList;     //产品属性 id列表
+    private String[] productGroupSystemAttributeIdList;     //产品属性 id列表
 
     private String	systemBrandInfoId;   //品牌ID
 
-    private String	productGroupPicture;  //图片
+    //private String	productGroupPicture;  //图片
 
     private String[] productGroupMailDisplayIdList;     //商城展示 id列表
 
