@@ -7,12 +7,13 @@
  */
 package icp.icpForCitln.inventory.controller;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.result.PageResult;
+import icp.icpForCitln.inventory.dto.InventoryLocationInfoGetListDTO;
 import icp.icpForCitln.inventory.dto.InventoryLocationInfoSaveDTO;
 import icp.icpForCitln.inventory.dto.InventoryLocationInfoUpdateDTO;
 import icp.icpForCitln.inventory.entity.InventoryLocationInfo;
 import icp.icpForCitln.inventory.service.InventoryLocationInfoService;
-import icp.icpForCitln.inventory.vo.InventoryLocationInfoGetListVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,21 +24,6 @@ import java.util.List;
 public class InventoryLocationInfoController {
     @Autowired
     private InventoryLocationInfoService inventoryLocationInfoService;
-    /**
-     * @author: 汪明月
-     * date: 2019/5/13 17:39
-     * @since: JDK 1.8
-     *
-     * @description: 库存地点信息列表
-     * @param: []
-     * @return: icp.icpForCitln.common.result.PageResult
-     */
-    @GetMapping("/inventoryLocationInfoGetList")
-    public PageResult InventoryLocationInfoGetList(@RequestBody InventoryLocationInfoGetListVO inventoryLocationInfoGetListVO){
-        List<InventoryLocationInfo> inventoryLocationInfoList = inventoryLocationInfoService.InventoryLocationInfoGetList(inventoryLocationInfoGetListVO);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE, inventoryLocationInfoList);
-
-    }
 
     /**
      * @author: 汪明月
@@ -64,9 +50,24 @@ public class InventoryLocationInfoController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/inventoryLocationInfoUpdate")
-    public  PageResult InventoryLocationInfoUpdate(@RequestBody InventoryLocationInfoUpdateDTO inventoryLocationInfoUpdateDTO){
+    public  PageResult inventoryLocationInfoUpdate(@RequestBody InventoryLocationInfoUpdateDTO inventoryLocationInfoUpdateDTO){
         inventoryLocationInfoService.InventoryLocationInfoUpdate(inventoryLocationInfoUpdateDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "库存地点更新成功");
+    }
+    /**
+     * @author: 汪明月
+     * date: 2019/5/13 17:39
+     * @since: JDK 1.8
+     *
+     * @description: 库存地点信息列表
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/inventoryLocationInfoGetListByPage")
+    public PageResult inventoryLocationInfoGetListByPage(@RequestBody InventoryLocationInfoGetListDTO inventoryLocationInfoGetListDTO){
+        MongoResult inventoryLocationInfoGetList = inventoryLocationInfoService.InventoryLocationInfoGetList(inventoryLocationInfoGetListDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, inventoryLocationInfoGetList);
+
     }
 
 }
