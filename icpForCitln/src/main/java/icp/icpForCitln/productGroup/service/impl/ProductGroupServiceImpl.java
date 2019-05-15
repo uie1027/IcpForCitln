@@ -17,6 +17,7 @@ import icp.icpForCitln.productGroup.dto.ProductGroupSystemAttributeDTO;
 import icp.icpForCitln.productGroup.dto.ProductGroupSystemAttributeFindDTO;
 import icp.icpForCitln.productGroup.entity.ProductGroupInfo;
 import icp.icpForCitln.productGroup.entity.ProductGroupMailDisplay;
+import icp.icpForCitln.productGroup.entity.ProductGroupPicture;
 import icp.icpForCitln.productGroup.entity.ProductGroupSystemAttribute;
 import icp.icpForCitln.productGroup.service.ProductGroupService;
 import icp.icpForCitln.productGroup.vo.ProductGroupSystemAttributeVO;
@@ -49,6 +50,7 @@ public class ProductGroupServiceImpl implements ProductGroupService {
 
         String[] productGroupSystemAttributeIdList = productGroupInfoAddDTO.getProductGroupSystemAttributeIdList();
         String[] productGroupMailDisplayIdList = productGroupInfoAddDTO.getProductGroupMailDisplayIdList();
+        String[] productGroupPictureList = productGroupInfoAddDTO.getProductGroupPicture();
 
         ProductGroupSystemAttribute productGroupSystemAttribute = new ProductGroupSystemAttribute();
         productGroupSystemAttribute.setProductGroupInfoId(productGroupInfo.getId());
@@ -62,6 +64,13 @@ public class ProductGroupServiceImpl implements ProductGroupService {
         for(int j = 0; j < productGroupMailDisplayIdList.length; j++){
             productGroupMailDisplay.setPlantformMailDisplayId(productGroupMailDisplayIdList[j]);
             MongoUtil.insert(productGroupMailDisplay);
+        }
+
+        ProductGroupPicture productGroupPicture = new ProductGroupPicture();
+        productGroupPicture.setProductGroupInfoId(productGroupInfo.getId());
+        for(int k = 0; k < productGroupPictureList.length; k++){
+            productGroupPicture.setProductGroupPicture(productGroupPictureList[k]);
+            MongoUtil.insert(productGroupPicture);
         }
     }
 

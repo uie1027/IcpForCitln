@@ -40,9 +40,6 @@ public class ProductGroupInfo extends BaseEntity implements Serializable {
     @Field("SYSTEM_BRAND_INFO_ID")
     private String	systemBrandInfoId;   //品牌ID
 
-    @Field("PRODUCT_GROUP_PICTURE")
-    private String	productGroupPicture;  //图片
-
     @Field("PRODUCT_GROUP_DETAILED_INFORMATION")
     private String	productGroupDetailedInformation; //详细信息
 

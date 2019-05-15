@@ -29,7 +29,6 @@ public class ProductGroupTest {
         productGroupInfo.setPlantformFirstDirectory("123");      //系统一级目录
         productGroupInfo.setPlantformSecondDirectory("123");     //系统二级目录
         productGroupInfo.setSystemBrandInfoId("123");   //品牌ID
-        productGroupInfo.setProductGroupPicture("123");  //图片
         productGroupInfo.setProductGroupDetailedInformation("123"); //详细信息
         MongoUtil.insert(productGroupInfo);
     }

@@ -21,7 +21,7 @@ public class ProductGroupInfoAddDTO {
 
     private String	systemBrandInfoId;   //品牌ID
 
-    //private String	productGroupPicture;  //图片
+    private String[] productGroupPicture;  //图片
 
     private String[] productGroupMailDisplayIdList;     //商城展示 id列表
 
