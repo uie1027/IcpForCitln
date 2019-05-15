@@ -52,7 +52,7 @@ public class PermissionServiceImpl implements PermissionService {
      *
      * @description: 角色列表查询 带分页
      * @param: [roleInfoGetListDTO]
-     * @return: icp.icpForCitln.permission.vo.RoleInfoVO
+     * @return: icp.icpForCitln.permission.vo.DepartmentInfoVO
      */
     @Override
     public MongoResult roleInfoGetList(RoleInfoGetListDTO roleInfoGetListDTO) {

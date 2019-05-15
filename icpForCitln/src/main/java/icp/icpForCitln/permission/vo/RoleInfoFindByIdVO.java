@@ -10,7 +10,7 @@ package icp.icpForCitln.permission.vo;
 import lombok.Data;
 
 @Data
-public class RoleInfoFindByIdVO {   //角色编辑返回
+public class RoleInfoFindByIdVO {   //部门下拉
     private String id;      //ID
 
     private String roleName;  //角色名称

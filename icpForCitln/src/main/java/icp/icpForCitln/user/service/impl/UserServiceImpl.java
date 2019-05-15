@@ -10,6 +10,8 @@ package icp.icpForCitln.user.service.impl;
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.company.eneity.CompanyDepartmentInfo;
+import icp.icpForCitln.permission.entity.RoleInfo;
 import icp.icpForCitln.user.dto.UserInfoListFindByPageDTO;
 import icp.icpForCitln.user.dto.UserInfoSaveDTO;
 import icp.icpForCitln.user.eneity.UserCompanyDepartmentRole;
@@ -73,5 +75,12 @@ public class UserServiceImpl implements UserService {
         UserInfoUser userInfoUser = new UserInfoUser();
         userInfoUser.setUserName(userInfoListFindByPageDTO.getUserName());
         return MongoUtil.select(userInfoListFindByPageDTO.getPageIndex(), userInfoListFindByPageDTO.getPageSize(), userInfoUser);
+    }
+
+    @Override
+    public List<CompanyDepartmentInfo> departmentGetList() {
+        CompanyDepartmentInfo companyDepartmentInfo = BeanCopyUtil.copy(new CompanyDepartmentInfo(), CompanyDepartmentInfo.class);
+        List companyDepartmentInfos = MongoUtil.select(companyDepartmentInfo);
+        return companyDepartmentInfos;
     }
 }

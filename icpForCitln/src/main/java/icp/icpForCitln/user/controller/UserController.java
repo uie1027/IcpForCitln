@@ -8,10 +8,14 @@
 package icp.icpForCitln.user.controller;
 
 import icp.icpForCitln.common.result.PageResult;
+import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.company.eneity.CompanyDepartmentInfo;
+import icp.icpForCitln.permission.entity.RoleInfo;
 import icp.icpForCitln.user.dto.UserInfoListFindByPageDTO;
 import icp.icpForCitln.user.dto.UserInfoSaveDTO;
 import icp.icpForCitln.user.eneity.UserInfo;
 import icp.icpForCitln.user.service.UserService;
+import icp.icpForCitln.user.vo.DepartmentInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -65,5 +69,20 @@ public class UserController {
     @PostMapping("/userInfoListFindByPage")
     public PageResult userInfoListFindByPage(UserInfoListFindByPageDTO userInfoListFindByPageDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE, userService.userInfoListFindByPage(userInfoListFindByPageDTO));
+    }
+
+    /**
+     * @author: 汪明月
+     * date: 2019/5/15 16:23
+     * @since: JDK 1.8
+     *
+     * @description: 角色下拉
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/departmentInfoGetList")
+    public PageResult departmentInfoGetList(){
+        List<CompanyDepartmentInfo> companyDepartmentInfos = userService.departmentGetList();
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(companyDepartmentInfos, DepartmentInfoVO.class));
     }
 }
