@@ -21,6 +21,7 @@ import icp.icpForCitln.sysconf.service.SysconfService;
 import icp.icpForCitln.sysconf.view.SystemProductAttribuitAndValueView;
 import icp.icpForCitln.sysconf.vo.SystemProductAttribuitAndValueVO;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -142,5 +143,26 @@ public class SysconfServiceImpl implements SysconfService {
     public List<SystemBrandInfo> systemBrandInfoGetList() {
         List list = RedisUtil.getList(new SystemBrandInfo());
         return BeanCopyUtil.copy(list, SystemBrandInfo.class);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/16 18:20
+     * @since: JDK 1.8
+     *
+     * @description: 根据ID查询产品属性
+     * @param: [id]
+     * @return: icp.icpForCitln.sysconf.entity.SystemProductAttribuit
+     */
+    @Override
+    public SystemProductAttribuit SystemProductAttribuitFindById(String id) {
+        SystemProductAttribuit systemProductAttribuit = new SystemProductAttribuit();
+        systemProductAttribuit.setId(id);
+        List<SystemProductAttribuit> systemProductAttribuitList = MongoUtil.select(systemProductAttribuit);
+        if(!CollectionUtils.isEmpty(systemProductAttribuitList)){
+            return systemProductAttribuitList.get(0);
+        } else {
+            return null;
+        }
     }
 }

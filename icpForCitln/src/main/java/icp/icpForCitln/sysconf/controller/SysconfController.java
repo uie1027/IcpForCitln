@@ -16,6 +16,7 @@ import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
 import icp.icpForCitln.sysconf.service.SysconfService;
 import icp.icpForCitln.sysconf.vo.SystemBrandInfoVO;
 import icp.icpForCitln.sysconf.vo.SystemDictionaryInfoGetListVO;
+import icp.icpForCitln.sysconf.vo.SystemProductAttribuitEditVO;
 import icp.icpForCitln.sysconf.vo.SystemProductAttribuitVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -132,8 +133,17 @@ public class SysconfController {
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemBrandInfoList, SystemBrandInfoVO.class));
     }
 
-//    @PostMapping("/")
-//    public PageResult SystemProductAttribuitFindById(String ){
-//
-//    }
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/16 18:19
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性编辑显示
+     * @param: [id]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/SystemProductAttribuitFindById")
+    public PageResult SystemProductAttribuitFindById(@RequestParam String id){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(sysconfService.SystemProductAttribuitFindById(id), SystemProductAttribuitEditVO.class));
+    }
 }
