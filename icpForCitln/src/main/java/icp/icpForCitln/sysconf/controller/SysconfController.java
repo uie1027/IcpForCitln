@@ -98,7 +98,7 @@ public class SysconfController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/systemProductAttribuitAndValueGetList")
-    public PageResult systemProductAttribuitAndValueGetList(SystemProductAttribuitAndValueListDTO systemProductAttribuitAndValueListDTO){
+    public PageResult systemProductAttribuitAndValueGetList(@RequestBody SystemProductAttribuitAndValueListDTO systemProductAttribuitAndValueListDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE, sysconfService.systemProductAttribuitAndValueGetList(systemProductAttribuitAndValueListDTO));
     }
 
@@ -131,4 +131,9 @@ public class SysconfController {
         List<SystemBrandInfo> systemBrandInfoList = sysconfService.systemBrandInfoGetList();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemBrandInfoList, SystemBrandInfoVO.class));
     }
+
+//    @PostMapping("/")
+//    public PageResult SystemProductAttribuitFindById(String ){
+//
+//    }
 }
