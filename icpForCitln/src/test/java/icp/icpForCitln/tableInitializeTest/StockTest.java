@@ -63,7 +63,7 @@ public class StockTest {
     public void outbound(){
         OtherOutbound otherOutbound = new OtherOutbound();
         otherOutbound.setDocumentTime(new Date());
-        otherOutbound.setDocumentType(1);
+        otherOutbound.setDocumentType("11");
         otherOutbound.setFactoryInfoId("cx5ccfa71da898f237b4eba0c5");
         otherOutbound.setInventoryLocationId("1");
         otherOutbound.setOtherOutboundCode(GeneratedCodeUtil.generatedCode());

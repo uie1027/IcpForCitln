@@ -15,21 +15,15 @@ import java.util.Date;
 
 @Data
 public class OtherOutboundSaveDTO {
-    private String otherOutboundCode; //其它出库编码
-
-    private Integer documentType; //凭证类型 1其他出库
+    private String documentType; //凭证类型id
 
     private String factoryInfoId; //工厂ID
 
     private String productInfoId; //产品ID
 
-    private String systemDictionaryInfoId;  //基本单位id
-
     private BigDecimal outboundNumber; //出库数量
 
     private String inventoryLocationId; //库存地点id
-
-    private Integer receiptStatus; //出库单状态 1已出库 2已取消
 
     private Date documentTime; //凭证日期
 

@@ -9,11 +9,7 @@
 package icp.icpForCitln.stock.controller;
 
 import icp.icpForCitln.common.result.PageResult;
-import icp.icpForCitln.common.util.BeanCopyUtil;
-import icp.icpForCitln.common.util.GeneratedCodeUtil;
-import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.stock.dto.*;
-import icp.icpForCitln.stock.entity.OtherOutbound;
 import icp.icpForCitln.stock.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -97,8 +93,7 @@ public class StockController {
      */
     @PostMapping("/otherOutboundSave")
     public PageResult otherOutboundSave(OtherOutboundSaveDTO otherOutboundSaveDTO){
-        otherOutboundSaveDTO.setOtherOutboundCode(GeneratedCodeUtil.generatedCode());
-        MongoUtil.insert(BeanCopyUtil.copy(otherOutboundSaveDTO, OtherOutbound.class));
+        stockService.otherOutboundSave(otherOutboundSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
 

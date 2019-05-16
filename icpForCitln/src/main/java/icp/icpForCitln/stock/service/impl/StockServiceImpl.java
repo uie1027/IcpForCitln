@@ -116,6 +116,22 @@ public class StockServiceImpl implements StockService {
 
     /**
      * @author: guoxs
+     * @date: 19/05/16 18:15
+     * @since: JDK 1.8
+     *
+     * @description: 其他出库新增
+     * @param: [otherOutboundSaveDTO]
+     * @return: void
+     */
+    @Override
+    public void otherOutboundSave(OtherOutboundSaveDTO otherOutboundSaveDTO){
+        OtherOutbound otherOutbound = BeanCopyUtil.copy(otherOutboundSaveDTO,OtherOutbound.class);
+        otherOutbound.setOtherOutboundCode(GeneratedCodeUtil.generatedCode());
+        otherOutbound.setReceiptStatus(1);
+        MongoUtil.insert(otherOutbound);
+    }
+    /**
+     * @author: guoxs
      * @date: 19/05/09 17:44
      * @since: JDK 1.8
      *

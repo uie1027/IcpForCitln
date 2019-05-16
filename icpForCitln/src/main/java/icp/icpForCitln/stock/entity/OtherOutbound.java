@@ -25,7 +25,7 @@ public class OtherOutbound extends BaseEntity {
     private String otherOutboundCode; //其它出库编码
 
     @Field("DOCUMENT_TYPE")
-    private Integer documentType; //凭证类型 1其他出库
+    private String documentType; //凭证类型 1其他出库
 
     @Field("FACTORY_INFO_ID")
     private String factoryInfoId; //工厂ID

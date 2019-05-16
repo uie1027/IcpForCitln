@@ -26,7 +26,7 @@ public class OtherOutboundView {
     private String otherOutboundCode; //其它出库编码
 
     @Field("DOCUMENT_TYPE")
-    private Integer documentType; //凭证类型 1其他出库
+    private String documentType; //凭证类型 1其他出库
 
     @Field("PRODUCT_INFO.PRODUCT_CODE")
     private String productCode;
