@@ -17,6 +17,7 @@ import icp.icpForCitln.product.dto.ProductInfoSaveDTO;
 import icp.icpForCitln.product.eneity.ProductAttribuit;
 import icp.icpForCitln.product.eneity.ProductInfo;
 import icp.icpForCitln.product.service.ProductService;
+import icp.icpForCitln.product.view.ProductionInfoView;
 import icp.icpForCitln.product.vo.ProductInfoFindVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,5 +63,10 @@ public class ProductServiceImpl implements ProductService {
             productAttribuitList.get(i).setProductInfoId(productInfo.getId());
         }
         MongoUtil.insert(productAttribuitList);
+    }
+
+    @Override
+    public List<ProductionInfoView> productListGet(ProductInfoDTO productInfoDTO){
+        return MongoUtil.select(BeanCopyUtil.copy(productInfoDTO, ProductionInfoView.class));
     }
 }

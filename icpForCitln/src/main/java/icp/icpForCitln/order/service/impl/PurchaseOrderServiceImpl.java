@@ -158,7 +158,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService{
      * @return: java.util.List<icp.icpForCitln.order.view.PurchaseOrderListView>
      */
     @Override
-    public List<PurchaseOrderListView> purchaseOrderBySupplier(PurchaseOrderInfo purchaseOrderInfo){
-        return MongoUtil.select(BeanCopyUtil.copy(purchaseOrderInfo,PurchaseOrderListView.class));
+    public List<PurchaseOrderListView> purchaseOrderBySupplier(PurchaseOrderDTO purchaseOrderDTO){
+        return MongoUtil.select(BeanCopyUtil.copy(purchaseOrderDTO,PurchaseOrderListView.class));
     }
 }

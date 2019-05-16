@@ -10,6 +10,7 @@ package icp.icpForCitln.product.controller;
 
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.product.dto.ProductInfoDTO;
 import icp.icpForCitln.product.dto.ProductInfoFindDTO;
 import icp.icpForCitln.product.dto.ProductInfoSaveDTO;
 import icp.icpForCitln.product.eneity.ProductInfo;
@@ -42,5 +43,10 @@ public class ProductController {
     public PageResult productInfoSave(@RequestBody ProductInfoSaveDTO productInfoSaveDTO){
         productService.productInfoSave(productInfoSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品保存成功");
+    }
+
+    @GetMapping("/productListGet")
+    public PageResult productListGet(ProductInfoDTO productInfoDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,productService.productListGet(productInfoDTO));
     }
 }

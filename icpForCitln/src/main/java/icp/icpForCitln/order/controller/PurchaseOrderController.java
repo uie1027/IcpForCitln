@@ -10,7 +10,6 @@ package icp.icpForCitln.order.controller;
 
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.order.dto.PurchaseOrderDTO;
-import icp.icpForCitln.order.entity.PurchaseOrderInfo;
 import icp.icpForCitln.order.service.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -105,8 +104,8 @@ public class PurchaseOrderController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @GetMapping("/purchaseOrderBySupplier")
-    public PageResult purchaseOrderBySupplier(PurchaseOrderInfo purchaseOrderInfo){
-        return PageResult.returnResult(PageResult.SUCCESS_CODE,purchaseOrderService.purchaseOrderBySupplier(purchaseOrderInfo));
+    public PageResult purchaseOrderBySupplier(PurchaseOrderDTO purchaseOrderDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,purchaseOrderService.purchaseOrderBySupplier(purchaseOrderDTO));
     }
 
 }
