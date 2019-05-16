@@ -10,7 +10,11 @@ package icp.icpForCitln.supplier.service;
 
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.supplier.dto.SupplierInfoDTO;
+import icp.icpForCitln.supplier.vo.SupplierListGetVO;
+
+import java.util.List;
 
 public interface SupplierService {
     MongoResult supplierInfoListFind(Integer pageIndex, Integer pageSize, SupplierInfoDTO supplierInfoDTO);
+    List<SupplierListGetVO> supplierListGet();
 }

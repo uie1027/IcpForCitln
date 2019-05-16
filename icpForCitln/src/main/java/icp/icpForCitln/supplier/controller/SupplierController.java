@@ -101,4 +101,18 @@ public class SupplierController {
         return PageResult.returnResult(PageResult.SUCCESS_CODE,supplierService.supplierInfoListFind(pageIndex,pageSize,supplierInfoDTO));
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/16 16:55
+     * @since: JDK 1.8
+     *
+     * @description: 供应商下拉列表
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/supplierListGet")
+    public PageResult supplierListGet(){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,supplierService.supplierListGet());
+    }
+
 }
