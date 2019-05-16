@@ -10,6 +10,7 @@ package icp.icpForCitln.order.controller;
 
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.order.dto.PurchaseOrderDTO;
+import icp.icpForCitln.order.entity.PurchaseOrderInfo;
 import icp.icpForCitln.order.service.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -92,6 +93,20 @@ public class PurchaseOrderController {
         }catch (Exception ex){
             return PageResult.returnResult(PageResult.ERROR_CODE,ex.toString());
         }
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/16 17:16
+     * @since: JDK 1.8
+     *
+     * @description: 采购订单下拉列表
+     * @param: [purchaseOrderInfo]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/purchaseOrderBySupplier")
+    public PageResult purchaseOrderBySupplier(PurchaseOrderInfo purchaseOrderInfo){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,purchaseOrderService.purchaseOrderBySupplier(purchaseOrderInfo));
     }
 
 }

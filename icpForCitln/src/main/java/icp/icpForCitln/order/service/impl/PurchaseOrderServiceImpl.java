@@ -19,6 +19,7 @@ import icp.icpForCitln.order.entity.PurchaseOrderInfo;
 import icp.icpForCitln.order.service.PurchaseOrderDetailService;
 import icp.icpForCitln.order.service.PurchaseOrderService;
 import icp.icpForCitln.order.view.PurchaseOrderDetailView;
+import icp.icpForCitln.order.view.PurchaseOrderListView;
 import icp.icpForCitln.order.view.PurchaseOrderView;
 import icp.icpForCitln.order.vo.PurchaseOrderDetailVO;
 import icp.icpForCitln.order.vo.PurchaseOrderInfoVO;
@@ -145,5 +146,19 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService{
                 = BeanCopyUtil.copy(purchaseOrderDTO.getPurchaseOrderDetailDTOS(),PurchaseOrderDetailInfo.class);
         MongoUtil.upsert(purchaseOrderInfo,1);
         MongoUtil.upsert(purchaseOrderDetailInfos,1);
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/16 17:16
+     * @since: JDK 1.8
+     *
+     * @description: 采购订单下拉列表
+     * @param: [purchaseOrderInfo]
+     * @return: java.util.List<icp.icpForCitln.order.view.PurchaseOrderListView>
+     */
+    @Override
+    public List<PurchaseOrderListView> purchaseOrderBySupplier(PurchaseOrderInfo purchaseOrderInfo){
+        return MongoUtil.select(BeanCopyUtil.copy(purchaseOrderInfo,PurchaseOrderListView.class));
     }
 }
