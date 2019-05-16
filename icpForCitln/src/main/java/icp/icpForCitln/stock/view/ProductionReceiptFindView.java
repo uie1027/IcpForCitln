@@ -25,7 +25,7 @@ public class ProductionReceiptFindView {
     @Field("PRODUCTION_RECEIPT_CODE")
     private String productionReceiptCode;  //生产入库单号
 
-    @Field("DOCUMENT_TYPE")
+    @Field("DOCUMENT_TYPE.SYSTEM_DICTIONARY_VALUE")
     private String documentType; //凭证类型 1 生产订单 2 其他订单
 
     @Field("RECEIPT_STATUS")
