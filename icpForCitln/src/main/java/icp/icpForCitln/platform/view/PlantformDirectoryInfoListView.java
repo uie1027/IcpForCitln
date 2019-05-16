@@ -31,5 +31,5 @@ public class PlantformDirectoryInfoListView {
     private String plantformDirectoryId;    //父级系统目录ID	1级目录存0
 
     @Field("PLANTFORM_DIRECTORY_INFO_CHILDREN")
-    private List<PlantformDirectoryInfoListVO> plantformDirectoryInfoListVOList;    //子目录
+    private List<PlantformDirectoryInfoListVO> children;    //子目录
 }
