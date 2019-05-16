@@ -9,15 +9,20 @@
 package icp.icpForCitln.order.view;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 
 @Data
 @Document("PURCHASE_ORDER_VIEW")
 public class PurchaseOrderView {
+    @Id
+    private String id;
+
     @Field("PURCHASE_ORDER_CODE")
     private String purchaseOrderCode;  //采购订单编码
 
@@ -51,6 +56,12 @@ public class PurchaseOrderView {
     @Field("COMPANY_INFO_ID")
     private String companyInfoId; //公司id
 
+    @Field("COMPANY.COMPANY_CODE")
+    private String companyCode; //公司编码
+
+    @Field("COMPANY.COMPANY_NAME")
+    private String companyName; //公司名称
+
     @Field("PURCHASE_CONTRACT_CODE")
     private String purchaseContractCode; //采购合同编号
 
@@ -68,4 +79,10 @@ public class PurchaseOrderView {
 
     @Field("PURCHASE_ORDER_STATUS")
     private String purchaseOrderStatus;  //订单状态
+
+    @Field("CREATE_TIME")
+    private Date createTime;    //创建时间
+
+    @Field("PURCHASE_ORDER_DATE")
+    private Date purchaseOrderDate;  //订单日期
 }

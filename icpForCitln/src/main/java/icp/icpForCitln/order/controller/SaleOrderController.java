@@ -59,4 +59,39 @@ public class SaleOrderController {
         }
         return PageResult.returnResult(PageResult.SUCCESS_CODE,"订单创建成功！");
     }
+
+
+    /**
+     * @author:
+     * date: 2019/5/15 9:42
+     * @since: JDK 1.8
+     *
+     * @description: 销售订单明细查询
+     * @param: [saleOrderInfoDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/saleOrderFindById")
+    public PageResult saleOrderFindById(@RequestBody SaleOrderInfoDTO saleOrderInfoDTO){
+        return PageResult.returnResult(
+                PageResult.SUCCESS_CODE,saleOrderService.saleOrderFindById(saleOrderInfoDTO));
+    }
+
+    /**
+     * @author:
+     * date: 2019/5/15 16:10
+     * @since: JDK 1.8
+     *
+     * @description: 销售订单修改
+     * @param: [saleOrderInfoDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/saleOrderUpdate")
+    public PageResult saleOrderUpdate(@RequestBody SaleOrderInfoDTO saleOrderInfoDTO){
+        try {
+            saleOrderService.saleOrderUpdate(saleOrderInfoDTO);
+            return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+        }catch (Exception ex){
+            return PageResult.returnResult(PageResult.ERROR_CODE,ex.toString());
+        }
+    }
 }

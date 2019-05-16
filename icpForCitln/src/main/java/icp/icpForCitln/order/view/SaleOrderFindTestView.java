@@ -8,7 +8,7 @@
 
 package icp.icpForCitln.order.view;
 
-import icp.icpForCitln.order.entity.SaleOrderDetilInfo;
+import icp.icpForCitln.order.entity.SaleOrderDetailInfo;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -19,5 +19,5 @@ public class SaleOrderFindTestView {
     @Field("SALE_CONTRACT_CODE")
     private String saleCode;
     @Field("SALE_ORDER_DETIL_INFO")
-    List<SaleOrderDetilInfo> saleOrderDetil;
+    List<SaleOrderDetailInfo> saleOrderDetil;
 }

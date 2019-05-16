@@ -20,7 +20,7 @@ import java.util.Date;
 //销售产品价格
 public class PriceSaleProductView {
     @Field("PRICE_SALE_PRODUCT_CODE")
-    private Integer	priceSaleProductCode;   //销售产品价格编码
+    private String	priceSaleProductCode;   //销售产品价格编码
     @Field("PRODUCT_INFO_ID")
     private String	productInfoId;  //产品ID
     @Field("PRODUCT_INFO.PRODUCT_CODE")

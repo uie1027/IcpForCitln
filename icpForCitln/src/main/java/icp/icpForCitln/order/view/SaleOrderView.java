@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: PurchaseOrderView
+ * File Name: SaleOrderView
  * Package Name: icp.icpForCitln.order.view
  * Date: 2019/5/10 13:32
  * Copyright (c) 2019,All Rights Reserved.
@@ -9,15 +9,20 @@
 package icp.icpForCitln.order.view;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 
 @Data
 @Document("SALE_ORDER_VIEW")
 public class SaleOrderView {
+    @Id
+    private  String id;
+
     @Field("SALE_ORDER_CODE")
     private String saleOrderCode;  //销售订单编码
 
@@ -65,4 +70,10 @@ public class SaleOrderView {
 
     @Field("SALE_ORDER_STATUS")
     private String saleOrderStatus;  //订单状态
+
+    @Field("CREATE_TIME")
+    private Date createTime;    //创建时间
+
+    @Field("SALE_ORDER_DATE")
+    private Date saleOrderDate;  //订单时间
 }

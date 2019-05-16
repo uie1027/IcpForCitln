@@ -15,6 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @Document(collection = "PURCHASE_ORDER_INFO") //采购订单表
@@ -52,4 +53,7 @@ public class PurchaseOrderInfo extends BaseEntity {
 
     @Field("PURCHASE_ORDER_STATUS")
     private String purchaseOrderStatus;  //订单状态
+
+    @Field("PURCHASE_ORDER_DATE")
+    private Date purchaseOrderDate;  //订单日期
 }

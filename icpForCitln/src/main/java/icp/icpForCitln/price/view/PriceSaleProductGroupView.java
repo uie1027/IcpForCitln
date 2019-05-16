@@ -20,7 +20,7 @@ import java.util.Date;
 //销售产品组价格
 public class PriceSaleProductGroupView {
     @Field("PRICE_SALE_PRODUCT_GROUP_CODE")
-    private Integer	priceSaleProductGroupCode;   //销售产品组价格编码
+    private String	priceSaleProductGroupCode;   //销售产品组价格编码
     @Field("PRODUCT_GROUP_INFO_ID")
     private String	productGroupInfoId;  //产品组ID
     @Field("PRODUCT_GROUP_INFO.PRODUCT_GROUP_CODE")

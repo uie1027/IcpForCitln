@@ -60,4 +60,38 @@ public class PurchaseOrderController {
                 purchaseOrderService.purchaseOrderListFindByPage(searchField,pageIndex,pageSize));
     }
 
+    /**
+     * @author:
+     * date: 2019/5/16 9:25
+     * @since: JDK 1.8
+     *
+     * @description: 通过ID查询采购订单
+     * @param: [purchaseOrderDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/purchaseOrderFindById")
+    public PageResult purchaseOrderFindById(@RequestBody PurchaseOrderDTO purchaseOrderDTO){
+        return PageResult.returnResult(
+                PageResult.SUCCESS_CODE,purchaseOrderService.purchaseOrderFindById(purchaseOrderDTO));
+    }
+
+    /**
+     * @author:
+     * date: 2019/5/16 9:27
+     * @since: JDK 1.8
+     *
+     * @description: 更新采购订单
+     * @param: [purchaseOrderDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/purchaseOrderUpdate")
+    public PageResult purchaseOrderUpdate(@RequestBody PurchaseOrderDTO purchaseOrderDTO){
+        try {
+            purchaseOrderService.purchaseOrderUpdate(purchaseOrderDTO);
+            return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+        }catch (Exception ex){
+            return PageResult.returnResult(PageResult.ERROR_CODE,ex.toString());
+        }
+    }
+
 }

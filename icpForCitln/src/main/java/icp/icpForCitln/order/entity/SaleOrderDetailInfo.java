@@ -1,6 +1,6 @@
 /**
  * Project Name: icpForCitln
- * File Name: SaleOrderDetilInfo
+ * File Name: SaleOrderDetailInfo
  * Package Name: icp.icpForCitln.order.entity
  * Date: 19/04/29 14:02
  * Copyright (c) 2019,All Rights Reserved.
@@ -18,9 +18,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-@Document(collection = "SALE_ORDER_DETIL_INFO")  //采购订单详情表
+@Document(collection = "SALE_ORDER_DETAIL_INFO")  //采购订单详情表
 @ToString(callSuper = true)
-public class SaleOrderDetilInfo extends BaseEntity {
+public class SaleOrderDetailInfo extends BaseEntity {
     @Field("SALE_ORDER_INFO_ID")
     private String saleOrderInfoId;  //销售订单表id
 
@@ -53,4 +53,13 @@ public class SaleOrderDetilInfo extends BaseEntity {
 
     @Field("INVENTORY_LOCATION_INFO_ID")
     private String inventoryLocationInfoId;  //库存地点id
+
+    @Field("DELIVERY_ADDRESS")
+    private String deliveryAddress;     //送货地址
+
+    @Field("INVOICE_ADDRESS")
+    private String invoiceAddress;     //发票地址
+
+    @Field("DETAIL_REMARK")
+    private String detailRemark;     //行项目备注（优先取值产品数据表采购文本内容）
 }

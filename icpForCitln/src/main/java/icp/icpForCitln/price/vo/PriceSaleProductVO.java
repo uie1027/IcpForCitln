@@ -16,7 +16,7 @@ import java.util.Date;
 @Data
 //销售产品价格
 public class PriceSaleProductVO {
-    private Integer	priceSaleProductCode;   //销售产品价格编码
+    private String	priceSaleProductCode;   //销售产品价格编码
     private String	productInfoId;  //产品ID
     private String productCode;  //产品编码
     private String productName;  //产品名称

@@ -10,8 +10,11 @@ package icp.icpForCitln.order.service;
 
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.order.dto.SaleOrderInfoDTO;
+import icp.icpForCitln.order.vo.SaleOrderInfoVO;
 
 public interface SaleOrderService {
    MongoResult saleOrderFindByPage(String searchField, Integer pageIndex, Integer pageSize);
    void saleOrderSave(SaleOrderInfoDTO saleOrderInfoDTO);
+   SaleOrderInfoVO saleOrderFindById(SaleOrderInfoDTO saleOrderInfoDTO);
+   void saleOrderUpdate(SaleOrderInfoDTO saleOrderInfoDTO);
 }

@@ -15,6 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @Document(collection = "SALE_ORDER_INFO") //销售订单表
@@ -53,4 +54,7 @@ public class SaleOrderInfo extends BaseEntity {
 
     @Field("SALE_ORDER_STATUS")
     private String saleOrderStatus;  //订单状态
+
+    @Field("SALE_ORDER_DATE")
+    private Date saleOrderDate;  //订单时间
 }

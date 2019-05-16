@@ -16,7 +16,7 @@ import java.util.Date;
 @Data
 //销售产品组价格
 public class PriceSaleProductGroupVO {
-    private Integer	priceSaleProductGroupCode;  //销售产品组价格编码
+    private String	priceSaleProductGroupCode;  //销售产品组价格编码
     private String	productGroupInfoId;     //产品组ID
     private String	productGroupCode;     //产品组编码
     private String	productGroupName;     //产品组名称
