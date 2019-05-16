@@ -7,7 +7,7 @@
  */
 package icp.icpForCitln.sysconf.view;
 
-import icp.icpForCitln.sysconf.vo.SystemProductAttribuitValueVO;
+import icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -31,5 +31,5 @@ public class SystemProductAttribuitAndValueView {
     private String systemProductAttribuitName;  //产品属性名称
 
     @Field("SYSTEM_PRODUCT_ATTRIBUIT_VALUES")
-    private List<SystemProductAttribuitValueVO> systemProductAttribuitValueVOList;  //产品属性值list
+    private List<SystemProductAttribuitValue> systemProductAttribuitValues;  //产品属性值list
 }

@@ -19,6 +19,7 @@ import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue;
 import icp.icpForCitln.sysconf.service.SysconfService;
 import icp.icpForCitln.sysconf.view.SystemProductAttribuitAndValueView;
+import icp.icpForCitln.sysconf.vo.SystemProductAttribuitAndValueVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -94,11 +95,23 @@ public class SysconfServiceImpl implements SysconfService {
      *
      * @description: 产品属性页面列表
      * @param: []
-     * @return: java.util.List<icp.icpForCitln.sysconf.vo.SystemProductAttribuitValueVO>
+     * @return: java.util.List<icp.icpForCitln.sysconf.vo.SystemProductAttribuitAndValueVO>
      */
     @Override
     public MongoResult systemProductAttribuitAndValueGetList(SystemProductAttribuitAndValueListDTO systemProductAttribuitAndValueListDTO) {
-        return MongoUtil.select(systemProductAttribuitAndValueListDTO.getPageIndex(), systemProductAttribuitAndValueListDTO.getPageSize(), new SystemProductAttribuitAndValueView());
+        MongoResult mongoResult = MongoUtil.select(systemProductAttribuitAndValueListDTO.getPageIndex(), systemProductAttribuitAndValueListDTO.getPageSize(), new SystemProductAttribuitAndValueView());
+        List<SystemProductAttribuitAndValueView> productAttribuitAndValueViewList = mongoResult.getResultList();
+        List<SystemProductAttribuitAndValueVO> systemProductAttribuitAndValueVOList = BeanCopyUtil.copy(productAttribuitAndValueViewList, SystemProductAttribuitAndValueVO.class);
+        for(int i = 0; i < productAttribuitAndValueViewList.size(); i++){
+            String systemProductAttribuitValues = "";
+            List<SystemProductAttribuitValue> systemProductAttribuitValueList = productAttribuitAndValueViewList.get(i).getSystemProductAttribuitValues();
+            for(int j = 0; j < systemProductAttribuitValueList.size(); j++){
+                systemProductAttribuitValues = systemProductAttribuitValues + systemProductAttribuitValueList.get(j).getSystemProductAttribuitContent() + " ";
+            }
+            systemProductAttribuitAndValueVOList.get(i).setSystemProductAttribuitValues(systemProductAttribuitValues);
+        }
+        mongoResult.setResultList(systemProductAttribuitAndValueVOList);
+        return mongoResult;
     }
 
     /**
