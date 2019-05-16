@@ -25,7 +25,7 @@ public class ProductionReceipt extends BaseEntity {
     private String productionReceiptCode;  //生产入库单号
 
     @Field("DOCUMENT_TYPE")
-    private Integer documentType; //凭证类型 1 生产订单 2 其他订单
+    private String documentType; //凭证类型id
 
     @Field("COMPANY_INFO_ID")
     private String companyInfoId; //公司ID

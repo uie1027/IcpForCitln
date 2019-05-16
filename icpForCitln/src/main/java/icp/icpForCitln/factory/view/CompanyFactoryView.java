@@ -9,16 +9,12 @@
 package icp.icpForCitln.factory.view;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Document(collection = "COMPANY_FACTORY_VIEW")
 public class CompanyFactoryView {
-    @Id
-    private String id;
-
     @Field("FACTORY_INFO.FACTORY_NAME")
     private String factoryName; //工厂名称
 

@@ -37,15 +37,15 @@ public class ProduceTest {
     public void productionReceiptSaveTest(){
         ProductionReceipt productionReceiptInfoDTO = new ProductionReceipt();
 
-        productionReceiptInfoDTO.setDocumentType(1);
+        productionReceiptInfoDTO.setDocumentType("cx5cd50f9dabac56243c23108b");
         productionReceiptInfoDTO.setProductionReceiptCode("1233");
-        productionReceiptInfoDTO.setFactoryInfoId("22");
-        productionReceiptInfoDTO.setProductionOrderId("33");
+        productionReceiptInfoDTO.setFactoryInfoId("cx5cd8d7e7b1dcf215408c3f20");
+        productionReceiptInfoDTO.setProductionOrderId("cx5cda4f7aa898f22fb43e7524");
         productionReceiptInfoDTO.setRemark("2222");
-        productionReceiptInfoDTO.setCompanyInfoId("111");
+        productionReceiptInfoDTO.setCompanyInfoId("cx5cd269507aeecb391cee17c8");
         productionReceiptInfoDTO.setInventoryLocationId("2s");
-        productionReceiptInfoDTO.setProductInfoId("22");
-        productionReceiptInfoDTO.setReceivingFactoryId("22");
+        productionReceiptInfoDTO.setProductInfoId("cx5cd24b5babac561c7c3731f4");
+        productionReceiptInfoDTO.setReceivingFactoryId("cx5cd8d7e7b1dcf215408c3f20");
         productionReceiptInfoDTO.setUnstockedNumber(new BigDecimal("345"));
         productionReceiptInfoDTO.setWarehouseNumber(new BigDecimal("44"));
         productionReceiptInfoDTO.setReceiptStatus(1);

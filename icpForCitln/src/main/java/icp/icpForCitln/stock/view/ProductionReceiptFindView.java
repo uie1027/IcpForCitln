@@ -26,7 +26,7 @@ public class ProductionReceiptFindView {
     private String productionReceiptCode;  //生产入库单号
 
     @Field("DOCUMENT_TYPE")
-    private Integer documentType; //凭证类型 1 生产订单 2 其他订单
+    private String documentType; //凭证类型 1 生产订单 2 其他订单
 
     @Field("RECEIPT_STATUS")
     private Integer receiptStatus; //入库单状态 1已入库 2已取消
