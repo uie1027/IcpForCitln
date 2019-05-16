@@ -7,14 +7,11 @@
  */
 package icp.icpForCitln.sysconf.service;
 
-import icp.icpForCitln.sysconf.dto.SystemDictionaryInfoGetListDTO;
-import icp.icpForCitln.sysconf.dto.SystemProductAttribuitDeleteDTO;
-import icp.icpForCitln.sysconf.dto.SystemProductAttribuitSaveDTO;
-import icp.icpForCitln.sysconf.dto.SystemProductAttribuitValueSaveDTO;
+import icp.icpForCitln.common.enetity.MongoResult;
+import icp.icpForCitln.sysconf.dto.*;
 import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
-import icp.icpForCitln.sysconf.vo.SystemProductAttribuitAndValueVO;
 
 import java.util.List;
 
@@ -23,7 +20,7 @@ public interface SysconfService {
     void systemProductAttribuitSave(SystemProductAttribuitSaveDTO systemProductAttribuitSaveDTO);   //新增产品属性
     void systemProductAttribuitDelete(SystemProductAttribuitDeleteDTO systemProductAttribuitDeleteDTO);     //删除产品属性
     void systemProductAttribuitValueSave(SystemProductAttribuitValueSaveDTO systemProductAttribuitValueSaveDTO);    //新增产品属性值
-    List<SystemProductAttribuitAndValueVO> systemProductAttribuitAndValueGetList();     //产品属性页面列表
+    MongoResult systemProductAttribuitAndValueGetList(SystemProductAttribuitAndValueListDTO systemProductAttribuitAndValueListDTO);     //产品属性页面列表
     List<SystemProductAttribuit> systemProductAttribuitGetList();       //产品属性 List
     List<SystemBrandInfo> systemBrandInfoGetList();     //品牌下拉列表
 }

@@ -9,10 +9,7 @@ package icp.icpForCitln.sysconf.controller;
 
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
-import icp.icpForCitln.sysconf.dto.SystemDictionaryInfoGetListDTO;
-import icp.icpForCitln.sysconf.dto.SystemProductAttribuitDeleteDTO;
-import icp.icpForCitln.sysconf.dto.SystemProductAttribuitSaveDTO;
-import icp.icpForCitln.sysconf.dto.SystemProductAttribuitValueSaveDTO;
+import icp.icpForCitln.sysconf.dto.*;
 import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
@@ -100,9 +97,9 @@ public class SysconfController {
      * @param: []
      * @return: icp.icpForCitln.common.result.PageResult
      */
-    @GetMapping("/systemProductAttribuitAndValueGetList")
-    public PageResult systemProductAttribuitAndValueGetList(){
-        return PageResult.returnResult(PageResult.SUCCESS_CODE, sysconfService.systemProductAttribuitAndValueGetList());
+    @PostMapping("/systemProductAttribuitAndValueGetList")
+    public PageResult systemProductAttribuitAndValueGetList(SystemProductAttribuitAndValueListDTO systemProductAttribuitAndValueListDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, sysconfService.systemProductAttribuitAndValueGetList(systemProductAttribuitAndValueListDTO));
     }
 
     /**

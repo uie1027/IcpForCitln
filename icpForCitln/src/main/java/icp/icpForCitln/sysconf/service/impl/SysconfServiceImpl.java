@@ -7,27 +7,24 @@
  */
 package icp.icpForCitln.sysconf.service.impl;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
-import icp.icpForCitln.sysconf.dao.SysconfDAO;
 import icp.icpForCitln.sysconf.dto.*;
 import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue;
 import icp.icpForCitln.sysconf.service.SysconfService;
-import icp.icpForCitln.sysconf.vo.SystemProductAttribuitAndValueVO;
-import org.springframework.beans.factory.annotation.Autowired;
+import icp.icpForCitln.sysconf.view.SystemProductAttribuitAndValueView;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class SysconfServiceImpl implements SysconfService {
-    @Autowired
-    private SysconfDAO sysconfDAO;
 
     /**
      * @author: 方瑞冬
@@ -97,20 +94,11 @@ public class SysconfServiceImpl implements SysconfService {
      *
      * @description: 产品属性页面列表
      * @param: []
-     * @return: java.util.List<icp.icpForCitln.sysconf.vo.SystemProductAttribuitAndValueVO>
+     * @return: java.util.List<icp.icpForCitln.sysconf.vo.SystemProductAttribuitValueVO>
      */
     @Override
-    public List<SystemProductAttribuitAndValueVO> systemProductAttribuitAndValueGetList() {
-        List<SystemProductAttribuitAndValueDTO> systemProductAttribuitAndValueDTOList = sysconfDAO.systemProductAttribuitAndValueFind();
-        List<SystemProductAttribuitAndValueVO> systemProductAttribuitAndValueVOList = BeanCopyUtil.copy(systemProductAttribuitAndValueDTOList, SystemProductAttribuitAndValueVO.class);
-        for(int i = 0; i < systemProductAttribuitAndValueVOList.size(); i++){
-            String str = "";
-            for(int j = 0; j < systemProductAttribuitAndValueDTOList.get(i).getSystemProductAttribuitValueList().size(); j++){
-                str = str + systemProductAttribuitAndValueDTOList.get(i).getSystemProductAttribuitValueList().get(j).getSystemProductAttribuitContent() + " ";
-            }
-            systemProductAttribuitAndValueVOList.get(i).setSystemProductAttribuitValueStr(str);
-        }
-        return systemProductAttribuitAndValueVOList;
+    public MongoResult systemProductAttribuitAndValueGetList(SystemProductAttribuitAndValueListDTO systemProductAttribuitAndValueListDTO) {
+        return MongoUtil.select(systemProductAttribuitAndValueListDTO.getPageIndex(), systemProductAttribuitAndValueListDTO.getPageSize(), new SystemProductAttribuitAndValueView());
     }
 
     /**

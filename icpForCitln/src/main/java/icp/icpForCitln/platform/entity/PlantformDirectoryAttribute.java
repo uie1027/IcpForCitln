@@ -20,8 +20,10 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class PlantformDirectoryAttribute extends BaseEntity {
     @Field("PLANTFORM_DIRECTORY_ID")
     private String plantformDirectoryId;    //系统目录id
+
     @Field("PLANTFORM_ATTRIBUTE_CODE")
     private String plantformAttributeCode;    //系统属性编码
+
     @Field("PLANTFORM_ATTRIBUTE_NAME")
     private String plantformAttributeName;    //系统属性名称
 
