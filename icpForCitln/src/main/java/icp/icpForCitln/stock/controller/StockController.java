@@ -14,13 +14,9 @@ import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.entity.OtherOutbound;
-import icp.icpForCitln.stock.entity.ProductionReceipt;
 import icp.icpForCitln.stock.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,8 +36,8 @@ public class StockController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/productionReceiptSave")
-    public PageResult productionReceiptSave(ProductionReceiptInfoDTO productionReceiptInfoDTO){
-        MongoUtil.insert(BeanCopyUtil.copy(productionReceiptInfoDTO, ProductionReceipt.class));
+    public PageResult productionReceiptSave(@RequestBody ProductionReceiptInfoDTO productionReceiptInfoDTO){
+        stockService.productionReceiptSave(productionReceiptInfoDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
 

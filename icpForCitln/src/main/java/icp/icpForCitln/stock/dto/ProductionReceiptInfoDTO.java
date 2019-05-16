@@ -15,15 +15,15 @@ import java.util.Date;
 
 @Data
 public class ProductionReceiptInfoDTO {
-    private Integer documentType; //凭证类型
+    private String documentType; //凭证类型
 
     private String companyInfoId; //公司ID
 
-    private String orderNumberId; //订单编号ID
+    private String productionOrderId; //订单编号ID
 
     private String factoryInfoId; //工厂ID
 
-    private String productId; //产品ID
+    private String productInfoId; //产品ID
 
     private BigDecimal warehouseNumber; //入库数量
 
@@ -36,6 +36,4 @@ public class ProductionReceiptInfoDTO {
     private String remark; //备注
 
     private Date orderCreateTime; //订单创建时间
-
-
 }

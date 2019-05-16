@@ -8,10 +8,13 @@
 
 package icp.icpForCitln.stock.service.impl;
 
+import icp.icpForCitln.common.cache.UserAndCompanyCache;
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.common.util.SessionUtil;
+import icp.icpForCitln.company.eneity.CompanyInfo;
 import icp.icpForCitln.stock.dao.StockDAO;
 import icp.icpForCitln.stock.dto.*;
 import icp.icpForCitln.stock.entity.*;
@@ -42,6 +45,24 @@ public class StockServiceImpl implements StockService {
         return stockDAO.productionReceiptListFind(pageIndex,pageSize,BeanCopyUtil.copy(productionReceiptFindDTO, ProductionReceiptFindView.class));
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/16 16:23
+     * @since: JDK 1.8
+     *
+     * @description: 生产入库单新增
+     * @param: [productionReceiptInfoDTO]
+     * @return: void
+     */
+    @Override
+    public void productionReceiptSave(ProductionReceiptInfoDTO productionReceiptInfoDTO){
+        ProductionReceipt productionReceipt = BeanCopyUtil.copy(productionReceiptInfoDTO,ProductionReceipt.class);
+        productionReceipt.setProductionReceiptCode(GeneratedCodeUtil.generatedCode());
+        productionReceipt.setReceiptStatus(1);
+        CompanyInfo companyInfo = UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getCompanyInfo();
+        productionReceipt.setCompanyInfoId(companyInfo.getId());
+        MongoUtil.insert(productionReceipt);
+    }
     /**
      * @author: guoxs
      * @date: 19/05/07 10:47
