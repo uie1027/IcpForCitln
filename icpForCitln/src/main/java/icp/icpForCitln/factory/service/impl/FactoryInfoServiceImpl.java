@@ -7,16 +7,20 @@
  */
 package icp.icpForCitln.factory.service.impl;
 
+import icp.icpForCitln.common.cache.UserAndCompanyCache;
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
+import icp.icpForCitln.common.util.SessionUtil;
 import icp.icpForCitln.company.eneity.CompanyFactory;
+import icp.icpForCitln.company.eneity.CompanyInfo;
 import icp.icpForCitln.factory.dto.FactoryInfoSaveDTO;
 import icp.icpForCitln.factory.dto.FactoryInfoUpdateDTO;
 import icp.icpForCitln.factory.dto.OranizationInfoGetListDTO;
 import icp.icpForCitln.factory.entity.FactoryInfo;
 import icp.icpForCitln.factory.service.FactoryInfoService;
+import icp.icpForCitln.factory.view.CompanyFactoryView;
 import icp.icpForCitln.factory.view.OranizationView;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +43,7 @@ public class FactoryInfoServiceImpl implements FactoryInfoService {
         factoryInfo.setFactoryCode(GeneratedCodeUtil.generatedCode());
         MongoUtil.insert(factoryInfo);
         CompanyFactory companyFactory = new CompanyFactory();
-        companyFactory.setCompyInfoId(factoryInfoSaveDTO.getCompanyFactoryId());
+        companyFactory.setCompanyInfoId(factoryInfoSaveDTO.getCompanyFactoryId());
         companyFactory.setFactoryInfoId(factoryInfo.getId());
         MongoUtil.insert(companyFactory);
 
@@ -74,5 +78,28 @@ public class FactoryInfoServiceImpl implements FactoryInfoService {
     public MongoResult oranizationInfoGetListByPage(OranizationInfoGetListDTO oranizationInfoGetListDTO) {
         OranizationView oranizationView = BeanCopyUtil.copy(oranizationInfoGetListDTO, OranizationView.class);
         return MongoUtil.select(oranizationInfoGetListDTO.getPageIndex(), oranizationInfoGetListDTO.getPageSize(), oranizationView);
+    }
+
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/16 13:43
+     * @since: JDK 1.8
+     *
+     * @description: 获取工厂
+     * @param: []
+     * @return: java.util.List<icp.icpForCitln.factory.view.CompanyFactoryView>
+     */
+    @Override
+    public List<CompanyFactoryView> factoryListGet(){
+        CompanyInfo companyInfo = UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getCompanyInfo();
+        if (companyInfo == null){
+            return null;
+        }
+        CompanyFactory companyFactory = new CompanyFactory();
+        companyFactory.setCompanyInfoId(companyInfo.getId());
+        List<CompanyFactoryView> list = MongoUtil.select(BeanCopyUtil.copy(companyFactory,CompanyFactoryView.class));
+
+        return list;
     }
 }

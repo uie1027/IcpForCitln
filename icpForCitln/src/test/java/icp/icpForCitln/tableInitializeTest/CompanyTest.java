@@ -146,7 +146,7 @@ public class CompanyTest {
     public void companyFactoryTest(){
         CompanyFactory companyFactory = new CompanyFactory();
 
-        companyFactory.setCompyInfoId("45652");
+        companyFactory.setCompanyInfoId("45652");
         companyFactory.setFactoryInfoId("544");
         companyFactory.setCreater(UserAndCompanyCache.get(SessionUtil.getByKey("userNum")).getId());
         companyFactory.setCreateTime(new Date());

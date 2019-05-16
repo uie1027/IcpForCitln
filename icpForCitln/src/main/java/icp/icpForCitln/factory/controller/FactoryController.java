@@ -14,10 +14,7 @@ import icp.icpForCitln.factory.dto.FactoryInfoUpdateDTO;
 import icp.icpForCitln.factory.dto.OranizationInfoGetListDTO;
 import icp.icpForCitln.factory.service.FactoryInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/factory")
@@ -71,4 +68,8 @@ public class FactoryController {
     }
 
 
+    @GetMapping("/factoryListGet")
+    public PageResult factoryListGet(){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,factoryInfoService.factoryListGet());
+    }
 }

@@ -37,9 +37,9 @@ public class UserAndCompanyCacheTest {
     public void userAndCompanyCachePut(){
         EnterpriseInfo enterpriseInfo = new EnterpriseInfo();
         enterpriseInfo.setId("cx5cc80779ba4b702bb01f3680");
-        enterpriseInfo.setCreater("cx5cc8065aba4b70396c424be7");
+        enterpriseInfo.setCreater("cx5cc80779ba4b702bb01f3679");
         enterpriseInfo.setCreateTime(new Date());
-        enterpriseInfo.setLastMondifier("cx5cc8065aba4b70396c424be7");
+        enterpriseInfo.setLastMondifier("cx5cc80779ba4b702bb01f3679");
         enterpriseInfo.setLastModificationTime(new Date());
         enterpriseInfo.setIsDelete(2);
         enterpriseInfo.setIsDisplay(1);
@@ -47,10 +47,10 @@ public class UserAndCompanyCacheTest {
         enterpriseInfo.setEnterpriseName("知名企业");
 
         CompanyInfo companyInfo = new CompanyInfo();
-        companyInfo.setId("cx5cc80779ba4b702bb01f3681");
-        companyInfo.setCreater("cx5cc8065aba4b70396c424be7");
+        companyInfo.setId("cx5cd269507aeecb391cee17c8");
+        companyInfo.setCreater("cx5cc80779ba4b702bb01f3679");
         companyInfo.setCreateTime(new Date());
-        companyInfo.setLastMondifier("cx5cc8065aba4b70396c424be7");
+        companyInfo.setLastMondifier("cx5cc80779ba4b702bb01f3679");
         companyInfo.setLastModificationTime(new Date());
         companyInfo.setIsDelete(2);
         companyInfo.setIsDisplay(1);
@@ -83,9 +83,9 @@ public class UserAndCompanyCacheTest {
         userAndCompanyInfo.setCompanyInfo(companyInfo);
 
         userAndCompanyInfo.setId("cx5cc80779ba4b702bb01f3679");
-        userAndCompanyInfo.setCreater("cx5cc8065aba4b70396c424be7");
+        userAndCompanyInfo.setCreater("cx5cc80779ba4b702bb01f3679");
         userAndCompanyInfo.setCreateTime(new Date());
-        userAndCompanyInfo.setLastMondifier("cx5cc8065aba4b70396c424be7");
+        userAndCompanyInfo.setLastMondifier("cx5cc80779ba4b702bb01f3679");
         userAndCompanyInfo.setLastModificationTime(new Date());
         userAndCompanyInfo.setIsDelete(2);
         userAndCompanyInfo.setIsDisplay(1);

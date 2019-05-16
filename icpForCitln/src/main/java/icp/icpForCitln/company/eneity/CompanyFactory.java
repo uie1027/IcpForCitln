@@ -18,7 +18,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @ToString(callSuper = true)
 public class CompanyFactory extends BaseEntity {
     @Field("COMPANY_INFO_ID")
-    private String compyInfoId;     //公司ID
+    private String companyInfoId;     //公司ID
 
     @Field("FACTORY_INFO_ID")
     private String factoryInfoId;   //工厂ID
