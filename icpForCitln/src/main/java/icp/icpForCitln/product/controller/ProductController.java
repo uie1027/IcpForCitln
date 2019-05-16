@@ -45,6 +45,15 @@ public class ProductController {
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品保存成功");
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/16 18:26
+     * @since: JDK 1.8
+     *
+     * @description: 产品下拉列表
+     * @param: [productInfoDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
     @GetMapping("/productListGet")
     public PageResult productListGet(ProductInfoDTO productInfoDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE,productService.productListGet(productInfoDTO));

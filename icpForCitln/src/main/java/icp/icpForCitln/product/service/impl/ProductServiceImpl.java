@@ -65,6 +65,15 @@ public class ProductServiceImpl implements ProductService {
         MongoUtil.insert(productAttribuitList);
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/16 18:26
+     * @since: JDK 1.8
+     *
+     * @description: 产品下拉列表
+     * @param: [productInfoDTO]
+     * @return: java.util.List<icp.icpForCitln.product.view.ProductionInfoView>
+     */
     @Override
     public List<ProductionInfoView> productListGet(ProductInfoDTO productInfoDTO){
         return MongoUtil.select(BeanCopyUtil.copy(productInfoDTO, ProductionInfoView.class));

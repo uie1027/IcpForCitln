@@ -25,5 +25,5 @@ public class PurchaseOrderListView {
     private String purchaseOrderCode;  //采购订单编码
 
     @Field("PURCHASE_ORDER_DETAIL")
-    private List<PurchaseOrderDetailView> purchaseOrderDetails;
+    private List<PurchaseOrderDetailListView> purchaseOrderDetails;
 }
