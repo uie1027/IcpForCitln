@@ -37,7 +37,7 @@ public class StockTest {
         PurchaseReceiptSaveDTO saveDTO = new PurchaseReceiptSaveDTO();
         PurchaseReceiptDetail purchaseReceiptDetail = new PurchaseReceiptDetail();
 
-        saveDTO.setDocumentType(1);
+        saveDTO.setDocumentType("55");
         saveDTO.setOrderCreateTime(new Date());
         saveDTO.setPurchaseOrderInfoId("1");
         saveDTO.setRemark("12");

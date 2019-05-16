@@ -74,8 +74,8 @@ public class StockServiceImpl implements StockService {
      */
     @Override
     public boolean purchaseReceiptSave(PurchaseReceiptSaveDTO purchaseReceiptSaveDTO){
-        purchaseReceiptSaveDTO.setPurchaseReceiptCode(GeneratedCodeUtil.generatedCode());
         PurchaseReceipt purchaseReceipt = BeanCopyUtil.copy(purchaseReceiptSaveDTO, PurchaseReceipt.class);
+        purchaseReceipt.setPurchaseReceiptCode(GeneratedCodeUtil.generatedCode());
         MongoUtil.insert(purchaseReceipt);
         if (!CollectionUtils.isEmpty(purchaseReceiptSaveDTO.getPurchaseReceiptDetailList())) {
             for (PurchaseReceiptDetail purchaseReceiptDetail : purchaseReceiptSaveDTO.getPurchaseReceiptDetailList()) {

@@ -24,7 +24,7 @@ public class PurchaseReceipt extends BaseEntity {
     private String purchaseReceiptCode;  //采购入库单编码
 
     @Field("DOCUMENT_TYPE")
-    private Integer documentType; //凭证类型 1 采购入库
+    private String documentType; //凭证类型 1 采购入库
 
     @Field("SUPPLIER_INFO_ID")
     private String supplierInfoId; //供应商ID

@@ -16,9 +16,7 @@ import java.util.List;
 
 @Data
 public class PurchaseReceiptSaveDTO {
-    private String purchaseReceiptCode;  //采购入库单编码
-
-    private Integer documentType; //凭证类型 1 采购入库
+    private String documentType; //凭证类型
 
     private String supplierInfoId; //供应商ID
 

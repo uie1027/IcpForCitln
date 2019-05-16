@@ -65,7 +65,7 @@ public class StockController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/purchaseReceiptSave")
-    public PageResult purchaseReceiptSave(PurchaseReceiptSaveDTO purchaseReceiptSaveDTO){
+    public PageResult purchaseReceiptSave(@RequestBody PurchaseReceiptSaveDTO purchaseReceiptSaveDTO){
         if(stockService.purchaseReceiptSave(purchaseReceiptSaveDTO)){
             return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
         }

@@ -21,8 +21,8 @@ public class PurchaseReceiptFindView {
     @Field("PURCHASE_RECEIPT_CODE")
     private String purchaseReceiptCode;  //采购入库单编码
 
-    @Field("DOCUMENT_TYPE")
-    private Integer documentType; //凭证类型 1 采购入库
+    @Field("DOCUMENT_TYPE.SYSTEM_DICTIONARY_VALUE")
+    private String documentType; //凭证类型 1 采购入库
 
     @Field("RECEIPT_STATUS")
     private Integer receiptStatus; //入库单状态 1已入库 2已取消
