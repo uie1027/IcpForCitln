@@ -24,9 +24,7 @@ public class PurchaseReceiptSaveDTO {
 
     private Date orderCreateTime; //订单创建时间
 
-    private Integer receiptStatus; //入库单状态 1已入库 2已取消
-
     private String remark; //备注
 
-    private List<PurchaseReceiptDetail> purchaseReceiptDetailList;
+    private List<PurchaseReceiptDetail> purchaseReceiptDetail;
 }

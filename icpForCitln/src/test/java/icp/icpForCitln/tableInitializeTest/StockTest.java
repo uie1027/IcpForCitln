@@ -42,7 +42,6 @@ public class StockTest {
         saveDTO.setPurchaseOrderInfoId("1");
         saveDTO.setRemark("12");
         saveDTO.setSupplierInfoId("11");
-        saveDTO.setReceiptStatus(1);
 
         purchaseReceiptDetail.setInventoryLocationId("!");
         purchaseReceiptDetail.setPurchaseOrderDetailInfoId("1");
@@ -55,7 +54,7 @@ public class StockTest {
 
         PurchaseReceiptDetail purchaseReceiptDetail1 = purchaseReceiptDetail;
         list.add(purchaseReceiptDetail1);
-        saveDTO.setPurchaseReceiptDetailList(list);
+        saveDTO.setPurchaseReceiptDetail(list);
 
         stockService.purchaseReceiptSave(saveDTO);
     }
