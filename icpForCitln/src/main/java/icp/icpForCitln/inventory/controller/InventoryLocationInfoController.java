@@ -9,15 +9,13 @@ package icp.icpForCitln.inventory.controller;
 
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.result.PageResult;
+import icp.icpForCitln.inventory.dto.FactoryInventoryLocationListGetDTO;
 import icp.icpForCitln.inventory.dto.InventoryLocationInfoGetListDTO;
 import icp.icpForCitln.inventory.dto.InventoryLocationInfoSaveDTO;
 import icp.icpForCitln.inventory.dto.InventoryLocationInfoUpdateDTO;
-import icp.icpForCitln.inventory.entity.InventoryLocationInfo;
 import icp.icpForCitln.inventory.service.InventoryLocationInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/inventory")
@@ -68,6 +66,11 @@ public class InventoryLocationInfoController {
         MongoResult inventoryLocationInfoGetList = inventoryLocationInfoService.InventoryLocationInfoGetList(inventoryLocationInfoGetListDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, inventoryLocationInfoGetList);
 
+    }
+
+    @GetMapping("/inventoryListGet")
+    public PageResult inventoryListGet(FactoryInventoryLocationListGetDTO factoryInventoryLocationListGetDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,inventoryLocationInfoService.inventoryListGet(factoryInventoryLocationListGetDTO));
     }
 
 }

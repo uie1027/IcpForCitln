@@ -11,14 +11,14 @@ import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
-import icp.icpForCitln.company.dto.CompanyInfoGetListDTO;
-import icp.icpForCitln.factory.entity.FactoryInfo;
 import icp.icpForCitln.factory.entity.FactoryInventoryLocation;
+import icp.icpForCitln.inventory.dto.FactoryInventoryLocationListGetDTO;
 import icp.icpForCitln.inventory.dto.InventoryLocationInfoGetListDTO;
 import icp.icpForCitln.inventory.dto.InventoryLocationInfoSaveDTO;
 import icp.icpForCitln.inventory.dto.InventoryLocationInfoUpdateDTO;
 import icp.icpForCitln.inventory.entity.InventoryLocationInfo;
 import icp.icpForCitln.inventory.service.InventoryLocationInfoService;
+import icp.icpForCitln.inventory.view.FactoryInventoryLocationView;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -76,6 +76,11 @@ public class InventoryLocationInfoServiceImpl implements InventoryLocationInfoSe
         InventoryLocationInfo inventoryLocationInfo = BeanCopyUtil.copy(inventoryLocationInfoGetListDTO, InventoryLocationInfo.class);
         MongoResult mongoResult = MongoUtil.select(inventoryLocationInfoGetListDTO.getPageIndex(), inventoryLocationInfoGetListDTO.getPageSize(), inventoryLocationInfo);
         return mongoResult;
+    }
+
+    @Override
+    public List<FactoryInventoryLocationView> inventoryListGet(FactoryInventoryLocationListGetDTO factoryInventoryLocationListGetDTO){
+        return MongoUtil.select(BeanCopyUtil.copy(factoryInventoryLocationListGetDTO,FactoryInventoryLocationView.class));
     }
 
 
