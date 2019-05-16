@@ -11,7 +11,7 @@ package icp.icpForCitln.tableInitializeTest;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.order.entity.PurchaseOrderDetailInfo;
 import icp.icpForCitln.order.entity.PurchaseOrderInfo;
-import icp.icpForCitln.order.entity.SaleOrderDetilInfo;
+import icp.icpForCitln.order.entity.SaleOrderDetailInfo;
 import icp.icpForCitln.order.entity.SaleOrderInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,20 +36,21 @@ public class OrderTest {
      */
     @Test
     public void PurchaseOrderInfoSaveTest(){
-       for(int i = 0 ; i <100 ; i++){
+//       for(int i = 0 ; i <100 ; i++){
            PurchaseOrderInfo purchaseOrderInfo = new PurchaseOrderInfo();
            purchaseOrderInfo.setOrderOriginId("线下订单");
            purchaseOrderInfo.setOrderTypeId("标准订单");   //订单类型
            purchaseOrderInfo.setCompanyInfoId("2");  //公司ID
            purchaseOrderInfo.setCurrencyId("￥"); //币种
            purchaseOrderInfo.setPayentMethodId("2");    //付款方式
-           purchaseOrderInfo.setPurchaseOrderCode(String.valueOf((int)(i+ Math.random()*1000))); //采购订单编号
+           purchaseOrderInfo.setPurchaseOrderCode(String.valueOf((int)(Math.random()*1000))); //采购订单编号
            purchaseOrderInfo.setPurchaseContractCode(purchaseOrderInfo.getPurchaseOrderCode());  //采购合同编号
            purchaseOrderInfo.setPurchaseOrderStatus("已确认");   //订单状态
            purchaseOrderInfo.setPurchaseOrderTitleRemarks("订单备注"); //订单备注
            purchaseOrderInfo.setSupplierInfoId("cx5ccff31217ca8f17a0f85e4d");    //供应商ID
+           purchaseOrderInfo.setPurchaseOrderDate(new Date());
            MongoUtil.insert(purchaseOrderInfo);
-       }
+//       }
     }
 
     /**
@@ -64,7 +65,6 @@ public class OrderTest {
     @Test
     public void PurchaseOrderDetilInfoSaveTest(){
         PurchaseOrderDetailInfo purchaseOrderDetilInfo = new PurchaseOrderDetailInfo();
-
         purchaseOrderDetilInfo.setAgreementCode("2");
         purchaseOrderDetilInfo.setAgreementRowCode("2");
         purchaseOrderDetilInfo.setBasicUnitId("2");
@@ -76,7 +76,9 @@ public class OrderTest {
         purchaseOrderDetilInfo.setPurchaseOrderRowCode("2");
         purchaseOrderDetilInfo.setQuantity(2.15);
         purchaseOrderDetilInfo.setUnitPrice(new BigDecimal("17.00"));
-
+        purchaseOrderDetilInfo.setInvoiceAddress("发票地址");
+        purchaseOrderDetilInfo.setDeliveryAddress("送货地址");
+        purchaseOrderDetilInfo.setDetailRemark("订单备注");
         MongoUtil.insert(purchaseOrderDetilInfo);
     }
 
@@ -103,6 +105,7 @@ public class OrderTest {
             saleOrderInfo.setSaleContractCode("A12346789");
             saleOrderInfo.setSaleOrderStatus("已确认");
             saleOrderInfo.setSaleOrderTitleRemarks("备注");
+            saleOrderInfo.setSaleOrderDate(new Date());
             MongoUtil.insert(saleOrderInfo);
 //        }
     }
@@ -112,13 +115,13 @@ public class OrderTest {
      * @date: 19/04/29 14:41
      * @since: JDK 1.8
      *
-     * @description: SaleOrderDetilInfo 保存测试
+     * @description: SaleOrderDetailInfo 保存测试
      * @param: []
      * @return: void
      */
     @Test
     public void SaleOrderDetilInfoSaveTest(){
-        SaleOrderDetilInfo saleOrderDetilInfo = new SaleOrderDetilInfo();
+        SaleOrderDetailInfo saleOrderDetilInfo = new SaleOrderDetailInfo();
         saleOrderDetilInfo.setBasicUnitId("2");
         saleOrderDetilInfo.setDeliveryDate(new Date());
         saleOrderDetilInfo.setFactoryInfoId("2");
@@ -130,6 +133,10 @@ public class OrderTest {
         saleOrderDetilInfo.setSaleOrderQuantity(5.23);
         saleOrderDetilInfo.setTaxRateId("2");
         saleOrderDetilInfo.setUnitPrice(new BigDecimal("123.56"));
+        saleOrderDetilInfo.setDeliveryAddress("送货地址");
+        saleOrderDetilInfo.setInvoiceAddress("发票地址");
+        saleOrderDetilInfo.setDetailRemark("订单备注");
+
         MongoUtil.insert(saleOrderDetilInfo);
     }
 }
