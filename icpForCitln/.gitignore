@@ -3,7 +3,6 @@ HELP.md
 /logs/
 /classes/
 /src/main/resources/META-INF/
-/src/main/resources/application.properties
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
