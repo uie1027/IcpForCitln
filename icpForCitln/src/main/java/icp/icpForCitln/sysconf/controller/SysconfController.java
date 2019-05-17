@@ -142,7 +142,7 @@ public class SysconfController {
      * @param: [id]
      * @return: icp.icpForCitln.common.result.PageResult
      */
-    @PostMapping("/SystemProductAttribuitFindById")
+    @PostMapping("/systemProductAttribuitFindById")
     public PageResult SystemProductAttribuitFindById(@RequestParam String id){
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(sysconfService.SystemProductAttribuitFindById(id), SystemProductAttribuitEditVO.class));
     }
@@ -156,7 +156,7 @@ public class SysconfController {
      * @param: [systemProductAttribuitEditDTO]
      * @return: icp.icpForCitln.common.result.PageResult
      */
-    @PostMapping("/SystemProductAttribuitEdit")
+    @PostMapping("/systemProductAttribuitEdit")
     public PageResult SystemProductAttribuitEdit(@RequestBody SystemProductAttribuitEditDTO systemProductAttribuitEditDTO){
         sysconfService.SystemProductAttribuitEdit(systemProductAttribuitEditDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性编辑成功");
@@ -171,9 +171,23 @@ public class SysconfController {
      * @param: [id]
      * @return: icp.icpForCitln.common.result.PageResult
      */
-    @PostMapping("/SystemProductAttribuitDelete")
+    @PostMapping("/systemProductAttribuitDelete")
     public PageResult SystemProductAttribuitDelete(@RequestParam String id){
         sysconfService.SystemProductAttribuitDelete(id);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性删除成功");
     }
+
+//    /**
+//     * @author: 方瑞冬
+//     * @date: 2019/5/17 13:54
+//     * @since: JDK 1.8
+//     *
+//     * @description: 产品属性值
+//     * @param: [systemProductAttribuitId]
+//     * @return: icp.icpForCitln.common.result.PageResult
+//     */
+//    @PostMapping("/systemProductAttribuitValue")
+//    public PageResult systemProductAttribuitValue(@RequestParam String systemProductAttribuitId){
+//
+//    }
 }
