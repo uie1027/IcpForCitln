@@ -25,4 +25,5 @@ public interface SysconfService {
     List<SystemBrandInfo> systemBrandInfoGetList();     //品牌下拉列表
     SystemProductAttribuit SystemProductAttribuitFindById(String id);       //通过ID查询 产品属性
     void SystemProductAttribuitEdit(SystemProductAttribuitEditDTO systemProductAttribuitEditDTO);  //产品属性编辑保存
+    void SystemProductAttribuitDelete(String id);       //删除产品属性
 }

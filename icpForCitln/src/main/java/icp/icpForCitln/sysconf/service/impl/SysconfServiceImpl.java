@@ -180,4 +180,20 @@ public class SysconfServiceImpl implements SysconfService {
         SystemProductAttribuit systemProductAttribuit = BeanCopyUtil.copy(systemProductAttribuitEditDTO, SystemProductAttribuit.class);
         MongoUtil.upsert(systemProductAttribuit, systemProductAttribuitEditDTO.getFlag());
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/17 13:22
+     * @since: JDK 1.8
+     *
+     * @description: 删除产品属性
+     * @param: [id]
+     * @return: void
+     */
+    @Override
+    public void SystemProductAttribuitDelete(String id) {
+        SystemProductAttribuit systemProductAttribuit = new SystemProductAttribuit();
+        systemProductAttribuit.setId(id);
+        MongoUtil.delete(systemProductAttribuit);
+    }
 }

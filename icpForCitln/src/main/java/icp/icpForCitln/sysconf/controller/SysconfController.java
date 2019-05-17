@@ -161,4 +161,19 @@ public class SysconfController {
         sysconfService.SystemProductAttribuitEdit(systemProductAttribuitEditDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性编辑成功");
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/17 13:21
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性删除
+     * @param: [id]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/SystemProductAttribuitDelete")
+    public PageResult SystemProductAttribuitDelete(@RequestParam String id){
+        sysconfService.SystemProductAttribuitDelete(id);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性删除成功");
+    }
 }
