@@ -9,11 +9,15 @@ package icp.icpForCitln.inventory.controller;
 
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.result.PageResult;
+import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.inventory.dto.FactoryInventoryLocationListGetDTO;
 import icp.icpForCitln.inventory.dto.InventoryLocationInfoGetListDTO;
 import icp.icpForCitln.inventory.dto.InventoryLocationInfoSaveDTO;
 import icp.icpForCitln.inventory.dto.InventoryLocationInfoUpdateDTO;
+import icp.icpForCitln.inventory.entity.InventoryLocationInfo;
 import icp.icpForCitln.inventory.service.InventoryLocationInfoService;
+import icp.icpForCitln.inventory.vo.InventoryLocationInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,4 +77,19 @@ public class InventoryLocationInfoController {
         return PageResult.returnResult(PageResult.SUCCESS_CODE,inventoryLocationInfoService.inventoryListGet(factoryInventoryLocationListGetDTO));
     }
 
+
+    /**
+     * @author:
+     * date: 2019/5/17 10:40
+     * @since: JDK 1.8
+     *
+     * @description: 获取库存地点数据（无条件查询）
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/inventoryLocationList")
+    public PageResult inventoryLocationList(){
+        return PageResult.returnResult(
+                PageResult.SUCCESS_CODE, BeanCopyUtil.copy(MongoUtil.select(new InventoryLocationInfo()),InventoryLocationInfoVO.class));
+    }
 }

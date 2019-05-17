@@ -9,10 +9,14 @@ package icp.icpForCitln.factory.controller;
 
 import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.result.PageResult;
+import icp.icpForCitln.common.util.BeanCopyUtil;
+import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.factory.dto.FactoryInfoSaveDTO;
 import icp.icpForCitln.factory.dto.FactoryInfoUpdateDTO;
 import icp.icpForCitln.factory.dto.OranizationInfoGetListDTO;
+import icp.icpForCitln.factory.entity.FactoryInfo;
 import icp.icpForCitln.factory.service.FactoryInfoService;
+import icp.icpForCitln.factory.vo.FactoryInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -71,5 +75,20 @@ public class FactoryController {
     @GetMapping("/factoryListGet")
     public PageResult factoryListGet(){
         return PageResult.returnResult(PageResult.SUCCESS_CODE,factoryInfoService.factoryListGet());
+    }
+
+    /**
+     * @author:
+     * date: 2019/5/17 10:31
+     * @since: JDK 1.8
+     *
+     * @description: 获取工厂信息列表
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/factoryInfoList")
+    public PageResult factoryInfoList(){
+        return PageResult.returnResult(
+                PageResult.SUCCESS_CODE, BeanCopyUtil.copy(MongoUtil.select(new FactoryInfo()),FactoryInfoVO.class));
     }
 }

@@ -106,4 +106,19 @@ public class CustomerController {
     public PageResult customerListGet(){
         return PageResult.returnResult(PageResult.SUCCESS_CODE,MongoUtil.select(new CustomerSaleOrderFindView()));
     }
+
+    /**
+     * @author:
+     * date: 2019/5/17 10:03
+     * @since: JDK 1.8
+     *
+     * @description: 获取客户信息（不含条件）
+     * @param: []
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/customerInfoList")
+    public PageResult customerInfoList(){
+        return PageResult.returnResult(
+                PageResult.SUCCESS_CODE,BeanCopyUtil.copy(MongoUtil.select(new CustomerInfo()),CustomerInfoVO.class));
+    }
 }
