@@ -84,8 +84,8 @@ public class SysconfController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/systemProductAttribuitValueSave")
-    public PageResult systemProductAttribuitValueSave(@RequestBody SystemProductAttribuitValueSaveDTO systemProductAttribuitValueSaveDTO){
-        sysconfService.systemProductAttribuitValueSave(systemProductAttribuitValueSaveDTO);
+    public PageResult systemProductAttribuitValueSave(@RequestBody List<SystemProductAttribuitValueSaveDTO> systemProductAttribuitValueSaveDTOList){
+        sysconfService.systemProductAttribuitValueSave(systemProductAttribuitValueSaveDTOList);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值保存成功");
     }
 
