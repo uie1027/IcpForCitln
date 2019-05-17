@@ -170,8 +170,8 @@ public class SysconfController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/systemProductAttribuitValueFindById")
-    public PageResult systemProductAttribuitValueFindById(@RequestBody String systemProductAttribuitId){
-        List<SystemProductAttribuitValue> systemProductAttribuitValueList = sysconfService.systemProductAttribuitValueFindById(systemProductAttribuitId);
+    public PageResult systemProductAttribuitValueFindById(@RequestBody SystemProductAttribuitValueFindByIdDTO systemProductAttribuitValueFindByIdDTO){
+        List<SystemProductAttribuitValue> systemProductAttribuitValueList = sysconfService.systemProductAttribuitValueFindById(systemProductAttribuitValueFindByIdDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemProductAttribuitValueList, SystemProductAttribuitValueVO.class));
     }
 }

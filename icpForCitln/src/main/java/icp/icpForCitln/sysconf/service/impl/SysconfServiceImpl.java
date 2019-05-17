@@ -193,9 +193,9 @@ public class SysconfServiceImpl implements SysconfService {
      * @return: java.util.List<icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue>
      */
     @Override
-    public List<SystemProductAttribuitValue> systemProductAttribuitValueFindById(String systemProductAttribuitId) {
+    public List<SystemProductAttribuitValue> systemProductAttribuitValueFindById(SystemProductAttribuitValueFindByIdDTO systemProductAttribuitValueFindByIdDTO) {
         SystemProductAttribuitValue systemProductAttribuitValue = new SystemProductAttribuitValue();
-        systemProductAttribuitValue.setSystemProductAttribuitId(systemProductAttribuitId);
+        systemProductAttribuitValue.setSystemProductAttribuitId(systemProductAttribuitValueFindByIdDTO.getSystemProductAttribuitId());
         return MongoUtil.select(systemProductAttribuitValue);
     }
 }
