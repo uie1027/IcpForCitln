@@ -146,4 +146,19 @@ public class SysconfController {
     public PageResult SystemProductAttribuitFindById(@RequestParam String id){
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(sysconfService.SystemProductAttribuitFindById(id), SystemProductAttribuitEditVO.class));
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/16 19:33
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性编辑保存
+     * @param: [systemProductAttribuitEditDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/SystemProductAttribuitEdit")
+    public PageResult SystemProductAttribuitEdit(@RequestBody SystemProductAttribuitEditDTO systemProductAttribuitEditDTO){
+        sysconfService.SystemProductAttribuitEdit(systemProductAttribuitEditDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性编辑成功");
+    }
 }

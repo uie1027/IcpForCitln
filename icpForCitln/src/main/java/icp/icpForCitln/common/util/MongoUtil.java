@@ -337,6 +337,8 @@ public class MongoUtil {
             String mongoFieldName = "";
             if(fieldName == "id"){
                 mongoFieldName = "_id";
+            }else if (fieldName == "serialVersionUID" || fieldName == "OBJECT_KEY"){
+                continue;
             }else {
                 mongoFieldName = field.getAnnotation(org.springframework.data.mongodb.core.mapping.Field.class).value();
             }

@@ -165,4 +165,19 @@ public class SysconfServiceImpl implements SysconfService {
             return null;
         }
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/16 19:35
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性编辑保存
+     * @param: [systemProductAttribuitEditDTO]
+     * @return: void
+     */
+    @Override
+    public void SystemProductAttribuitEdit(SystemProductAttribuitEditDTO systemProductAttribuitEditDTO) {
+        SystemProductAttribuit systemProductAttribuit = BeanCopyUtil.copy(systemProductAttribuitEditDTO, SystemProductAttribuit.class);
+        MongoUtil.upsert(systemProductAttribuit, systemProductAttribuitEditDTO.getFlag());
+    }
 }
