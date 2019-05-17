@@ -185,17 +185,17 @@ public class SysconfServiceImpl implements SysconfService {
 
     /**
      * @author: 方瑞冬
-     * @date: 2019/5/17 13:22
+     * @date: 2019/5/17 14:57
      * @since: JDK 1.8
      *
-     * @description: 删除产品属性
-     * @param: [id]
-     * @return: void
+     * @description: 根据产品属性ID查询产品属性值列表  不带分页
+     * @param: [systemProductAttribuitId]
+     * @return: java.util.List<icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue>
      */
     @Override
-    public void SystemProductAttribuitDelete(String id) {
-        SystemProductAttribuit systemProductAttribuit = new SystemProductAttribuit();
-        systemProductAttribuit.setId(id);
-        MongoUtil.delete(systemProductAttribuit);
+    public List<SystemProductAttribuitValue> systemProductAttribuitValueFindById(String systemProductAttribuitId) {
+        SystemProductAttribuitValue systemProductAttribuitValue = new SystemProductAttribuitValue();
+        systemProductAttribuitValue.setSystemProductAttribuitId(systemProductAttribuitId);
+        return MongoUtil.select(systemProductAttribuitValue);
     }
 }

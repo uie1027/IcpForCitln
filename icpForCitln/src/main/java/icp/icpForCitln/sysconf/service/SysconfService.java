@@ -12,6 +12,7 @@ import icp.icpForCitln.sysconf.dto.*;
 import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
+import icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue;
 
 import java.util.List;
 
@@ -25,5 +26,5 @@ public interface SysconfService {
     List<SystemBrandInfo> systemBrandInfoGetList();     //品牌下拉列表
     SystemProductAttribuit SystemProductAttribuitFindById(String id);       //通过ID查询 产品属性
     void SystemProductAttribuitEdit(SystemProductAttribuitEditDTO systemProductAttribuitEditDTO);  //产品属性编辑保存
-    void SystemProductAttribuitDelete(String id);       //删除产品属性
+    List<SystemProductAttribuitValue> systemProductAttribuitValueFindById(String systemProductAttribuitId);     //获取产品属性值列表
 }

@@ -13,11 +13,9 @@ import icp.icpForCitln.sysconf.dto.*;
 import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
+import icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue;
 import icp.icpForCitln.sysconf.service.SysconfService;
-import icp.icpForCitln.sysconf.vo.SystemBrandInfoVO;
-import icp.icpForCitln.sysconf.vo.SystemDictionaryInfoGetListVO;
-import icp.icpForCitln.sysconf.vo.SystemProductAttribuitEditVO;
-import icp.icpForCitln.sysconf.vo.SystemProductAttribuitVO;
+import icp.icpForCitln.sysconf.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -143,7 +141,7 @@ public class SysconfController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/systemProductAttribuitFindById")
-    public PageResult SystemProductAttribuitFindById(@RequestParam String id){
+    public PageResult SystemProductAttribuitFindById(@RequestBody String id){
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(sysconfService.SystemProductAttribuitFindById(id), SystemProductAttribuitEditVO.class));
     }
 
@@ -164,30 +162,16 @@ public class SysconfController {
 
     /**
      * @author: 方瑞冬
-     * @date: 2019/5/17 13:21
+     * @date: 2019/5/17 14:55
      * @since: JDK 1.8
      *
-     * @description: 产品属性删除
-     * @param: [id]
+     * @description: 产品属性值编辑显示
+     * @param: [systemProductAttribuitId]
      * @return: icp.icpForCitln.common.result.PageResult
      */
-    @PostMapping("/systemProductAttribuitDelete")
-    public PageResult SystemProductAttribuitDelete(@RequestParam String id){
-        sysconfService.SystemProductAttribuitDelete(id);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性删除成功");
+    @PostMapping("/systemProductAttribuitValueFindById")
+    public PageResult systemProductAttribuitValueFindById(@RequestBody String systemProductAttribuitId){
+        List<SystemProductAttribuitValue> systemProductAttribuitValueList = sysconfService.systemProductAttribuitValueFindById(systemProductAttribuitId);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemProductAttribuitValueList, SystemProductAttribuitValueVO.class));
     }
-
-//    /**
-//     * @author: 方瑞冬
-//     * @date: 2019/5/17 13:54
-//     * @since: JDK 1.8
-//     *
-//     * @description: 产品属性值
-//     * @param: [systemProductAttribuitId]
-//     * @return: icp.icpForCitln.common.result.PageResult
-//     */
-//    @PostMapping("/systemProductAttribuitValue")
-//    public PageResult systemProductAttribuitValue(@RequestParam String systemProductAttribuitId){
-//
-//    }
 }
