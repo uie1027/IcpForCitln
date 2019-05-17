@@ -174,4 +174,19 @@ public class SysconfController {
         List<SystemProductAttribuitValue> systemProductAttribuitValueList = sysconfService.systemProductAttribuitValueFindById(systemProductAttribuitValueFindByIdDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemProductAttribuitValueList, SystemProductAttribuitValueVO.class));
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/17 16:16
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性值编辑保存
+     * @param: [systemProductAttribuitValueEditDTOList]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/systemProductAttribuitValueEdit")
+    public PageResult systemProductAttribuitValueEdit(@RequestBody SystemProductAttribuitValueEditListDTO systemProductAttribuitValueEditListDTO){
+        sysconfService.systemProductAttribuitValueEdit(systemProductAttribuitValueEditListDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值编辑成功");
+    }
 }

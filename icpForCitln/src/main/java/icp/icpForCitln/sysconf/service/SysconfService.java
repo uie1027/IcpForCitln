@@ -27,4 +27,5 @@ public interface SysconfService {
     SystemProductAttribuit SystemProductAttribuitFindById(SystemProductAttribuitFindByIdDTO systemProductAttribuitFindByIdDTO);       //通过ID查询 产品属性
     void SystemProductAttribuitEdit(SystemProductAttribuitEditDTO systemProductAttribuitEditDTO);  //产品属性编辑保存
     List<SystemProductAttribuitValue> systemProductAttribuitValueFindById(SystemProductAttribuitValueFindByIdDTO systemProductAttribuitValueFindByIdDTO);     //获取产品属性值列表
+    void systemProductAttribuitValueEdit(SystemProductAttribuitValueEditListDTO systemProductAttribuitValueEditListDTO);//产品属性值编辑保存
 }

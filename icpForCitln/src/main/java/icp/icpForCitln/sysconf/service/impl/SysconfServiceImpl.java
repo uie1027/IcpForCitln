@@ -198,4 +198,19 @@ public class SysconfServiceImpl implements SysconfService {
         systemProductAttribuitValue.setSystemProductAttribuitId(systemProductAttribuitValueFindByIdDTO.getSystemProductAttribuitId());
         return MongoUtil.select(systemProductAttribuitValue);
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/17 16:17
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性值编辑保存
+     * @param: [systemProductAttribuitValueEditDTOList]
+     * @return: void
+     */
+    @Override
+    public void systemProductAttribuitValueEdit(SystemProductAttribuitValueEditListDTO systemProductAttribuitValueEditListDTO) {
+        List<SystemProductAttribuitValue> systemProductAttribuitValueList = BeanCopyUtil.copy(systemProductAttribuitValueEditListDTO.getSystemProductAttribuitValueEditDTOList(), SystemProductAttribuitValue.class);
+        MongoUtil.upsert(systemProductAttribuitValueList, systemProductAttribuitValueEditListDTO.getFlag());
+    }
 }
