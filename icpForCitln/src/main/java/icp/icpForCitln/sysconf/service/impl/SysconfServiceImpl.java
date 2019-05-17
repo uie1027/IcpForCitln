@@ -157,9 +157,9 @@ public class SysconfServiceImpl implements SysconfService {
      * @return: icp.icpForCitln.sysconf.entity.SystemProductAttribuit
      */
     @Override
-    public SystemProductAttribuit SystemProductAttribuitFindById(String id) {
+    public SystemProductAttribuit SystemProductAttribuitFindById(SystemProductAttribuitFindByIdDTO systemProductAttribuitFindByIdDTO) {
         SystemProductAttribuit systemProductAttribuit = new SystemProductAttribuit();
-        systemProductAttribuit.setId(id);
+        systemProductAttribuit.setId(systemProductAttribuitFindByIdDTO.getId());
         List<SystemProductAttribuit> systemProductAttribuitList = MongoUtil.select(systemProductAttribuit);
         if(!CollectionUtils.isEmpty(systemProductAttribuitList)){
             return systemProductAttribuitList.get(0);

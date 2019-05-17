@@ -141,8 +141,8 @@ public class SysconfController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/systemProductAttribuitFindById")
-    public PageResult SystemProductAttribuitFindById(@RequestBody String id){
-        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(sysconfService.SystemProductAttribuitFindById(id), SystemProductAttribuitEditVO.class));
+    public PageResult SystemProductAttribuitFindById(@RequestBody SystemProductAttribuitFindByIdDTO systemProductAttribuitFindByIdDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(sysconfService.SystemProductAttribuitFindById(systemProductAttribuitFindByIdDTO), SystemProductAttribuitEditVO.class));
     }
 
     /**

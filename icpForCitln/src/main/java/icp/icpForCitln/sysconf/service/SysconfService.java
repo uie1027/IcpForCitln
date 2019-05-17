@@ -24,7 +24,7 @@ public interface SysconfService {
     MongoResult systemProductAttribuitAndValueGetList(SystemProductAttribuitAndValueListDTO systemProductAttribuitAndValueListDTO);     //产品属性页面列表
     List<SystemProductAttribuit> systemProductAttribuitGetList();       //产品属性 List
     List<SystemBrandInfo> systemBrandInfoGetList();     //品牌下拉列表
-    SystemProductAttribuit SystemProductAttribuitFindById(String id);       //通过ID查询 产品属性
+    SystemProductAttribuit SystemProductAttribuitFindById(SystemProductAttribuitFindByIdDTO systemProductAttribuitFindByIdDTO);       //通过ID查询 产品属性
     void SystemProductAttribuitEdit(SystemProductAttribuitEditDTO systemProductAttribuitEditDTO);  //产品属性编辑保存
     List<SystemProductAttribuitValue> systemProductAttribuitValueFindById(String systemProductAttribuitId);     //获取产品属性值列表
 }
