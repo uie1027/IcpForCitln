@@ -82,8 +82,8 @@ public class SysconfController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/systemProductAttribuitValueSave")
-    public PageResult systemProductAttribuitValueSave(@RequestBody List<SystemProductAttribuitValueSaveDTO> systemProductAttribuitValueSaveDTOList){
-        sysconfService.systemProductAttribuitValueSave(systemProductAttribuitValueSaveDTOList);
+    public PageResult systemProductAttribuitValueSave(@RequestBody SystemProductAttribuitValueSaveDTO systemProductAttribuitValueSaveDTO){
+        sysconfService.systemProductAttribuitValueSave(systemProductAttribuitValueSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值保存成功");
     }
 
@@ -188,5 +188,20 @@ public class SysconfController {
     public PageResult systemProductAttribuitValueEdit(@RequestBody SystemProductAttribuitValueEditListDTO systemProductAttribuitValueEditListDTO){
         sysconfService.systemProductAttribuitValueEdit(systemProductAttribuitValueEditListDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值编辑成功");
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/17 16:55
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性值删除
+     * @param: [systemProductAttribuitValueDeleteDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/systemProductAttribuitValueDelete")
+    public PageResult systemProductAttribuitValueDelete(@RequestBody SystemProductAttribuitValueDeleteDTO systemProductAttribuitValueDeleteDTO){
+
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值删除成功");
     }
 }

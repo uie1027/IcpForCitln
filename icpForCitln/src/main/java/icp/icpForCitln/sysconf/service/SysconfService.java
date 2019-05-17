@@ -20,7 +20,7 @@ public interface SysconfService {
     List<SystemDictionaryInfo> systemDictionaryInfoListFindByPage(SystemDictionaryInfoGetListDTO systemDictionaryInfoGetListDTO);   //根据字典类别查询字典 List
     void systemProductAttribuitSave(SystemProductAttribuitSaveDTO systemProductAttribuitSaveDTO);   //新增产品属性
     void systemProductAttribuitDelete(SystemProductAttribuitDeleteDTO systemProductAttribuitDeleteDTO);     //删除产品属性
-    void systemProductAttribuitValueSave(List<SystemProductAttribuitValueSaveDTO> systemProductAttribuitValueSaveDTOList);    //新增产品属性值
+    void systemProductAttribuitValueSave(SystemProductAttribuitValueSaveDTO systemProductAttribuitValueSaveDTO);    //新增产品属性值
     MongoResult systemProductAttribuitAndValueGetList(SystemProductAttribuitAndValueListDTO systemProductAttribuitAndValueListDTO);     //产品属性页面列表
     List<SystemProductAttribuit> systemProductAttribuitGetList();       //产品属性 List
     List<SystemBrandInfo> systemBrandInfoGetList();     //品牌下拉列表

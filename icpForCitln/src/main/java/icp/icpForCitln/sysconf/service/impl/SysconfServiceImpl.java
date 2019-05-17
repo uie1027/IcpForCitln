@@ -83,12 +83,10 @@ public class SysconfServiceImpl implements SysconfService {
      * @return: void
      */
     @Override
-    public void systemProductAttribuitValueSave(List<SystemProductAttribuitValueSaveDTO> systemProductAttribuitValueSaveDTOList) {
-        List<SystemProductAttribuitValue> systemProductAttribuitValueList = BeanCopyUtil.copy(systemProductAttribuitValueSaveDTOList, SystemProductAttribuitValue.class);
-        for(int i = 0; i < systemProductAttribuitValueList.size(); i++){
-            systemProductAttribuitValueList.get(i).setSystemProductAttribuitValueCode(GeneratedCodeUtil.generatedCode());
-        }
-        MongoUtil.insert(systemProductAttribuitValueList);
+    public void systemProductAttribuitValueSave(SystemProductAttribuitValueSaveDTO systemProductAttribuitValueSaveDTO) {
+        SystemProductAttribuitValue systemProductAttribuitValue = BeanCopyUtil.copy(systemProductAttribuitValueSaveDTO, SystemProductAttribuitValue.class);
+        systemProductAttribuitValue.setSystemProductAttribuitValueCode(GeneratedCodeUtil.generatedCode());
+        MongoUtil.insert(systemProductAttribuitValue);
     }
 
     /**
