@@ -283,4 +283,19 @@ public class PlatformServiceImpl implements PlatformService {
             return null;
         }
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 20:28
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性值编辑保存
+     * @param: [plantformDirectoryAttributeValueEditSaveDTO]
+     * @return: void
+     */
+    @Override
+    public void plantformDirectoryAttributeValueEditSave(PlantformDirectoryAttributeValueEditSaveDTO plantformDirectoryAttributeValueEditSaveDTO) {
+        PlantformDirectoryAttributeValue plantformDirectoryAttributeValue = BeanCopyUtil.copy(plantformDirectoryAttributeValueEditSaveDTO, PlantformDirectoryAttributeValue.class);
+        MongoUtil.upsert(plantformDirectoryAttributeValue, plantformDirectoryAttributeValueEditSaveDTO.getFlag());
+    }
 }
