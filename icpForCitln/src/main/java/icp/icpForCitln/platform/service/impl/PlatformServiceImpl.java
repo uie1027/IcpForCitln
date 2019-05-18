@@ -263,4 +263,24 @@ public class PlatformServiceImpl implements PlatformService {
         PlantformDirectoryAttributeValue plantformDirectoryAttributeValue = BeanCopyUtil.copy(plantformDirectoryAttributeValueGetListDTO, PlantformDirectoryAttributeValue.class);
         return MongoUtil.select(plantformDirectoryAttributeValue);
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 20:18
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性值编辑显示
+     * @param: [plantformDirectoryAttributeValueEditDTO]
+     * @return: icp.icpForCitln.platform.entity.PlantformDirectoryAttributeValue
+     */
+    @Override
+    public PlantformDirectoryAttributeValue plantformDirectoryAttributeValueEdit(PlantformDirectoryAttributeValueEditDTO plantformDirectoryAttributeValueEditDTO) {
+        PlantformDirectoryAttributeValue plantformDirectoryAttributeValue = BeanCopyUtil.copy(plantformDirectoryAttributeValueEditDTO, PlantformDirectoryAttributeValue.class);
+        List<PlantformDirectoryAttributeValue> plantformDirectoryAttributeValueList = MongoUtil.select(plantformDirectoryAttributeValue);
+        if(!CollectionUtils.isEmpty(plantformDirectoryAttributeValueList)){
+            return plantformDirectoryAttributeValueList.get(0);
+        } else {
+            return null;
+        }
+    }
 }

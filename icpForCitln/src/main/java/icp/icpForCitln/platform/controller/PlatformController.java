@@ -250,4 +250,19 @@ public class PlatformController {
         List<PlantformDirectoryAttributeValue> plantformDirectoryAttributeValueList = platformService.plantformDirectoryAttributeValueGetList(plantformDirectoryAttributeValueGetListDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(plantformDirectoryAttributeValueList, PlantformDirectoryAttributeValueGetListVO.class));
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 20:17
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性值编辑显示
+     * @param: [plantformDirectoryAttributeValueEditDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/plantformDirectoryAttributeValueEdit")
+    public PageResult plantformDirectoryAttributeValueEdit(@RequestBody PlantformDirectoryAttributeValueEditDTO plantformDirectoryAttributeValueEditDTO){
+        PlantformDirectoryAttributeValue plantformDirectoryAttributeValue = platformService.plantformDirectoryAttributeValueEdit(plantformDirectoryAttributeValueEditDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(plantformDirectoryAttributeValue, PlantformDirectoryAttributeValueEditVO.class));
+    }
 }

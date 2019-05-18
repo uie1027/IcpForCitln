@@ -33,4 +33,5 @@ public interface PlatformService {
     void plantformDirectoryAttributeValueAdd(PlantformDirectoryAttributeValueAddDTO plantformDirectoryAttributeValueAddDTO);    //目录属性值新增
     void plantformDirectoryAttributeValueDelete(PlantformDirectoryAttributeValueDeleteDTO plantformDirectoryAttributeValueDeleteDTO);   //目录属性值删除
     List<PlantformDirectoryAttributeValue> plantformDirectoryAttributeValueGetList(PlantformDirectoryAttributeValueGetListDTO plantformDirectoryAttributeValueGetListDTO);   //目录属性值列表
+    PlantformDirectoryAttributeValue plantformDirectoryAttributeValueEdit(PlantformDirectoryAttributeValueEditDTO plantformDirectoryAttributeValueEditDTO);     //根据ID查询目录属性值
 }
