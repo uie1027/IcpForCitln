@@ -144,4 +144,19 @@ public class PlatformController {
         platformService.plantformDirectoryAttributeAdd(pantformDirectoryAttributeAdd);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "目录属性新增成功");
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 19:10
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性删除
+     * @param: [plantformDirectoryAttributeDeleteDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/plantformDirectoryAttributeDelete")
+    public PageResult plantformDirectoryAttributeDelete(@RequestBody PlantformDirectoryAttributeDeleteDTO plantformDirectoryAttributeDeleteDTO){
+        platformService.plantformDirectoryAttributeDelete(plantformDirectoryAttributeDeleteDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "目录属性删除");
+    }
 }
