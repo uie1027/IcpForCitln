@@ -10,9 +10,11 @@ package icp.icpForCitln.platform.controller;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.platform.dto.*;
+import icp.icpForCitln.platform.entity.PlantformDirectoryAttribute;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.view.MenuInfoListView;
+import icp.icpForCitln.platform.vo.PlantformDirectoryAttributeGetListVO;
 import icp.icpForCitln.platform.vo.PlantformDirectoryInfoEditVO;
 import icp.icpForCitln.platform.vo.PlantformMailDisplayVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -158,5 +160,20 @@ public class PlatformController {
     public PageResult plantformDirectoryAttributeDelete(@RequestBody PlantformDirectoryAttributeDeleteDTO plantformDirectoryAttributeDeleteDTO){
         platformService.plantformDirectoryAttributeDelete(plantformDirectoryAttributeDeleteDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "目录属性删除");
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 19:16
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性列表显示
+     * @param: [plantformDirectoryAttributeGetListDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/plantformDirectoryAttributeGetList")
+    public PageResult plantformDirectoryAttributeGetList(@RequestBody PlantformDirectoryAttributeGetListDTO plantformDirectoryAttributeGetListDTO){
+        List<PlantformDirectoryAttribute> plantformDirectoryAttributeLis = platformService.plantformDirectoryAttributeGetList(plantformDirectoryAttributeGetListDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(plantformDirectoryAttributeLis, PlantformDirectoryAttributeGetListVO.class));
     }
 }

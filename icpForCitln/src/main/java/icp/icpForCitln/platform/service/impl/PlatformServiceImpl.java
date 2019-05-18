@@ -165,4 +165,20 @@ public class PlatformServiceImpl implements PlatformService {
         PlantformDirectoryAttribute plantformDirectoryAttribute = BeanCopyUtil.copy(plantformDirectoryAttributeDeleteDTO, PlantformDirectoryAttribute.class);
         MongoUtil.delete(plantformDirectoryAttribute);
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 19:18
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性列表
+     * @param: [plantformDirectoryAttributeGetListDTO]
+     * @return: java.util.List<icp.icpForCitln.platform.entity.PlantformDirectoryAttribute>
+     */
+    @Override
+    public List<PlantformDirectoryAttribute> plantformDirectoryAttributeGetList(PlantformDirectoryAttributeGetListDTO plantformDirectoryAttributeGetListDTO) {
+        PlantformDirectoryAttribute plantformDirectoryAttribute = BeanCopyUtil.copy(plantformDirectoryAttributeGetListDTO, PlantformDirectoryAttribute.class);
+        List<PlantformDirectoryAttribute> plantformDirectoryAttributeLis = MongoUtil.select(plantformDirectoryAttribute);
+        return plantformDirectoryAttributeLis;
+    }
 }
