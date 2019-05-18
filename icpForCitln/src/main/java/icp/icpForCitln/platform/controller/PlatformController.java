@@ -10,10 +10,12 @@ package icp.icpForCitln.platform.controller;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
+import icp.icpForCitln.platform.dto.PlantformDirectoryInfoEditDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.view.MenuInfoListView;
+import icp.icpForCitln.platform.vo.PlantformDirectoryInfoEditVO;
 import icp.icpForCitln.platform.vo.PlantformMailDisplayVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -99,5 +101,19 @@ public class PlatformController {
     public PageResult menuInfoGetList(){
         List<MenuInfoListView> menuInfoListViewList = platformService.menuInfoGetList();
         return PageResult.returnResult(PageResult.SUCCESS_CODE, menuInfoListViewList);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 18:34
+     * @since: JDK 1.8
+     *
+     * @description: 目录编辑显示
+     * @param: [plantformDirectoryInfoEditDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/plantformDirectoryInfoEdit")
+    public PageResult plantformDirectoryInfoEdit(PlantformDirectoryInfoEditDTO plantformDirectoryInfoEditDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(platformService.plantformDirectoryInfoEdit(plantformDirectoryInfoEditDTO), PlantformDirectoryInfoEditVO.class));
     }
 }

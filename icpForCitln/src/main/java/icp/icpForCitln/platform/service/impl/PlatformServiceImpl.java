@@ -12,6 +12,7 @@ import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
+import icp.icpForCitln.platform.dto.PlantformDirectoryInfoEditDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
@@ -19,6 +20,7 @@ import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.view.MenuInfoListView;
 import icp.icpForCitln.platform.view.PlantformDirectoryInfoListView;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -97,5 +99,25 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public List<MenuInfoListView> menuInfoGetList() {
         return MongoUtil.select(new MenuInfoListView());
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 18:35
+     * @since: JDK 1.8
+     *
+     * @description: 通过 ID 获取目录信息
+     * @param: [plantformDirectoryInfoEditDTO]
+     * @return: icp.icpForCitln.platform.entity.PlantformDirectoryInfo
+     */
+    @Override
+    public PlantformDirectoryInfo plantformDirectoryInfoEdit(PlantformDirectoryInfoEditDTO plantformDirectoryInfoEditDTO) {
+        PlantformDirectoryInfo plantformDirectoryInfo = BeanCopyUtil.copy(plantformDirectoryInfoEditDTO, PlantformDirectoryInfo.class);
+        List<PlantformDirectoryInfo> plantformDirectoryInfoList = MongoUtil.select(plantformDirectoryInfo);
+       if(!CollectionUtils.isEmpty(plantformDirectoryInfoList)){
+           return plantformDirectoryInfoList.get(0);
+       } else {
+           return null;
+       }
     }
 }
