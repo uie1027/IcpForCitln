@@ -9,6 +9,7 @@ package icp.icpForCitln.platform.service;
 
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoEditDTO;
+import icp.icpForCitln.platform.dto.PlantformDirectoryInfoEditSaveDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
@@ -24,4 +25,5 @@ public interface PlatformService {
     List<PlantformMailDisplay> plantformMailDisplayGetList();   //获取商城展示列表
     List<MenuInfoListView> menuInfoGetList();   //获取菜单列表
     PlantformDirectoryInfo plantformDirectoryInfoEdit(PlantformDirectoryInfoEditDTO plantformDirectoryInfoEditDTO);    //目录编辑显示
+    void plantformDirectoryInfoEditSave(PlantformDirectoryInfoEditSaveDTO plantformDirectoryInfoEditSaveDTO);   //目录编辑保存
 }

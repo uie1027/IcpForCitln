@@ -11,6 +11,7 @@ import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoEditDTO;
+import icp.icpForCitln.platform.dto.PlantformDirectoryInfoEditSaveDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
@@ -113,7 +114,22 @@ public class PlatformController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/plantformDirectoryInfoEdit")
-    public PageResult plantformDirectoryInfoEdit(PlantformDirectoryInfoEditDTO plantformDirectoryInfoEditDTO){
+    public PageResult plantformDirectoryInfoEdit(@RequestBody PlantformDirectoryInfoEditDTO plantformDirectoryInfoEditDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(platformService.plantformDirectoryInfoEdit(plantformDirectoryInfoEditDTO), PlantformDirectoryInfoEditVO.class));
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 18:54
+     * @since: JDK 1.8
+     *
+     * @description: 目录编辑保存
+     * @param: [plantformDirectoryInfoEditSaveDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/plantformDirectoryInfoEditSave")
+    public PageResult plantformDirectoryInfoEditSave(@RequestBody PlantformDirectoryInfoEditSaveDTO plantformDirectoryInfoEditSaveDTO){
+        platformService.plantformDirectoryInfoEditSave(plantformDirectoryInfoEditSaveDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "目录编辑成功");
     }
 }

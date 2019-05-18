@@ -13,6 +13,7 @@ import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoEditDTO;
+import icp.icpForCitln.platform.dto.PlantformDirectoryInfoEditSaveDTO;
 import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
 import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
@@ -119,5 +120,20 @@ public class PlatformServiceImpl implements PlatformService {
        } else {
            return null;
        }
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 18:46
+     * @since: JDK 1.8
+     *
+     * @description: 目录编辑保存
+     * @param: [plantformDirectoryInfoEditSaveDTO]
+     * @return: void
+     */
+    @Override
+    public void plantformDirectoryInfoEditSave(PlantformDirectoryInfoEditSaveDTO plantformDirectoryInfoEditSaveDTO) {
+        PlantformDirectoryInfo plantformDirectoryInfo = BeanCopyUtil.copy(plantformDirectoryInfoEditSaveDTO, PlantformDirectoryInfo.class);
+        MongoUtil.upsert(plantformDirectoryInfo, plantformDirectoryInfoEditSaveDTO.getFlag());
     }
 }
