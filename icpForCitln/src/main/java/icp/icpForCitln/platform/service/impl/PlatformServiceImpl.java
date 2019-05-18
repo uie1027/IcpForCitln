@@ -13,6 +13,7 @@ import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
 import icp.icpForCitln.platform.dto.*;
 import icp.icpForCitln.platform.entity.PlantformDirectoryAttribute;
+import icp.icpForCitln.platform.entity.PlantformDirectoryAttributeValue;
 import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
@@ -215,5 +216,21 @@ public class PlatformServiceImpl implements PlatformService {
     public void plantformDirectoryAttributeEditSave(PlantformDirectoryAttributeEditSaveDTO plantformDirectoryAttributeEditSaveDTO) {
         PlantformDirectoryAttribute plantformDirectoryAttribute = BeanCopyUtil.copy(plantformDirectoryAttributeEditSaveDTO, PlantformDirectoryAttribute.class);
         MongoUtil.upsert(plantformDirectoryAttribute, plantformDirectoryAttributeEditSaveDTO.getFlag());
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 19:53
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性值新增
+     * @param: [plantformDirectoryAttributeValueAddDTO]
+     * @return: void
+     */
+    @Override
+    public void plantformDirectoryAttributeValueAdd(PlantformDirectoryAttributeValueAddDTO plantformDrectoryAttributeValueAddDTO) {
+        PlantformDirectoryAttributeValue plantformDirectoryAttributeValue = BeanCopyUtil.copy(plantformDrectoryAttributeValueAddDTO, PlantformDirectoryAttributeValue.class);
+        plantformDirectoryAttributeValue.setPlantformAttributeCode(GeneratedCodeUtil.generatedCode());
+        MongoUtil.insert(plantformDirectoryAttributeValue);
     }
 }

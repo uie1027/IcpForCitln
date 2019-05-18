@@ -207,4 +207,19 @@ public class PlatformController {
         platformService.plantformDirectoryAttributeEditSave(plantformDirectoryAttributeEditSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "目录属性编辑成功");
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 19:51
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性值新增
+     * @param: [plantformDirectoryAttributeValueAddDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/plantformDirectoryAttributeValueAdd")
+    public PageResult plantformDirectoryAttributeValueAdd(@RequestBody PlantformDirectoryAttributeValueAddDTO plantformDirectoryAttributeValueAddDTO){
+        platformService.plantformDirectoryAttributeValueAdd(plantformDirectoryAttributeValueAddDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "目录属性值新增成功");
+    }
 }
