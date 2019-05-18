@@ -200,8 +200,23 @@ public class SysconfController {
      * @return: icp.icpForCitln.common.result.PageResult
      */
     @PostMapping("/systemProductAttribuitValueEditSave")
-    public PageResult systemProductAttribuitValueEditSave(@RequestBody SystemProductAttribuitValueEditDTO systemProductAttribuitValueEditDTO){
-        sysconfService.systemProductAttribuitValueEditSave(systemProductAttribuitValueEditDTO);
+    public PageResult systemProductAttribuitValueEditSave(@RequestBody SystemProductAttribuitValueEditSaveDTO systemProductAttribuitValueEditSaveDTO){
+        sysconfService.systemProductAttribuitValueEditSave(systemProductAttribuitValueEditSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值编辑成功");
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 14:37
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性编辑显示
+     * @param: [systemProductAttribuitValueEditDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/systemProductAttribuitValueEdit")
+    public PageResult systemProductAttribuitValueEdit(@RequestBody SystemProductAttribuitValueEditDTO systemProductAttribuitValueEditDTO){
+        SystemProductAttribuitValue systemProductAttribuitValue = sysconfService.systemProductAttribuitValueEdit(systemProductAttribuitValueEditDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemProductAttribuitValue, SystemProductAttribuitValueVO.class));
     }
 }

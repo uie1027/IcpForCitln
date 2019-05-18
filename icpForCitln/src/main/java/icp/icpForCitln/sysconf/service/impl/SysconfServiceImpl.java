@@ -223,8 +223,29 @@ public class SysconfServiceImpl implements SysconfService {
      * @return: void
      */
     @Override
-    public void systemProductAttribuitValueEditSave(SystemProductAttribuitValueEditDTO systemProductAttribuitValueEditDTO) {
-        SystemProductAttribuitValue systemProductAttribuitValue = BeanCopyUtil.copy(systemProductAttribuitValueEditDTO, SystemProductAttribuitValue.class);
-        MongoUtil.upsert(systemProductAttribuitValue, systemProductAttribuitValueEditDTO.getFlag());
+    public void systemProductAttribuitValueEditSave(SystemProductAttribuitValueEditSaveDTO systemProductAttribuitValueEditSaveDTO) {
+        SystemProductAttribuitValue systemProductAttribuitValue = BeanCopyUtil.copy(systemProductAttribuitValueEditSaveDTO, SystemProductAttribuitValue.class);
+        MongoUtil.upsert(systemProductAttribuitValue, systemProductAttribuitValueEditSaveDTO.getFlag());
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 14:39
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性值编辑显示
+     * @param: [systemProductAttribuitValueEditDTO]
+     * @return: icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue
+     */
+    @Override
+    public SystemProductAttribuitValue systemProductAttribuitValueEdit(SystemProductAttribuitValueEditDTO systemProductAttribuitValueEditDTO) {
+        SystemProductAttribuitValue systemProductAttribuitValue = new SystemProductAttribuitValue();
+        systemProductAttribuitValue.setId(systemProductAttribuitValueEditDTO.getId());
+        List<SystemProductAttribuitValue> systemProductAttribuitValueList = MongoUtil.select(systemProductAttribuitValue);
+        if(!CollectionUtils.isEmpty(systemProductAttribuitValueList)){
+            return systemProductAttribuitValueList.get(0);
+        } else {
+            return null;
+        }
     }
 }

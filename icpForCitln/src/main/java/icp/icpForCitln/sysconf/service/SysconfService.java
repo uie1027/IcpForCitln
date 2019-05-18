@@ -28,5 +28,6 @@ public interface SysconfService {
     void SystemProductAttribuitEdit(SystemProductAttribuitEditDTO systemProductAttribuitEditDTO);  //产品属性编辑保存
     List<SystemProductAttribuitValue> systemProductAttribuitValueFindById(SystemProductAttribuitValueFindByIdDTO systemProductAttribuitValueFindByIdDTO);     //获取产品属性值列表
     void systemProductAttribuitValueDelete(SystemProductAttribuitValueDeleteDTO systemProductAttribuitValueDeleteDTO);          //产品属性值删除
-    void systemProductAttribuitValueEditSave(SystemProductAttribuitValueEditDTO systemProductAttribuitValueEditDTO);//产品属性值编辑保存
+    void systemProductAttribuitValueEditSave(SystemProductAttribuitValueEditSaveDTO systemProductAttribuitValueEditSaveDTO);//产品属性值编辑保存
+    SystemProductAttribuitValue systemProductAttribuitValueEdit(SystemProductAttribuitValueEditDTO systemProductAttribuitValueEditDTO); //产品属性值编辑显示
 }
