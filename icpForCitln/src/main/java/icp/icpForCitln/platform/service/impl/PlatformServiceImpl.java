@@ -11,10 +11,8 @@ import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
-import icp.icpForCitln.platform.dto.PlantformDirectoryInfoDeleteDTO;
-import icp.icpForCitln.platform.dto.PlantformDirectoryInfoEditDTO;
-import icp.icpForCitln.platform.dto.PlantformDirectoryInfoEditSaveDTO;
-import icp.icpForCitln.platform.dto.PlantformDirectoryInfoSaveDTO;
+import icp.icpForCitln.platform.dto.*;
+import icp.icpForCitln.platform.entity.PlantformDirectoryAttribute;
 import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
@@ -135,5 +133,21 @@ public class PlatformServiceImpl implements PlatformService {
     public void plantformDirectoryInfoEditSave(PlantformDirectoryInfoEditSaveDTO plantformDirectoryInfoEditSaveDTO) {
         PlantformDirectoryInfo plantformDirectoryInfo = BeanCopyUtil.copy(plantformDirectoryInfoEditSaveDTO, PlantformDirectoryInfo.class);
         MongoUtil.upsert(plantformDirectoryInfo, plantformDirectoryInfoEditSaveDTO.getFlag());
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 19:02
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性新增
+     * @param: [pantformDirectoryAttributeAdd]
+     * @return: void
+     */
+    @Override
+    public void plantformDirectoryAttributeAdd(PlantformDirectoryAttributeAddDTO pantformDirectoryAttributeAdd) {
+        PlantformDirectoryAttribute plantformDirectoryAttribute = BeanCopyUtil.copy(pantformDirectoryAttributeAdd, PlantformDirectoryAttribute.class);
+        plantformDirectoryAttribute.setPlantformAttributeCode(GeneratedCodeUtil.generatedCode());
+        MongoUtil.insert(plantformDirectoryAttribute);
     }
 }
