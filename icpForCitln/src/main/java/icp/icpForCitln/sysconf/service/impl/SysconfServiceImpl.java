@@ -199,21 +199,6 @@ public class SysconfServiceImpl implements SysconfService {
 
     /**
      * @author: 方瑞冬
-     * @date: 2019/5/17 16:17
-     * @since: JDK 1.8
-     *
-     * @description: 产品属性值编辑保存
-     * @param: [systemProductAttribuitValueEditDTOList]
-     * @return: void
-     */
-    @Override
-    public void systemProductAttribuitValueEdit(SystemProductAttribuitValueEditListDTO systemProductAttribuitValueEditListDTO) {
-        List<SystemProductAttribuitValue> systemProductAttribuitValueList = BeanCopyUtil.copy(systemProductAttribuitValueEditListDTO.getSystemProductAttribuitValueEditDTOList(), SystemProductAttribuitValue.class);
-        MongoUtil.upsert(systemProductAttribuitValueList, systemProductAttribuitValueEditListDTO.getFlag());
-    }
-
-    /**
-     * @author: 方瑞冬
      * @date: 2019/5/18 14:12
      * @since: JDK 1.8
      *
@@ -226,5 +211,20 @@ public class SysconfServiceImpl implements SysconfService {
         SystemProductAttribuitValue systemProductAttribuitValue = new SystemProductAttribuitValue();
         systemProductAttribuitValue.setId(systemProductAttribuitValueDeleteDTO.getId());
         MongoUtil.delete(systemProductAttribuitValue);
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/17 16:17
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性值编辑保存
+     * @param: [systemProductAttribuitValueEditDTOList]
+     * @return: void
+     */
+    @Override
+    public void systemProductAttribuitValueEditSave(SystemProductAttribuitValueEditDTO systemProductAttribuitValueEditDTO) {
+        SystemProductAttribuitValue systemProductAttribuitValue = BeanCopyUtil.copy(systemProductAttribuitValueEditDTO, SystemProductAttribuitValue.class);
+        MongoUtil.upsert(systemProductAttribuitValue, systemProductAttribuitValueEditDTO.getFlag());
     }
 }

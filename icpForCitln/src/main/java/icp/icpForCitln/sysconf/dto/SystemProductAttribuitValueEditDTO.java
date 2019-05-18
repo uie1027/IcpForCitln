@@ -14,4 +14,6 @@ public class SystemProductAttribuitValueEditDTO {
     private String id;  //ID
 
     private String systemProductAttribuitContent;       //产品属性值内容
+
+    private Integer flag;       //是否更新到历史数据 1 更新 2不更新
 }

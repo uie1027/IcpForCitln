@@ -177,21 +177,6 @@ public class SysconfController {
 
     /**
      * @author: 方瑞冬
-     * @date: 2019/5/17 16:16
-     * @since: JDK 1.8
-     *
-     * @description: 产品属性值编辑保存
-     * @param: [systemProductAttribuitValueEditDTOList]
-     * @return: icp.icpForCitln.common.result.PageResult
-     */
-    @PostMapping("/systemProductAttribuitValueEdit")
-    public PageResult systemProductAttribuitValueEdit(@RequestBody SystemProductAttribuitValueEditListDTO systemProductAttribuitValueEditListDTO){
-        sysconfService.systemProductAttribuitValueEdit(systemProductAttribuitValueEditListDTO);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值编辑成功");
-    }
-
-    /**
-     * @author: 方瑞冬
      * @date: 2019/5/17 16:55
      * @since: JDK 1.8
      *
@@ -203,5 +188,20 @@ public class SysconfController {
     public PageResult systemProductAttribuitValueDelete(@RequestBody SystemProductAttribuitValueDeleteDTO systemProductAttribuitValueDeleteDTO){
         sysconfService.systemProductAttribuitValueDelete(systemProductAttribuitValueDeleteDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值删除成功");
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/17 16:16
+     * @since: JDK 1.8
+     *
+     * @description: 产品属性值编辑保存
+     * @param: [systemProductAttribuitValueEditDTOList]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/systemProductAttribuitValueEditSave")
+    public PageResult systemProductAttribuitValueEditSave(@RequestBody SystemProductAttribuitValueEditDTO systemProductAttribuitValueEditDTO){
+        sysconfService.systemProductAttribuitValueEditSave(systemProductAttribuitValueEditDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值编辑成功");
     }
 }
