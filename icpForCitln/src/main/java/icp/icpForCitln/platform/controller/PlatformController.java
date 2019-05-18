@@ -192,4 +192,19 @@ public class PlatformController {
         PlantformDirectoryAttribute plantformDirectoryAttribute = platformService.plantformDirectoryAttributeEdit(plantformDirectoryAttributeEditDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(plantformDirectoryAttribute, PlantformDirectoryAttributeEditVO.class));
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 19:39
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性编辑保存
+     * @param: [plantformDirectoryAttributeEditSaveDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/plantformDirectoryAttributeEditSave")
+    public PageResult plantformDirectoryAttributeEditSave(@RequestBody PlantformDirectoryAttributeEditSaveDTO plantformDirectoryAttributeEditSaveDTO){
+        platformService.plantformDirectoryAttributeEditSave(plantformDirectoryAttributeEditSaveDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, "目录属性编辑成功");
+    }
 }
