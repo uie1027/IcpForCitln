@@ -271,7 +271,7 @@ public class PlatformController {
      * @date: 2019/5/18 20:25
      * @since: JDK 1.8
      *
-     * @description: 产品属性值编辑保存
+     * @description: 目录属性值编辑保存
      * @param: []
      * @return: icp.icpForCitln.common.result.PageResult
      */

@@ -289,7 +289,7 @@ public class PlatformServiceImpl implements PlatformService {
      * @date: 2019/5/18 20:28
      * @since: JDK 1.8
      *
-     * @description: 产品属性值编辑保存
+     * @description: 目录属性值编辑保存
      * @param: [plantformDirectoryAttributeValueEditSaveDTO]
      * @return: void
      */
