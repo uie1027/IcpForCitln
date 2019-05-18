@@ -181,4 +181,24 @@ public class PlatformServiceImpl implements PlatformService {
         List<PlantformDirectoryAttribute> plantformDirectoryAttributeLis = MongoUtil.select(plantformDirectoryAttribute);
         return plantformDirectoryAttributeLis;
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 19:31
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性编辑显示
+     * @param: [plantformDirectoryAttributeEditDTO]
+     * @return: icp.icpForCitln.platform.entity.PlantformDirectoryAttribute
+     */
+    @Override
+    public PlantformDirectoryAttribute plantformDirectoryAttributeEdit(PlantformDirectoryAttributeEditDTO plantformDirectoryAttributeEditDTO) {
+        PlantformDirectoryAttribute plantformDirectoryAttribute = BeanCopyUtil.copy(plantformDirectoryAttributeEditDTO, PlantformDirectoryAttribute.class);
+        List<PlantformDirectoryAttribute> plantformDirectoryAttributeList = MongoUtil.select(plantformDirectoryAttribute);
+        if(!CollectionUtils.isEmpty(plantformDirectoryAttributeList)){
+            return plantformDirectoryAttributeList.get(0);
+        } else {
+            return null;
+        }
+    }
 }

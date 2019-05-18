@@ -14,6 +14,7 @@ import icp.icpForCitln.platform.entity.PlantformDirectoryAttribute;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.view.MenuInfoListView;
+import icp.icpForCitln.platform.vo.PlantformDirectoryAttributeEditVO;
 import icp.icpForCitln.platform.vo.PlantformDirectoryAttributeGetListVO;
 import icp.icpForCitln.platform.vo.PlantformDirectoryInfoEditVO;
 import icp.icpForCitln.platform.vo.PlantformMailDisplayVO;
@@ -175,5 +176,20 @@ public class PlatformController {
     public PageResult plantformDirectoryAttributeGetList(@RequestBody PlantformDirectoryAttributeGetListDTO plantformDirectoryAttributeGetListDTO){
         List<PlantformDirectoryAttribute> plantformDirectoryAttributeLis = platformService.plantformDirectoryAttributeGetList(plantformDirectoryAttributeGetListDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(plantformDirectoryAttributeLis, PlantformDirectoryAttributeGetListVO.class));
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 19:30
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性编辑显示
+     * @param: [plantformDirectoryAttributeEditDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/plantformDirectoryAttributeEdit")
+    public PageResult plantformDirectoryAttributeEdit(@RequestBody PlantformDirectoryAttributeEditDTO plantformDirectoryAttributeEditDTO){
+        PlantformDirectoryAttribute plantformDirectoryAttribute = platformService.plantformDirectoryAttributeEdit(plantformDirectoryAttributeEditDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(plantformDirectoryAttribute, PlantformDirectoryAttributeEditVO.class));
     }
 }
