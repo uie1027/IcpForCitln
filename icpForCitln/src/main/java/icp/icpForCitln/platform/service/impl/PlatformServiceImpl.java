@@ -233,4 +233,19 @@ public class PlatformServiceImpl implements PlatformService {
         plantformDirectoryAttributeValue.setPlantformAttributeCode(GeneratedCodeUtil.generatedCode());
         MongoUtil.insert(plantformDirectoryAttributeValue);
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/18 20:01
+     * @since: JDK 1.8
+     *
+     * @description: 目录属性值删除
+     * @param: [plantformDirectoryAttributeValueDeleteDTO]
+     * @return: void
+     */
+    @Override
+    public void plantformDirectoryAttributeValueDelete(PlantformDirectoryAttributeValueDeleteDTO plantformDirectoryAttributeValueDeleteDTO) {
+        PlantformDirectoryAttributeValue plantformDirectoryAttributeValue = BeanCopyUtil.copy(plantformDirectoryAttributeValueDeleteDTO, PlantformDirectoryAttributeValue.class);
+        MongoUtil.delete(plantformDirectoryAttributeValue);
+    }
 }
