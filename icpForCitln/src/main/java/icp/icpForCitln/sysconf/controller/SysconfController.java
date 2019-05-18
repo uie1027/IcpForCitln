@@ -165,11 +165,11 @@ public class SysconfController {
      * @date: 2019/5/17 14:55
      * @since: JDK 1.8
      *
-     * @description: 产品属性值编辑显示
+     * @description: 产品属性值列表显示
      * @param: [systemProductAttribuitId]
      * @return: icp.icpForCitln.common.result.PageResult
      */
-    @PostMapping("/systemProductAttribuitValueFindById")
+    @PostMapping("/systemProductAttribuitValueGetList")
     public PageResult systemProductAttribuitValueFindById(@RequestBody SystemProductAttribuitValueFindByIdDTO systemProductAttribuitValueFindByIdDTO){
         List<SystemProductAttribuitValue> systemProductAttribuitValueList = sysconfService.systemProductAttribuitValueFindById(systemProductAttribuitValueFindByIdDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemProductAttribuitValueList, SystemProductAttribuitValueVO.class));
@@ -201,7 +201,7 @@ public class SysconfController {
      */
     @PostMapping("/systemProductAttribuitValueDelete")
     public PageResult systemProductAttribuitValueDelete(@RequestBody SystemProductAttribuitValueDeleteDTO systemProductAttribuitValueDeleteDTO){
-
+        sysconfService.systemProductAttribuitValueDelete(systemProductAttribuitValueDeleteDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值删除成功");
     }
 }

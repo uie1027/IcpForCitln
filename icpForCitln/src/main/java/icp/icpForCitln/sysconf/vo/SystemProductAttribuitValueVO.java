@@ -14,4 +14,6 @@ public class SystemProductAttribuitValueVO {
     private String id; //产品属性值ID
 
     private String systemProductAttribuitContent;  //产品属性值内容
+
+    private String systemProductAttribuitValueCode; //产品属性值编码
 }

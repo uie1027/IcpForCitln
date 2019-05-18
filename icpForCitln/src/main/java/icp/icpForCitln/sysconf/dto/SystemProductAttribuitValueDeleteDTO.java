@@ -11,5 +11,5 @@ import lombok.Data;
 
 @Data
 public class SystemProductAttribuitValueDeleteDTO {
-    private String systemProductAttribuitId;    //产品属性ID
+    private String id;    //产品属性ID
 }
