@@ -13,12 +13,10 @@ import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
 import icp.icpForCitln.productGroup.dao.ProductGroupDAO;
 import icp.icpForCitln.productGroup.dto.ProductGroupInfoAddDTO;
+import icp.icpForCitln.productGroup.dto.ProductGroupPlantformDirectoryAttributeDTO;
 import icp.icpForCitln.productGroup.dto.ProductGroupSystemAttributeDTO;
 import icp.icpForCitln.productGroup.dto.ProductGroupSystemAttributeFindDTO;
-import icp.icpForCitln.productGroup.entity.ProductGroupInfo;
-import icp.icpForCitln.productGroup.entity.ProductGroupMailDisplay;
-import icp.icpForCitln.productGroup.entity.ProductGroupPicture;
-import icp.icpForCitln.productGroup.entity.ProductGroupSystemAttribute;
+import icp.icpForCitln.productGroup.entity.*;
 import icp.icpForCitln.productGroup.service.ProductGroupService;
 import icp.icpForCitln.productGroup.vo.ProductGroupSystemAttributeVO;
 import icp.icpForCitln.sysconf.dto.SystemProductAttribuitValueDTO;
@@ -48,9 +46,18 @@ public class ProductGroupServiceImpl implements ProductGroupService {
         productGroupInfo.setProductGroupCode(GeneratedCodeUtil.generatedCode());
         MongoUtil.insert(productGroupInfo);
 
+        List<ProductGroupPlantformDirectoryAttributeDTO> productGroupPlantformDirectoryAttributeDTOList = productGroupInfoAddDTO.getProductGroupPlantformDirectoryAttributeDTOList();
         String[] productGroupSystemAttributeIdList = productGroupInfoAddDTO.getProductGroupSystemAttributeIdList();
         String[] productGroupMailDisplayIdList = productGroupInfoAddDTO.getProductGroupMailDisplayIdList();
         String[] productGroupPictureList = productGroupInfoAddDTO.getProductGroupPicture();
+
+        ProductGroupPlantformDirectoryAttribute productGroupPlantformDirectoryAttribute = new ProductGroupPlantformDirectoryAttribute();
+        productGroupPlantformDirectoryAttribute.setProductGroupInfoId(productGroupInfo.getId());
+        for(int q = 0; q < productGroupPlantformDirectoryAttributeDTOList.size(); q++){
+            productGroupPlantformDirectoryAttribute.setPlantformDirectoryAttributeId(productGroupPlantformDirectoryAttributeDTOList.get(q).getPlantformDirectoryAttributeId());
+            productGroupPlantformDirectoryAttribute.setPlantformDirectoryAttributeValueId(productGroupPlantformDirectoryAttributeDTOList.get(q).getPlantformDirectoryAttributeValueId());
+            MongoUtil.insert(productGroupPlantformDirectoryAttribute);
+        }
 
         ProductGroupSystemAttribute productGroupSystemAttribute = new ProductGroupSystemAttribute();
         productGroupSystemAttribute.setProductGroupInfoId(productGroupInfo.getId());

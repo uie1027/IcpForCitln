@@ -9,6 +9,8 @@ package icp.icpForCitln.productGroup.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class ProductGroupInfoAddDTO {
     private String	productGroupName;     //产品组名称
@@ -16,6 +18,8 @@ public class ProductGroupInfoAddDTO {
     private String	plantformFirstDirectory;      //系统一级目录
 
     private String	plantformSecondDirectory;     //系统二级目录
+
+    private List<ProductGroupPlantformDirectoryAttributeDTO> productGroupPlantformDirectoryAttributeDTOList;  //目录属性及属性值List
 
     private String[] productGroupSystemAttributeIdList;     //产品属性 id列表
 

@@ -20,6 +20,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class ProductGroupSystemAttribute extends BaseEntity {
     @Field("PRODUCT_GROUP_INFO_ID")
     private String productGroupInfoId;     //产品组ID
+
     @Field("SYSTEM_PRODUCT_ATTRIBUIT_ID")
     private String systemProductAttribuitId;    //系统产品属性ID
 }
