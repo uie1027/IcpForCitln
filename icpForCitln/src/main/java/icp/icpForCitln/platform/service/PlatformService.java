@@ -7,6 +7,7 @@
  */
 package icp.icpForCitln.platform.service;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.platform.dto.*;
 import icp.icpForCitln.platform.entity.PlantformDirectoryAttribute;
 import icp.icpForCitln.platform.entity.PlantformDirectoryAttributeValue;
@@ -27,7 +28,7 @@ public interface PlatformService {
     void plantformDirectoryInfoEditSave(PlantformDirectoryInfoEditSaveDTO plantformDirectoryInfoEditSaveDTO);   //目录编辑保存
     void plantformDirectoryAttributeAdd(PlantformDirectoryAttributeAddDTO pantformDirectoryAttributeAdd);  //目录属性新增
     void plantformDirectoryAttributeDelete(PlantformDirectoryAttributeDeleteDTO plantformDirectoryAttributeDeleteDTO);  //目录属性删除
-    List<PlantformDirectoryAttribute> plantformDirectoryAttributeGetList(PlantformDirectoryAttributeGetListDTO plantformDirectoryAttributeGetListDTO);  //目录属性列表
+    MongoResult plantformDirectoryAttributeGetList(PlantformDirectoryAttributeGetListDTO plantformDirectoryAttributeGetListDTO);  //目录属性列表
     PlantformDirectoryAttribute plantformDirectoryAttributeEdit(PlantformDirectoryAttributeEditDTO plantformDirectoryAttributeEditDTO);     //通过ID获取目录属性
     void plantformDirectoryAttributeEditSave(PlantformDirectoryAttributeEditSaveDTO plantformDirectoryAttributeEditSaveDTO); //目录属性编辑保存
     void plantformDirectoryAttributeValueAdd(PlantformDirectoryAttributeValueAddDTO plantformDirectoryAttributeValueAddDTO);    //目录属性值新增

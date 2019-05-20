@@ -7,6 +7,7 @@
  */
 package icp.icpForCitln.platform.controller;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.platform.dto.*;
@@ -172,8 +173,8 @@ public class PlatformController {
      */
     @PostMapping("/plantformDirectoryAttributeGetList")
     public PageResult plantformDirectoryAttributeGetList(@RequestBody PlantformDirectoryAttributeGetListDTO plantformDirectoryAttributeGetListDTO){
-        List<PlantformDirectoryAttribute> plantformDirectoryAttributeLis = platformService.plantformDirectoryAttributeGetList(plantformDirectoryAttributeGetListDTO);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(plantformDirectoryAttributeLis, PlantformDirectoryAttributeGetListVO.class));
+        MongoResult mongoResult = platformService.plantformDirectoryAttributeGetList(plantformDirectoryAttributeGetListDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, mongoResult);
     }
 
     /**

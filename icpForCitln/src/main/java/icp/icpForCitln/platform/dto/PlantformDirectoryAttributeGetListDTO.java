@@ -12,4 +12,8 @@ import lombok.Data;
 @Data
 public class PlantformDirectoryAttributeGetListDTO {
     private String plantformDirectoryId;    //系统目录id
+
+    private Integer pageIndex;  //页码
+
+    private Integer pageSize;   //页面条数
 }
