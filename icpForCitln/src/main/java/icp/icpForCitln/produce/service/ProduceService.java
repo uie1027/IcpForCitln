@@ -12,9 +12,11 @@ import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.produce.dto.PlannedOrderSaveDTO;
 import icp.icpForCitln.produce.dto.ProductionConfirmOrderFindDTO;
 import icp.icpForCitln.produce.dto.ProductionOrderFindDTO;
+import icp.icpForCitln.produce.dto.ProductionOrderSaveDTO;
 
 public interface ProduceService {
     void PlannedOrderSave(PlannedOrderSaveDTO plannedOrderSaveDTO);
     MongoResult productionConfirmOrderFind(Integer pageIndex, Integer pageSize, ProductionConfirmOrderFindDTO productionConfirmOrderFindDTO);
     MongoResult productionOrderFind(Integer pageIndex, Integer pageSize, ProductionOrderFindDTO productionOrderFindDTO);
+    void productionOrderSave(ProductionOrderSaveDTO productionOrderSaveDTO);
 }

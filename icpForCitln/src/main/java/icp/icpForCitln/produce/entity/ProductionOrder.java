@@ -48,4 +48,16 @@ public class ProductionOrder extends BaseEntity {
     @Field("ORDER_CREATE_TIME")
     private Date orderCreateTime; //订单创建时间
 
+    @Field("COMPANY_INFO_ID")
+    private String companyInfoId;  //公司id
+
+    @Field("PLANNED_ORDER_ID")
+    private String plannedOrderId;  //计划订单id
+
+    @Field("PLANNED_ORDER_DETAIL_ID")
+    private String plannedOrderDetailId;  //计划订单行项目id
+
+    @Field("REMARK")
+    private String remark;  //备注
+
 }

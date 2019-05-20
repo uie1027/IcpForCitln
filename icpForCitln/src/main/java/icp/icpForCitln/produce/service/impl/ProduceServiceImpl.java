@@ -15,9 +15,8 @@ import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.produce.dto.PlannedOrderSaveDTO;
 import icp.icpForCitln.produce.dto.ProductionConfirmOrderFindDTO;
 import icp.icpForCitln.produce.dto.ProductionOrderFindDTO;
-import icp.icpForCitln.produce.entity.PlannedOrder;
-import icp.icpForCitln.produce.entity.PlannedOrderDetail;
-import icp.icpForCitln.produce.entity.ProductionConfirmOrder;
+import icp.icpForCitln.produce.dto.ProductionOrderSaveDTO;
+import icp.icpForCitln.produce.entity.*;
 import icp.icpForCitln.produce.service.ProduceService;
 import icp.icpForCitln.produce.view.ProductionConfirmOrderFindView;
 import icp.icpForCitln.produce.view.ProductionOrderFindView;
@@ -72,6 +71,15 @@ public class ProduceServiceImpl implements ProduceService {
         return MongoUtil.select(pageIndex,pageSize,BeanCopyUtil.copy(productionConfirmOrderFindDTO, ProductionConfirmOrderFindView.class));
     }
 
+    /**
+     * @author: guoxs
+     * @date: 19/05/20 09:48
+     * @since: JDK 1.8
+     *
+     * @description: 生产订单列表
+     * @param: [pageIndex, pageSize, productionOrderFindDTO]
+     * @return: icp.icpForCitln.common.enetity.MongoResult
+     */
     @Override
     public MongoResult productionOrderFind(Integer pageIndex, Integer pageSize, ProductionOrderFindDTO productionOrderFindDTO){
         MongoResult mongoResult = MongoUtil.select(pageIndex,pageSize,BeanCopyUtil.copy(productionOrderFindDTO, ProductionOrderFindView.class));
@@ -88,5 +96,28 @@ public class ProduceServiceImpl implements ProduceService {
         return mongoResult;
     }
 
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/20 10:16
+     * @since: JDK 1.8
+     *
+     * @description: 生产订单创建
+     * @param: [productionOrderSaveDTO]
+     * @return: void
+     */
+    @Override
+    public void productionOrderSave(ProductionOrderSaveDTO productionOrderSaveDTO){
+        ProductionOrder productionOrder = BeanCopyUtil.copy(productionOrderSaveDTO,ProductionOrder.class);
+        productionOrder.setProductionOrderCode(GeneratedCodeUtil.generatedCode());
+        MongoUtil.insert(productionOrder);
+
+        List<ProductionOrderDetail> detailList = productionOrderSaveDTO.getProductionOrderDetails();
+
+        for (int i=0;i<detailList.size();i++){
+            detailList.get(i).setProductionOrderId(productionOrder.getId());
+        }
+        MongoUtil.insert(detailList);
+    }
 
 }

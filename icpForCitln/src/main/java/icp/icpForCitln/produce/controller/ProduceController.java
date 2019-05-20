@@ -12,12 +12,10 @@ import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.produce.dto.PlannedOrderSaveDTO;
 import icp.icpForCitln.produce.dto.ProductionConfirmOrderFindDTO;
 import icp.icpForCitln.produce.dto.ProductionOrderFindDTO;
+import icp.icpForCitln.produce.dto.ProductionOrderSaveDTO;
 import icp.icpForCitln.produce.service.ProduceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/produce")
@@ -66,5 +64,20 @@ public class ProduceController {
     @GetMapping("/productionOrderFind")
     public PageResult productionOrderFind(Integer pageIndex, Integer pageSize, ProductionOrderFindDTO productionOrderFindDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE,produceService.productionOrderFind(pageIndex,pageSize,productionOrderFindDTO));
+    }
+
+    /**
+     * @author: guoxs
+     * @date: 19/05/20 10:17
+     * @since: JDK 1.8
+     *
+     * @description: 生产订单创建
+     * @param: [productionOrderSaveDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/productionOrderSave")
+    public PageResult productionOrderSave(@RequestBody ProductionOrderSaveDTO productionOrderSaveDTO){
+        produceService.productionOrderSave(productionOrderSaveDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
     }
 }
