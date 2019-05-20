@@ -21,6 +21,7 @@ import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.view.MenuInfoListView;
 import icp.icpForCitln.platform.view.PlantformDirectoryInfoListView;
 import icp.icpForCitln.platform.vo.PlantformDirectoryAttributeGetListVO;
+import icp.icpForCitln.platform.vo.PlantformDirectoryAttributeValueGetListVO;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -263,9 +264,12 @@ public class PlatformServiceImpl implements PlatformService {
      * @return: java.util.List<icp.icpForCitln.platform.entity.PlantformDirectoryAttributeValue>
      */
     @Override
-    public List<PlantformDirectoryAttributeValue> plantformDirectoryAttributeValueGetList(PlantformDirectoryAttributeValueGetListDTO plantformDirectoryAttributeValueGetListDTO) {
+    public MongoResult plantformDirectoryAttributeValueGetList(PlantformDirectoryAttributeValueGetListDTO plantformDirectoryAttributeValueGetListDTO) {
         PlantformDirectoryAttributeValue plantformDirectoryAttributeValue = BeanCopyUtil.copy(plantformDirectoryAttributeValueGetListDTO, PlantformDirectoryAttributeValue.class);
-        return MongoUtil.select(plantformDirectoryAttributeValue);
+        MongoResult mongoResult = MongoUtil.select(plantformDirectoryAttributeValueGetListDTO.getPageIndex(), plantformDirectoryAttributeValueGetListDTO.getPageSize(), plantformDirectoryAttributeValue);
+        List<PlantformDirectoryAttributeValueGetListVO> plantformDirectoryAttributeValueGetListVOList =  BeanCopyUtil.copy(mongoResult.getResultList(), PlantformDirectoryAttributeValueGetListVO.class);
+        mongoResult.setResultList(plantformDirectoryAttributeValueGetListVOList);
+        return mongoResult;
     }
 
     /**

@@ -248,8 +248,8 @@ public class PlatformController {
      */
     @PostMapping("/plantformDirectoryAttributeValueGetList")
     public PageResult plantformDirectoryAttributeValueGetList(@RequestBody PlantformDirectoryAttributeValueGetListDTO plantformDirectoryAttributeValueGetListDTO){
-        List<PlantformDirectoryAttributeValue> plantformDirectoryAttributeValueList = platformService.plantformDirectoryAttributeValueGetList(plantformDirectoryAttributeValueGetListDTO);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(plantformDirectoryAttributeValueList, PlantformDirectoryAttributeValueGetListVO.class));
+        MongoResult mongoResult = platformService.plantformDirectoryAttributeValueGetList(plantformDirectoryAttributeValueGetListDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, mongoResult);
     }
 
     /**
