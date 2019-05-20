@@ -16,7 +16,10 @@ import icp.icpForCitln.platform.entity.PlantformDirectoryAttributeValue;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.view.MenuInfoListView;
-import icp.icpForCitln.platform.vo.*;
+import icp.icpForCitln.platform.vo.PlantformDirectoryAttributeEditVO;
+import icp.icpForCitln.platform.vo.PlantformDirectoryAttributeValueEditVO;
+import icp.icpForCitln.platform.vo.PlantformDirectoryInfoEditVO;
+import icp.icpForCitln.platform.vo.PlantformMailDisplayVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -281,4 +284,19 @@ public class PlatformController {
         platformService.plantformDirectoryAttributeValueEditSave(plantformDirectoryAttributeValueEditSaveDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, "产品属性值编辑保存");
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/20 10:22
+     * @since: JDK 1.8
+     *
+     * @description: 产品组产品属性值
+     * @param: [plantformDirectoryAttributeAndValueView]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/plantformDirectoryAttributeAndValue")
+    public PageResult plantformDirectoryAttributeAndValue(@RequestBody PlantformDirectoryAttributeAndValueDTO plantformDirectoryAttributeAndValueDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, platformService.plantformDirectoryAttributeAndValue(plantformDirectoryAttributeAndValueDTO));
+    }
+
 }

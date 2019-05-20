@@ -19,6 +19,7 @@ import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.service.PlatformService;
 import icp.icpForCitln.platform.view.MenuInfoListView;
+import icp.icpForCitln.platform.view.PlantformDirectoryAttributeAndValueView;
 import icp.icpForCitln.platform.view.PlantformDirectoryInfoListView;
 import icp.icpForCitln.platform.vo.PlantformDirectoryAttributeGetListVO;
 import icp.icpForCitln.platform.vo.PlantformDirectoryAttributeValueGetListVO;
@@ -305,5 +306,20 @@ public class PlatformServiceImpl implements PlatformService {
     public void plantformDirectoryAttributeValueEditSave(PlantformDirectoryAttributeValueEditSaveDTO plantformDirectoryAttributeValueEditSaveDTO) {
         PlantformDirectoryAttributeValue plantformDirectoryAttributeValue = BeanCopyUtil.copy(plantformDirectoryAttributeValueEditSaveDTO, PlantformDirectoryAttributeValue.class);
         MongoUtil.upsert(plantformDirectoryAttributeValue, plantformDirectoryAttributeValueEditSaveDTO.getFlag());
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/20 13:30
+     * @since: JDK 1.8
+     *
+     * @description: 产品组目录属性和属性值联动
+     * @param: [plantformDirectoryAttributeAndValueDTO]
+     * @return: java.util.List<icp.icpForCitln.platform.view.PlantformDirectoryAttributeAndValueView>
+     */
+    @Override
+    public List<PlantformDirectoryAttributeAndValueView> plantformDirectoryAttributeAndValue(PlantformDirectoryAttributeAndValueDTO plantformDirectoryAttributeAndValueDTO) {
+        PlantformDirectoryAttributeAndValueView plantformDirectoryAttributeAndValueView = BeanCopyUtil.copy(plantformDirectoryAttributeAndValueDTO, PlantformDirectoryAttributeAndValueView.class);
+        return MongoUtil.select(plantformDirectoryAttributeAndValueView);
     }
 }

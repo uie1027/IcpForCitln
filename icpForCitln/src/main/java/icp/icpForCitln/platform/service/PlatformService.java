@@ -14,6 +14,7 @@ import icp.icpForCitln.platform.entity.PlantformDirectoryAttributeValue;
 import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
 import icp.icpForCitln.platform.view.MenuInfoListView;
+import icp.icpForCitln.platform.view.PlantformDirectoryAttributeAndValueView;
 import icp.icpForCitln.platform.view.PlantformDirectoryInfoListView;
 
 import java.util.List;
@@ -36,4 +37,5 @@ public interface PlatformService {
     MongoResult plantformDirectoryAttributeValueGetList(PlantformDirectoryAttributeValueGetListDTO plantformDirectoryAttributeValueGetListDTO);   //目录属性值列表
     PlantformDirectoryAttributeValue plantformDirectoryAttributeValueEdit(PlantformDirectoryAttributeValueEditDTO plantformDirectoryAttributeValueEditDTO);     //根据ID查询目录属性值
     void plantformDirectoryAttributeValueEditSave(PlantformDirectoryAttributeValueEditSaveDTO plantformDirectoryAttributeValueEditSaveDTO);    //目录属性值编辑保存
+    List<PlantformDirectoryAttributeAndValueView> plantformDirectoryAttributeAndValue(PlantformDirectoryAttributeAndValueDTO plantformDirectoryAttributeAndValueDTO);    //产品组目录属性和属性值联动
 }
