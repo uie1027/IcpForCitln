@@ -7,6 +7,7 @@
  */
 package icp.icpForCitln.sysconf.controller;
 
+import icp.icpForCitln.common.enetity.MongoResult;
 import icp.icpForCitln.common.result.PageResult;
 import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.sysconf.dto.*;
@@ -171,8 +172,8 @@ public class SysconfController {
      */
     @PostMapping("/systemProductAttribuitValueGetList")
     public PageResult systemProductAttribuitValueFindById(@RequestBody SystemProductAttribuitValueFindByIdDTO systemProductAttribuitValueFindByIdDTO){
-        List<SystemProductAttribuitValue> systemProductAttribuitValueList = sysconfService.systemProductAttribuitValueFindById(systemProductAttribuitValueFindByIdDTO);
-        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemProductAttribuitValueList, SystemProductAttribuitValueVO.class));
+        MongoResult mongoResult = sysconfService.systemProductAttribuitValueFindById(systemProductAttribuitValueFindByIdDTO);
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, mongoResult);
     }
 
     /**

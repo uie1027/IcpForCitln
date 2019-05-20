@@ -20,6 +20,7 @@ import icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue;
 import icp.icpForCitln.sysconf.service.SysconfService;
 import icp.icpForCitln.sysconf.view.SystemProductAttribuitAndValueView;
 import icp.icpForCitln.sysconf.vo.SystemProductAttribuitAndValueVO;
+import icp.icpForCitln.sysconf.vo.SystemProductAttribuitValueVO;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -191,10 +192,13 @@ public class SysconfServiceImpl implements SysconfService {
      * @return: java.util.List<icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue>
      */
     @Override
-    public List<SystemProductAttribuitValue> systemProductAttribuitValueFindById(SystemProductAttribuitValueFindByIdDTO systemProductAttribuitValueFindByIdDTO) {
+    public MongoResult systemProductAttribuitValueFindById(SystemProductAttribuitValueFindByIdDTO systemProductAttribuitValueFindByIdDTO) {
         SystemProductAttribuitValue systemProductAttribuitValue = new SystemProductAttribuitValue();
         systemProductAttribuitValue.setSystemProductAttribuitId(systemProductAttribuitValueFindByIdDTO.getSystemProductAttribuitId());
-        return MongoUtil.select(systemProductAttribuitValue);
+        MongoResult mongoResult =  MongoUtil.select(systemProductAttribuitValueFindByIdDTO.getPageIndex(), systemProductAttribuitValueFindByIdDTO.getPageSize(), systemProductAttribuitValue);
+        List<SystemProductAttribuitValueVO> systemProductAttribuitValueVOList = BeanCopyUtil.copy(mongoResult.getResultList(), SystemProductAttribuitValueVO.class);
+        mongoResult.setResultList(systemProductAttribuitValueVOList);
+        return mongoResult;
     }
 
     /**

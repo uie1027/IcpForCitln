@@ -12,4 +12,8 @@ import lombok.Data;
 @Data
 public class SystemProductAttribuitValueFindByIdDTO {
     private String systemProductAttribuitId;    //产品属性ID
+
+    private Integer pageIndex;  //页码
+
+    private Integer pageSize;   //页面大小
 }
