@@ -8,6 +8,7 @@
 package icp.icpForCitln.sysconf.service;
 
 import icp.icpForCitln.common.enetity.MongoResult;
+import icp.icpForCitln.sysconf.cache.SystemDictionaryInfoAll;
 import icp.icpForCitln.sysconf.dto.*;
 import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
@@ -30,4 +31,5 @@ public interface SysconfService {
     void systemProductAttribuitValueDelete(SystemProductAttribuitValueDeleteDTO systemProductAttribuitValueDeleteDTO);          //产品属性值删除
     void systemProductAttribuitValueEditSave(SystemProductAttribuitValueEditSaveDTO systemProductAttribuitValueEditSaveDTO);//产品属性值编辑保存
     SystemProductAttribuitValue systemProductAttribuitValueEdit(SystemProductAttribuitValueEditDTO systemProductAttribuitValueEditDTO); //产品属性值编辑显示
+    SystemDictionaryInfoAll systemDictionaryInfoAllGetById(SystemDictionaryInfoAllGetByIdDTO systemDictionaryInfoAllGetByIdDTO);   //redis查询数据字典 合在一起所有所有
 }

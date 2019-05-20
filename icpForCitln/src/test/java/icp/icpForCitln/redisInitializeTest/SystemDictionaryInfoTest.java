@@ -7,9 +7,11 @@
  */
 package icp.icpForCitln.redisInitializeTest;
 
+import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
+import icp.icpForCitln.sysconf.cache.SystemDictionaryInfoAll;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -214,6 +216,24 @@ public class SystemDictionaryInfoTest {
         List<SystemDictionaryInfo> systemDictionaryInfoList = mongoTemplate.findAll(SystemDictionaryInfo.class);
         for(SystemDictionaryInfo systemDictionaryInfo : systemDictionaryInfoList){
             RedisUtil.put(systemDictionaryInfo);
+        }
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/20 11:36
+     * @since: JDK 1.8
+     *
+     * @description: 通过 ID 获取数据字典 合在一起的数据
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void systemDictionaryInfoAllRedisPut(){
+        List<SystemDictionaryInfo> systemDictionaryInfoList = mongoTemplate.findAll(SystemDictionaryInfo.class);
+        List<SystemDictionaryInfoAll> systemDictionaryInfoAllList = BeanCopyUtil.copy(systemDictionaryInfoList, SystemDictionaryInfoAll.class);
+        for(SystemDictionaryInfoAll systemDictionaryInfoAll : systemDictionaryInfoAllList){
+            RedisUtil.put(systemDictionaryInfoAll);
         }
     }
 }

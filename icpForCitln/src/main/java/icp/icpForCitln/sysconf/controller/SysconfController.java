@@ -220,4 +220,18 @@ public class SysconfController {
         SystemProductAttribuitValue systemProductAttribuitValue = sysconfService.systemProductAttribuitValueEdit(systemProductAttribuitValueEditDTO);
         return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(systemProductAttribuitValue, SystemProductAttribuitValueVO.class));
     }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/20 11:26
+     * @since: JDK 1.8
+     *
+     * @description: 根据 ID 获取数据字典数据
+     * @param: [systemDictionaryInfoAllGetByIdDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/systemDictionaryInfoAllGetById")
+    public PageResult systemDictionaryInfoAllGetById(@RequestBody SystemDictionaryInfoAllGetByIdDTO systemDictionaryInfoAllGetByIdDTO){
+        return PageResult.returnResult(PageResult.SUCCESS_CODE, BeanCopyUtil.copy(sysconfService.systemDictionaryInfoAllGetById(systemDictionaryInfoAllGetByIdDTO), SystemDictionaryInfoGetListVO.class));
+    }
 }

@@ -12,6 +12,7 @@ import icp.icpForCitln.common.util.BeanCopyUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.common.util.RedisUtil;
+import icp.icpForCitln.sysconf.cache.SystemDictionaryInfoAll;
 import icp.icpForCitln.sysconf.dto.*;
 import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemDictionaryInfo;
@@ -251,5 +252,20 @@ public class SysconfServiceImpl implements SysconfService {
         } else {
             return null;
         }
+    }
+
+    /**
+     * @author: 方瑞冬
+     * @date: 2019/5/20 11:32
+     * @since: JDK 1.8
+     *
+     * @description: 从 Redis 中查数据字典 全部合在一起
+     * @param: [systemDictionaryInfoAllGetByIdDTO]
+     * @return: icp.icpForCitln.sysconf.cache.SystemDictionaryInfoAll
+     */
+    @Override
+    public SystemDictionaryInfoAll systemDictionaryInfoAllGetById(SystemDictionaryInfoAllGetByIdDTO systemDictionaryInfoAllGetByIdDTO) {
+        SystemDictionaryInfoAll systemDictionaryInfoAll = BeanCopyUtil.copy(systemDictionaryInfoAllGetByIdDTO, SystemDictionaryInfoAll.class);
+        return (SystemDictionaryInfoAll)RedisUtil.get(systemDictionaryInfoAll);
     }
 }
