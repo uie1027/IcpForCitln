@@ -7,16 +7,24 @@
  */
 package icp.icpForCitln.datatest;
 
+import icp.icpForCitln.common.util.DateUtil;
 import icp.icpForCitln.common.util.GeneratedCodeUtil;
 import icp.icpForCitln.common.util.MongoUtil;
 import icp.icpForCitln.company.eneity.CompanyInfo;
 import icp.icpForCitln.customer.entity.CustomerInfo;
 import icp.icpForCitln.order.entity.PurchaseOrderInfo;
+import icp.icpForCitln.order.entity.SaleOrderDetailInfo;
 import icp.icpForCitln.order.entity.SaleOrderInfo;
 import icp.icpForCitln.platform.entity.PlantformDirectoryAttribute;
 import icp.icpForCitln.platform.entity.PlantformDirectoryAttributeValue;
 import icp.icpForCitln.platform.entity.PlantformDirectoryInfo;
 import icp.icpForCitln.platform.entity.PlantformMailDisplay;
+import icp.icpForCitln.price.entity.PriceSaleCustomerProduct;
+import icp.icpForCitln.price.entity.PriceSaleCustomerProductGroup;
+import icp.icpForCitln.price.entity.PriceSaleProduct;
+import icp.icpForCitln.price.entity.PriceSaleProductGroup;
+import icp.icpForCitln.stock.entity.OtherOutbound;
+import icp.icpForCitln.supplier.entity.SupplierInfo;
 import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuitValue;
@@ -28,6 +36,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -222,12 +231,12 @@ public class DataInfoInsert {
     }
 
     /**
-     * 采购入库单增加数据
+     * 采购订单表增加数据
      */
     @Test
     public void purchaseOrderInsert(){
         PurchaseOrderInfo purchaseOrderInfo = new PurchaseOrderInfo();
-       purchaseOrderInfo.setId("cx5cdd42d8abac563e18d9d56d");
+        purchaseOrderInfo.setId("cx5cdd42d8abac563e18d9d56d");
         purchaseOrderInfo.setPurchaseOrderCode("PO10000001");
         purchaseOrderInfo.setOrderTypeId("标准订单");
         purchaseOrderInfo.setSupplierInfoId("cx5cdd42d8abac563e18d9d567");
@@ -235,55 +244,77 @@ public class DataInfoInsert {
         purchaseOrderInfo.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
         purchaseOrderInfo.setTotalAmount(new BigDecimal("48000"));
         purchaseOrderInfo.setCurrencyId("CNY");
-/*
-        purchaseOrderInfo.setId("cx5cdd42d8abac563e18d9d56e");
-        purchaseOrderInfo.setPurchaseOrderCode("PO10000002");
-        purchaseOrderInfo.setOrderTypeId("标准订单");
-        purchaseOrderInfo.setSupplierInfoId("cx5cdd42d8abac563e18d9d568");
-        purchaseOrderInfo.setPayentMethodId("汇票");
-        purchaseOrderInfo.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
-        purchaseOrderInfo.setTotalAmount(new BigDecimal("48000"));
-        purchaseOrderInfo.setCurrencyId("CNY");
+        purchaseOrderInfo.setPurchaseOrderDate(new Date("2019/5/1"));
+        purchaseOrderInfo.setPurchaseOrderStatus("已确认");
 
-        purchaseOrderInfo.setId("cx5cdd42d8abac563e18d9d56f");
-        purchaseOrderInfo.setPurchaseOrderCode("PO10000003");
-        purchaseOrderInfo.setOrderTypeId("标准订单");
-        purchaseOrderInfo.setSupplierInfoId("cx5cdd42d8abac563e18d9d569");
-        purchaseOrderInfo.setPayentMethodId("汇票");
-        purchaseOrderInfo.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
-        purchaseOrderInfo.setTotalAmount(new BigDecimal("48000"));
-        purchaseOrderInfo.setCurrencyId("CNY");
+        PurchaseOrderInfo purchaseOrderInfo1 = new PurchaseOrderInfo();
+        purchaseOrderInfo1.setId("cx5cdd42d8abac563e18d9d56e");
+        purchaseOrderInfo1.setPurchaseOrderCode("PO10000002");
+        purchaseOrderInfo1.setOrderTypeId("标准订单");
+        purchaseOrderInfo1.setSupplierInfoId("cx5cdd42d8abac563e18d9d568");
+        purchaseOrderInfo1.setPayentMethodId("汇票");
+        purchaseOrderInfo1.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        purchaseOrderInfo1.setTotalAmount(new BigDecimal("48000"));
+        purchaseOrderInfo1.setCurrencyId("CNY");
+        purchaseOrderInfo.setPurchaseOrderDate(new Date("2019/5/1"));
+        purchaseOrderInfo1.setPurchaseOrderStatus("已确认");
 
-       purchaseOrderInfo.setId("cx5cdd42d8abac563e18d9d570");
-        purchaseOrderInfo.setPurchaseOrderCode("PO10000004");
-        purchaseOrderInfo.setOrderTypeId("标准订单");
-        purchaseOrderInfo.setSupplierInfoId("cx5cdd42d8abac563e18d9d56a");
-        purchaseOrderInfo.setPayentMethodId("汇票");
-        purchaseOrderInfo.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
-        purchaseOrderInfo.setTotalAmount(new BigDecimal("48000"));
-        purchaseOrderInfo.setCurrencyId("CNY");
+        PurchaseOrderInfo purchaseOrderInfo2 = new PurchaseOrderInfo();
+        purchaseOrderInfo2.setId("cx5cdd42d8abac563e18d9d56f");
+        purchaseOrderInfo2.setPurchaseOrderCode("PO10000003");
+        purchaseOrderInfo2.setOrderTypeId("标准订单");
+        purchaseOrderInfo2.setSupplierInfoId("cx5cdd42d8abac563e18d9d569");
+        purchaseOrderInfo2.setPayentMethodId("汇票");
+        purchaseOrderInfo2.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        purchaseOrderInfo2.setTotalAmount(new BigDecimal("48000"));
+        purchaseOrderInfo2.setCurrencyId("CNY");
+        purchaseOrderInfo.setPurchaseOrderDate(new Date("2019/5/1"));
+        purchaseOrderInfo2.setPurchaseOrderStatus("已确认");
 
-        purchaseOrderInfo.setId("cx5cdd42d8abac563e18d9d571");
-        purchaseOrderInfo.setPurchaseOrderCode("PO10000005");
-        purchaseOrderInfo.setOrderTypeId("标准订单");
-        purchaseOrderInfo.setSupplierInfoId("cx5cdd42d8abac563e18d9d56b");
-        purchaseOrderInfo.setPayentMethodId("汇票");
-        purchaseOrderInfo.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
-        purchaseOrderInfo.setTotalAmount(new BigDecimal("48000"));
-        purchaseOrderInfo.setCurrencyId("CNY");
+        PurchaseOrderInfo purchaseOrderInfo3 = new PurchaseOrderInfo();
+        purchaseOrderInfo3.setId("cx5cdd42d8abac563e18d9d570");
+        purchaseOrderInfo3.setPurchaseOrderCode("PO10000004");
+        purchaseOrderInfo3.setOrderTypeId("标准订单");
+        purchaseOrderInfo3.setSupplierInfoId("cx5cdd42d8abac563e18d9d56a");
+        purchaseOrderInfo3.setPayentMethodId("现金");
+        purchaseOrderInfo3.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        purchaseOrderInfo3.setTotalAmount(new BigDecimal("48000"));
+        purchaseOrderInfo3.setCurrencyId("CNY");
+        purchaseOrderInfo.setPurchaseOrderDate(new Date("2019/5/1"));
+        purchaseOrderInfo3.setPurchaseOrderStatus("已完成");
 
-        purchaseOrderInfo.setId("cx5cdd42d8abac563e18d9d572");
-        purchaseOrderInfo.setPurchaseOrderCode("PO10000006");
-        purchaseOrderInfo.setOrderTypeId("标准订单");
-        purchaseOrderInfo.setSupplierInfoId("cx5cdd42d8abac563e18d9d56c");
-        purchaseOrderInfo.setPayentMethodId("汇票");
-        purchaseOrderInfo.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
-        purchaseOrderInfo.setTotalAmount(new BigDecimal("48000"));
-        purchaseOrderInfo.setCurrencyId("CNY");
-*/
+        PurchaseOrderInfo purchaseOrderInfo4 = new PurchaseOrderInfo();
+        purchaseOrderInfo4.setId("cx5cdd42d8abac563e18d9d571");
+        purchaseOrderInfo4.setPurchaseOrderCode("PO10000005");
+        purchaseOrderInfo4.setOrderTypeId("标准订单");
+        purchaseOrderInfo4.setSupplierInfoId("cx5cdd42d8abac563e18d9d56b");
+        purchaseOrderInfo4.setPayentMethodId("现金");
+        purchaseOrderInfo4.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        purchaseOrderInfo4.setTotalAmount(new BigDecimal("48000"));
+        purchaseOrderInfo4.setCurrencyId("CNY");
+        purchaseOrderInfo.setPurchaseOrderDate(new Date("2019/5/1"));
+        purchaseOrderInfo4.setPurchaseOrderStatus("已完成");
+
+        PurchaseOrderInfo purchaseOrderInfo5 = new PurchaseOrderInfo();
+        purchaseOrderInfo5.setId("cx5cdd42d8abac563e18d9d572");
+        purchaseOrderInfo5.setPurchaseOrderCode("PO10000006");
+        purchaseOrderInfo5.setOrderTypeId("标准订单");
+        purchaseOrderInfo5.setSupplierInfoId("cx5cdd42d8abac563e18d9d56c");
+        purchaseOrderInfo5.setPayentMethodId("现金");
+        purchaseOrderInfo5.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        purchaseOrderInfo5.setTotalAmount(new BigDecimal("48000"));
+        purchaseOrderInfo5.setCurrencyId("CNY");
+        purchaseOrderInfo.setPurchaseOrderDate(new Date("2019/5/1"));
+        purchaseOrderInfo5.setPurchaseOrderStatus("已删除");
+
 
 
         MongoUtil.insert(purchaseOrderInfo);
+        MongoUtil.insert(purchaseOrderInfo1);
+        MongoUtil.insert(purchaseOrderInfo2);
+        MongoUtil.insert(purchaseOrderInfo3);
+        MongoUtil.insert(purchaseOrderInfo4);
+        MongoUtil.insert(purchaseOrderInfo5);
 
 
     }
@@ -1152,6 +1183,610 @@ public class DataInfoInsert {
         MongoUtil.insert(customerInfo6);
 
     }
+
+
+    /**
+     * 供应商信息表增加数据
+     */
+    @Test
+    public void supplierInfoInsert(){
+        SupplierInfo supplierInfo1 = new SupplierInfo();
+        supplierInfo1.setId("cx5cdd42d8abac563e18d9d567");
+        supplierInfo1.setSupplierCode("V10000001");
+        supplierInfo1.setUnifiedSocialCreditCode("92321012MA1PXBE94F");
+        supplierInfo1.setSupplierName("江都区健浩体育用品厂");
+        supplierInfo1.setSupplierShortName("健浩");
+        supplierInfo1.setSupplierFax("0514-86412631");
+        supplierInfo1.setSupplierEmail("18961001927@163.com");
+        supplierInfo1.setSupplierContact("徐建");
+        supplierInfo1.setSupplierContactPhone("18961001927");
+        supplierInfo1.setSupplierTelephone("0514-86412631");
+        supplierInfo1.setCountryCode("中国");
+        supplierInfo1.setProvinceCode("江苏省");
+        supplierInfo1.setCityCode("扬州市");
+        supplierInfo1.setDistrictCode("江都区");
+        supplierInfo1.setSupplierAddress("江苏省扬州市江都区浦头镇高汉村友爱组10号");
+        supplierInfo1.setCurrencyId("CNY");
+
+        SupplierInfo supplierInfo2 = new SupplierInfo();
+        supplierInfo2.setId("cx5cdd42d8abac563e18d9d568");
+        supplierInfo2.setSupplierCode("V10000002");
+        supplierInfo2.setUnifiedSocialCreditCode("91210100760065739F");
+        supplierInfo2.setSupplierName("沈阳东镇体育用品有限公司");
+        supplierInfo2.setSupplierShortName("东镇体育");
+        supplierInfo2.setSupplierFax("024-89531211");
+        supplierInfo2.setSupplierEmail("18640490440@163.com");
+        supplierInfo2.setSupplierContact("闫营营");
+        supplierInfo2.setSupplierContactPhone("18640490440");
+        supplierInfo2.setSupplierTelephone("024-89531211");
+        supplierInfo2.setCountryCode("中国");
+        supplierInfo2.setProvinceCode("辽宁省");
+        supplierInfo2.setCityCode("沈阳市");
+        supplierInfo2.setDistrictCode("苏家屯区");
+        supplierInfo2.setSupplierAddress("沈阳市苏家屯区十里河镇十里河村财吉街76号");
+        supplierInfo2.setCurrencyId("CNY");
+
+        SupplierInfo supplierInfo3 = new SupplierInfo();
+        supplierInfo3.setId("cx5cdd42d8abac563e18d9d569");
+        supplierInfo3.setSupplierCode("V10000003");
+        supplierInfo3.setUnifiedSocialCreditCode("91310000551583433Q");
+        supplierInfo3.setSupplierName("上海森伊斯特贸易有限公司");
+        supplierInfo3.setSupplierShortName("森伊斯特");
+        supplierInfo3.setSupplierFax("021-62361724");
+        supplierInfo3.setSupplierEmail("shanghaidkc@163.com");
+        supplierInfo3.setSupplierContact("安世云");
+        supplierInfo3.setSupplierContactPhone("13917999713");
+        supplierInfo3.setSupplierTelephone("021-62361723");
+        supplierInfo3.setCountryCode("中国");
+        supplierInfo3.setProvinceCode("上海市");
+        supplierInfo3.setCityCode("上海市");
+        supplierInfo3.setDistrictCode("闵行区");
+        supplierInfo3.setSupplierAddress("上海市吴中路1369号欧银中心611室");
+        supplierInfo3.setCurrencyId("CNY");
+
+        SupplierInfo supplierInfo4 = new SupplierInfo();
+        supplierInfo4.setId("cx5cdd42d8abac563e18d9d56a");
+        supplierInfo4.setSupplierCode("V10000004");
+        supplierInfo4.setUnifiedSocialCreditCode("91320582773210288C");
+        supplierInfo4.setSupplierName("张家港嘉泰超纤科技有限公司");
+        supplierInfo4.setSupplierShortName("嘉泰");
+        supplierInfo4.setSupplierFax("0512-56902911");
+        supplierInfo4.setSupplierEmail("478464092@qq.com");
+        supplierInfo4.setSupplierContact("何再秋");
+        supplierInfo4.setSupplierContactPhone("13773252333");
+        supplierInfo4.setSupplierTelephone("0512-56902988");
+        supplierInfo4.setCountryCode("中国");
+        supplierInfo4.setProvinceCode("江苏省");
+        supplierInfo4.setCityCode("苏州市");
+        supplierInfo4.setDistrictCode("张家港市");
+        supplierInfo4.setSupplierAddress("张家港市凤凰镇汉江路");
+        supplierInfo4.setCurrencyId("CNY");
+
+        SupplierInfo supplierInfo5 = new SupplierInfo();
+        supplierInfo5.setId("cx5cdd42d8abac563e18d9d56b");
+        supplierInfo5.setSupplierCode("V10000005");
+        supplierInfo5.setUnifiedSocialCreditCode("91320412570315506T");
+        supplierInfo5.setSupplierName("常州美美合成皮革有限公司");
+        supplierInfo5.setSupplierShortName("美美");
+        supplierInfo5.setSupplierFax("0519-86571768");
+        supplierInfo5.setSupplierEmail("13511677111@163.com");
+        supplierInfo5.setSupplierContact("梁新炽");
+        supplierInfo5.setSupplierContactPhone("13511677111");
+        supplierInfo5.setSupplierTelephone("0519-86571768");
+        supplierInfo5.setCountryCode("中国");
+        supplierInfo5.setProvinceCode("江苏省");
+        supplierInfo5.setCityCode("常州市");
+        supplierInfo5.setDistrictCode("武进区");
+        supplierInfo5.setSupplierAddress("常州武进区湖塘镇长虹路88号");
+        supplierInfo5.setCurrencyId("CNY");
+
+        SupplierInfo supplierInfo6 = new SupplierInfo();
+        supplierInfo6.setId("cx5cdd42d8abac563e18d9d56c");
+        supplierInfo6.setSupplierCode("V10000006");
+        supplierInfo6.setUnifiedSocialCreditCode("913206233022378986");
+        supplierInfo6.setSupplierName("南通纽赛尔安全防护用品有限公司");
+        supplierInfo6.setSupplierShortName("南通纽赛尔");
+        supplierInfo6.setSupplierFax("00513-84651908");
+        supplierInfo6.setSupplierEmail("15000772123@163.com");
+        supplierInfo6.setSupplierContact("刘元海");
+        supplierInfo6.setSupplierContactPhone("15000772123");
+        supplierInfo6.setSupplierTelephone("0513-84651908");
+        supplierInfo6.setCountryCode("中国");
+        supplierInfo6.setProvinceCode("江苏省");
+        supplierInfo6.setCityCode("南通市");
+        supplierInfo6.setDistrictCode("如东县");
+        supplierInfo6.setSupplierAddress("如东县双甸镇曙光村46组");
+        supplierInfo6.setCurrencyId("CNY");
+
+        MongoUtil.insert(supplierInfo1);
+        MongoUtil.insert(supplierInfo2);
+        MongoUtil.insert(supplierInfo3);
+        MongoUtil.insert(supplierInfo4);
+        MongoUtil.insert(supplierInfo5);
+        MongoUtil.insert(supplierInfo6);
+
+
+
+
+    }
+
+    /**
+     * 销售产品组价格信息表增加数据
+     */
+    @Test
+    public void priceSaleProductGroupInsert(){
+        PriceSaleProductGroup priceSaleProductGroup1 = new PriceSaleProductGroup();
+        priceSaleProductGroup1.setPriceSaleProductGroupCode("10000001");
+        priceSaleProductGroup1.setProductGroupInfoId("cx5cdd42d8abac563e18d9d557");
+        priceSaleProductGroup1.setTaxRateId("J6");
+        priceSaleProductGroup1.setTaxIncludedPrice(new BigDecimal("6"));
+        priceSaleProductGroup1.setCurrencyId("CNY");
+        priceSaleProductGroup1.setEach(100);
+        priceSaleProductGroup1.setBasicUnitId("米");
+
+        PriceSaleProductGroup priceSaleProductGroup2 = new PriceSaleProductGroup();
+        priceSaleProductGroup2.setPriceSaleProductGroupCode("10000002");
+        priceSaleProductGroup2.setProductGroupInfoId("cx5cdd42d8abac563e18d9d558");
+        priceSaleProductGroup2.setTaxRateId("J6");
+        priceSaleProductGroup2.setTaxIncludedPrice(new BigDecimal("7"));
+        priceSaleProductGroup2.setCurrencyId("CNY");
+        priceSaleProductGroup2.setEach(100);
+        priceSaleProductGroup2.setBasicUnitId("米");
+
+        PriceSaleProductGroup priceSaleProductGroup3 = new PriceSaleProductGroup();
+        priceSaleProductGroup3.setPriceSaleProductGroupCode("10000003");
+        priceSaleProductGroup3.setProductGroupInfoId("cx5cdd42d8abac563e18d9d559");
+        priceSaleProductGroup3.setTaxRateId("J6");
+        priceSaleProductGroup3.setTaxIncludedPrice(new BigDecimal("8"));
+        priceSaleProductGroup3.setCurrencyId("CNY");
+        priceSaleProductGroup3.setEach(100);
+        priceSaleProductGroup3.setBasicUnitId("米");
+
+        PriceSaleProductGroup priceSaleProductGroup4 = new PriceSaleProductGroup();
+        priceSaleProductGroup4.setPriceSaleProductGroupCode("10000004");
+        priceSaleProductGroup4.setProductGroupInfoId("cx5cdd42d8abac563e18d9d560");
+        priceSaleProductGroup4.setTaxRateId("J6");
+        priceSaleProductGroup4.setTaxIncludedPrice(new BigDecimal("9"));
+        priceSaleProductGroup4.setCurrencyId("CNY");
+        priceSaleProductGroup4.setEach(100);
+        priceSaleProductGroup4.setBasicUnitId("米");
+
+        PriceSaleProductGroup priceSaleProductGroup5 = new PriceSaleProductGroup();
+        priceSaleProductGroup5.setPriceSaleProductGroupCode("10000005");
+        priceSaleProductGroup5.setProductGroupInfoId("cx5cdd42d8abac563e18d9d561");
+        priceSaleProductGroup5.setTaxRateId("J6");
+        priceSaleProductGroup5.setTaxIncludedPrice(new BigDecimal("10"));
+        priceSaleProductGroup5.setCurrencyId("CNY");
+        priceSaleProductGroup5.setEach(100);
+        priceSaleProductGroup5.setBasicUnitId("米");
+
+        PriceSaleProductGroup priceSaleProductGroup6 = new PriceSaleProductGroup();
+        priceSaleProductGroup6.setPriceSaleProductGroupCode("10000006");
+        priceSaleProductGroup6.setProductGroupInfoId("cx5cdd42d8abac563e18d9d562");
+        priceSaleProductGroup6.setTaxRateId("J6");
+        priceSaleProductGroup6.setTaxIncludedPrice(new BigDecimal("11"));
+        priceSaleProductGroup6.setCurrencyId("CNY");
+        priceSaleProductGroup6.setEach(100);
+        priceSaleProductGroup6.setBasicUnitId("米");
+
+        MongoUtil.insert(priceSaleProductGroup1);
+        MongoUtil.insert(priceSaleProductGroup2);
+        MongoUtil.insert(priceSaleProductGroup3);
+        MongoUtil.insert(priceSaleProductGroup4);
+        MongoUtil.insert(priceSaleProductGroup5);
+        MongoUtil.insert(priceSaleProductGroup6);
+
+
+
+
+    }
+
+    /**
+     * 销售产品价格信息表增加数据
+     */
+    @Test
+    public void priceSaleProductInsert(){
+        PriceSaleProduct priceSaleProduct1 = new PriceSaleProduct();
+        priceSaleProduct1.setPriceSaleProductCode("10000001");
+        priceSaleProduct1.setProductInfoId("cx5cdd42d8abac563e18d9d55d");
+        priceSaleProduct1.setTaxRateId("J6");
+        priceSaleProduct1.setTaxIncludedPrice(new BigDecimal("6"));
+        priceSaleProduct1.setCurrencyId("CNY");
+        priceSaleProduct1.setEach(100);
+        priceSaleProduct1.setBasicUnitId("米");
+
+        PriceSaleProduct priceSaleProduct2 = new PriceSaleProduct();
+        priceSaleProduct2.setPriceSaleProductCode("10000002");
+        priceSaleProduct2.setProductInfoId("cx5cdd42d8abac563e18d9d55e");
+        priceSaleProduct2.setTaxRateId("J6");
+        priceSaleProduct2.setTaxIncludedPrice(new BigDecimal("7"));
+        priceSaleProduct2.setCurrencyId("CNY");
+        priceSaleProduct2.setEach(100);
+        priceSaleProduct2.setBasicUnitId("米");
+
+        PriceSaleProduct priceSaleProduct3 = new PriceSaleProduct();
+        priceSaleProduct3.setPriceSaleProductCode("10000003");
+        priceSaleProduct3.setProductInfoId("cx5cdd42d8abac563e18d9d55f");
+        priceSaleProduct3.setTaxRateId("J6");
+        priceSaleProduct3.setTaxIncludedPrice(new BigDecimal("8"));
+        priceSaleProduct3.setCurrencyId("CNY");
+        priceSaleProduct3.setEach(100);
+        priceSaleProduct3.setBasicUnitId("米");
+
+        PriceSaleProduct priceSaleProduct4 = new PriceSaleProduct();
+        priceSaleProduct4.setPriceSaleProductCode("10000004");
+        priceSaleProduct4.setProductInfoId("cx5cdd42d8abac563e18d9d560");
+        priceSaleProduct4.setTaxRateId("J6");
+        priceSaleProduct4.setTaxIncludedPrice(new BigDecimal("9"));
+        priceSaleProduct4.setCurrencyId("CNY");
+        priceSaleProduct4.setEach(100);
+        priceSaleProduct4.setBasicUnitId("米");
+
+        PriceSaleProduct priceSaleProduct5 = new PriceSaleProduct();
+        priceSaleProduct5.setPriceSaleProductCode("10000005");
+        priceSaleProduct5.setProductInfoId("cx5cdd42d8abac563e18d9d561");
+        priceSaleProduct5.setTaxRateId("J6");
+        priceSaleProduct5.setTaxIncludedPrice(new BigDecimal("10"));
+        priceSaleProduct5.setCurrencyId("CNY");
+        priceSaleProduct5.setEach(100);
+        priceSaleProduct5.setBasicUnitId("米");
+
+        PriceSaleProduct priceSaleProduct6 = new PriceSaleProduct();
+        priceSaleProduct6.setPriceSaleProductCode("10000006");
+        priceSaleProduct6.setProductInfoId("cx5cdd42d8abac563e18d9d562");
+        priceSaleProduct6.setTaxRateId("J6");
+        priceSaleProduct6.setTaxIncludedPrice(new BigDecimal("11"));
+        priceSaleProduct6.setCurrencyId("CNY");
+        priceSaleProduct6.setEach(100);
+        priceSaleProduct6.setBasicUnitId("米");
+
+        MongoUtil.insert(priceSaleProduct1);
+        MongoUtil.insert(priceSaleProduct2);
+        MongoUtil.insert(priceSaleProduct3);
+        MongoUtil.insert(priceSaleProduct4);
+        MongoUtil.insert(priceSaleProduct5);
+        MongoUtil.insert(priceSaleProduct6);
+
+
+
+
+    }
+
+
+    /**
+     * 销售客户产品组价格信息表增加数据
+     */
+    @Test
+    public void priceSaleCustomerProductGroupInsert(){
+        PriceSaleCustomerProductGroup priceSaleCustomerProductGroup1 = new PriceSaleCustomerProductGroup();
+        priceSaleCustomerProductGroup1.setPriceSaleCustomerProductGroupCode("10000001");
+        priceSaleCustomerProductGroup1.setCustomerInfoId("cx5cdd42d8abac563e18d9d561");
+        priceSaleCustomerProductGroup1.setProductGroupInfoId("cx5cdd42d8abac563e18d9d557");
+        priceSaleCustomerProductGroup1.setTaxRateId("J6");
+        priceSaleCustomerProductGroup1.setTaxIncludedPrice(new BigDecimal("5.5"));
+        priceSaleCustomerProductGroup1.setCurrencyId("CNY");
+        priceSaleCustomerProductGroup1.setEach(100);
+        priceSaleCustomerProductGroup1.setBasicUnitId("米");
+
+        PriceSaleCustomerProductGroup priceSaleCustomerProductGroup2 = new PriceSaleCustomerProductGroup();
+        priceSaleCustomerProductGroup2.setPriceSaleCustomerProductGroupCode("10000002");
+        priceSaleCustomerProductGroup2.setCustomerInfoId("cx5cdd42d8abac563e18d9d561");
+        priceSaleCustomerProductGroup2.setProductGroupInfoId("cx5cdd42d8abac563e18d9d558");
+        priceSaleCustomerProductGroup2.setTaxRateId("J6");
+        priceSaleCustomerProductGroup2.setTaxIncludedPrice(new BigDecimal("6.5"));
+        priceSaleCustomerProductGroup2.setCurrencyId("CNY");
+        priceSaleCustomerProductGroup2.setEach(100);
+        priceSaleCustomerProductGroup2.setBasicUnitId("米");
+
+        PriceSaleCustomerProductGroup priceSaleCustomerProductGroup3 = new PriceSaleCustomerProductGroup();
+        priceSaleCustomerProductGroup3.setPriceSaleCustomerProductGroupCode("10000003");
+        priceSaleCustomerProductGroup3.setCustomerInfoId("cx5cdd42d8abac563e18d9d561");
+        priceSaleCustomerProductGroup3.setProductGroupInfoId("cx5cdd42d8abac563e18d9d559");
+        priceSaleCustomerProductGroup3.setTaxRateId("J6");
+        priceSaleCustomerProductGroup3.setTaxIncludedPrice(new BigDecimal("7.5"));
+        priceSaleCustomerProductGroup3.setCurrencyId("CNY");
+        priceSaleCustomerProductGroup3.setEach(100);
+        priceSaleCustomerProductGroup3.setBasicUnitId("米");
+
+        PriceSaleCustomerProductGroup priceSaleCustomerProductGroup4 = new PriceSaleCustomerProductGroup();
+        priceSaleCustomerProductGroup4.setPriceSaleCustomerProductGroupCode("10000004");
+        priceSaleCustomerProductGroup4.setCustomerInfoId("cx5cdd42d8abac563e18d9d562");
+        priceSaleCustomerProductGroup4.setProductGroupInfoId("cx5cdd42d8abac563e18d9d557");
+        priceSaleCustomerProductGroup4.setTaxRateId("J6");
+        priceSaleCustomerProductGroup4.setTaxIncludedPrice(new BigDecimal("5.8"));
+        priceSaleCustomerProductGroup4.setCurrencyId("CNY");
+        priceSaleCustomerProductGroup4.setEach(100);
+        priceSaleCustomerProductGroup4.setBasicUnitId("米");
+
+        PriceSaleCustomerProductGroup priceSaleCustomerProductGroup5 = new PriceSaleCustomerProductGroup();
+        priceSaleCustomerProductGroup5.setPriceSaleCustomerProductGroupCode("10000005");
+        priceSaleCustomerProductGroup5.setCustomerInfoId("cx5cdd42d8abac563e18d9d562");
+        priceSaleCustomerProductGroup5.setProductGroupInfoId("cx5cdd42d8abac563e18d9d558");
+        priceSaleCustomerProductGroup5.setTaxRateId("J6");
+        priceSaleCustomerProductGroup5.setTaxIncludedPrice(new BigDecimal("6.8"));
+        priceSaleCustomerProductGroup5.setCurrencyId("CNY");
+        priceSaleCustomerProductGroup5.setEach(100);
+        priceSaleCustomerProductGroup5.setBasicUnitId("米");
+
+        PriceSaleCustomerProductGroup priceSaleCustomerProductGroup6 = new PriceSaleCustomerProductGroup();
+        priceSaleCustomerProductGroup6.setPriceSaleCustomerProductGroupCode("10000006");
+        priceSaleCustomerProductGroup6.setCustomerInfoId("cx5cdd42d8abac563e18d9d562");
+        priceSaleCustomerProductGroup6.setProductGroupInfoId("cx5cdd42d8abac563e18d9d559");
+        priceSaleCustomerProductGroup6.setTaxRateId("J6");
+        priceSaleCustomerProductGroup6.setTaxIncludedPrice(new BigDecimal("7.8"));
+        priceSaleCustomerProductGroup6.setCurrencyId("CNY");
+        priceSaleCustomerProductGroup6.setEach(100);
+        priceSaleCustomerProductGroup6.setBasicUnitId("米");
+
+        MongoUtil.insert(priceSaleCustomerProductGroup1);
+        MongoUtil.insert(priceSaleCustomerProductGroup2);
+        MongoUtil.insert(priceSaleCustomerProductGroup3);
+        MongoUtil.insert(priceSaleCustomerProductGroup4);
+        MongoUtil.insert(priceSaleCustomerProductGroup5);
+        MongoUtil.insert(priceSaleCustomerProductGroup6);
+
+
+
+
+    }
+
+    /**
+     * 销售客户产品价格信息表增加数据
+     */
+    @Test
+    public void priceSaleCustomerProductInsert(){
+        PriceSaleCustomerProduct priceSaleCustomerProduct1 = new PriceSaleCustomerProduct();
+        priceSaleCustomerProduct1.setPriceSaleCustomerProductCode("10000001");
+        priceSaleCustomerProduct1.setCustomerInfoId("cx5cdd42d8abac563e18d9d561");
+        priceSaleCustomerProduct1.setProductInfoId("cx5cdd42d8abac563e18d9d55d");
+        priceSaleCustomerProduct1.setTaxRateId("J6");
+        priceSaleCustomerProduct1.setTaxIncludedPrice(new BigDecimal("5.5"));
+        priceSaleCustomerProduct1.setCurrencyId("CNY");
+        priceSaleCustomerProduct1.setEach(100);
+        priceSaleCustomerProduct1.setBasicUnitId("米");
+
+        PriceSaleCustomerProduct priceSaleCustomerProduct2 = new PriceSaleCustomerProduct();
+        priceSaleCustomerProduct2.setPriceSaleCustomerProductCode("10000002");
+        priceSaleCustomerProduct2.setCustomerInfoId("cx5cdd42d8abac563e18d9d561");
+        priceSaleCustomerProduct2.setProductInfoId("cx5cdd42d8abac563e18d9d55e");
+        priceSaleCustomerProduct2.setTaxRateId("J6");
+        priceSaleCustomerProduct2.setTaxIncludedPrice(new BigDecimal("6.5"));
+        priceSaleCustomerProduct2.setCurrencyId("CNY");
+        priceSaleCustomerProduct2.setEach(100);
+        priceSaleCustomerProduct2.setBasicUnitId("米");
+
+        PriceSaleCustomerProduct priceSaleCustomerProduct3 = new PriceSaleCustomerProduct();
+        priceSaleCustomerProduct3.setPriceSaleCustomerProductCode("10000003");
+        priceSaleCustomerProduct3.setCustomerInfoId("cx5cdd42d8abac563e18d9d561");
+        priceSaleCustomerProduct3.setProductInfoId("cx5cdd42d8abac563e18d9d55f");
+        priceSaleCustomerProduct3.setTaxRateId("J6");
+        priceSaleCustomerProduct3.setTaxIncludedPrice(new BigDecimal("7.5"));
+        priceSaleCustomerProduct3.setCurrencyId("CNY");
+        priceSaleCustomerProduct3.setEach(100);
+        priceSaleCustomerProduct3.setBasicUnitId("米");
+
+        PriceSaleCustomerProduct priceSaleCustomerProduct4 = new PriceSaleCustomerProduct();
+        priceSaleCustomerProduct4.setPriceSaleCustomerProductCode("10000004");
+        priceSaleCustomerProduct4.setCustomerInfoId("cx5cdd42d8abac563e18d9d562");
+        priceSaleCustomerProduct4.setProductInfoId("cx5cdd42d8abac563e18d9d55d");
+        priceSaleCustomerProduct4.setTaxRateId("J6");
+        priceSaleCustomerProduct4.setTaxIncludedPrice(new BigDecimal("5.8"));
+        priceSaleCustomerProduct4.setCurrencyId("CNY");
+        priceSaleCustomerProduct4.setEach(100);
+        priceSaleCustomerProduct4.setBasicUnitId("米");
+
+        PriceSaleCustomerProduct priceSaleCustomerProduct5 = new PriceSaleCustomerProduct();
+        priceSaleCustomerProduct5.setPriceSaleCustomerProductCode("10000005");
+        priceSaleCustomerProduct5.setCustomerInfoId("cx5cdd42d8abac563e18d9d562");
+        priceSaleCustomerProduct5.setProductInfoId("cx5cdd42d8abac563e18d9d55e");
+        priceSaleCustomerProduct5.setTaxRateId("J6");
+        priceSaleCustomerProduct5.setTaxIncludedPrice(new BigDecimal("6.8"));
+        priceSaleCustomerProduct5.setCurrencyId("CNY");
+        priceSaleCustomerProduct5.setEach(100);
+        priceSaleCustomerProduct5.setBasicUnitId("米");
+
+        PriceSaleCustomerProduct priceSaleCustomerProduct6 = new PriceSaleCustomerProduct();
+        priceSaleCustomerProduct6.setPriceSaleCustomerProductCode("10000006");
+        priceSaleCustomerProduct6.setCustomerInfoId("cx5cdd42d8abac563e18d9d562");
+        priceSaleCustomerProduct6.setProductInfoId("cx5cdd42d8abac563e18d9d55f");
+        priceSaleCustomerProduct6.setTaxRateId("J6");
+        priceSaleCustomerProduct6.setTaxIncludedPrice(new BigDecimal("7.8"));
+        priceSaleCustomerProduct6.setCurrencyId("CNY");
+        priceSaleCustomerProduct6.setEach(100);
+        priceSaleCustomerProduct6.setBasicUnitId("米");
+
+        MongoUtil.insert(priceSaleCustomerProduct1);
+        MongoUtil.insert(priceSaleCustomerProduct2);
+        MongoUtil.insert(priceSaleCustomerProduct3);
+        MongoUtil.insert(priceSaleCustomerProduct4);
+        MongoUtil.insert(priceSaleCustomerProduct5);
+        MongoUtil.insert(priceSaleCustomerProduct6);
+
+
+
+
+    }
+
+    /**
+     * 销售订单表增加数据
+     */
+    @Test
+    public void saleOrderInfoInsert(){
+        SaleOrderInfo saleOrderInfo1 = new SaleOrderInfo();
+        saleOrderInfo1.setId("cx5cdd42d8abac563e18d9d573");
+        saleOrderInfo1.setOrderTypeId("标准订单");
+        saleOrderInfo1.setSaleOrderCode("SO10000001");
+        saleOrderInfo1.setCustomerInfoId("cx5cdd42d8abac563e18d9d561");
+        saleOrderInfo1.setPayentMethodId("汇票");
+        saleOrderInfo1.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        saleOrderInfo1.setCurrencyId("CNY");
+        saleOrderInfo1.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo1.setSaleOrderStatus("已确认");
+
+        SaleOrderInfo saleOrderInfo2 = new SaleOrderInfo();
+        saleOrderInfo2.setId("cx5cdd42d8abac563e18d9d574");
+        saleOrderInfo2.setOrderTypeId("标准订单");
+        saleOrderInfo2.setSaleOrderCode("SO10000002");
+        saleOrderInfo2.setCustomerInfoId("cx5cdd42d8abac563e18d9d562");
+        saleOrderInfo2.setPayentMethodId("汇票");
+        saleOrderInfo2.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        saleOrderInfo2.setCurrencyId("CNY");
+        saleOrderInfo2.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo2.setSaleOrderStatus("已确认");
+
+        SaleOrderInfo saleOrderInfo3 = new SaleOrderInfo();
+        saleOrderInfo3.setId("cx5cdd42d8abac563e18d9d575");
+        saleOrderInfo3.setOrderTypeId("标准订单");
+        saleOrderInfo3.setSaleOrderCode("SO10000003");
+        saleOrderInfo3.setCustomerInfoId("cx5cdd42d8abac563e18d9d563");
+        saleOrderInfo3.setPayentMethodId("汇票");
+        saleOrderInfo3.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        saleOrderInfo3.setCurrencyId("CNY");
+        saleOrderInfo3.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo3.setSaleOrderStatus("已确认");
+
+        SaleOrderInfo saleOrderInfo4 = new SaleOrderInfo();
+        saleOrderInfo4.setId("cx5cdd42d8abac563e18d9d576");
+        saleOrderInfo4.setOrderTypeId("标准订单");
+        saleOrderInfo4.setSaleOrderCode("SO10000004");
+        saleOrderInfo4.setCustomerInfoId("cx5cdd42d8abac563e18d9d564");
+        saleOrderInfo4.setPayentMethodId("汇票");
+        saleOrderInfo4.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        saleOrderInfo4.setCurrencyId("CNY");
+        saleOrderInfo4.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo4.setSaleOrderStatus("已完成");
+
+        SaleOrderInfo saleOrderInfo5 = new SaleOrderInfo();
+        saleOrderInfo5.setId("cx5cdd42d8abac563e18d9d577");
+        saleOrderInfo5.setOrderTypeId("标准订单");
+        saleOrderInfo5.setSaleOrderCode("SO10000005");
+        saleOrderInfo5.setCustomerInfoId("cx5cdd42d8abac563e18d9d565");
+        saleOrderInfo5.setPayentMethodId("现金");
+        saleOrderInfo5.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        saleOrderInfo5.setCurrencyId("CNY");
+        saleOrderInfo5.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo5.setSaleOrderStatus("已完成");
+
+        SaleOrderInfo saleOrderInfo6 = new SaleOrderInfo();
+        saleOrderInfo6.setId("cx5cdd42d8abac563e18d9d578");
+        saleOrderInfo6.setOrderTypeId("标准订单");
+        saleOrderInfo6.setSaleOrderCode("SO10000006");
+        saleOrderInfo6.setCustomerInfoId("cx5cdd42d8abac563e18d9d566");
+        saleOrderInfo6.setPayentMethodId("现金");
+        saleOrderInfo6.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        saleOrderInfo6.setCurrencyId("CNY");
+        saleOrderInfo6.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo6.setSaleOrderStatus("已删除");
+
+        MongoUtil.insert(saleOrderInfo1);
+        MongoUtil.insert(saleOrderInfo2);
+        MongoUtil.insert(saleOrderInfo3);
+        MongoUtil.insert(saleOrderInfo4);
+        MongoUtil.insert(saleOrderInfo5);
+        MongoUtil.insert(saleOrderInfo6);
+    }
+
+    /**
+     * 销售订单详情表增加数据
+     */
+    @Test
+    public void saleOrderDetailInfoInsert(){
+        SaleOrderDetailInfo saleOrderDetailInfo1 = new SaleOrderDetailInfo();
+        saleOrderDetailInfo1.setId("cx5cdd42d8abac563e18d9d58b");
+        saleOrderDetailInfo1.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        saleOrderDetailInfo1.setSaleOrderRowCode("0001");
+        saleOrderDetailInfo1.setProductInfoId("cx5cdd42d8abac563e18d9d55d");
+        saleOrderDetailInfo1.setTaxRateId("J6");
+        saleOrderDetailInfo1.setUnitPrice(new BigDecimal("5.5"));
+        saleOrderDetailInfo1.setSaleOrderQuantity(100000.0);
+        saleOrderDetailInfo1.setBasicUnitId("米");
+        saleOrderDetailInfo1.setDeliveryDate(new Date(""));
+        saleOrderDetailInfo1.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        saleOrderDetailInfo1.setInventoryLocationInfoId("cx5cdd42d8abac563e18d9d515");
+
+        MongoUtil.insert(saleOrderDetailInfo1);
+        MongoUtil.insert(saleOrderDetailInfo1);
+        MongoUtil.insert(saleOrderDetailInfo1);
+        MongoUtil.insert(saleOrderDetailInfo1);
+        MongoUtil.insert(saleOrderDetailInfo1);
+        MongoUtil.insert(saleOrderDetailInfo1);
+    }
+
+    /**
+     * 其他出库列表新增数据
+     */
+    @Test
+    public void otherOutboundInsert(){
+        OtherOutbound otherOutbound = new OtherOutbound();
+        otherOutbound.setOtherOutboundCode("OO10000001");
+        otherOutbound.setDocumentType("其他出库");
+        otherOutbound.setProductInfoId("cx5cdd42d8abac563e18d9d55d");
+        otherOutbound.setOutboundNumber(new BigDecimal("5000"));
+        otherOutbound.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        otherOutbound.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        otherOutbound.setDocumentTime(DateUtil.stringToDate("2019-5-15","yyyy-MM-dd"));
+        otherOutbound.setReceiptStatus(1);
+
+        OtherOutbound otherOutbound2 = new OtherOutbound();
+        otherOutbound2.setOtherOutboundCode("OO10000002");
+        otherOutbound2.setDocumentType("其他出库");
+        otherOutbound2.setProductInfoId("cx5cdd42d8abac563e18d9d55e");
+        otherOutbound2.setOutboundNumber(new BigDecimal("5000"));
+        otherOutbound2.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        otherOutbound2.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        otherOutbound.setDocumentTime(DateUtil.stringToDate("2019-5-15","yyyy-MM-dd"));
+        otherOutbound2.setReceiptStatus(1);
+
+        OtherOutbound otherOutbound3 = new OtherOutbound();
+        otherOutbound3.setOtherOutboundCode("OO10000003");
+        otherOutbound3.setDocumentType("其他出库");
+        otherOutbound3.setProductInfoId("cx5cdd42d8abac563e18d9d55f");
+        otherOutbound3.setOutboundNumber(new BigDecimal("5000"));
+        otherOutbound3.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        otherOutbound3.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        otherOutbound.setDocumentTime(DateUtil.stringToDate("2019-5-15","yyyy-MM-dd"));
+        otherOutbound3.setReceiptStatus(1);
+
+        OtherOutbound otherOutbound4 = new OtherOutbound();
+        otherOutbound4.setOtherOutboundCode("OO10000004");
+        otherOutbound4.setDocumentType("其他出库");
+        otherOutbound4.setProductInfoId("cx5cdd42d8abac563e18d9d560");
+        otherOutbound4.setOutboundNumber(new BigDecimal("5000"));
+        otherOutbound4.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        otherOutbound4.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        otherOutbound.setDocumentTime(DateUtil.stringToDate("2019-5-15","yyyy-MM-dd"));
+        otherOutbound4.setReceiptStatus(1);
+
+        OtherOutbound otherOutbound5 = new OtherOutbound();
+        otherOutbound5.setOtherOutboundCode("OO10000005");
+        otherOutbound5.setDocumentType("其他出库");
+        otherOutbound5.setProductInfoId("cx5cdd42d8abac563e18d9d561");
+        otherOutbound5.setOutboundNumber(new BigDecimal("5000"));
+        otherOutbound5.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        otherOutbound5.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        otherOutbound.setDocumentTime(DateUtil.stringToDate("2019-5-15","yyyy-MM-dd"));
+        otherOutbound5.setReceiptStatus(1);
+
+        OtherOutbound otherOutbound6 = new OtherOutbound();
+        otherOutbound6.setOtherOutboundCode("OO10000006");
+        otherOutbound6.setDocumentType("其他出库");
+        otherOutbound6.setProductInfoId("cx5cdd42d8abac563e18d9d562");
+        otherOutbound6.setOutboundNumber(new BigDecimal("5000"));
+        otherOutbound6.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        otherOutbound6.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        otherOutbound.setDocumentTime(DateUtil.stringToDate("2019-5-15","yyyy-MM-dd"));
+        otherOutbound6.setReceiptStatus(1);
+
+        MongoUtil.insert(otherOutbound);
+        MongoUtil.insert(otherOutbound2);
+        MongoUtil.insert(otherOutbound3);
+        MongoUtil.insert(otherOutbound4);
+        MongoUtil.insert(otherOutbound5);
+        MongoUtil.insert(otherOutbound6);
+    }
+
+
+
 
 
 
