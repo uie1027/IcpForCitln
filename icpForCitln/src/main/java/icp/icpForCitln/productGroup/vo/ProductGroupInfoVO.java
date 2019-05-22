@@ -16,4 +16,6 @@ public class ProductGroupInfoVO {
     private String	productGroupCode;     //产品组编码
 
     private String	productGroupName;     //产品组名称
+
+    private String basicUnitId;  //单位ID
 }

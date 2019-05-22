@@ -43,6 +43,9 @@ public class ProductGroupInfo extends BaseEntity implements Serializable {
     @Field("PRODUCT_GROUP_DETAILED_INFORMATION")
     private String	productGroupDetailedInformation; //详细信息
 
+    @Field("BASIC_UNIT_ID")
+    private String basicUnitId;  //单位ID
+
     public String redisObjectKey() {      //Redis 存储块名
         return OBJECT_KEY;
     }
