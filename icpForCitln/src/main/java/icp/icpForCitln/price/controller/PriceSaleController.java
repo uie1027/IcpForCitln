@@ -221,6 +221,8 @@ public class PriceSaleController {
         return PageResult.returnResult(PageResult.ERROR_CODE,null);
     }
 
+
+
     /**
      * @author:
      * date: 2019/5/14 18:44
@@ -334,6 +336,80 @@ public class PriceSaleController {
                     = BeanCopyUtil.copy(priceSaleCustomerProductGroupDTOS,PriceSaleCustomerProductGroup.class);
             MongoUtil.upsert(list,1);
             return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+        }
+        return PageResult.returnResult(PageResult.ERROR_CODE,null);
+    }
+
+
+    /**
+     * @author:
+     * date: 2019/5/17 14:36
+     * @since: JDK 1.8
+     *
+     * @description: 商品价格删除
+     * @param: [list]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/priceSaleProductDelete")
+    public PageResult priceSaleProductDelete(@RequestBody List<PriceSaleProductDTO> list  ){
+
+        if(list != null && list.size() >0){
+            boolean delFlag = MongoUtil.delete(BeanCopyUtil.copy(list,PriceSaleProduct.class ));
+            if(delFlag) return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+        }
+        return PageResult.returnResult(PageResult.ERROR_CODE,null);
+    }
+
+    /**
+     * @author:
+     * date: 2019/5/17 14:36
+     * @since: JDK 1.8
+     *
+     * @description: 商品组价格删除
+     * @param: [list]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/priceSaleProductGroupDelete")
+    public PageResult priceSaleProductGroupDelete(@RequestBody List<PriceSaleProductGroupDTO> list  ){
+        if(list != null && list.size() >0){
+            boolean delFlag = MongoUtil.delete(BeanCopyUtil.copy(list,PriceSaleProductGroup.class ));
+            if(delFlag) return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+        }
+        return PageResult.returnResult(PageResult.ERROR_CODE,null);
+    }
+
+    /**
+     * @author:
+     * date: 2019/5/17 14:36
+     * @since: JDK 1.8
+     *
+     * @description: 客户商品价格删除
+     * @param: [list]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/priceSaleCustomerProductDelete")
+    public PageResult priceSaleCustomerProductDelete(@RequestBody List<PriceSaleCustomerProductDTO> list  ){
+        if(list != null && list.size() >0){
+            boolean delFlag = MongoUtil.delete(BeanCopyUtil.copy(list,PriceSaleCustomerProduct.class ));
+            if(delFlag) return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
+        }
+        return PageResult.returnResult(PageResult.ERROR_CODE,null);
+    }
+
+    /**
+     * @author:
+     * date: 2019/5/17 14:36
+     * @since: JDK 1.8
+     *
+     * @description: 客户商品组价格删除
+     * @param: [list]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @PostMapping("/priceSaleCustomerProductGroupDelete")
+    public PageResult priceSaleCustomerProductGroupDelete(@RequestBody List<PriceSaleCustomerProductGroupDTO> list  ){
+        if(list != null && list.size() >0){
+            boolean delFlag = MongoUtil.delete(BeanCopyUtil.copy(list,PriceSaleCustomerProductGroup.class ));
+            if(delFlag) return PageResult.returnResult(PageResult.SUCCESS_CODE,null);
         }
         return PageResult.returnResult(PageResult.ERROR_CODE,null);
     }

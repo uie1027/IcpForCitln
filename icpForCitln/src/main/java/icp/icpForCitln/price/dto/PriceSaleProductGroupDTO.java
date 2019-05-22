@@ -8,7 +8,6 @@
 
 package icp.icpForCitln.price.dto;
 
-import icp.icpForCitln.productGroup.entity.ProductGroupInfo;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -18,7 +17,7 @@ import java.util.Date;
 //销售产品组价格
 public class PriceSaleProductGroupDTO {
     private String id;
-    private Integer	priceSaleProductGroupCode;  //销售产品组价格编码
+    private String	priceSaleProductGroupCode;  //销售产品组价格编码
     private String	productGroupInfoId;     //产品组ID
     private String	productGroupCode;     //产品组编码
     private String	productGroupName;     //产品组名称
@@ -27,6 +26,5 @@ public class PriceSaleProductGroupDTO {
     private String	currencyId;    //币种
     private Integer	each;   //每
     private String	basicUnitId;    //基本单位BASIC_UNIT_ID
-    private ProductGroupInfo productGroupInfo;
-    private Date lastModificationTime;
+    private Date lastModificationTime;  //最后更改时间
 }
