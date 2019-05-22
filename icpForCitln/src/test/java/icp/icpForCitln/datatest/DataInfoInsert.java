@@ -23,7 +23,7 @@ import icp.icpForCitln.price.entity.PriceSaleCustomerProduct;
 import icp.icpForCitln.price.entity.PriceSaleCustomerProductGroup;
 import icp.icpForCitln.price.entity.PriceSaleProduct;
 import icp.icpForCitln.price.entity.PriceSaleProductGroup;
-import icp.icpForCitln.stock.entity.OtherOutbound;
+import icp.icpForCitln.stock.entity.*;
 import icp.icpForCitln.supplier.entity.SupplierInfo;
 import icp.icpForCitln.sysconf.entity.SystemBrandInfo;
 import icp.icpForCitln.sysconf.entity.SystemProductAttribuit;
@@ -1614,6 +1614,7 @@ public class DataInfoInsert {
     public void saleOrderInfoInsert(){
         SaleOrderInfo saleOrderInfo1 = new SaleOrderInfo();
         saleOrderInfo1.setId("cx5cdd42d8abac563e18d9d573");
+        saleOrderInfo1.setOrderOriginId("cx5cda27c58dde33369401c25f");
         saleOrderInfo1.setOrderTypeId("标准订单");
         saleOrderInfo1.setSaleOrderCode("SO10000001");
         saleOrderInfo1.setCustomerInfoId("cx5cdd42d8abac563e18d9d561");
@@ -1621,10 +1622,12 @@ public class DataInfoInsert {
         saleOrderInfo1.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
         saleOrderInfo1.setCurrencyId("CNY");
         saleOrderInfo1.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo1.setSaleOrderDate(new Date("2019/5/1"));
         saleOrderInfo1.setSaleOrderStatus("已确认");
 
         SaleOrderInfo saleOrderInfo2 = new SaleOrderInfo();
         saleOrderInfo2.setId("cx5cdd42d8abac563e18d9d574");
+        saleOrderInfo1.setOrderOriginId("cx5cda27c58dde33369401c25f");
         saleOrderInfo2.setOrderTypeId("标准订单");
         saleOrderInfo2.setSaleOrderCode("SO10000002");
         saleOrderInfo2.setCustomerInfoId("cx5cdd42d8abac563e18d9d562");
@@ -1632,10 +1635,12 @@ public class DataInfoInsert {
         saleOrderInfo2.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
         saleOrderInfo2.setCurrencyId("CNY");
         saleOrderInfo2.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo1.setSaleOrderDate(new Date("2019/5/2"));
         saleOrderInfo2.setSaleOrderStatus("已确认");
 
         SaleOrderInfo saleOrderInfo3 = new SaleOrderInfo();
         saleOrderInfo3.setId("cx5cdd42d8abac563e18d9d575");
+        saleOrderInfo1.setOrderOriginId("cx5cda27c58dde33369401c25f");
         saleOrderInfo3.setOrderTypeId("标准订单");
         saleOrderInfo3.setSaleOrderCode("SO10000003");
         saleOrderInfo3.setCustomerInfoId("cx5cdd42d8abac563e18d9d563");
@@ -1643,10 +1648,12 @@ public class DataInfoInsert {
         saleOrderInfo3.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
         saleOrderInfo3.setCurrencyId("CNY");
         saleOrderInfo3.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo1.setSaleOrderDate(new Date("2019/4/30"));
         saleOrderInfo3.setSaleOrderStatus("已确认");
 
         SaleOrderInfo saleOrderInfo4 = new SaleOrderInfo();
         saleOrderInfo4.setId("cx5cdd42d8abac563e18d9d576");
+        saleOrderInfo1.setOrderOriginId("cx5cda28288dde333d30c68306");
         saleOrderInfo4.setOrderTypeId("标准订单");
         saleOrderInfo4.setSaleOrderCode("SO10000004");
         saleOrderInfo4.setCustomerInfoId("cx5cdd42d8abac563e18d9d564");
@@ -1654,10 +1661,12 @@ public class DataInfoInsert {
         saleOrderInfo4.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
         saleOrderInfo4.setCurrencyId("CNY");
         saleOrderInfo4.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo1.setSaleOrderDate(new Date("2019/5/1"));
         saleOrderInfo4.setSaleOrderStatus("已完成");
 
         SaleOrderInfo saleOrderInfo5 = new SaleOrderInfo();
         saleOrderInfo5.setId("cx5cdd42d8abac563e18d9d577");
+        saleOrderInfo1.setOrderOriginId("cx5cda28288dde333d30c68306");
         saleOrderInfo5.setOrderTypeId("标准订单");
         saleOrderInfo5.setSaleOrderCode("SO10000005");
         saleOrderInfo5.setCustomerInfoId("cx5cdd42d8abac563e18d9d565");
@@ -1665,10 +1674,12 @@ public class DataInfoInsert {
         saleOrderInfo5.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
         saleOrderInfo5.setCurrencyId("CNY");
         saleOrderInfo5.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo1.setSaleOrderDate(new Date("2019/5/1"));
         saleOrderInfo5.setSaleOrderStatus("已完成");
 
         SaleOrderInfo saleOrderInfo6 = new SaleOrderInfo();
         saleOrderInfo6.setId("cx5cdd42d8abac563e18d9d578");
+        saleOrderInfo1.setOrderOriginId("cx5cda28288dde333d30c68306");
         saleOrderInfo6.setOrderTypeId("标准订单");
         saleOrderInfo6.setSaleOrderCode("SO10000006");
         saleOrderInfo6.setCustomerInfoId("cx5cdd42d8abac563e18d9d566");
@@ -1676,6 +1687,7 @@ public class DataInfoInsert {
         saleOrderInfo6.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
         saleOrderInfo6.setCurrencyId("CNY");
         saleOrderInfo6.setTotalAmount(new BigDecimal("48000"));
+        saleOrderInfo1.setSaleOrderDate(new Date("2019/5/1"));
         saleOrderInfo6.setSaleOrderStatus("已删除");
 
         MongoUtil.insert(saleOrderInfo1);
@@ -1687,8 +1699,15 @@ public class DataInfoInsert {
     }
 
     /**
-     * 销售订单详情表增加数据
+     * @author: 汪明月
+     * date: 2019-5-22 13:12
+     * @since: JDK 1.8
+     *
+     * @description: 销售订单详情表增加数据
+     * @param: []
+     * @return: void
      */
+
     @Test
     public void saleOrderDetailInfoInsert(){
         SaleOrderDetailInfo saleOrderDetailInfo1 = new SaleOrderDetailInfo();
@@ -1700,16 +1719,509 @@ public class DataInfoInsert {
         saleOrderDetailInfo1.setUnitPrice(new BigDecimal("5.5"));
         saleOrderDetailInfo1.setSaleOrderQuantity(100000.0);
         saleOrderDetailInfo1.setBasicUnitId("米");
-        saleOrderDetailInfo1.setDeliveryDate(new Date(""));
+        saleOrderDetailInfo1.setDeliveryDate(new Date("2019/5/10"));
         saleOrderDetailInfo1.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
         saleOrderDetailInfo1.setInventoryLocationInfoId("cx5cdd42d8abac563e18d9d515");
 
+        SaleOrderDetailInfo saleOrderDetailInfo2 = new SaleOrderDetailInfo();
+        saleOrderDetailInfo2.setId("cx5cdd42d8abac563e18d9d58c");
+        saleOrderDetailInfo2.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        saleOrderDetailInfo2.setSaleOrderRowCode("0002");
+        saleOrderDetailInfo1.setProductInfoId("cx5cdd42d8abac563e18d9d55e");
+        saleOrderDetailInfo2.setTaxRateId("J6");
+        saleOrderDetailInfo2.setUnitPrice(new BigDecimal("6.5"));
+        saleOrderDetailInfo2.setSaleOrderQuantity(100000.0);
+        saleOrderDetailInfo2.setBasicUnitId("米");
+        saleOrderDetailInfo2.setDeliveryDate(new Date("2019/5/10"));
+        saleOrderDetailInfo2.setFactoryInfoId("cx5cdd42d8abac563e18d9d5c");
+        saleOrderDetailInfo2.setInventoryLocationInfoId("cx5cdd42d8abac563e18d9d515");
+
+        SaleOrderDetailInfo saleOrderDetailInfo3 = new SaleOrderDetailInfo();
+        saleOrderDetailInfo3.setId("cx5cdd42d8abac563e18d9d58d");
+        saleOrderDetailInfo3.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        saleOrderDetailInfo3.setSaleOrderRowCode("0003");
+        saleOrderDetailInfo1.setProductInfoId("cx5cdd42d8abac563e18d9d55f");
+        saleOrderDetailInfo3.setTaxRateId("J6");
+        saleOrderDetailInfo3.setUnitPrice(new BigDecimal("7.5"));
+        saleOrderDetailInfo3.setSaleOrderQuantity(100000.0);
+        saleOrderDetailInfo3.setBasicUnitId("米");
+        saleOrderDetailInfo3.setDeliveryDate(new Date("2019/5/10"));
+        saleOrderDetailInfo3.setFactoryInfoId("cx5cdd42d8abac563e18d9d5c");
+        saleOrderDetailInfo3.setInventoryLocationInfoId("cx5cdd42d8abac563e18d9d515");
+
+        SaleOrderDetailInfo saleOrderDetailInfo4 = new SaleOrderDetailInfo();
+        saleOrderDetailInfo4.setId("cx5cdd42d8abac563e18d9d58e");
+        saleOrderDetailInfo4.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        saleOrderDetailInfo4.setSaleOrderRowCode("0004");
+        saleOrderDetailInfo1.setProductInfoId("cx5cdd42d8abac563e18d9d560");
+        saleOrderDetailInfo4.setTaxRateId("J6");
+        saleOrderDetailInfo4.setUnitPrice(new BigDecimal("8.5"));
+        saleOrderDetailInfo4.setSaleOrderQuantity(100000.0);
+        saleOrderDetailInfo4.setBasicUnitId("米");
+        saleOrderDetailInfo4.setDeliveryDate(new Date("2019/5/10"));
+        saleOrderDetailInfo4.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        saleOrderDetailInfo4.setInventoryLocationInfoId("cx5cdd42d8abac563e18d9d515");
+
+        SaleOrderDetailInfo saleOrderDetailInfo5 = new SaleOrderDetailInfo();
+        saleOrderDetailInfo5.setId("cx5cdd42d8abac563e18d9d58f");
+        saleOrderDetailInfo5.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        saleOrderDetailInfo5.setSaleOrderRowCode("0005");
+        saleOrderDetailInfo1.setProductInfoId("cx5cdd42d8abac563e18d9d561");
+        saleOrderDetailInfo5.setTaxRateId("J6");
+        saleOrderDetailInfo5.setUnitPrice(new BigDecimal("9.5"));
+        saleOrderDetailInfo5.setSaleOrderQuantity(100000.0);
+        saleOrderDetailInfo5.setBasicUnitId("米");
+        saleOrderDetailInfo5.setDeliveryDate(new Date("2019/5/10"));
+        saleOrderDetailInfo5.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        saleOrderDetailInfo5.setInventoryLocationInfoId("cx5cdd42d8abac563e18d9d515");
+
+        SaleOrderDetailInfo saleOrderDetailInfo6 = new SaleOrderDetailInfo();
+        saleOrderDetailInfo6.setId("cx5cdd42d8abac563e18d9d590");
+        saleOrderDetailInfo6.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        saleOrderDetailInfo6.setSaleOrderRowCode("0006");
+        saleOrderDetailInfo1.setProductInfoId("cx5cdd42d8abac563e18d9d562");
+        saleOrderDetailInfo6.setTaxRateId("J6");
+        saleOrderDetailInfo6.setUnitPrice(new BigDecimal("10.5"));
+        saleOrderDetailInfo6.setSaleOrderQuantity(100000.0);
+        saleOrderDetailInfo6.setBasicUnitId("米");
+        saleOrderDetailInfo6.setDeliveryDate(new Date("2019/5/10"));
+        saleOrderDetailInfo6.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        saleOrderDetailInfo6.setInventoryLocationInfoId("cx5cdd42d8abac563e18d9d515");
+
         MongoUtil.insert(saleOrderDetailInfo1);
-        MongoUtil.insert(saleOrderDetailInfo1);
-        MongoUtil.insert(saleOrderDetailInfo1);
-        MongoUtil.insert(saleOrderDetailInfo1);
-        MongoUtil.insert(saleOrderDetailInfo1);
-        MongoUtil.insert(saleOrderDetailInfo1);
+        MongoUtil.insert(saleOrderDetailInfo2);
+        MongoUtil.insert(saleOrderDetailInfo3);
+        MongoUtil.insert(saleOrderDetailInfo4);
+        MongoUtil.insert(saleOrderDetailInfo5);
+        MongoUtil.insert(saleOrderDetailInfo6);
+    }
+
+
+
+
+    /**
+     * 生产入库列表新增数据
+     */
+    @Test
+    public void productionReceiptInsert(){
+        ProductionReceipt productionReceipt1 = new ProductionReceipt();
+        productionReceipt1.setProductionReceiptCode("CW10000001");
+        productionReceipt1.setDocumentType("生产入库");
+        productionReceipt1.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        productionReceipt1.setProductionOrderId("cx5cdd42d8abac563e18d9d57f");
+        productionReceipt1.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        productionReceipt1.setProductInfoId("cx5cdd42d8abac563e18d9d55d");
+        productionReceipt1.setWarehouseNumber(new BigDecimal("5000"));
+        productionReceipt1.setUnstockedNumber(new BigDecimal("0"));
+        productionReceipt1.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5b");
+        productionReceipt1.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        productionReceipt1.setOrderCreateTime(new Date("2019/5/5"));
+        productionReceipt1.setReceiptStatus(1);
+
+        ProductionReceipt productionReceipt2 = new ProductionReceipt();
+        productionReceipt2.setProductionReceiptCode("CW10000002");
+        productionReceipt2.setDocumentType("生产入库");
+        productionReceipt2.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        productionReceipt2.setProductionOrderId("cx5cdd42d8abac563e18d9d580");
+        productionReceipt2.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        productionReceipt2.setProductInfoId("cx5cdd42d8abac563e18d9d55e");
+        productionReceipt2.setWarehouseNumber(new BigDecimal("4000"));
+        productionReceipt2.setUnstockedNumber(new BigDecimal("1000"));
+        productionReceipt2.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5b");
+        productionReceipt2.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        productionReceipt2.setOrderCreateTime(new Date("2019/5/5"));
+        productionReceipt2.setReceiptStatus(1);
+
+        ProductionReceipt productionReceipt3 = new ProductionReceipt();
+        productionReceipt3.setProductionReceiptCode("CW10000003");
+        productionReceipt3.setDocumentType("生产入库");
+        productionReceipt3.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        productionReceipt3.setProductionOrderId("cx5cdd42d8abac563e18d9d581");
+        productionReceipt3.setFactoryInfoId("cx5cdd42d8abac563e18d9d5b");
+        productionReceipt3.setProductInfoId("cx5cdd42d8abac563e18d9d55f");
+        productionReceipt3.setWarehouseNumber(new BigDecimal("5000"));
+        productionReceipt3.setUnstockedNumber(new BigDecimal("0"));
+        productionReceipt3.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5b");
+        productionReceipt3.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        productionReceipt3.setOrderCreateTime(new Date("2019/5/5"));
+        productionReceipt3.setReceiptStatus(1);
+
+        ProductionReceipt productionReceipt4 = new ProductionReceipt();
+        productionReceipt4.setProductionReceiptCode("CW10000004");
+        productionReceipt4.setDocumentType("生产入库");
+        productionReceipt4.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        productionReceipt4.setProductionOrderId("cx5cdd42d8abac563e18d9d582");
+        productionReceipt4.setFactoryInfoId("cx5cdd42d8abac563e18d9d5c");
+        productionReceipt4.setProductInfoId("cx5cdd42d8abac563e18d9d55d");
+        productionReceipt4.setWarehouseNumber(new BigDecimal("2000"));
+        productionReceipt4.setUnstockedNumber(new BigDecimal("3000"));
+        productionReceipt4.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5c");
+        productionReceipt4.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        productionReceipt4.setOrderCreateTime(new Date("2019/5/10"));
+        productionReceipt4.setReceiptStatus(1);
+
+        ProductionReceipt productionReceipt5 = new ProductionReceipt();
+        productionReceipt5.setProductionReceiptCode("CW10000005");
+        productionReceipt5.setDocumentType("生产入库");
+        productionReceipt5.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        productionReceipt5.setProductionOrderId("cx5cdd42d8abac563e18d9d583");
+        productionReceipt5.setFactoryInfoId("cx5cdd42d8abac563e18d9d5c");
+        productionReceipt5.setProductInfoId("cx5cdd42d8abac563e18d9d55e");
+        productionReceipt5.setWarehouseNumber(new BigDecimal("2000"));
+        productionReceipt5.setUnstockedNumber(new BigDecimal("0"));
+        productionReceipt5.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5c");
+        productionReceipt5.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        productionReceipt5.setOrderCreateTime(new Date("2019/5/10"));
+        productionReceipt5.setReceiptStatus(1);
+
+        ProductionReceipt productionReceipt6 = new ProductionReceipt();
+        productionReceipt6.setProductionReceiptCode("CW10000006");
+        productionReceipt6.setDocumentType("生产入库");
+        productionReceipt6.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        productionReceipt6.setProductionOrderId("cx5cdd42d8abac563e18d9d584");
+        productionReceipt6.setFactoryInfoId("cx5cdd42d8abac563e18d9d5c");
+        productionReceipt6.setProductInfoId("cx5cdd42d8abac563e18d9d55f");
+        productionReceipt6.setWarehouseNumber(new BigDecimal("5000"));
+        productionReceipt6.setUnstockedNumber(new BigDecimal("0"));
+        productionReceipt6.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5c");
+        productionReceipt6.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        productionReceipt6.setOrderCreateTime(new Date("2019/5/10"));
+        productionReceipt6.setReceiptStatus(2);
+
+
+        MongoUtil.insert(productionReceipt1);
+        MongoUtil.insert(productionReceipt2);
+        MongoUtil.insert(productionReceipt3);
+        MongoUtil.insert(productionReceipt4);
+        MongoUtil.insert(productionReceipt5);
+        MongoUtil.insert(productionReceipt6);
+    }
+
+
+    /**
+     * 采购入库列表新增数据
+     */
+    @Test
+    public void purchaseReceiptInsert(){
+        PurchaseReceipt purchaseReceipt = new PurchaseReceipt();
+        purchaseReceipt.setId("cx5cdd42d8abac563e18d9d591");
+        purchaseReceipt.setPurchaseReceiptCode("PW10000001");
+        purchaseReceipt.setDocumentType("采购入库");
+        purchaseReceipt.setSupplierInfoId("cx5cdd42d8abac563e18d9d567");
+        purchaseReceipt.setPurchaseOrderInfoId("cx5cdd42d8abac563e18d9d56d");
+        purchaseReceipt.setOrderCreateTime(new Date("2019/5/10"));
+        purchaseReceipt.setReceiptStatus(1);
+
+        PurchaseReceipt purchaseReceipt2 = new PurchaseReceipt();
+        purchaseReceipt2.setId("cx5cdd42d8abac563e18d9d592");
+        purchaseReceipt2.setPurchaseReceiptCode("PW10000002");
+        purchaseReceipt2.setDocumentType("采购入库");
+        purchaseReceipt2.setSupplierInfoId("cx5cdd42d8abac563e18d9d568");
+        purchaseReceipt2.setPurchaseOrderInfoId("cx5cdd42d8abac563e18d9d56e");
+        purchaseReceipt2.setOrderCreateTime(new Date("2019/5/10"));
+        purchaseReceipt2.setReceiptStatus(1);
+
+        PurchaseReceipt purchaseReceipt3 = new PurchaseReceipt();
+        purchaseReceipt3.setId("cx5cdd42d8abac563e18d9d593");
+        purchaseReceipt3.setPurchaseReceiptCode("PW10000003");
+        purchaseReceipt3.setDocumentType("采购入库");
+        purchaseReceipt3.setSupplierInfoId("cx5cdd42d8abac563e18d9d569");
+        purchaseReceipt3.setPurchaseOrderInfoId("cx5cdd42d8abac563e18d9d56f");
+        purchaseReceipt3.setOrderCreateTime(new Date("2019/5/10"));
+        purchaseReceipt3.setReceiptStatus(1);
+
+        PurchaseReceipt purchaseReceipt4 = new PurchaseReceipt();
+        purchaseReceipt4.setId("cx5cdd42d8abac563e18d9d594");
+        purchaseReceipt4.setPurchaseReceiptCode("PW10000004");
+        purchaseReceipt4.setDocumentType("采购入库");
+        purchaseReceipt4.setSupplierInfoId("cx5cdd42d8abac563e18d9d56a");
+        purchaseReceipt4.setPurchaseOrderInfoId("cx5cdd42d8abac563e18d9d570");
+        purchaseReceipt4.setOrderCreateTime(new Date("2019/5/10"));
+        purchaseReceipt4.setReceiptStatus(1);
+
+        PurchaseReceipt purchaseReceipt5 = new PurchaseReceipt();
+        purchaseReceipt5.setId("cx5cdd42d8abac563e18d9d595");
+        purchaseReceipt5.setPurchaseReceiptCode("PW10000005");
+        purchaseReceipt5.setDocumentType("采购入库");
+        purchaseReceipt5.setSupplierInfoId("cx5cdd42d8abac563e18d9d56b");
+        purchaseReceipt5.setPurchaseOrderInfoId("cx5cdd42d8abac563e18d9d571");
+        purchaseReceipt5.setOrderCreateTime(new Date("2019/5/10"));
+        purchaseReceipt5.setReceiptStatus(1);
+
+        PurchaseReceipt purchaseReceipt6 = new PurchaseReceipt();
+        purchaseReceipt6.setId("cx5cdd42d8abac563e18d9d596");
+        purchaseReceipt6.setPurchaseReceiptCode("PW10000006");
+        purchaseReceipt6.setDocumentType("采购入库");
+        purchaseReceipt6.setSupplierInfoId("cx5cdd42d8abac563e18d9d56c");
+        purchaseReceipt6.setPurchaseOrderInfoId("cx5cdd42d8abac563e18d9d572");
+        purchaseReceipt6.setOrderCreateTime(new Date("2019/5/10"));
+        purchaseReceipt6.setReceiptStatus(1);
+
+
+
+        MongoUtil.insert(purchaseReceipt);
+        MongoUtil.insert(purchaseReceipt2);
+        MongoUtil.insert(purchaseReceipt3);
+        MongoUtil.insert(purchaseReceipt4);
+        MongoUtil.insert(purchaseReceipt5);
+        MongoUtil.insert(purchaseReceipt6);
+    }
+
+
+    /**
+     * 采购入库单行项目新增数据
+     */
+    @Test
+    public void purchaseReceiptDetailInsert(){
+        PurchaseReceiptDetail purchaseReceiptDetail = new PurchaseReceiptDetail();
+        purchaseReceiptDetail.setPurchaseReceiptId("cx5cdd42d8abac563e18d9d591");
+        purchaseReceiptDetail.setPurchaseOrderDetailInfoId("cx5cdd42d8abac563e18d9d597");
+        purchaseReceiptDetail.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5b");
+        purchaseReceiptDetail.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        purchaseReceiptDetail.setUnstockedNumber(new BigDecimal("5000"));
+        purchaseReceiptDetail.setWarehouseNumber(new BigDecimal("5000"));
+
+        PurchaseReceiptDetail purchaseReceiptDetail2 = new PurchaseReceiptDetail();
+        purchaseReceiptDetail2.setPurchaseReceiptId("cx5cdd42d8abac563e18d9d591");
+        purchaseReceiptDetail2.setPurchaseOrderDetailInfoId("cx5cdd42d8abac563e18d9d598");
+        purchaseReceiptDetail2.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5c");
+        purchaseReceiptDetail2.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        purchaseReceiptDetail2.setUnstockedNumber(new BigDecimal("5000"));
+        purchaseReceiptDetail2.setWarehouseNumber(new BigDecimal("5000"));
+
+        PurchaseReceiptDetail purchaseReceiptDetail3 = new PurchaseReceiptDetail();
+        purchaseReceiptDetail3.setPurchaseReceiptId("cx5cdd42d8abac563e18d9d591");
+        purchaseReceiptDetail3.setPurchaseOrderDetailInfoId("cx5cdd42d8abac563e18d9d599");
+        purchaseReceiptDetail3.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5c");
+        purchaseReceiptDetail3.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        purchaseReceiptDetail3.setUnstockedNumber(new BigDecimal("5000"));
+        purchaseReceiptDetail3.setWarehouseNumber(new BigDecimal("5000"));
+
+        PurchaseReceiptDetail purchaseReceiptDetail4 = new PurchaseReceiptDetail();
+        purchaseReceiptDetail4.setPurchaseReceiptId("cx5cdd42d8abac563e18d9d591");
+        purchaseReceiptDetail4.setPurchaseOrderDetailInfoId("cx5cdd42d8abac563e18d9d59a");
+        purchaseReceiptDetail4.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5b");
+        purchaseReceiptDetail4.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        purchaseReceiptDetail4.setUnstockedNumber(new BigDecimal("5000"));
+        purchaseReceiptDetail4.setWarehouseNumber(new BigDecimal("5000"));
+
+        PurchaseReceiptDetail purchaseReceiptDetail5 = new PurchaseReceiptDetail();
+        purchaseReceiptDetail5.setPurchaseReceiptId("cx5cdd42d8abac563e18d9d591");
+        purchaseReceiptDetail5.setPurchaseOrderDetailInfoId("cx5cdd42d8abac563e18d9d59b");
+        purchaseReceiptDetail5.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5b");
+        purchaseReceiptDetail5.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        purchaseReceiptDetail5.setUnstockedNumber(new BigDecimal("5000"));
+        purchaseReceiptDetail5.setWarehouseNumber(new BigDecimal("5000"));
+
+        PurchaseReceiptDetail purchaseReceiptDetail6 = new PurchaseReceiptDetail();
+        purchaseReceiptDetail6.setPurchaseReceiptId("cx5cdd42d8abac563e18d9d591");
+        purchaseReceiptDetail6.setPurchaseOrderDetailInfoId("cx5cdd42d8abac563e18d9d59c");
+        purchaseReceiptDetail6.setReceivingFactoryId("cx5cdd42d8abac563e18d9d5b");
+        purchaseReceiptDetail6.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+        purchaseReceiptDetail6.setUnstockedNumber(new BigDecimal("5000"));
+        purchaseReceiptDetail6.setWarehouseNumber(new BigDecimal("5000"));
+
+
+        MongoUtil.insert(purchaseReceiptDetail);
+        MongoUtil.insert(purchaseReceiptDetail2);
+        MongoUtil.insert(purchaseReceiptDetail3);
+        MongoUtil.insert(purchaseReceiptDetail4);
+        MongoUtil.insert(purchaseReceiptDetail5);
+        MongoUtil.insert(purchaseReceiptDetail6);
+    }
+
+
+    /**
+     * 销售出库新增数据
+     */
+    @Test
+    public void salesOutboundInsert(){
+        SalesOutbound salesOutbound = new SalesOutbound();
+        salesOutbound.setId("cx5cdd42d8abac563e18d9d5a3");
+        salesOutbound.setSalesOutbountCode("SS10000001");
+        salesOutbound.setOutboundTypeId("销售出库");
+        salesOutbound.setSalesDeliveryId("cx5cdd42d8abac563e18d9d59d");
+        salesOutbound.setOutboundStatus(1);
+
+        SalesOutbound salesOutbound2 = new SalesOutbound();
+        salesOutbound2.setId("cx5cdd42d8abac563e18d9d5a4");
+        salesOutbound2.setSalesOutbountCode("SS10000002");
+        salesOutbound2.setOutboundTypeId("销售出库");
+        salesOutbound2.setSalesDeliveryId("cx5cdd42d8abac563e18d9d59e");
+        salesOutbound2.setOutboundStatus(1);
+
+        SalesOutbound salesOutbound3 = new SalesOutbound();
+        salesOutbound3.setId("cx5cdd42d8abac563e18d9d5a5");
+        salesOutbound3.setSalesOutbountCode("SS10000003");
+        salesOutbound3.setOutboundTypeId("销售出库");
+        salesOutbound3.setSalesDeliveryId("cx5cdd42d8abac563e18d9d59f");
+        salesOutbound3.setOutboundStatus(1);
+
+        SalesOutbound salesOutbound4 = new SalesOutbound();
+        salesOutbound4.setId("cx5cdd42d8abac563e18d9d5a6");
+        salesOutbound4.setSalesOutbountCode("SS10000004");
+        salesOutbound4.setOutboundTypeId("销售出库");
+        salesOutbound4.setSalesDeliveryId("cx5cdd42d8abac563ecx5cdd42d8abac563e18d9d5a018d9d59d");
+        salesOutbound4.setOutboundStatus(1);
+
+        SalesOutbound salesOutbound5 = new SalesOutbound();
+        salesOutbound5.setId("cx5cdd42d8abac563e18d9d5a7");
+        salesOutbound5.setSalesOutbountCode("SS10000005");
+        salesOutbound5.setOutboundTypeId("销售出库");
+        salesOutbound5.setSalesDeliveryId("cx5cdd42d8abac563e18d9d5a1");
+        salesOutbound5.setOutboundStatus(1);
+
+        SalesOutbound salesOutbound6 = new SalesOutbound();
+        salesOutbound6.setId("cx5cdd42d8abac563e18d9d5a8");
+        salesOutbound6.setSalesOutbountCode("SS10000006");
+        salesOutbound6.setOutboundTypeId("销售出库");
+        salesOutbound6.setSalesDeliveryId("cx5cdd42d8abac563e18d9d5a2");
+        salesOutbound6.setOutboundStatus(1);
+
+
+        MongoUtil.insert(salesOutbound);
+        MongoUtil.insert(salesOutbound2);
+        MongoUtil.insert(salesOutbound3);
+        MongoUtil.insert(salesOutbound4);
+        MongoUtil.insert(salesOutbound5);
+        MongoUtil.insert(salesOutbound6);
+    }
+
+
+    /**
+     * @author: 汪明月
+     * date: 2019-5-22 10:56
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单新增数据
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void salesDeliveryInsert(){
+        SalesDelivery salesDelivery = new SalesDelivery();
+        salesDelivery.setId("cx5cdd42d8abac563e18d9d59d");
+        salesDelivery.setSalesDeliveryCode("SD10000001");
+        salesDelivery.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        salesDelivery.setCustomerInfoId("cx5cdd42d8abac563e18d9d561");
+        salesDelivery.setDocumentTime(new Date("2019/5/10"));
+
+        SalesDelivery salesDelivery2 = new SalesDelivery();
+        salesDelivery2.setId("cx5cdd42d8abac563e18d9d59e");
+        salesDelivery2.setSalesDeliveryCode("SD10000002");
+        salesDelivery2.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        salesDelivery2.setCustomerInfoId("cx5cdd42d8abac563e18d9d562");
+        salesDelivery2.setDocumentTime(new Date("2019/5/10"));
+
+        SalesDelivery salesDelivery3 = new SalesDelivery();
+        salesDelivery3.setId("cx5cdd42d8abac563e18d9d59f");
+        salesDelivery3.setSalesDeliveryCode("SD10000003");
+        salesDelivery3.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        salesDelivery3.setCustomerInfoId("cx5cdd42d8abac563e18d9d563");
+        salesDelivery3.setDocumentTime(new Date("2019/5/10"));
+
+        SalesDelivery salesDelivery4 = new SalesDelivery();
+        salesDelivery4.setId("cx5cdd42d8abac563e18d9d5a0");
+        salesDelivery4.setSalesDeliveryCode("SD10000004");
+        salesDelivery4.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        salesDelivery4.setCustomerInfoId("cx5cdd42d8abac563e18d9d564");
+        salesDelivery4.setDocumentTime(new Date("2019/5/10"));
+
+        SalesDelivery salesDelivery5 = new SalesDelivery();
+        salesDelivery5.setId("cx5cdd42d8abac563e18d9d5a1");
+        salesDelivery5.setSalesDeliveryCode("SD10000005");
+        salesDelivery5.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        salesDelivery5.setCustomerInfoId("cx5cdd42d8abac563e18d9d565");
+        salesDelivery5.setDocumentTime(new Date("2019/5/10"));
+
+        SalesDelivery salesDelivery6 = new SalesDelivery();
+        salesDelivery6.setId("cx5cdd42d8abac563e18d9d5a2");
+        salesDelivery6.setSalesDeliveryCode("SD10000006");
+        salesDelivery6.setCompanyInfoId("cx5cdd42d8abac563e18d9d4e8");
+        salesDelivery6.setCustomerInfoId("cx5cdd42d8abac563e18d9d566");
+        salesDelivery6.setDocumentTime(new Date("2019/5/10"));
+
+        MongoUtil.insert(salesDelivery);
+        MongoUtil.insert(salesDelivery2);
+        MongoUtil.insert(salesDelivery3);
+        MongoUtil.insert(salesDelivery4);
+        MongoUtil.insert(salesDelivery5);
+        MongoUtil.insert(salesDelivery6);
+    }
+
+    /**
+     * @author: 汪明月
+     * date: 2019-5-22 11:05
+     * @since: JDK 1.8
+     *
+     * @description: 销售发货单行项目增加数据
+     * @param: []
+     * @return: void
+     */
+    @Test
+    public void salesDeliveryDetailInsert(){
+        SalesDeliveryDetail salesDeliveryDetail = new SalesDeliveryDetail();
+        salesDeliveryDetail.setId("cx5cdd42d8abac563e18d9d58b");
+        salesDeliveryDetail.setSalesDeliveryDetailCode("0001");
+        salesDeliveryDetail.setSalesDeliverId("cx5cdd42d8abac563e18d9d59d");
+        salesDeliveryDetail.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        salesDeliveryDetail.setDeliveryNumber(new BigDecimal("100000"));
+        salesDeliveryDetail.setDeliveryFactoryId("cx5cdd42d8abac563e18d9d5b");
+        salesDeliveryDetail.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+
+
+        SalesDeliveryDetail salesDeliveryDetail2 = new SalesDeliveryDetail();
+        salesDeliveryDetail2.setId("cx5cdd42d8abac563e18d9d5aa");
+        salesDeliveryDetail2.setSalesDeliveryDetailCode("0002");
+        salesDeliveryDetail2.setSalesDeliverId("cx5cdd42d8abac563e18d9d59d");
+        salesDeliveryDetail2.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        salesDeliveryDetail2.setDeliveryNumber(new BigDecimal("100000"));
+        salesDeliveryDetail2.setDeliveryFactoryId("cx5cdd42d8abac563e18d9d5c");
+        salesDeliveryDetail2.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+
+        SalesDeliveryDetail salesDeliveryDetail3 = new SalesDeliveryDetail();
+        salesDeliveryDetail3.setId("cx5cdd42d8abac563e18d9d5ab");
+        salesDeliveryDetail3.setSalesDeliveryDetailCode("0003");
+        salesDeliveryDetail3.setSalesDeliverId("cx5cdd42d8abac563e18d9d59d");
+        salesDeliveryDetail3.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        salesDeliveryDetail3.setDeliveryNumber(new BigDecimal("100000"));
+        salesDeliveryDetail3.setDeliveryFactoryId("cx5cdd42d8abac563e18d9d5c");
+        salesDeliveryDetail3.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+
+        SalesDeliveryDetail salesDeliveryDetail4 = new SalesDeliveryDetail();
+        salesDeliveryDetail4.setId("cx5cdd42d8abac563e18d9d5ac");
+        salesDeliveryDetail4.setSalesDeliveryDetailCode("0004");
+        salesDeliveryDetail4.setSalesDeliverId("cx5cdd42d8abac563e18d9d59d");
+        salesDeliveryDetail4.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        salesDeliveryDetail4.setDeliveryNumber(new BigDecimal("100000"));
+        salesDeliveryDetail4.setDeliveryFactoryId("cx5cdd42d8abac563e18d9d5b");
+        salesDeliveryDetail4.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+
+        SalesDeliveryDetail salesDeliveryDetail5 = new SalesDeliveryDetail();
+        salesDeliveryDetail5.setId("cx5cdd42d8abac563e18d9d5ad");
+        salesDeliveryDetail5.setSalesDeliveryDetailCode("0005");
+        salesDeliveryDetail5.setSalesDeliverId("cx5cdd42d8abac563e18d9d59d");
+        salesDeliveryDetail5.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        salesDeliveryDetail5.setDeliveryNumber(new BigDecimal("100000"));
+        salesDeliveryDetail5.setDeliveryFactoryId("cx5cdd42d8abac563e18d9d5b");
+        salesDeliveryDetail5.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+
+        SalesDeliveryDetail salesDeliveryDetail6 = new SalesDeliveryDetail();
+        salesDeliveryDetail6.setId("cx5cdd42d8abac563e18d9d5ae");
+        salesDeliveryDetail6.setSalesDeliveryDetailCode("0006");
+        salesDeliveryDetail6.setSalesDeliverId("cx5cdd42d8abac563e18d9d59d");
+        salesDeliveryDetail6.setSaleOrderInfoId("cx5cdd42d8abac563e18d9d573");
+        salesDeliveryDetail6.setDeliveryNumber(new BigDecimal("100000"));
+        salesDeliveryDetail6.setDeliveryFactoryId("cx5cdd42d8abac563e18d9d5b");
+        salesDeliveryDetail6.setInventoryLocationId("cx5cdd42d8abac563e18d9d515");
+
+
+        MongoUtil.insert(salesDeliveryDetail);
+        MongoUtil.insert(salesDeliveryDetail2);
+        MongoUtil.insert(salesDeliveryDetail3);
+        MongoUtil.insert(salesDeliveryDetail4);
+        MongoUtil.insert(salesDeliveryDetail5);
+        MongoUtil.insert(salesDeliveryDetail6);
     }
 
     /**
@@ -1784,6 +2296,10 @@ public class DataInfoInsert {
         MongoUtil.insert(otherOutbound5);
         MongoUtil.insert(otherOutbound6);
     }
+
+
+
+
 
 
 
