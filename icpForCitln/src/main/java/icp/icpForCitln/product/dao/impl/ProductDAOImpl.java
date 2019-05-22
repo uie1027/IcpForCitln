@@ -8,6 +8,7 @@
 
 package icp.icpForCitln.product.dao.impl;
 
+import com.mongodb.BasicDBObject;
 import icp.icpForCitln.product.dao.ProductDAO;
 import icp.icpForCitln.product.dto.ProductInfoDTO;
 import icp.icpForCitln.product.eneity.ProductInfo;
@@ -16,7 +17,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
 import org.springframework.data.mongodb.core.aggregation.LookupOperation;
+import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -36,5 +39,16 @@ public class ProductDAOImpl implements ProductDAO {
         Aggregation aggregation = Aggregation.newAggregation(match,lookupOperation);
 
         return mongoTemplate.aggregate(aggregation,"PRODUCT_INFO",ProductInfoDTO.class).getMappedResults();
+    }
+
+    @Override
+    public List<ProductInfo> productCodeListGet() {
+        BasicDBObject paraObj = new BasicDBObject();
+        BasicDBObject returnObj = new BasicDBObject();
+        paraObj.append("IS_DELETE",2).append("IS_DISPLAY",1);
+        returnObj.append("PRODUCT_CODE",1);
+        returnObj.append("_id",0);
+        Query query = new BasicQuery(paraObj.toJson(),returnObj.toJson());
+        return mongoTemplate.find (query, ProductInfo.class);
     }
 }

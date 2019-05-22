@@ -78,4 +78,18 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductionInfoView> productListGet(ProductInfoDTO productInfoDTO){
         return MongoUtil.select(BeanCopyUtil.copy(productInfoDTO, ProductionInfoView.class));
     }
+
+    /**
+     * @author: Hujh
+     * date: 2019/5/22 14:26
+     * @since: JDK 1.8
+     *
+     * @description:  获取所有产品编码
+     * @param: []
+     * @return: java.util.List<java.lang.String>
+     */
+    @Override
+    public List<ProductInfo> productCodeListGet() {
+        return productDAO.productCodeListGet();
+    }
 }

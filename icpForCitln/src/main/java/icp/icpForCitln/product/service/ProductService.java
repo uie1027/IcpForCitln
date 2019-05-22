@@ -12,4 +12,5 @@ public interface ProductService {
     List<ProductInfoFindVO> productInfoFind(ProductInfo productInfo);
     void productInfoSave(ProductInfoSaveDTO productInfoSaveDTO);    //产品新增
     List<ProductionInfoView> productListGet(ProductInfoDTO productInfoDTO);
+    List<ProductInfo> productCodeListGet();
 }

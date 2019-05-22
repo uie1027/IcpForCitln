@@ -15,8 +15,11 @@ import icp.icpForCitln.product.dto.ProductInfoFindDTO;
 import icp.icpForCitln.product.dto.ProductInfoSaveDTO;
 import icp.icpForCitln.product.eneity.ProductInfo;
 import icp.icpForCitln.product.service.ProductService;
+import icp.icpForCitln.product.vo.ProductInfoFindVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/product")
@@ -58,4 +61,22 @@ public class ProductController {
     public PageResult productListGet(ProductInfoDTO productInfoDTO){
         return PageResult.returnResult(PageResult.SUCCESS_CODE,productService.productListGet(productInfoDTO));
     }
+
+
+    /**
+     * @author: Hujh
+     * @date: 19/05/16 18:26
+     * @since: JDK 1.8
+     *
+     * @description: 产品编码列表
+     * @param: [productInfoDTO]
+     * @return: icp.icpForCitln.common.result.PageResult
+     */
+    @GetMapping("/productCodeListGet")
+    public PageResult productCodeListGet(){
+        List<ProductInfo> productList = productService.productCodeListGet();
+        return PageResult.returnResult(PageResult.SUCCESS_CODE,BeanCopyUtil.copy(productList, ProductInfoFindVO.class));
+
+    }
+
 }

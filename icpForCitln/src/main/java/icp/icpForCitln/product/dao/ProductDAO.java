@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ProductDAO {
     List<ProductInfoDTO> productInfoFind(ProductInfo productInfo);
+    List<ProductInfo> productCodeListGet();
 }
