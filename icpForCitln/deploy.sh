@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#编译+部署order站点
+#编译+部署icpForCitln站点
 
 #需要配置如下参数
 # 项目路径, 在Execute Shell中配置项目路径, pwd 就可以获得该项目路径
@@ -20,7 +20,7 @@ killTomcat()
       kill -9 $pid
     fi
 }
-cd $PROJ_PATH/order
+cd $PROJ_PATH/IcpForCitln/icpForCitln
 mvn clean install
 
 # 停tomcat
