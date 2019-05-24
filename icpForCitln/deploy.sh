@@ -20,7 +20,7 @@ killTomcat()
       kill -9 $pid
     fi
 }
-cd $PROJ_PATH/IcpForCitln/icpForCitln
+cd $PROJ_PATH/icpForCitln/icpForCitln
 mvn clean install
 
 # 停tomcat
@@ -32,7 +32,7 @@ rm -f $TOMCAT_APP_PATH/webapps/ROOT.war
 rm -f $TOMCAT_APP_PATH/webapps/icpForCitln.war
 
 # 复制新的工程
-cp $PROJ_PATH/icpForCitln/target/icpForCitln.war $TOMCAT_APP_PATH/webapps/
+cp $PROJ_PATH/icpForCitln/icpForCitln/target/icpForCitln.war $TOMCAT_APP_PATH/webapps/
 
 cd $TOMCAT_APP_PATH/webapps/
 mv icpForCitln.war ROOT.war
